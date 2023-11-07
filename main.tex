@@ -91,9 +91,8 @@
 \bigskip
 \newpage
 
-\section{Time-dependent perturbation theory in the interaction picture}
+\section{Time-dependent perturbation theory}
 
-{\bf Perturbation theory setup.}
 Suppose we have a Hamiltonian of the form \[\op{H} = \op{H}_0 + \op{V}(t)\]
 where \(\op{H}_0\) is a well-understood Hamiltonian that does not depend on time and \(\op{V}(t)\) is ``small''. For example, \(\op{H}_0\) might be the free particle Hamiltonian \(\op{H}_0 = \frac{m}{2} \nabla^2\). Our equation of motion is the Schr\"odinger equation
 \[i \hbar \frac{\partial}{\partial t} \ket{\Psi, t} = \left(\op{H}_0 + \op{V}(t)\right) \ket{\Psi, t}\]
@@ -135,7 +134,9 @@ We can plug in again to get the second order approximation
 \]
 In general, we can keep going to achieve higher order approximations. For us, however, the first order approximation (\ref{eq.firsttdpe}) is enough.
 
-{\bf Application to scattering.} We will continue for scattering between two particles. We will assume that the particles are distinguishable so that we don't need to restrict ourselves to symmetric or antisymmetric states. We will also assume that the particles interact in a way that only depends on the distance between them. That is, in the position basis, we can write \[\bra{x_1, x_2}\op{V}(t)\ket{\psi} = \int_{x_1,x_2} \frac{d^3 x_1 \,d^3x_2}{(2\pi)^6} V(x_1 - x_2) \braket{x_1, x_2}{\psi}.\] (Note that this is not time dependent.) Take \(\op{H}_0\) to be the free particle Hamiltonian.
+\section{Application to scattering}
+
+We will continue for scattering between two particles. We will assume that the particles are distinguishable so that we don't need to restrict ourselves to symmetric or antisymmetric states. We will also assume that the particles interact in a way that only depends on the distance between them. That is, in the position basis, we can write \[\bra{x_1, x_2}\op{V}(t)\ket{\psi} = \int_{x_1,x_2} \frac{d^3 x_1 \,d^3x_2}{(2\pi)^6} V(x_1 - x_2) \braket{x_1, x_2}{\psi}.\] (Note that this is not time dependent.) Take \(\op{H}_0\) to be the free particle Hamiltonian.
 
 It will be easiest to work in the momentum basis. We will do our calculations for momentum eigenstates---that is, plane waves. Write momentum eigenstates as \(\ket{k_1, k_2}\). In the position basis these have wavefunctions
 \[\braket{x_1, x_2}{k_1, k_2} = e^{ik_1\cdot x_1 + ik_2\cdot x_2}.\]
@@ -187,7 +188,9 @@ Putting this in to (\ref{eq.intermed}) we get
 \end{align}
 Interestingly, we see that the delta functions cause energy and momentum to be conserved.
 
-{\bf Mixed states and the density operator.} We now consider the same problem but where we allow for mixed states. We will need to describe the system by the density operator \(\op{\rho}(t)\). First, let us derive the time evolution of \(\op{\rho}(t)\) in first order perturbation theory.
+\section{Mixed states and the density operator}
+
+We now consider the same problem but where we allow for mixed states. We will need to describe the system by the density operator \(\op{\rho}(t)\). First, let us derive the time evolution of \(\op{\rho}(t)\) in first order perturbation theory.
 
 Suppose at time \(t_0\) we have a statistical ensemble of interaction-picture states \(\ket{{\psi_I}_n, t_0}\) each with probability \(P_n\). Then
 \[\op{\rho}(t_0) = \sum_n P_n \ket{{\psi_I}_n, t_0}\bra{{\psi_I}_n, t_0}.\]
