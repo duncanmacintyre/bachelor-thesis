@@ -129,10 +129,10 @@ Plugging this in for the state inside the integral in (\ref{eq.intse}), we get t
 \ket{\Psi_I, t} = \ket{\Psi_I, t_0} - \frac{i}{\hbar} \int_{t_0}^t \op{H}_I(t^\prime)\ket{\Psi_I, t_0} \,dt^\prime + \Od{\op{H}_I(t)^2}.
 \end{equation}
 We can plug in again to get the second order approximation
-\[
+\begin{equation}\label{eq.secondtdpe}
 \ket{\Psi_I, t} = \ket{\Psi_I, t_0} - \frac{i}{\hbar} \int_{t_0}^t \op{H}_I(t^\prime)\left[\ket{\Psi_I, t_0} - \frac{i}{\hbar} \int_{t_0}^t \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\right] \,dt^\prime + \Od{\op{H}_I(t)^3}.
-\]
-In general, we can keep going to achieve higher order approximations. For us, however, the first order approximation (\ref{eq.firsttdpe}) is enough.
+\end{equation}
+In general, we can keep going to achieve higher order approximations. For us, however, the first and second order approximations are enough.
 
 \section{Application to scattering}
 
@@ -212,11 +212,11 @@ We now consider the same problem but where we allow for mixed states. We will ne
 
 Suppose at time \(t_0\) we have a statistical ensemble of interaction-picture states \(\ket{{\psi_I}_n, t_0}\) each with probability \(P_n\). Then
 \[\op{\rho}(t_0) = \sum_n P_n \ket{{\psi_I}_n, t_0}\bra{{\psi_I}_n, t_0}.\]
-At time \(t\) states will have evolved according to (\ref{eq.firsttdpe}), so
+At time \(t\) states will have evolved according to (\ref{eq.secondtdpe}), so
 \[\op{\rho}(t) = \sum_n P_n \ket{{\psi_I}_n, t}\bra{{\psi_I}_n, t}\]
 where
 \[
-\ket{{\Psi_I}_n, t} = \ket{{\Psi_I}_n, t_0} - \frac{i}{\hbar} \int_{t_0}^t \op{H}_I(t^\prime)\ket{{\Psi_I}_n, t_0} \,dt^\prime + \Od{\op{H}_I(t)^2}.
+\ket{\Psi_I, t} = \ket{\Psi_I, t_0} - \frac{i}{\hbar} \int_{t_0}^t \op{H}_I(t^\prime)\left[\ket{\Psi_I, t_0} - \frac{i}{\hbar} \int_{t_0}^t \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\right] \,dt^\prime + \Od{\op{H}_I(t)^3}.
 \]
 Then
 \begin{align*}
@@ -261,22 +261,78 @@ Plugging in our result (\ref{eq.HIintegrated}),
 \\&+  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \;\;{\Bigg(}\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(\widetilde{k}_1 - {k}_1\right)\;\delta\left({\textstyle\frac{{\widetilde{k}_1}^2}{2m_1} + \frac{{\widetilde{k}_2}^2}{2m_2} - \frac{{{k}_1}^2}{2m_1} - \frac{{{k}_2}^2}{2m_2}}\right) \\&\hspace{9em}\delta^3(\widetilde{k}_1 - {k}_1 - \widetilde{k}_2 + {k}_2)    \;\;\bra{{k}_1^\prime, {k}_2}\op{\rho}\left(-\infty\right)\ket{\widetilde{k}_1, \widetilde{k}_2}{\Bigg)}.
 \end{align*}
 Finally, we use the delta functions to get rid of the \(\widetilde{k}_1\) integrals. This gives us
-\begin{align}\label{eq.reddensevolution}
-\hspace{-3em}\bra{{k_1}^\prime}\op{\rho}_\text{reduced}(\infty)\ket{k_1}
+\begin{align*}
+\hspace{-4em}\bra{{k_1}^\prime}\op{\rho}_\text{reduced}(\infty)\ket{k_1}
 = 
 \bra{k_1^\prime}&\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1} \\
 &-  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_2 \;\;\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(k_2 - 
-\widetilde{k}_2\right)\; \bra{k_1^\prime + \widetilde{k}_2 - k_2,\; \widetilde{k}_2}\op{\rho}\left(-\infty\right)\ket{k_1, k_2} \;\delta_1
+\widetilde{k}_2\right)\; \bra{k_1^\prime + \widetilde{k}_2 - k_2,\; \widetilde{k}_2}\op{\rho}\left(-\infty\right)\ket{k_1, k_2} \;D(k_1^\prime, k_2, \widetilde{k}_2)
 \nonumber\\&+  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_2 \;\;\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(\widetilde{k}_2 - 
-{k}_2\right)\; \bra{{k}_1^\prime, {k}_2}\op{\rho}\left(-\infty\right)\ket{k_1 + \widetilde{k}_2 - k_2,\; \widetilde{k}_2} \;\delta_2. \nonumber
-\end{align}
+{k}_2\right)\; \bra{{k}_1^\prime, {k}_2}\op{\rho}\left(-\infty\right)\ket{k_1 + \widetilde{k}_2 - k_2,\; \widetilde{k}_2} \;D(k_1, k_2, \widetilde{k}_2). \nonumber
+\end{align*}
 where
 \begin{align*}
-\delta_1 &= \delta\left({\textstyle\frac{1}{2}\;{k_2}^2\left(\frac{1}{m_2}-\frac{1}{m_1}\right) - \frac{1}{2}\;{\widetilde{k}_2}^2\left(\frac{1}{m_1}+\frac{1}{m_2}\right) + \frac{1}{2m_1}\left(-k_1^\prime\cdot \widetilde{k}_2 + k_1^\prime \cdot k_2 + \widetilde{k}_2 \cdot k_2\right)}\right) \\
-\delta_2 &= \delta\left({\textstyle\frac{1}{2}\;{\widetilde{k}_2}^2\left(\frac{1}{m_2}+\frac{1}{m_1}\right) - \frac{1}{2}\;{{k}_2}^2\left(\frac{1}{m_2}-\frac{1}{m_1}\right) + \frac{1}{2m_1}\left(k_1\cdot \widetilde{k}_2 - k_1 \cdot k_2 - \widetilde{k}_2 \cdot k_2\right)}\right).
+%\delta_1 &= \delta\left({\textstyle\frac{1}{2}\;{k_2}^2\left(\frac{1}{m_2}-\frac{1}{m_1}\right) - \frac{1}{2}\;{\widetilde{k}_2}^2\left(\frac{1}{m_1}+\frac{1}{m_2}\right) + \frac{1}{2m_1}\left(-k_1^\prime\cdot \widetilde{k}_2 + k_1^\prime \cdot k_2 + \widetilde{k}_2 \cdot k_2\right)}\right) \\
+D(k_1, k_2, \widetilde{k}_2) &= \delta\left({\textstyle \frac{1}{2}\;{{k}_2}^2\left(\frac{1}{m_1}-\frac{1}{m_2}\right)+ \frac{1}{2}\;{\widetilde{k}_2}^2\left(\frac{1}{m_1}+\frac{1}{m_2}\right) - \frac{1}{2m_1}\left(-k_1\cdot \widetilde{k}_2 + k_1 \cdot k_2 + \widetilde{k}_2 \cdot k_2\right)}\right).
 \end{align*}
+Then, assuming \(\widetilde{V}\) is an even function,
+\begin{align}\label{eq.reddensevolution}
+\hspace{-4em}\bra{{k_1}^\prime}&\op{\rho}_\text{reduced}(\infty)\ket{k_1}
+= {\Bigg (}
+\bra{k_1^\prime}\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1}\;\;+
+ \\&\nonumber \int_{-\infty}^\infty \frac{d^3k_2 \,d^3\,\widetilde{k}_2}{(2\pi)^2}\;\widetilde{V}\left(k_2 - 
+\widetilde{k}_2\right)\;\left(P\left(k_1,k_1^\prime k_2, \widetilde{k}_2\right)D\left(k_1, k_2, \widetilde{k}_2\right) + P^*\left(k_1^\prime,k_1, k_2, \widetilde{k}_2\right)D\left(k_1^\prime, k_2, \widetilde{k}_2\right)\right){\Bigg )}
+\end{align}
+where
+\[
+P(k_1, k_1^\prime, k_2, \widetilde{k}_2) = i\bra{k_1^\prime, k_2} \op{\rho}\left(-\infty\right) \ket{k_1 + \widetilde{k}_2 - k_2,\; \widetilde{k}_2}.
+\]
 
+\section{Entropy analysis through perturbation theory}
 
+Consider a Hermitian operator \(\op{A}_0\) with an eigenstate \(\ket{\psi_0}\) that has an eigenvalue \(\tau_0\). Consider another operator \(\op{A} = \op{A}_0 + \lambda \op{A}_1 + \Od{\lambda^2}\) with an eigenstate \(\ket{\psi} = \ket{\psi_0} + \lambda \ket{\psi_1} + \Od{\lambda^2}\) that has an eigenvalue \(\tau = \tau_0 + \lambda \tau_1 + \Od{\lambda^2}\). We have
+\begin{align*}
+(\op{A}_0 + \lambda \op{A}_1) \left(\ket{\psi_0} + \lambda \ket{\psi_1}\right) &= (\tau_0 + \lambda \tau_1) \left(\ket{\psi_0} + \lambda\ket{\psi_1}\right) + \Od{\lambda^2} \\
+\op{A}_0 \ket{\psi_1} + \op{A}_1 \ket{\psi_0} &= \tau_0 \ket{\psi_1} + \tau_1 \ket{\psi_0} + \Od{\lambda} \\
+\bra{\psi_0}\op{A}_0 \ket{\psi_1} + \bra{\psi_0}\op{A}_1 \ket{\psi_0} &= \tau_0\braket{\psi_0}{\psi_1} + \tau_1\braket{\psi_0}{\psi_0} + \Od{\lambda} \\
+\tau_0\braket{\psi_0}{\psi_1} + \bra{\psi_0}\op{A}_1 \ket{\psi_0} &= \tau_0\braket{\psi_0}{\psi_1} + \tau_1 + \Od{\lambda} \\
+\tau_1 &= \bra{\psi_0}\op{A}_1 \ket{\psi_0} + \Od{\lambda} \\
+\tau_1 &= \bra{\psi_0}\op{A}_1 \ket{\psi_0}
+\end{align*}
+(since we take \(\tau_1\) not to depend on \(\lambda\)).
 
+We will apply this result with \(\op{A} = \op{\rho}_\text{reduced}(t)\) and \(\op{A}_0 = \op{\rho}_\text{reduced}(t_0)\). In general, we can write \(\op{\rho}_\text{reduced}(t_0)\) in the form
+\[
+\op{\rho}_\text{reduced}(t_0) = \sum_i P_i \ket{\psi_i}\bra{\psi_i}.
+\]
+for some \(\ket{\psi_i}\) and \(P_i\) such that \(\sum_i P_i = 1\). It is clear that the eigenstates of \(\op{\rho}_\text{reduced}(t_0)\) are then the states \(\ket{\psi_i}\); these have eigenvalues \(P_i\). Take \(\widetilde{V}(p) = \lambda V^\star(p)\). Then we can read off the first order corrections for \(\op{\rho}\) from (\ref{eq.reddensevolution}).
+
+\subsection{Pure initial state}
+
+We will first consider the case where the initial state is pure, that is,
+\[\op{\rho}_\text{reduced}(t_0) = \ket{\psi_0}\bra{\psi_0}\]
+for some \(\ket{\psi_0}\). Then exactly one eigenvalue is non-zero; it is associated with the non-degenerate eigenstate \(\ket{\psi_0}\).
+
+Let \(\{\epsilon_i\}\) be the eigenvalues of \(\op{\rho}_\text{reduced}(t)\) and choose them so that \(\epsilon_1 \approx 1\) and \(\epsilon_i \approx 0\) for \(i 
+\geq 2\).
+
+The von Neumann entropy is
+\begin{align*}
+S &= -\operatorname{tr}\left(\op{\rho}(t) \ln \op{\rho}(t)\right) \\
+&= - \sum_{i=1}^\infty \epsilon_i \ln \epsilon_i \\
+&= - \epsilon_1 \ln \epsilon_1 - \sum_{i=2}^\infty \epsilon_i \ln \epsilon_i.
+\end{align*}
+Now, \(x \ln x \approx x\) if \(x \approx 0\), so
+\[
+S 
+\approx - \epsilon_1 \ln \epsilon_1 - \sum_{i=2}^\infty \epsilon_i.
+\]
+Also \(\epsilon_1 = 1 - \sum_{i=2}^\infty \epsilon_i\) so
+\[
+S 
+\approx
+- \epsilon_1 \ln \epsilon_1 + \epsilon_1 - 1.
+\]
+In particular, 
 
 \end{document}
