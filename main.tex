@@ -128,14 +128,15 @@ Plugging this in for the state inside the integral in (\ref{eq.intse}), we get t
 \begin{equation}\label{eq.firsttdpe}
 \ket{\Psi_I, t} = \ket{\Psi_I, t_0} - \frac{i}{\hbar} \int_{t_0}^t \op{H}_I(t^\prime)\ket{\Psi_I, t_0} \,dt^\prime + \Od{\op{H}_I(t)^2}.
 \end{equation}
-We can plug in again to get the second order approximation
-\begin{equation}\label{eq.secondtdpe}
-\ket{\Psi_I, t} = \ket{\Psi_I, t_0} - \frac{i}{\hbar} \int_{t_0}^t \op{H}_I(t^\prime)\left[\ket{\Psi_I, t_0} - \frac{i}{\hbar} \int_{t_0}^t \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\right] \,dt^\prime + \Od{\op{H}_I(t)^3}.
-\end{equation}
-In general, we can keep going to achieve higher order approximations. For us, however, the first and second order approximations are enough.
+Plugging this in to (\ref{eq.intse}) again we get the second order approximation
+\begin{align}\nonumber
+\ket{\Psi_I, t} &= \ket{\Psi_I, t_0} - \frac{i}{\hbar} \int_{t_0}^t \op{H}_I(t^\prime)\left[\ket{\Psi_I, t_0} - \frac{i}{\hbar} \int_{t_0}^{t^\prime} \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\right] \,dt^\prime + \Od{\op{H}_I(t)^3} \\
+&= \ket{\Psi_I, t_0} - \frac{i}{\hbar}\int_{t_0}^t \op{H}_I (t^\prime) \ket{\Psi_I, t_0}\,dt^\prime - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \op{H}_I(t^\prime) \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\,dt^\prime + \Od{\op{H}_I(t)^3}.
+\label{eq.secondtdpe}\end{align}
+In general, we can keep going to achieve higher order approximations. For us, however, the second order approximation is enough.
 
 
-\section{Evolution of the density operator}
+\section{Time evolution of the density operator}
 
 We now consider the same problem but where we allow for mixed states. We will need to describe the system by the density operator \(\op{\rho}(t)\). First, let us derive the time evolution of \(\op{\rho}(t)\) in first order perturbation theory.
 
