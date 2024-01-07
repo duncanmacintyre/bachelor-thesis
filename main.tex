@@ -83,7 +83,7 @@
 \begin{document}
 
 
-\title{Scattering Notes}
+\title{Notes on Entropy Change Over Time}
 \author{Duncan MacIntyre}
 \date{\today}
 \maketitle
@@ -163,25 +163,171 @@ so
 Then
 \begin{align}
 \label{eq.rhoevol}
-\op{\rho}(t) \;\;=\;\;& \ket{{\Psi_I}_n, t_0} \bra{{\Psi_I}_n, t_0}
+\op{\rho}(t) \;\;=\;\;& \op{\rho}\left(t_0\right)
 \;\;-\;\; \frac{i}{\hbar} \int_{t_0}^t \left[\op{H}(t^\prime),\; \op{\rho}(t_0) \right] \,dt^\prime \\
 & -\;\; \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}(t_0) \right\}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
 &+\;\; \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \op{\rho}(t_0) \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime \nonumber.
 \end{align}
 
-\section{Arugument that first-order correction is zero for calculating the trace}
+\section{Eigenvalue corrections from perturbation theory}
 
-(to be added)
+The goal of this section is to compute the second-order perturbative corrections to the eigenvalues of an operator. We use the approach known as time-independent perturbation theory.
+
+Suppose \(\op{\rho}\) is an operator with eigenstates \(\ket{\Psi_n}\) and eigenvalues \(\sigma_n\). Suppose we have the asymptotic expansions
+\begin{align*}
+\op{\rho} &= \op{\rho}_0 + \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \\
+\ket{\Psi_n} &= \ket{\Psi_n^{(0)}} + \lambda \ket{\Psi_n^{(1)}} + \lambda^2 \ket{\Psi_n^{(2)}} + \Od{\lambda^3} \\
+\sigma_n &= \sigma_n^{(0)} + \lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3}
+\end{align*}
+where \(\left\{\ket{\Psi_n^{(0)}}\right\}\) is an orthonormal basis for the Hilbert space.
+
+We have \(\op{\rho} \ket{\Psi_n} = \sigma_n \ket{\Psi_n}\). In the zeroth order of \(\lambda\) this gives \(\op{\rho}_0 \ket{\Psi_n^{(0)}} = \sigma_n^{(0)} \ket{\Psi_n^{(0)}}\), that is, \(\ket{\Psi_n^{(0)}}\) is an eigenstate of \(\op{\rho}_0\) with eigenvalue \(\sigma_n^{(0)}\).
+
+Now, we have
+\begin{align*}
+\sigma_n \ket{\Psi_n} &= \op{\rho}\ket{\Psi_n}\\
+\left(\sigma_n^{(0)} - \sigma_m^{(0)} + \lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3} \right)\braket{\Psi_m^{(0)}}{\Psi_n} &=\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n} \\
+\braket{\Psi_m^{(0)}}{\Psi_n} &=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)} + \lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3}}.
+\end{align*}
+We will next proceed to get rid of the denominator by using the Taylor expansion \(\frac{1}{1+x} = 1-x +\Od{x^2}\).
+
+Let \(D_n\) be the indices degenerate with \(n\). That is, let \(D_n = \{m : \sigma_m^{(0)} = \sigma_n^{(0)}\}\).
+Consider the case where \(m \in D_n\). Let \(\delta\) be a small real number. In the limit as \(\delta \to 0\),
+\begin{align*}
+\braket{\Psi_m^{(0)}}{\Psi_n} &=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n}}{\lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3} + \lambda\delta} \\
+&=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n}}{\lambda \left(\sigma_n^{(1)}+ \delta\right)\left(1 + \lambda \frac{\sigma_n^{(2)}}{\sigma_n^{(1)}+\delta} + \Od{\lambda^2}\right) } \\
+&=\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 + \lambda \op{\rho}_2 + \Od{\lambda^2} \ket{\Psi_n}}{\sigma_n^{(1)}+ \delta}\left(1 - \lambda \frac{\sigma_n^{(2)}}{\sigma_n^{(1)}+\delta} + \Od{\lambda^2}\right) \\
+&= \frac{\bra{\Psi_m^{(0)}} \left(\op{\rho}_1 + \lambda \op{\rho}_2 + \Od{\lambda^2} \right)\left(\ket{\Psi_n^{(0)}} + \lambda \ket{\Psi_n^{(1)}} + \Od{\lambda^2}\right)}{\sigma_n^{(1)}+\delta}
+\left(1 - \lambda \frac{\sigma_n^{(2)}}{\sigma_n^{(1)}+\delta} + \Od{\lambda^2}\right) \\
+&=\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \lambda \left[\frac{\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \frac{\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(1)}}}{\sigma_n^{(1)} + \delta} - \frac{\sigma_n^{(2)}\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\left(\sigma_n^{(1)} + \delta\right)^2}\right] + \Od{\lambda^2}
+\end{align*}
+(The \(\delta\) ensured that we did not divide by zero if \(\sigma_n^{(1)}=0\).) Now consider the case where \(m \not\in D_n\). Then
+\begin{align*}
+\braket{\Psi_m^{(0)}}{\Psi_n} &=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \Od{\lambda^2} \ket{\Psi_n}}{\left(\sigma_n^{(0)} - \sigma_m^{(0)}\right)\left(1+\Od{\lambda}\right)} \\
+&=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \Od{\lambda^2} \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)}}\left(1 + \Od{\lambda}\right) \\
+&= \lambda\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)}} + \Od{\lambda^2}.
+\end{align*}
+Putting this all together,
+\begin{align}\label{eq.tiptmaineq}
+\ket{\Psi_n} &= \sum_{m \in D_n} \ket{\Psi_m^{(0)}} \braket{\Psi_m^{(0)}}{\Psi_n} + \sum_{m \not\in D_n} \ket{\Psi_m^{(0)}} \braket{\Psi_m^{(0)}}{\Psi_n} \\
+&= \sum_{m \in D_n} \ket{\Psi_m^{(0)}} \lim_{\delta\to 0} \frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta}
+\nonumber\\&\hspace{1.5em}+ \lambda\;\;
+\Biggl(\;\sum_{m \in D_n} \ket{\Psi_m^{(0)}} \lim_{\delta \to 0}\left[\frac{\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \frac{\bra{\Psi_m^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}}}{\sigma_n^{(1)} + \delta} - \frac{\sigma_n^{(2)}\bra{\Psi_m^{(0)}}\op{\rho}_0\ket{\Psi_n^{(0)}}}{\left(\sigma_n^{(1)} + \delta\right)^2}\right] 
+\nonumber\\&\hspace{6em}+ \sum_{m \not\in D_n} \ket{\Psi_m^{(0)}}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)}}
+\;\Biggr)
+\nonumber\\&\hspace{1.5em}+ \Od{\lambda^2}\nonumber
+\end{align}
+
+In the zeroth order of \(\lambda\), equation (\ref{eq.tiptmaineq}) gives
+\[
+\ket{\Psi_n^{(0)}} = \sum_{m \in D_n} \ket{\Psi_m^{(0)}} \lim_{\delta\to0}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta}.
+\]
+Multiplying by \(\bra{\Psi_n^{(0)}}\) we get
+\begin{equation}\label{eq.tipt.foval}
+\boxed{\sigma_n^{(1)} = \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_n^{(0)}}.}
+\end{equation}
+If we instead multiply by \(\bra{\Psi_k^{(0)}}\) where \(k \in D_n\) but \(k \neq n\) we get
+\begin{equation}\label{eq.tipt.fodiag}
+\boxed{0 = \bra{\Psi_k^{(0)}}\op{\rho}_1\ket{\Psi_n^{(0)}}, \hspace{3em} k \in D_n,\hspace{3em} m \neq n.}
+\end{equation}
+In other words, the matrix given by \(\bra{\Psi_k^{(0)}}\op{\rho}_1\ket{\Psi_j^{(0)}}\) is diagonal on \(k,j\in D_n\), for any \(n\).
+
+In the first order of \(\lambda\), equation (\ref{eq.tiptmaineq}) says
+\[
+\hspace{-2.5em}
+\ket{\Psi_n^{(1)}} = \sum_{m \in D_n} \ket{\Psi_m^{(0)}} \lim_{\delta \to 0}\left[\frac{\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \frac{\bra{\Psi_m^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}}}{\sigma_n^{(1)} + \delta} - \frac{\sigma_n^{(2)}\bra{\Psi_m^{(0)}}\op{\rho}_0\ket{\Psi_n^{(0)}}}{\left(\sigma_n^{(1)} + \delta\right)^2}\right] 
++ \sum_{m \not\in D_n} \ket{\Psi_m^{(0)}}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)}}.
+\]
+Multiplying by \(\bra{\Psi_k^{(0)}}\) where \(k \not\in D_n\) gives
+\[
+\braket{\Psi_k^{(0)}}{\Psi_n^{(1)}} = \frac{\bra{\Psi_k^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(0)}-\sigma_k^{(0)}}.
+\]
+If we instead multiply by \(\bra{\Psi_n^{(0)}}\) we get
+\[
+0 = \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} = \lim_{\delta \to 0} \left[\frac{\bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \frac{\bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}}}{\sigma_n^{(1)} + \delta} - \frac{\sigma_n^{(2)}\left(\sigma_n^{(1)}+\delta\right)}{\left(\sigma_n^{(1)} + \delta\right)^2}\right]
+\]
+so
+\begin{align*}
+\hspace{-2em}\sigma_n^{(2)} &= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}} - \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}\\
+&= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \sum_{m \in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\braket{\Psi_m^{(0)}}{\Psi_n^{(1)}} + \sum_{m \not\in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\braket{\Psi_m^{(0)}}{\Psi_n^{(1)}} - \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}\\
+&= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \sigma_n^{(1)}\braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} +  \sum_{m \not\in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(0)}-\sigma_m^{(0)}}- \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}
+\end{align*}
+hence
+\begin{equation}\label{eq.tipt.soval}
+\boxed{\sigma_n^{(2)} = \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} +  \sum_{m \not\in D_n} \frac{\left|\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}\right|^2}{\sigma_n^{(0)}-\sigma_m^{(0)}}.}
+\end{equation}
+
 
 \section{The change in entropy}
 
-(to be added)
+Both von Neumann and \(N\)-Tsallis entropy can be calculated from the eigenvalues of the density operator. We therefore study these eigenvalues with perturbation theory.
+
+Suppose that, at some fixed time \(t\), the density operator takes the form
+\begin{equation}\label{eq.densdecomp}
+\op{\rho}(t) = \sum_n \sigma_n \ket{\Psi_n}\bra{\Psi_n}
+\end{equation}
+where \(\left\{\ket{\Psi_n^{(0)}}\right\}\) is an orthonormal basis for the Hilbert space.
+Suppose we have asymptotic expansions
+\begin{align*}
+\op{\rho}(t) &= \op{\rho}_0 + \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \\
+\ket{\Psi_n} &= \ket{\Psi_n^{(0)}} + \lambda \ket{\Psi_n^{(1)}} + \lambda^2 \ket{\Psi_n^{(2)}} + \Od{\lambda^3} \\
+\sigma_n &= \sigma_n^{(0)} + \lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3}
+\end{align*}
+The above is indeed true if we take \(\lambda\) to be proportional to \(\op{H}_I(t)\) and take
+\begin{align}
+\label{eq.rho0}\op{\rho}_0 &= \op{\rho}\left(t_0\right) \\
+\label{eq.rho1}\op{\rho}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \left[\op{H}(t^\prime),\; \op{\rho}(t_0) \right] \,dt^\prime\\
+\label{eq.rho2}\op{\rho}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}(t_0) \right\}\,dt^{\prime\prime}\,dt^\prime 
++ \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \op{\rho}(t_0) \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime.
+\end{align}
+as per equation (\ref{eq.rhoevol}).
+
+\subsection{The first-order correction vanishes}
+
+Combining (\ref{eq.tipt.foval}), (\ref{eq.rho0}), and (\ref{eq.rho1}), the first-order eigenvalue correction is
+\[
+\sigma_n^{(1)} = -\frac{i}{\hbar} \int_{t_0}^t \bra{\Psi_n^{(0)}} \left[\op{H}(t^\prime),\; \op{\rho}_0 \right] \ket{\Psi_n^{(0)}}\,dt^\prime.
+\]
+Since
+\[
+\bra{\Psi_n^{(0)}} \op{H}(t^\prime) \op{\rho}_0 \ket{\Psi_n^{(0)}} = 
+\sigma_n^{(0)} \bra{\Psi_n^{(0)}} \op{H}(t^\prime) \ket{\Psi_n^{(0)}} =
+\bra{\Psi_n^{(0)}} \op{\rho}_0 \op{H}(t^\prime) \ket{\Psi_n^{(0)}}
+\]
+we have \(\sigma_n^{(1)} = 0\).
 
 \subsection{Von Neumann entropy}
 
-(to be added)
+The Von Neumann entropy for the state (\ref{eq.densdecomp}) is defined to be
+\[
+S = \sum_{n} \sigma_n \log \sigma_n.
+\]
+Let \(A = \{n : \sigma_n^{(0)} \neq 0\}\). Then
+\begin{align*}
+S &= -\sum_{n \in A} \sigma_n \log \sigma_n-\sum_{n \not\in A} \sigma_n \log \sigma_n \\
+&= - \sum_{n \in A} \sigma_n \log \left(\sigma_n^{(0)} \left(1 + \Od{\lambda^2}\right)\right)  - \sum_{n \not\in A} \sigma_n \log\left(\lambda^2\sigma_n^{(2)}\left(1 + \Od{\lambda}\right)\right) \\
+&= - \sum_{n \in A} \left(\sigma_n^{(0)} + \Od{\lambda^2}\right) \left(\log \sigma_n^{(0)}+\Od{\lambda^2}\right) - \sum_{n \not\in A} \sigma_n \left(\log\lambda^2+\log\sigma_n^{(2)}+ \Od{\lambda}\right) \\
+&= - \sum_{n \in A} \sigma_n^{(0)} \log \sigma_n^{(0)} -\sum_{n \not\in A} \sigma_n \log\lambda^2+ \Od{\lambda^2}.
+\end{align*}
+The first term is
+\[S_0 = - \sum_{n \in A} \sigma_n^{(0)} \log \sigma_n^{(0)}\]
+which is the von Neumann entropy associated with the unperturbed density operator \(\op{\rho}_0 = \op{\rho}\left(t_0\right)\). Thus the change in entropy due to the interaction is
+\begin{equation}\label{eq.entropyresultnotA}
+{\Delta S = S-S_0 = \log\frac{1}{\lambda^2}\sum_{n \not\in A} \sigma_n + \Od{\lambda^2} = \lambda^2 \log\frac{1}{\lambda^2} \sum_{n \not\in A}\sigma_n^{(2)}+ \Od{\lambda^2}.}
+\end{equation}
+Each \(\sigma_n\) is non-negative because it is an eigenvalue of a density operator; thus the entire change in entropy is non-negative to the leading order (assuming this term does not vanish).
 
-\subsection{n-Tsallis entropy}
+We finish by rewriting this result into an alternative form. We can recognize that \(\sum_{n\in A} \sigma_n + \sum_{n \not\in A} \sigma_n = 1\) and so
+\[
+\Delta S = \left(1- \sum_{n\in A} \left[\sigma_n^{(0)}+\lambda^2 \sigma_n^{(2)}\right]\right)\log\frac{1}{\lambda^2} + \Od{\lambda^2}
+\]
+and, since \(\sum_{n \in A} \sigma_n^{(0)} = 1\),
+\begin{equation}\label{eq.entropyresult}
+\boxed{\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in A} \sigma_n^{(2)} + \Od{\lambda^2}.}
+\end{equation}
+We can calculate the \(\sigma_n^{(2)}\) using (\ref{eq.tipt.soval}), (\ref{eq.rho1}), and (\ref{eq.rho2}).
+
+\subsection{\(N\)-Tsallis entropy}
 
 (to be added)
 
@@ -194,6 +340,8 @@ Then
 \vspace{3em}
 \hrule
 \vspace{2em}
+
+These are extra calculations that are not relevant to the above discussion. They should be removed from documents to be shared. (I don't delete them now because they could be useful in future work.)
 
 
 \section{The first-order approximation for pure states in scattering}
