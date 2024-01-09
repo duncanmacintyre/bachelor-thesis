@@ -276,15 +276,15 @@ Suppose we have asymptotic expansions
 The above is indeed true if we take \(\lambda\) to be proportional to \(\op{H}_I(t)\) and take
 \begin{align}
 \label{eq.rho0}\op{\rho}_0 &= \op{\rho}\left(t_0\right) \\
-\label{eq.rho1}\op{\rho}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \left[\op{H}(t^\prime),\; \op{\rho}(t_0) \right] \,dt^\prime\\
-\label{eq.rho2}\op{\rho}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}(t_0) \right\}\,dt^{\prime\prime}\,dt^\prime 
-+ \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \op{\rho}(t_0) \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime.
+\label{eq.rho1}\op{\rho}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \left[\op{H}(t^\prime),\; \op{\rho}_0 \right] \,dt^\prime\\
+\label{eq.rho2}\op{\rho}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\}\,dt^{\prime\prime}\,dt^\prime 
++ \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime.
 \end{align}
 as per equation (\ref{eq.rhoevol}).
 
 \subsection{The first-order correction vanishes}
 
-Combining (\ref{eq.tipt.foval}), (\ref{eq.rho0}), and (\ref{eq.rho1}), the first-order eigenvalue correction is
+Combining (\ref{eq.tipt.foval}) and (\ref{eq.rho1}), the first-order eigenvalue correction is
 \[
 \sigma_n^{(1)} = -\frac{i}{\hbar} \int_{t_0}^t \bra{\Psi_n^{(0)}} \left[\op{H}(t^\prime),\; \op{\rho}_0 \right] \ket{\Psi_n^{(0)}}\,dt^\prime.
 \]
@@ -317,15 +317,31 @@ which is the von Neumann entropy associated with the unperturbed density operato
 \end{equation}
 Each \(\sigma_n\) is non-negative because it is an eigenvalue of a density operator; thus the entire change in entropy is non-negative to the leading order (assuming this term does not vanish).
 
-We finish by rewriting this result into an alternative form. We can recognize that \(\sum_{n\in A} \sigma_n + \sum_{n \not\in A} \sigma_n = 1\) and so
+We can recognize that \(\sum_{n\in A} \sigma_n + \sum_{n \not\in A} \sigma_n = 1\) and so
 \[
 \Delta S = \left(1- \sum_{n\in A} \left[\sigma_n^{(0)}+\lambda^2 \sigma_n^{(2)}\right]\right)\log\frac{1}{\lambda^2} + \Od{\lambda^2}
 \]
 and, since \(\sum_{n \in A} \sigma_n^{(0)} = 1\),
-\begin{equation}\label{eq.entropyresult}
-\boxed{\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in A} \sigma_n^{(2)} + \Od{\lambda^2}.}
+\begin{equation}\label{eq.entropyresultwithsigma2}
+{\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in A} \sigma_n^{(2)} + \Od{\lambda^2}.}
 \end{equation}
-We can calculate the \(\sigma_n^{(2)}\) using (\ref{eq.tipt.soval}), (\ref{eq.rho1}), and (\ref{eq.rho2}).
+Substituting in (\ref{eq.tipt.soval}),
+\[
+\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\left(\sum_{n \in A} \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} +  \sum_{n \in A} \sum_{m \not\in D_n} \frac{\left|\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}\right|^2}{\sigma_n^{(0)}-\sigma_m^{(0)}} \right)+ \Od{\lambda^2}.
+\]
+Now, in the second term with the double sum, for every term \(\frac{\left|\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}\right|^2}{\sigma_n^{(0)}-\sigma_m^{(0)}}\) there is an equal but opposite term \(\frac{\left|\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}\right|^2}{\sigma_m^{(0)}-\sigma_n^{(0)}}\). Thus this double sum evaluates to zero. We end up with
+\begin{equation}\label{eq.entropyresultwithrho2}
+\boxed{\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in A} \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \Od{\lambda^2}.}
+\end{equation}
+Substituting in (\ref{eq.rho2}) and using that
+\[
+\bra{\Psi_n^{(0)}} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\} \ket{\Psi_n^{(0)}} = 2 \sigma_n^{(0)} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}
+\]
+we get
+\begin{align}\label{entropyresultwithHI}
+\Delta S = \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in A} \Bigg(2& \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&- \int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}.\nonumber
+\end{align}
 
 \subsection{\(N\)-Tsallis entropy}
 
