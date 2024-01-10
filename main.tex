@@ -351,15 +351,22 @@ Putting in (\ref{eq.rho0}),
 &=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in A}2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
 &\hspace{10em}-\sum_{m \in A} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\sum_{n \in A}\ket{\Psi_n^{(0)}}\bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
 &=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in A}2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{10em}-\sum_{m \in A} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}
+&\hspace{10em}-\sum_{m \in A} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2} \\
+&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime  \\
+&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2} \\
+&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime  \\
+&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{14em}-\int_{t_0}^t \int_{t^\prime}^{t} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime\Bigg) + \Od{\lambda^2} \\
+&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime  \\
+&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime})\op{H}_I (t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime\Bigg) + \Od{\lambda^2} \\
+&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right]\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}. \\
 \end{align*}
-and so
-\begin{align}
-\Delta S
-=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(2&\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime  \\
-&-\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime})\op{H}_I (t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}.\nonumber
-\end{align}
-The term in parentheses clearly vanishes if \(\op{H}_I\) is constant in time. If \(\op{H}_I\) is time-dependent, however, it does not necessarily vanish. \emph{(An example should be given where the term does not vanish!)}
+We have derived the rather interesting result that
+\begin{equation}
+\boxed{\Delta S = \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right]\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}.}
+\end{equation}
+
 
 \subsection{\(N\)-Tsallis entropy}
 
