@@ -258,7 +258,7 @@ hence
 \end{equation}
 
 
-\section{The change in entropy}
+\section{The change in total entropy}
 
 Both von Neumann and \(N\)-Tsallis entropy can be calculated from the eigenvalues of the density operator. We therefore study these eigenvalues with perturbation theory.
 
@@ -275,7 +275,7 @@ Suppose we have asymptotic expansions
 \end{align*}
 The above is indeed true if we take \(\lambda\) to be proportional to \(\op{H}_I(t)\) and take
 \begin{align}
-\label{eq.rho0}\op{\rho}_0 &= \op{\rho}\left(t_0\right) \\
+\label{eq.rho0}\op{\rho}_0 &= \op{\rho}\left(t_0\right) = \sum_n \sigma_n^{(0)} \ket{\Psi_n^{(0)}} \bra{\Psi_n^{(0)}} \\
 \label{eq.rho1}\op{\rho}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \left[\op{H}(t^\prime),\; \op{\rho}_0 \right] \,dt^\prime\\
 \label{eq.rho2}\op{\rho}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\}\,dt^{\prime\prime}\,dt^\prime 
 + \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime.
@@ -351,21 +351,36 @@ Putting in (\ref{eq.rho0}),
 &=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in A}2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
 &\hspace{10em}-\sum_{m \in A} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\sum_{n \in A}\ket{\Psi_n^{(0)}}\bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
 &=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in A}2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{10em}-\sum_{m \in A} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2} \\
+&\hspace{10em}-\sum_{m \in A} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\left(1-\sum_{n \not\in A}\ket{\Psi_n^{(0)}}\bra{\Psi_n^{(0)}}\right)\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in A}2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{10em}-\sum_{m \in A} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{10em}+\sum_{m \in A}\sum_{n\not\in A} \sigma_m^{(0)} \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\int_{t_0}^t\bra{\Psi_m^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_n^{(0)}}^*\,dt^\prime \Bigg) + \Od{\lambda^2} \\
 &=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime  \\
-&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2} \\
+&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{14em}+\sum_{m \in A}\sum_{n\not\in A} \sigma_m^{(0)} \left| \int_{t_0}^t \bra{\Psi_m^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_n^{(0)}}\,dt^\prime\right|^2 \Bigg) + \Od{\lambda^2} \\
 &=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime  \\
 &\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{14em}-\int_{t_0}^t \int_{t^\prime}^{t} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime\Bigg) + \Od{\lambda^2} \\
+&\hspace{14em}-\int_{t_0}^t \int_{t^\prime}^{t} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime\\
+&\hspace{14em}+\sum_{m \in A}\sum_{n\not\in A} \sigma_m^{(0)} \left| \int_{t_0}^t \bra{\Psi_m^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_n^{(0)}}\,dt^\prime\right|^2 \Bigg) + \Od{\lambda^2} \\
+\end{align*}
+\begin{align*}
 &=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime  \\
 &\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime})\op{H}_I (t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime\Bigg) + \Od{\lambda^2} \\
-&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right]\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}. \\
+&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime})\op{H}_I (t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime\\
+&\hspace{14em}+\sum_{m \in A}\sum_{n\not\in A} \sigma_m^{(0)} \left| \int_{t_0}^t \bra{\Psi_m^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_n^{(0)}}\,dt^\prime\right|^2 \Bigg) + \Od{\lambda^2} \\
+&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n} \sigma_n^{(0)} \Bigg(\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right]\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{12em}+\sum_{m\not\in A} \left| \int_{t_0}^t \bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^\prime\right|^2 \Bigg) + \Od{\lambda^2}.
 \end{align*}
 We have derived the rather interesting result that
 \begin{equation}
-\boxed{\Delta S = \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in A} \sigma_n^{(0)} \Bigg(\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right]\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}.}
+\hspace{-4.5em}
+\boxed{\Delta S = \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n} \sigma_n^{(0)} \left(\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right]\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime +\sum_{m\not\in A} \left| \int_{t_0}^t \bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^\prime\right|^2 \right) + \Od{\lambda^2}.}
 \end{equation}
+For an isolated system with unitary time evolution, the change in total entropy is zero. This is true for any initial conditions, that is, for any \(\op{\rho}_0\). It follows that the quantity in parentheses is zero for all \(n \in A\) and \(m \not\in A\). In other words, if \(\op{\rho}_0\) is given, for all \(n \in A\) and \(m \not\in A\) we have
+\begin{equation}
+\boxed{\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \left[\op{H}_I (t^{\prime\prime}),\; \op{H}_I(t^{\prime}) \right]\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime = \sum_{m\not\in A} \left| \int_{t_0}^t \bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^\prime\right|^2.}
+\end{equation}
+It is tempting to interpret the right side of this equation as the ``entropy transferred'' from \(\ket{\Psi_n^{(0)}}\) to the states with zero initial entropy.
 
 
 \subsection{\(N\)-Tsallis entropy}
