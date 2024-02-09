@@ -397,7 +397,7 @@ We will consider the special case where, at some fixed time \(t\), the density o
 \begin{equation}\label{eq.densdecompred}
 \op{\rho}(t) = \sum_{n,m} \sigma_{n,m} \left(\ket{\alpha_n}\otimes\ket{\beta_m}\right)\left(\bra{\alpha_n}\otimes\bra{\beta_m}\right) 
 \end{equation}
-where \(\left\{\ket{\alpha_n}\right\}\) is an orthonormal basis for \(\hilb_A\) and \(\left\{\ket{\beta_m}\right\}\) is an orthonormal basis for \(\hilb_B\). Indeed, any density operator can be written in this form for some such bases. \emph{[A proof of this should be added.]}
+where \(\left\{\ket{\alpha_n}\right\}\) is an orthonormal basis for \(\hilb_A\) and \(\left\{\ket{\beta_m}\right\}\) is an orthonormal basis for \(\hilb_B\). 
 Then the ``reduced density operators'' are
 \begin{align*}
 \overline{\op{\rho}}(t)
@@ -428,18 +428,18 @@ Then
 \op{\rho}(t) = \sum_{n,m} \sigma_{n,m}^{(0)} \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\right) \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\right) + \Od{\lambda}
 \]
 for some \(\sigma_{n,m}^{(0)}\). Then by (\ref{eq.rhoevol}) we have
-\begin{align*}
-\op{\rho}\left(t_0\right) &= \sum_{n,m} \sigma_{n,m}^{(0)} \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\right) \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\right) \\
-\overline{\op{\rho}}\left(t_0\right) &= \sum_{n} \overline{\sigma_{n}^{(0)}}\ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}} \\
+\begin{align}
+\label{eq.rho0full}\op{\rho}\left(t_0\right) &= \sum_{n,m} \sigma_{n,m}^{(0)} \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\right) \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\right) \\
+\label{eq.rho0red}\overline{\op{\rho}}\left(t_0\right) &= \sum_{n} \overline{\sigma_{n}^{(0)}}\ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}} \\
 \widetilde{\op{\rho}}\left(t_0\right) &= \sum_{m} \widetilde{\sigma_{m}^{(0)}}\ket{\beta_m^{(0)}}\bra{\beta_m^{(0)}}
-\end{align*}
+\end{align}
 where we must have \(\overline{\sigma_{n,m}^{(0)}} = \sum_m \sigma_{n,m}^{(0)}\) and \(\widetilde{\sigma_{n,m}^{(0)}} = \sum_n \sigma_{n,m}^{(0)}\).
 We see that \(\left\{\ket{\alpha_n^{(0)}}\right\}\) can be taken to be an orthonormal basis for \(\hilb_A\) because these are eigenstates of the hermitian operator \(\overline{\op{\rho}}_0\). Similarly \(\left\{\ket{\beta_m^{(0)}}\right\}\) can be taken to be an orthonormal basis for \(\hilb_B\) because these are eigenstates of the hermitian operator \(\widetilde{\op{\rho}}_0\).
 
 Following equation (\ref{eq.rhoevol}), we can achieve the above asymptotic expansions if we take \(\lambda\) to be proportional to \(\op{H}_I(t)\) and take
 \begin{align}
 \nonumber\op{\rho}_0 &= \op{\rho}\left(t_0\right) \\
-\label{eq.rho0red}\overline{\op{\rho}}_0 &= \overline{\op{\rho}}\left(t_0\right) =  \sum_m \left(\cdot\otimes\bra{\beta_m^{(0)}}\right) \op{\rho}_0 \left(\cdot\otimes\ket{\beta_m^{(0)}}\right) \\
+\nonumber\overline{\op{\rho}}_0 &= \overline{\op{\rho}}\left(t_0\right) =  \sum_m \left(\cdot\otimes\bra{\beta_m^{(0)}}\right) \op{\rho}_0 \left(\cdot\otimes\ket{\beta_m^{(0)}}\right) \\
 \label{eq.rho1red}\overline{\op{\rho}}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \sum_m \left(\cdot\otimes\bra{\beta_m^{(0)}}\right) \left[\op{H}(t^\prime),\; \op{\rho}_0 \right]\left(\cdot\otimes\ket{\beta_m^{(0)}}\right) \,dt^\prime\\
 \label{eq.rho2red}\overline{\op{\rho}}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \sum_m \left(\cdot\otimes\bra{\beta_m^{(0)}}\right) \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\}\left(\cdot\otimes\ket{\beta_m^{(0)}}\right)\,dt^{\prime\prime}\,dt^\prime \\
 \nonumber&\hspace{2em}+ \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \sum_m \left(\cdot\otimes\bra{\beta_m^{(0)}}\right) \op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\left(\cdot\otimes\ket{\beta_m^{(0)}}\right)\,dt^{\prime\prime}\,dt^\prime \\
@@ -479,9 +479,110 @@ Let \(I = \left\{n: \overline{\sigma_n^{(0)}} \neq 0\right\}\). Using a derivati
 \boxed{\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I} \bra{{\alpha_n^{(0)}}}\overline{\op{\rho}_2}\ket{{\alpha_n^{(0)}}} + \Od{\lambda^2}.}
 \end{equation}
 
+Substituting in (\ref{eq.rho2red}) and using that
+\[
+\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\} \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}} = 2 \sigma_{n,m}^{(0)} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}
+\]
+we get
+\begin{align}\label{entropyresultwithHI}
+\Delta S &= \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I}\sum_m \Bigg(2 \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{12em}- \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}.\nonumber
+\end{align}
+Putting in (\ref{eq.rho0full}),
+\begin{align*}
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I}\sum_m \Bigg(2 \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I}\sum_m \Bigg(2 \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in I}\sum_m2 \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\left[\left(\sum_{n\in I} \ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}}\right)\otimes\cdot\right]\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in I}\sum_m 2 \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\left[\left(1-\sum_{n^\prime\not\in I} \ket{\alpha_{n^\prime}^{(0)}}\bra{\alpha_{n^\prime}^{(0)}}\right)\otimes\cdot\right]\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \Bigg( \Bigg[2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{11em}- \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime\Bigg]\\
+&\hspace{-1em}+ \sum_{n^\prime \not\in I} \sum_{m^\prime} \int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_{m}^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}^{(0)}} \,dt^{\prime\prime}\int_{t_0}^t \bra{\alpha_{n^\prime}^{(0)}}\otimes\bra{\beta_{m^\prime}^{(0)}} \op{H}_I (t^{\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \Bigg( \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime})\right] \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{-1em}+\sum_{n^\prime \not\in I} \sum_{m^\prime} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_{m}^{(0)}} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}^{(0)}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.
+\end{align*}
+We have derived the rather interesting result that
+\begin{align}\label{eq.Sredresult}
+\hspace{-4.5em}
+\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \Bigg( &\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime})\right] \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
+&+\sum_{n^\prime \not\in I} \sum_{m^\prime} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_{m}^{(0)}} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}^{(0)}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.\nonumber
+\end{align}
+The second term is fascinating; it looks like a transition amplitude.
+
+Assuming that these terms do not both vanish, we see that the entropy grows proportionally to \(\left(t-t_0\right)^2\).
+
 \subsection{\(N\)-Tsallis entropy}
 
 (to be added)
+
+\section{Example: Interaction between Qubits}
+
+In this section we will study a simple bipartite system and calculate the growth in subsystem entropy due to a weak interaction. Consider the Hilbert space \(\{\ket{0}, \ket{1}\}\otimes\{\ket{0}, \ket{1}\}\) describing two qubits. To simplify notation, write \(\ket{ab}\) to mean \(\ket{a}\otimes\ket{b}\).
+
+Suppose the qubits interact according to the Hamiltonian
+\[
+\op{H} = \op{S}_z^{A}\otimes\op{S}_z^B + \lambda \op{S}_x^A \otimes \op{S}_x^B.
+\]
+One can calculate that this Hamiltonian has eigenstates and eigenvalues
+\begin{align*}
+\ket{E_0} &= \frac{1}{\sqrt{2}} \left(\ket{10}-\ket{01}\right) &
+E_0 &= \frac{\hbar}{2} \left(-1-\lambda\right) \\
+\ket{E_1} &= \frac{1}{\sqrt{2}} \left(\ket{10}+\ket{01}\right) &
+E_1 &= \frac{\hbar}{2} \left(-1+\lambda\right) \\
+\ket{E_2} &= \frac{1}{\sqrt{2}} \left(\ket{11}-\ket{00}\right) &
+E_2 &= \frac{\hbar}{2} \left(1-\lambda\right) \\
+\ket{E_3} &= \frac{1}{\sqrt{2}} \left(\ket{11}+\ket{00}\right) &
+E_3 &= \frac{\hbar}{2} \left(1+\lambda\right).
+\end{align*}
+Let's start by calculating the exact change in entropy; then we can calculate the perturbative result and compare.
+
+Suppose at \(t=0\) we start in the initial state \(\ket{11} = \frac{1}{\sqrt{2}}\left(\ket{E_2}+\ket{E_3}\right)\). At time \(t\), the state is then
+\[
+\ket{\Psi(t)} = \frac{1}{\sqrt{2}}\left(e^{-itE_2/\hbar}\ket{E_2} + e^{-itE_3/\hbar} \ket{E_3}\right)
+\]
+and the density operator is
+\[
+\op{\rho} = \frac{1}{2}\ket{E_2}\bra{E_2} + \frac{1}{2}\ket{E_3}\bra{E_3} + \frac{1}{2} e^{it\left(E_3-E_2\right)/\hbar} \ket{E_2}\bra{E_3} + \frac{1}{2} e^{-it\left(E_3 - E_2\right)/\hbar} \ket{E_3}\bra{E_2}.
+\]
+Then the reduced density operator for the first qubit is
+\begin{align*}
+\overline{\op{\rho}} &= \cdot\otimes\bra{0} \op{\rho} \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \op{\rho} \cdot\otimes\ket{1} \\
+&= \frac{1}{2}\left(1 + \cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{0}\bra{0}.
+\end{align*}
+Recognizing that \(\frac{E_3-E_2}{\hbar} = \lambda\), we see that the Von Neumann subsystem entropy is
+\begin{align*}
+S &= \frac{1}{2}\left(1 + \cos \lambda t \right)\log \left(1+\cos \frac{\lambda t}{2}\right)
++ \frac{1}{2}\left(1 - \cos \lambda t \right)\log \left(1-\cos \frac{\lambda t}{2}\right).
+%&= \left(1+\cos \lambda t \right)\log \sqrt{1+\cos \frac{\lambda t}{2}} 
+%+ \left(1-\cos \lambda t \right) \log \sqrt{1-\cos \frac{\lambda t}{2}}.
+%&= \log\sin \frac{\lambda t}{2} + \cos \frac{\lambda t}{2} \log \frac{1+\cos \frac{\lambda t}{2}}{1-\cos \frac{\lambda t}{2}}.
+\end{align*}
+Approximating \(\cos x \approx 1-x^2\), this becomes
+\begin{align*}
+S &\approx \frac{1}{2}\left(2-\lambda^2 t^2\right) \log \left(2-\lambda^2 t^2/4\right) + \frac{1}{2}\lambda^2 t^2 \log \left(\lambda^2 t^2\right) \\
+&\approx \log 2 - \frac{1}{2}\lambda^2 t^2 \log \left(\frac{1}{\lambda^2 t^2}\right).
+\end{align*}
+We observe that the leading order term for the change in entropy is of order \(\lambda^2t^2 \log \frac{1}{\lambda^2 t^2}\). Interestingly, the entropy decreases with time. This makes sense given that we started in a maximally entangled state (i.e. a Bell state). \emph{[Actually, I'm not sure that this is a good explanation of the decreasing entropy...]}
+
+We did the derivation above by solving the Schr\"odinger equation exactly. Let's now apply our perturbative calculation and see that we get the same result. The Schr\"odinger picture Hamiltonian is \(\op{H} = \op{H}_0 + \lambda \op{V}\) where
+\begin{align*}
+\op{H}_0 &= \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} - \ket{E_1}\bra{E_1} + \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right) \\
+\op{V} &= \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} + \ket{E_1}\bra{E_1} - \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right).
+\end{align*}
+Because \([\op{H}_0, \op{V}] = 0\) we have \([\op{U}(0, t), \op{V}] = 0\). Thus the interaction picture Hamiltonian is just
+\[\op{H}_I = \op{V} = \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} + \ket{E_1}\bra{E_1} - \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right).\]
+We must now diagonalize the initial density operator in a basis that easily separates into bases for the two subspaces. Indeed, we get
+\begin{align*}
+\op{\rho} &= \frac{1}{2}\ket{E_2}\bra{E_2} + \frac{1}{2}\ket{E_3}\bra{E_3} + \frac{1}{2} e^{it\lambda} \ket{E_2}\bra{E_3} + \frac{1}{2} e^{-it\lambda} \ket{E_3}\bra{E_2} \\
+&= \left(\frac{1}{\sqrt{2}} e^{it\lambda}{\ket{E_2}} + \frac{1}{\sqrt{2}}\ket{E_3}\right) \left(\frac{1}{\sqrt{2}} e^{-it\lambda}{\bra{E_2}} + \frac{1}{\sqrt{2}}\bra{E_3}\right) \\
+&= \left(\frac{1}{2} \left(1-e^{it\lambda}\right){\ket{00}} + \frac{1}{2}\left(1+e^{it\lambda}\right)\ket{11}\right) \left(\frac{1}{2} \left(1+e^{-it\lambda}\right){\bra{00}} + \frac{1}{2}\left(1+e^{-it\lambda}\right)\bra{11}\right) \\
+\end{align*}
+\emph{[This is not a separable state, so we cannot use the perturbation formula. Should maybe change the example to a separable state.]}
+
+
 
 
 \appendix
