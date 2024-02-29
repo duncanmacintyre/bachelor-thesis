@@ -261,134 +261,6 @@ hence
 \end{equation}
 
 
-%\section{The change in total entropy}
-%
-%Both von Neumann and \(N\)-Tsallis entropy can be calculated from the eigenvalues of the density operator. We therefore study these eigenvalues with perturbation theory.
-%
-%Suppose that, at some fixed time \(t\), the density operator takes the form
-%\begin{equation}\label{eq.densdecomp}
-%\op{\rho}(t) = \sum_n \sigma_n \ket{\Psi_n}\bra{\Psi_n}
-%\end{equation}
-%where \(\left\{\ket{\Psi_n^{(0)}}\right\}\) is an orthonormal basis for the Hilbert space.
-%Suppose we have asymptotic expansions
-%\begin{align*}
-%\op{\rho}(t) &= \op{\rho}_0 + \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \\
-%\ket{\Psi_n} &= \ket{\Psi_n^{(0)}} + \lambda \ket{\Psi_n^{(1)}} + \lambda^2 \ket{\Psi_n^{(2)}} + \Od{\lambda^3} \\
-%\sigma_n &= \sigma_n^{(0)} + \lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3}
-%\end{align*}
-%The above is indeed true if we take \(\lambda\) to be proportional to \(\op{H}_I(t)\) and take
-%\begin{align}
-%\label{eq.rho0}\op{\rho}_0 &= \op{\rho}\left(t_0\right) = \sum_n \sigma_n^{(0)} \ket{\Psi_n^{(0)}} \bra{\Psi_n^{(0)}} \\
-%\label{eq.rho1}\op{\rho}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \left[\op{H}(t^\prime),\; \op{\rho}_0 \right] \,dt^\prime\\
-%\label{eq.rho2}\op{\rho}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\}\,dt^{\prime\prime}\,dt^\prime 
-%+ \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime.
-%\end{align}
-%as per equation (\ref{eq.rhoevol}).
-%
-%\subsection{The first-order correction vanishes}
-%
-%Combining (\ref{eq.tipt.foval}) and (\ref{eq.rho1}), the first-order eigenvalue correction is
-%\[
-%\sigma_n^{(1)} = -\frac{i}{\hbar} \int_{t_0}^t \bra{\Psi_n^{(0)}} \left[\op{H}(t^\prime),\; \op{\rho}_0 \right] \ket{\Psi_n^{(0)}}\,dt^\prime.
-%\]
-%Since
-%\[
-%\bra{\Psi_n^{(0)}} \op{H}(t^\prime) \op{\rho}_0 \ket{\Psi_n^{(0)}} = 
-%\sigma_n^{(0)} \bra{\Psi_n^{(0)}} \op{H}(t^\prime) \ket{\Psi_n^{(0)}} =
-%\bra{\Psi_n^{(0)}} \op{\rho}_0 \op{H}(t^\prime) \ket{\Psi_n^{(0)}}
-%\]
-%we have \(\sigma_n^{(1)} = 0\).
-%
-%\subsection{Von Neumann entropy}\label{sec.totalvonneumann}
-%
-%The Von Neumann entropy for the state (\ref{eq.densdecomp}) is defined to be
-%\[
-%S = \sum_{n} \sigma_n \log \sigma_n.
-%\]
-%Let \(I = \{n : \sigma_n^{(0)} \neq 0\}\). Then
-%\begin{align*}
-%S &= -\sum_{n \in I} \sigma_n \log \sigma_n-\sum_{n \not\in I} \sigma_n \log \sigma_n \\
-%&= - \sum_{n \in I} \sigma_n \log \left(\sigma_n^{(0)} \left(1 + \Od{\lambda^2}\right)\right)  - \sum_{n \not\in I} \sigma_n \log\left(\lambda^2\sigma_n^{(2)}\left(1 + \Od{\lambda}\right)\right) \\
-%&= - \sum_{n \in I} \left(\sigma_n^{(0)} + \Od{\lambda^2}\right) \left(\log \sigma_n^{(0)}+\Od{\lambda^2}\right) - \sum_{n \not\in I} \sigma_n \left(\log\lambda^2+\log\sigma_n^{(2)}+ \Od{\lambda}\right) \\
-%&= - \sum_{n \in I} \sigma_n^{(0)} \log \sigma_n^{(0)} -\sum_{n \not\in I} \sigma_n \log\lambda^2+ \Od{\lambda^2}.
-%\end{align*}
-%The first term is
-%\[S_0 = - \sum_{n \in I} \sigma_n^{(0)} \log \sigma_n^{(0)}\]
-%which is the von Neumann entropy associated with the unperturbed density operator \(\op{\rho}_0 = \op{\rho}\left(t_0\right)\). Thus the change in entropy due to the interaction is
-%\begin{equation}\label{eq.entropyresultnotA}
-%{\Delta S = S-S_0 = \log\frac{1}{\lambda^2}\sum_{n \not\in I} \sigma_n + \Od{\lambda^2} = \lambda^2 \log\frac{1}{\lambda^2} \sum_{n \not\in I}\sigma_n^{(2)}+ \Od{\lambda^2}.}
-%\end{equation}
-%We can recognize that \(\sum_{n\in I} \sigma_n + \sum_{n \not\in I} \sigma_n = 1\) and so
-%\[
-%\Delta S = \left(1- \sum_{n\in I} \left[\sigma_n^{(0)}+\lambda^2 \sigma_n^{(2)}\right]\right)\log\frac{1}{\lambda^2} + \Od{\lambda^2}
-%\]
-%and, since \(\sum_{n \in I} \sigma_n^{(0)} = 1\),
-%\begin{equation}\label{eq.entropyresultwithsigma2}
-%{\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I} \sigma_n^{(2)} + \Od{\lambda^2}.}
-%\end{equation}
-%Substituting in (\ref{eq.tipt.soval}),
-%\[
-%\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\left(\sum_{n \in I} \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} +  \sum_{n \in I} \sum_{m \not\in D_n} \frac{\left|\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}\right|^2}{\sigma_n^{(0)}-\sigma_m^{(0)}} \right)+ \Od{\lambda^2}.
-%\]
-%Now, in the second term with the double sum, for every term \(\frac{\left|\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}\right|^2}{\sigma_n^{(0)}-\sigma_m^{(0)}}\) there is an equal but opposite term \(\frac{\left|\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}\right|^2}{\sigma_m^{(0)}-\sigma_n^{(0)}}\). Thus this double sum evaluates to zero. We end up with
-%\begin{equation}\label{eq.entropyresultwithrho2}
-%\boxed{\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I} \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \Od{\lambda^2}.}
-%\end{equation}
-%Substituting in (\ref{eq.rho2}) and using that
-%\[
-%\bra{\Psi_n^{(0)}} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\} \ket{\Psi_n^{(0)}} = 2 \sigma_n^{(0)} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}
-%\]
-%we get
-%\begin{align}\label{entropyresultwithHI}
-%\Delta S &= \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I} \Bigg(2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{10em}- \int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}.\nonumber
-%\end{align}
-%Putting in (\ref{eq.rho0}),
-%\begin{align*}
-%\Delta S &=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I} \Bigg(2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{10em}-\sum_{m \in I} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
-%&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in I}2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{10em}-\sum_{m \in I} \;\sum_{n \in I}\sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\Psi_n^{(0)}}\bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
-%&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in I}2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{10em}-\sum_{m \in I} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\sum_{n \in I}\ket{\Psi_n^{(0)}}\bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
-%&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in I}2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{10em}-\sum_{m \in I} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\left(1-\sum_{n \not\in I}\ket{\Psi_n^{(0)}}\bra{\Psi_n^{(0)}}\right)\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
-%&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in I}2 \sigma_n^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{10em}-\sum_{m \in I} \sigma_m^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{10em}+\sum_{m \in I}\sum_{n\not\in I} \sigma_m^{(0)} \int_{t_0}^{t} \bra{\Psi_m^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\int_{t_0}^t\bra{\Psi_m^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_n^{(0)}}^*\,dt^\prime \Bigg) + \Od{\lambda^2} \\
-%&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I} \sigma_n^{(0)} \Bigg(2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime  \\
-%&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{14em}+\sum_{m \in I}\sum_{n\not\in I} \sigma_m^{(0)} \left| \int_{t_0}^t \bra{\Psi_m^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_n^{(0)}}\,dt^\prime\right|^2 \Bigg) + \Od{\lambda^2} \\
-%&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I} \sigma_n^{(0)} \Bigg(2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime  \\
-%&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{14em}-\int_{t_0}^t \int_{t^\prime}^{t} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime\\
-%&\hspace{14em}+\sum_{m \in I}\sum_{n\not\in I} \sigma_m^{(0)} \left| \int_{t_0}^t \bra{\Psi_m^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_n^{(0)}}\,dt^\prime\right|^2 \Bigg) + \Od{\lambda^2} \\
-%\end{align*}
-%\begin{align*}
-%&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I} \sigma_n^{(0)} \Bigg(2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime  \\
-%&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime\prime})\op{H}_I (t^{\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{14em}-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \op{H}_I (t^{\prime})\op{H}_I (t^{\prime\prime}) \ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime\\
-%&\hspace{14em}+\sum_{m \in I}\sum_{n\not\in I} \sigma_m^{(0)} \left| \int_{t_0}^t \bra{\Psi_m^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_n^{(0)}}\,dt^\prime\right|^2 \Bigg) + \Od{\lambda^2} \\
-%&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n} \sigma_n^{(0)} \Bigg(\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right]\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime \\
-%&\hspace{12em}+\sum_{m\not\in I} \left| \int_{t_0}^t \bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^\prime\right|^2 \Bigg) + \Od{\lambda^2}.
-%\end{align*}
-%We have derived the rather interesting result that
-%\begin{equation}
-%\hspace{-4.5em}
-%\boxed{\Delta S = \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n} \sigma_n^{(0)} \left(\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right]\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime +\sum_{m\not\in I} \left| \int_{t_0}^t \bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^\prime\right|^2 \right) + \Od{\lambda^2}.}
-%\end{equation}
-%For an isolated system with unitary time evolution, the change in total entropy is zero. This is true for any initial conditions, that is, for any \(\op{\rho}_0\). It follows that the quantity in parentheses is zero for all \(n \in I\) and \(m \not\in I\). In other words, if \(\op{\rho}_0\) is given, for all \(n \in I\) and \(m \not\in I\) we have
-%\begin{equation}
-%\boxed{\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n^{(0)}} \left[\op{H}_I (t^{\prime\prime}),\; \op{H}_I(t^{\prime}) \right]\ket{\Psi_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime = \sum_{m\not\in I} \left| \int_{t_0}^t \bra{\Psi_n^{(0)}}\op{H}_I (t^\prime) \ket{\Psi_m^{(0)}}\,dt^\prime\right|^2.}
-%\end{equation}
-%It is tempting to interpret the right side of this equation as the ``entropy transferred'' from \(\ket{\Psi_n^{(0)}}\) to the states with zero initial entropy.
-%
-%
-%\subsection{\(N\)-Tsallis entropy}
-%
-%(to be added)
-%
-
 \section{The change in Von Neumann entropy}
 
 Suppose we have a Hilbert space of the form \(\hilb = \hilb_A \otimes \hilb_B\). The \(\hilb_A\)-reduced density operator of a density operator \(\op{\rho}\) is defined to be
@@ -422,109 +294,6 @@ We see that
 \overline{\op{\rho}}_0 = \sum_n \overline{\sigma_{n}^{(0)}} \ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}}.
 \end{equation}
 Therefore we can take \(\left\{\ket{\alpha_n^{(0)}}\right\}\) to be an orthonormal basis for \(\hilb_A\) and we must have \(\sum_n \overline{\sigma_n^{(0)}} = 1\).
-
-%We can now compute the change in entropy. If \(\overline{\sigma_n^{(0)}} \neq 0\) then
-%\begin{align*}
-%\overline{\sigma_n}\log\overline{\sigma_n}
-%&= \left(\overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \Od{\lambda^2}\right) \log \left(\sigma_n^{(0)}\left(1 + \lambda {\overline{\sigma_n^{(1)}}}/{\overline{\sigma_n^{(0)}}} + \Od{\lambda^2} \right)\right) \\
-%&= \left(\overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \Od{\lambda^2}\right)\left[ \log\overline{\sigma_n^{(0)}} + \log\left(1 + \lambda {\overline{\sigma_n^{(1)}}}/{\overline{\sigma_n^{(0)}}} + \Od{\lambda^2} \right)\right] \\
-%&= \left(\overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \Od{\lambda^2}\right)\left[\log\overline{\sigma_n^{(0)}} + \lambda {\overline{\sigma_n^{(1)}}}/{\overline{\sigma_n^{(0)}}} + \Od{\lambda^2}\right] \\
-%&= \overline{\sigma_n^{(0)}}\log\overline{\sigma_n^{(0)}} + \lambda {\overline{\sigma_n^{(1)}}}\left(1 + \log \overline{\sigma_n^{(0)}}\right) + \Od{\lambda^2}.
-%\end{align*}
-%On the other hand, if \(\overline{\sigma_n^{(0)}} = 0\), then
-%\begin{align*}
-%\overline{\sigma_n}\log\overline{\sigma_n}
-%&= \left(\lambda\overline{\sigma_n^{(1)}} + \Od{\lambda^2}\right) \log \left(\lambda \overline{\sigma_n^{(1)}} \left(1 + \Od{\lambda} \right)\right) \\
-%&= \left(\lambda\overline{\sigma_n^{(1)}} + \Od{\lambda^2}\right) \left[\log \lambda \overline{\sigma_n^{(1)}} + \log\left(1 + \Od{\lambda} \right)\right] \\
-%&= \lambda\overline{\sigma_n^{(1)}} \log \left(\lambda\overline{\sigma_n^{(1)}} \right)+ \Od{\lambda^2}.
-%\end{align*}
-%Let \(I = \left\{n: \overline{\sigma_n^{(0)}} \neq 0\right\}\). Then the entropy is
-%\[
-%S = \sum_{n\in I} \overline{\sigma_n^{(0)}}\log \overline{\sigma_n^{(0)}} + \lambda \sum_{n\in I} \overline{\sigma_n^{(1)}}\left(1+\log \overline{\sigma_n^{(0)}}\right) - \sum_{n \not\in I} \lambda\overline{\sigma_n^{(1)}} \log \frac{1}{\lambda\overline{\sigma_n^{(1)}}}+ \Od{\lambda^2}.
-%\]
-%Recognizing that \(\sum_{n \in I} \overline{\sigma_n^{(0)}}\log \overline{\sigma_n^{(0)}}\) is the entropy without the perturbation, the change in entropy due to the perturbation is
-%\begin{equation}\label{eq.deltasfo}
-%\Delta S = \lambda \sum_{n\in I} \overline{\sigma_n^{(1)}}\left(1+\log \overline{\sigma_n^{(0)}}\right) - \sum_{n \not\in I} \lambda\overline{\sigma_n^{(1)}} \log \frac{1}{\lambda\overline{\sigma_n^{(1)}}}+ \Od{\lambda^2}.
-%\end{equation}
-
-%\begin{Form of the density operator}
-%
-%We must first consider the total density operator \(\op{\rho}\). Its most general form is
-%\[\op{\rho} = \sum_k \tau_k \ket{\Psi_k}\bra{\Psi_k}\]
-%where each \(\ket{\Psi_k}\) is a state in \(\hilb\) and \(\sum_k \tau_k = 1\). Let \(\{\alpha_n\}\) be the orthonormal basis for \(\hilb_A\) that diagonalizes \(\overline{\op{\rho}}\) as above, and let \(\{\beta_m\}\) be an orthonormal basis for \(\hilb_B\). Then \(\{\alpha_n \otimes \beta_m\}\) is an orthonormal basis for \(\hilb\), so for each \(k\) there exist \(\zeta_{k,n,m}\) such that
-%\[\ket{\Psi_k} = \sum_{n,m} \zeta_{k,n,m} \ket{\alpha_n}\otimes\ket{\beta_m}\]
-%and \(\sum_{n,m} \left|\zeta_{k,n,m}\right|^2 = 1\). Then
-%\[\op{\rho} = \sum_{k,n,n^\prime,m,m^\prime} \,\tau_k\, \zeta_{k,n,m}\, \zeta_{k,n^\prime,m^\prime}^*\, \ket{\alpha_n}\bra{\alpha_{n^\prime}}\otimes \ket{\beta_m}\bra{\beta_{m^\prime}}\]
-%and
-%\[
-%\overline{\op{\rho}} = \sum_{m^\star} \bra{\beta_{m^\star}} \op{\rho} \ket{\beta_{m^\star}} = \sum_{k,n,n^\prime,m} \,\tau_k\, \zeta_{k,n,m}\, \zeta_{k,n^\prime,m}^*\, \ket{\alpha_n}\bra{\alpha_{n^\prime}}.
-%\]
-%Because \(\{\alpha_n\}\) was the basis diagonalizing \(\overline{\op{\rho}}\), the off-diagonal terms must vanish, so we have
-%\[
-%\overline{\op{\rho}} = \sum_{n} \left(\sum_{k,m} \tau_k \left|\zeta_{k,n,m}\right|^2\right) \ket{\alpha_n}\bra{\alpha_n}
-%\]
-%giving
-%\[P_n = \sum_{k,m} \tau_k \left|\zeta_{k,n,m}\right|^2.\]
-
-
-
-
-%Then the ``reduced density operators'' are
-%\begin{align*}
-%\overline{\op{\rho}}(t)
-%&= \sum_k \left(\cdot\otimes\bra{\beta_k}\right) \op{\rho}(t) \left(\cdot\otimes\ket{\beta_k}\right) 
-%= \sum_n \overline{\sigma_n} \ket{\alpha_n}\bra{\alpha_n} \\
-%\widetilde{\op{\rho}}(t)
-%&= \sum_j \left(\bra{\alpha_j}\otimes\cdot\right) \op{\rho}(t) \left(\ket{\alpha_j}\otimes\cdot\right) 
-%= \sum_m \widetilde{\sigma_m} \ket{\beta_m}\bra{\beta_m} \\
-%\end{align*}
-%where
-%\begin{align*}
-%\overline{\sigma_n} &= \sum_m \sigma_{n,m} &
-%\widetilde{\sigma_m} &= \sum_n \sigma_{n,m}.
-%\end{align*}
-%We can consider \(\overline{\op{\rho}}(t)\) to act on \(\hilb_A\) and \(\widetilde{\op{\rho}}(t)\) to act on \(\hilb_B\).
-%
-%Suppose we have asymptotic expansions
-%\begin{align*}
-%\overline{\op{\rho}}(t) &= \overline{\op{\rho}}_0 + \lambda \overline{\op{\rho}}_1 + \lambda^2 \overline{\op{\rho}}_2 + \Od{\lambda^3} &
-%\widetilde{\op{\rho}}(t) &= \widetilde{\op{\rho}}_0 + \lambda \widetilde{\op{\rho}}_1 + \lambda^2 \widetilde{\op{\rho}}_2 + \Od{\lambda^3} \\
-%\ket{\alpha_n} &= \ket{\alpha_n^{(0)}} + \lambda \ket{\alpha_n^{(1)}} + \lambda^2 \ket{\alpha_n^{(2)}} + \Od{\lambda^3} &
-%\ket{\beta_m} &= \ket{\beta_m^{(0)}} + \lambda \ket{\beta_m^{(1)}} + \lambda^2 \ket{\beta_m^{(2)}} + \Od{\lambda^3} \\
-%\overline{\sigma_n} &= \overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \lambda^2 \overline{\sigma_n^{(2)}} + \Od{\lambda^3} &
-%\widetilde{\sigma_n} &= \widetilde{\sigma_n^{(0)}} + \lambda \widetilde{\sigma_n^{(1)}} + \lambda^2 \widetilde{\sigma_n^{(2)}} + \Od{\lambda^3}.
-%\end{align*}
-%Then
-%\[
-%\op{\rho}(t) = \sum_{n,m} \sigma_{n,m}^{(0)} \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\right) \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\right) + \Od{\lambda}
-%\]
-%for some \(\sigma_{n,m}^{(0)}\). Then by (\ref{eq.rhoevol}) we have
-%\begin{align}
-%\label{eq.rho0full}\op{\rho}\left(t_0\right) &= \sum_{n,m} \sigma_{n,m}^{(0)} \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m^{(0)}}\right) \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\right) \\
-%\label{eq.rho0red}\overline{\op{\rho}}\left(t_0\right) &= \sum_{n} \overline{\sigma_{n}^{(0)}}\ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}} \\
-%\widetilde{\op{\rho}}\left(t_0\right) &= \sum_{m} \widetilde{\sigma_{m}^{(0)}}\ket{\beta_m^{(0)}}\bra{\beta_m^{(0)}}
-%\end{align}
-%where we must have \(\overline{\sigma_{n,m}^{(0)}} = \sum_m \sigma_{n,m}^{(0)}\) and \(\widetilde{\sigma_{n,m}^{(0)}} = \sum_n \sigma_{n,m}^{(0)}\).
-%We see that \(\left\{\ket{\alpha_n^{(0)}}\right\}\) can be taken to be an orthonormal basis for \(\hilb_A\) because these are eigenstates of the hermitian operator \(\overline{\op{\rho}}_0\). Similarly \(\left\{\ket{\beta_m^{(0)}}\right\}\) can be taken to be an orthonormal basis for \(\hilb_B\) because these are eigenstates of the hermitian operator \(\widetilde{\op{\rho}}_0\).
-%
-%Following equation (\ref{eq.rhoevol}), we can achieve the above asymptotic expansions if we take \(\lambda\) to be proportional to \(\op{H}_I(t)\) and take
-%\begin{align}
-%\nonumber\op{\rho}_0 &= \op{\rho}\left(t_0\right) \\
-%\nonumber\overline{\op{\rho}}_0 &= \overline{\op{\rho}}\left(t_0\right) =  \sum_m \left(\cdot\otimes\bra{\beta_m^{(0)}}\right) \op{\rho}_0 \left(\cdot\otimes\ket{\beta_m^{(0)}}\right) \\
-%\label{eq.rho1red}\overline{\op{\rho}}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \sum_m \left(\cdot\otimes\bra{\beta_m^{(0)}}\right) \left[\op{H}(t^\prime),\; \op{\rho}_0 \right]\left(\cdot\otimes\ket{\beta_m^{(0)}}\right) \,dt^\prime\\
-%\label{eq.rho2red}\overline{\op{\rho}}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \sum_m \left(\cdot\otimes\bra{\beta_m^{(0)}}\right) \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\}\left(\cdot\otimes\ket{\beta_m^{(0)}}\right)\,dt^{\prime\prime}\,dt^\prime \\
-%\nonumber&\hspace{2em}+ \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \sum_m \left(\cdot\otimes\bra{\beta_m^{(0)}}\right) \op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\left(\cdot\otimes\ket{\beta_m^{(0)}}\right)\,dt^{\prime\prime}\,dt^\prime \\
-%\nonumber\widetilde{\op{\rho}}_0 &= \widetilde{\op{\rho}}\left(t_0\right) =  \sum_n \left(\bra{\alpha_n^{(0)}}\otimes\cdot\right) \op{\rho}_0 \left(\ket{\alpha_n^{(0)}}\otimes\cdot\right) \\
-%\nonumber\widetilde{\op{\rho}}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \sum_n \left(\bra{\alpha_n^{(0)}}\otimes\cdot\right) \left[\op{H}(t^\prime),\; \op{\rho}_0 \right]\left(\ket{\alpha_n^{(0)}}\otimes\cdot\right) \,dt^\prime\\
-%\nonumber\widetilde{\op{\rho}}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \sum_n \left(\bra{\alpha_n^{(0)}}\otimes\cdot\right) \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\}\left(\ket{\alpha_n^{(0)}}\otimes\cdot\right)\,dt^{\prime\prime}\,dt^\prime \\
-%\nonumber&\hspace{2em}+ \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \sum_n \left(\bra{\alpha_n^{(0)}}\otimes\cdot\right) \op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\left(\ket{\alpha_n^{(0)}}\otimes\cdot\right)\,dt^{\prime\prime}\,dt^\prime.
-%\end{align}
-%
-%For the rest of this investigation, we will only concern ourselves with the reduced density operator \(\overline{\op{\rho}}\) for \(\hilb_A\), not the reduced density operator \(\widetilde{\op{\rho}}\) for \(\hilb_B\).
-
-%\subsection{Special case where the first-order correction vanishes}
-
-%It is quite possible that (\ref{eq.focor}) evaluates to zero. In this case, the derivation to get (\ref{eq.deltasfo}) will not hold (because, at one point, we divided by \(\overline{\sigma_n^{(1)}}\)).
 
 We can now compute the change in entropy.
 Let \(k\) be the first non-zero order for which some eigenvalue correction \(\overline{\sigma_n^{(k)}}\) does not vanish. For example, if some \(\overline{\sigma_n^{(1)}} \neq 0\), then \(k = 1\). If all \(\overline{\sigma_n^{(1)}} = 0\) but some \(\overline{\sigma_n^{(2)}} \neq 0\), then \(k = 2\). Now let
@@ -606,17 +375,6 @@ Now,
  \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m^{(0)}}\right) \op{\rho}_0 \op{H}(t^\prime) \left(\ket{\alpha_n^{(0)}}\otimes\ket{\alpha_m^{(0)}}\right)
 \end{align*}
 so the first-order eigenvalue correction (\ref{eq.focor}) vanishes. We will assume that the second-order eigenvalue correction \(\overline{\sigma_n^{(2)}}\) does not vanish and turn to (\ref{eq.entropyresultwithrho2}).
-
-%\subsection{Von Neumann entropy}
-%
-%The Von Neumann subsystem entropy for the state (\ref{eq.densdecompred}) is defined to be
-%\[
-%S = \sum_{n\in J} \overline{\sigma_n} \log \overline{\sigma_n}.
-%\]
-%Let \(I = \left\{n: \overline{\sigma_n^{(0)}} \neq 0\right\}\). Using a derivation identical to the one in section \ref{sec.totalvonneumann}, we get that the change in subsystem entropy due to the interaction is
-%\begin{equation}\label{eq.subentropyresultwithrho2}
-%\boxed{\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I} \bra{{\alpha_n^{(0)}}}\overline{\op{\rho}_2}\ket{{\alpha_n^{(0)}}} + \Od{\lambda^2}.}
-%\end{equation}
 
 Substituting (\ref{eq.rho2red}) into (\ref{eq.entropyresultwithrho2}) and using that
 \[
@@ -707,9 +465,6 @@ Recognizing that \(\frac{E_3-E_2}{\hbar} = \lambda\), we see that the Von Neuman
 \begin{align*}
 S &= \frac{1}{2}\left(1 + \cos \lambda t \right)\log \left(1+\cos \frac{\lambda t}{2}\right)
 + \frac{1}{2}\left(1 - \cos \lambda t \right)\log \left(1-\cos \frac{\lambda t}{2}\right).
-%&= \left(1+\cos \lambda t \right)\log \sqrt{1+\cos \frac{\lambda t}{2}} 
-%+ \left(1-\cos \lambda t \right) \log \sqrt{1-\cos \frac{\lambda t}{2}}.
-%&= \log\sin \frac{\lambda t}{2} + \cos \frac{\lambda t}{2} \log \frac{1+\cos \frac{\lambda t}{2}}{1-\cos \frac{\lambda t}{2}}.
 \end{align*}
 Approximating \(\cos x \approx 1-x^2\), this becomes
 \begin{align*}
@@ -732,7 +487,6 @@ We must now diagonalize the initial density operator in a basis that easily sepa
 &= \left(\frac{1}{2} \left(1-e^{it\lambda}\right){\ket{00}} + \frac{1}{2}\left(1+e^{it\lambda}\right)\ket{11}\right) \left(\frac{1}{2} \left(1+e^{-it\lambda}\right){\bra{00}} + \frac{1}{2}\left(1+e^{-it\lambda}\right)\bra{11}\right) \\
 \end{align*}
 \emph{[This is not a separable state, so we cannot use the perturbation formula. Should maybe change the example to a separable state.]}
-
 
 
 
@@ -815,7 +569,6 @@ If we integrate over all time, we get a delta function:
 Putting this into (\ref{eq.intermed}),
 \begin{align}
 \hspace{-1.5em}\braket{k_1^\prime, k_2^\prime}{\Psi_I, \infty}
-%=&\;\; \delta^3(k_1^\prime - k_1)\delta^3(k_2^\prime - k_2) \nonumber\\&\;\;\;\; - \frac{i}{\hbar} \int_{-\infty}^\infty dt\;\frac{1}{(2\pi)^3}\;e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1^\prime}^2 + \frac{1}{2m_2}{k_2^\prime}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2\right)} \widetilde{V}(k_1^\prime-k_1) \;\delta^3(k_1^\prime-k_1-k_2^\prime+k_2) \nonumber\\
 =& \;\;\delta^3(k_1^\prime - k_1)\;\delta^3(k_2^\prime - k_2) \nonumber\\&\;\;\;\;- \frac{i}{(2\pi)^2}\, \widetilde{V}(k_1^\prime-k_1) \;\delta^3(k_1^\prime-k_1-k_2^\prime+k_2) \;\delta\left(\frac{{k_1^\prime}^2}{2m_1} + \frac{{k_2^\prime}^2}{2m_2} - \frac{{k_1}^2}{2m_1} - \frac{{k_2}^2}{2m_2}\right).
 \end{align}
 Interestingly, we see that the delta functions cause energy and momentum to be conserved.
@@ -839,12 +592,7 @@ As before, we drop the higher order terms and take \(t \to \infty\) and \(t_0 \t
 \\&-  \frac{i}{\hbar} \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \left\{\int_{-\infty}^\infty dt \bra{k_1^\prime, k_2}\op{H}_I(t) \ket{\widetilde{k}_1, \widetilde{k}_2}
 \right\}\bra{\widetilde{k}_1, \widetilde{k}_2}\op{\rho}\left(-\infty\right)\ket{k_1, k_2}
 \\&+  \frac{i}{\hbar} \int_{-\infty}^\infty d^3k_2\,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \bra{k_1^\prime, k_2} \op{\rho}\left(-\infty\right)
-\ket{\widetilde{k}_1, \widetilde{k}_2}\left\{\int_{-\infty}^\infty dt\bra{\widetilde{k}_1, \widetilde{k}_2}\op{H}_I(t)\ket{k_1, k_2}\right\}.
-%\\=\hspace{1.7em}&\hspace{-1.5em}
-%\bra{k_1^\prime}\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1} \\
-%\\&-  \frac{i}{\hbar} \int_{-\infty}^\infty dt \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \;{\Bigg(}\frac{1}{(2\pi)^3}\; e^{-\frac{i}{\hbar}(t-t_0)\left(\frac{{k_1^\prime}^2}{2m_1} + \frac{{k_2}^2}{2m_2} - \frac{{\widetilde{k}_1}^2}{2m_1} - \frac{{\widetilde{k}_2}^2}{2m_2}\right)} \widetilde{V}\left(k_1^\prime - \widetilde{k}_1\right)\,\\&\hspace{9em}\delta^3(k_1^\prime - \widetilde{k}_1 - k_2 + \widetilde{k}_2)    \bra{\widetilde{k}_1, \widetilde{k}_2}\op{\rho}\left(-\infty\right)\ket{k_1, k_2} {\Bigg)}
-%\\&+  \frac{i}{\hbar} \int_{-\infty}^\infty dt \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \;{\Bigg(}\frac{1}{(2\pi)^3}\; e^{-\frac{i}{\hbar}(t-t_0)\left(\frac{{\widetilde{k}_1}^2}{2m_1} + \frac{{\widetilde{k}_2}^2}{2m_2} - \frac{{{k}_1}^2}{2m_1} - \frac{{{k}_2}^2}{2m_2}\right)} \widetilde{V}\left(\widetilde{k}_1^\prime - {k}_1\right)\,\\&\hspace{9em}\delta^3(\widetilde{k}_1 - {k}_1 - \widetilde{k}_2 + {k}_2)    \bra{{k}_1^\prime, {k}_2}\op{\rho}\left(-\infty\right)\ket{\widetilde{k}_1, \widetilde{k}_2}{\Bigg)}
-\end{align*}
+\ket{\widetilde{k}_1, \widetilde{k}_2}\left\{\int_{-\infty}^\infty dt\bra{\widetilde{k}_1, \widetilde{k}_2}\op{H}_I(t)\ket{k_1, k_2}\right\}.\end{align*}
 Plugging in our result (\ref{eq.HIintegrated}),
 \begin{align*}
 \bra{{k_1}^\prime}\op{\rho}_\text{reduced}(\infty)\ket{k_1}
@@ -865,7 +613,6 @@ Finally, we use the delta functions to get rid of the \(\widetilde{k}_1\) integr
 \end{align*}
 where
 \begin{align*}
-%\delta_1 &= \delta\left({\textstyle\frac{1}{2}\;{k_2}^2\left(\frac{1}{m_2}-\frac{1}{m_1}\right) - \frac{1}{2}\;{\widetilde{k}_2}^2\left(\frac{1}{m_1}+\frac{1}{m_2}\right) + \frac{1}{2m_1}\left(-k_1^\prime\cdot \widetilde{k}_2 + k_1^\prime \cdot k_2 + \widetilde{k}_2 \cdot k_2\right)}\right) \\
 D(k_1, k_2, \widetilde{k}_2) &= \delta\left({\textstyle \frac{1}{2}\;{{k}_2}^2\left(\frac{1}{m_1}-\frac{1}{m_2}\right)+ \frac{1}{2}\;{\widetilde{k}_2}^2\left(\frac{1}{m_1}+\frac{1}{m_2}\right) - \frac{1}{2m_1}\left(-k_1\cdot \widetilde{k}_2 + k_1 \cdot k_2 + \widetilde{k}_2 \cdot k_2\right)}\right).
 \end{align*}
 Then, assuming \(\widetilde{V}\) is an even function,
