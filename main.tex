@@ -150,25 +150,21 @@ At time \(t\) states will have evolved according to (\ref{eq.secondtdpe}), so
 From (\ref{eq.secondtdpe}) we have
 \begin{align*}
 \ket{{\Psi_I}_n, t} &= \ket{\Psi_I, t_0} -\frac{i}{\hbar}\lambda\int_{t_0}^t \op{H}_I (t^\prime) \ket{\Psi_I, t_0}\,dt^\prime - \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \op{H}_I(t^\prime) \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\,dt^\prime + \Od{\lambda^3} \\
-\bra{{\Psi_I}_n, t} &= \bra{\Psi_I, t_0} -\frac{i}{\hbar}\lambda\int_{t_0}^t \bra{\Psi_I, t_0}{\op{H}_I} (t^\prime)\,dt^\prime - \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_I, t_0} {\op{H}_I}(t^{\prime\prime}){\op{H}_I}(t^\prime)\,dt^{\prime\prime}\,dt^\prime + \Od{\lambda^3} 
+\bra{{\Psi_I}_n, t} &= \bra{\Psi_I, t_0} -\frac{i}{\hbar}\lambda\int_{t_0}^t \bra{\Psi_I, t_0}{\op{H}_I} (t^\prime)\,dt^\prime - \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_I, t_0} {\op{H}_I}(t^{\prime\prime}){\op{H}_I}(t^\prime)\,dt^{\prime\prime}\,dt^\prime + \Od{\lambda^3}
 \end{align*}
 so
 \begin{align*}
 \ket{{\Psi_I}_n, t} \bra{{\Psi_I}_n, t} \;\;=\;\;& \ket{{\Psi_I}_n, t_0} \bra{{\Psi_I}_n, t_0} 
 \;\;-\;\;\frac{i}{\hbar}\lambda \int_{t_0}^t \left(\op{H}(t^\prime)\ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} - \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I (t^\prime)\right) \,dt^\prime \\
 & -\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} +\;\; \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I(t^{\prime\prime}) \op{H}_I(t^\prime)\right)\,dt^{\prime\prime}\,dt^\prime \\
-&+\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime  \;\;+\;\; \Od{\lambda^3} \\
-\;\;=\;\;& \ket{{\Psi_I}_n, t_0} \bra{{\Psi_I}_n, t_0}
-\;\;-\;\;\frac{i}{\hbar}\lambda \int_{t_0}^t \left[\op{H}(t^\prime),\; \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \right] \,dt^\prime \\
-& -\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \right\}\,dt^{\prime\prime}\,dt^\prime \\
-&+\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime \;\;+\;\; \Od{\lambda^3}.
+&+\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime  \;\;+\;\; \Od{\lambda^3}.
 \end{align*}
 Then
 \begin{align}
 \label{eq.rhoevol}
 \op{\rho}(t) \;\;=\;\;& \op{\rho}\left(t_0\right)
 \;\;-\;\;\frac{i}{\hbar}\lambda \int_{t_0}^t \left[\op{H}(t^\prime),\; \op{\rho}(t_0) \right] \,dt^\prime \\
-& -\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}(t_0) \right\}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
+& -\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}(t_0) + \op{\rho}(t_0)\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right)\,dt^{\prime\prime}\,dt^\prime \nonumber\\
 &+\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \op{\rho}(t_0) \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime \;\;+\;\; \Od{\lambda^3}\nonumber.
 \end{align}
 
@@ -285,8 +281,8 @@ by taking
 \begin{align}
 \nonumber\op{\rho}_0 &= \op{\rho}\left(t_0\right) \\
 \nonumber\overline{\op{\rho}}_0 &= \overline{\op{\rho}}\left(t_0\right) =  \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \op{\rho}_0 \left(\cdot\otimes\ket{\beta_m}\right) \\
-\label{eq.rho1red}\overline{\op{\rho}}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \left[\op{H}(t^\prime),\; \op{\rho}_0 \right]\left(\cdot\otimes\ket{\beta_m}\right) \,dt^\prime\\
-\label{eq.rho2red}\overline{\op{\rho}}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\}\left(\cdot\otimes\ket{\beta_m}\right)\,dt^{\prime\prime}\,dt^\prime \\
+\label{eq.rho1red}\overline{\op{\rho}}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right]\left(\cdot\otimes\ket{\beta_m}\right) \,dt^\prime\\
+\label{eq.rho2red}\overline{\op{\rho}}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}(t_0) + \op{\rho}(t_0)\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right)\left(\cdot\otimes\ket{\beta_m}\right)\,dt^{\prime\prime}\,dt^\prime \\
 \nonumber&\hspace{2em}+ \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\left(\cdot\otimes\ket{\beta_m}\right)\,dt^{\prime\prime}\,dt^\prime.
 \end{align}
 From (\ref{eq.redrhodef}) we see that
@@ -324,11 +320,11 @@ Now, the first term, \(- \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline
 
 We can compute \(\overline{\sigma_n^{(1)}}\) by combining equations (\ref{eq.tipt.foval}) and (\ref{eq.rho1red}). We get
 \begin{equation}\label{eq.focor}
-\overline{\sigma_n^{(1)}} = -\frac{i}{\hbar} \sum_m\int_{t_0}^t \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \left[\op{H}(t^\prime),\; \op{\rho}_0 \right] \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right)\,dt^\prime.
+\overline{\sigma_n^{(1)}} = -\frac{i}{\hbar} \sum_m\int_{t_0}^t \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right)\,dt^\prime.
 \end{equation}
 If this is nonzero for some \(n\), (\ref{eq.deltaS}) gives
 \begin{equation}
-\Delta S = \left(-\frac{i}{\hbar}\lambda\log\frac{1}{\lambda}\right) \sum_{n \in I} \sum_m \int_{t_0}^t \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \left[\op{H}(t^\prime),\; \op{\rho}_0 \right] \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right)\,dt^\prime + \Od{\lambda}.
+\Delta S = \left(-\frac{i}{\hbar}\lambda\log\frac{1}{\lambda}\right) \sum_{n \in I} \sum_m \int_{t_0}^t \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right)\,dt^\prime + \Od{\lambda}.
 \end{equation}
 
 \subsection{Case where \(k=2\) (second order correction leads)}
@@ -368,49 +364,52 @@ and our above analysis holds. \emph{[Is this true?]}
 
 Now,
 \begin{align*}
-\left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \op{H}(t^\prime) \op{\rho}_0 \left(\ket{\alpha_n^{(0)}}\otimes\ket{\alpha_m^{(0)}}\right) 
+\left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \op{H}_I(t^\prime) \op{\rho}_0 \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right) 
 &= 
-\sigma_{n,m}^{(0)} \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \op{H}(t^\prime) \ket{\Psi_n^{(0)}} 
+\sigma_{n,m}^{(0)} \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \op{H}_I(t^\prime) \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right) 
 \\&=
- \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \op{\rho}_0 \op{H}(t^\prime) \left(\ket{\alpha_n^{(0)}}\otimes\ket{\alpha_m^{(0)}}\right)
+ \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \op{\rho}_0 \op{H}_I(t^\prime) \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right) 
 \end{align*}
 so the first-order eigenvalue correction (\ref{eq.focor}) vanishes. We will assume that the second-order eigenvalue correction \(\overline{\sigma_n^{(2)}}\) does not vanish and turn to (\ref{eq.entropyresultwithrho2}).
 
 Substituting (\ref{eq.rho2red}) into (\ref{eq.entropyresultwithrho2}) and using that
-\[
-\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m} \left\{ \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}),\; \op{\rho}_0 \right\} \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m} = 2 \sigma_{n,m}^{(0)} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}
-\]
-we get
-\begin{align}\label{entropyresultwithHI}
-\Delta S &= \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I}\sum_m \Bigg(2 \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{12em}- \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}.\nonumber
-\end{align}
-Putting in (\ref{eq.rho0full}),
 \begin{align*}
-&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I}\sum_m \Bigg(2 \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
-&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I}\sum_m \Bigg(2 \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
-&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in I}\sum_m2 \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\left[\left(\sum_{n\in I} \ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}}\right)\otimes\cdot\right]\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
-&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in I}\sum_m 2 \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\left[\left(1-\sum_{n^\prime\not\in I} \ket{\alpha_{n^\prime}^{(0)}}\bra{\alpha_{n^\prime}^{(0)}}\right)\otimes\cdot\right]\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
-&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \Bigg( \Bigg[2\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{11em}- \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime\Bigg]\\
-&\hspace{-1em}+ \sum_{n^\prime \not\in I} \sum_{m^\prime} \int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^{\prime\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \,dt^{\prime\prime}\int_{t_0}^t \bra{\alpha_{n^\prime}^{(0)}}\otimes\bra{\beta_{m^\prime}} \op{H}_I (t^{\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
-&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \Bigg( \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime})\right] \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{-1em}+\sum_{n^\prime \not\in I} \sum_{m^\prime} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.
+\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m} &\left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}(t_0) + \op{\rho}(t_0)\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m} \\
+&= \sigma_{n,m}^{(0)} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m} \left\{\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right\}\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}
+\end{align*}
+we get
+\begin{align*}
+\Delta S &= \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I}\sum_m \Bigg(\sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m} \left\{\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right\} \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
+&\hspace{12em}- \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\nonumber \\
+&= \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I}\sum_m \Bigg(\sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{12em}- \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}.\nonumber
 \end{align*}
 \emph{[The above derivation should be double checked.]}
+Putting in (\ref{eq.rho0full}),
+\begin{align*}
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I}\sum_m \Bigg(\sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I}\sum_m \Bigg(\sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in I}\sum_m\sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\left[\left(\sum_{n\in I} \ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}}\right)\otimes\cdot\right]\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \Bigg(\sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{-1em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_{n^\star}^{(0)}}\otimes\bra{\beta_{m^\star}^{(0)}} \op{H}_I (t^{\prime\prime})\left[\left(1-\sum_{n^\prime\not\in I} \ket{\alpha_{n^\prime}^{(0)}}\bra{\alpha_{n^\prime}^{(0)}}\right)\otimes\cdot\right]\op{H}_I (t^\prime) \ket{\alpha_{n^\star}^{(0)}}\otimes\ket{\beta_{m^\star}^{(0)}}\,dt^{\prime\prime}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \Bigg( \Bigg[\int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
+&\hspace{11em}- \int_{t_0}^t \int_{t_0}^{t} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime\Bigg]\\
+&\hspace{-1em}+ \sum_{n^\prime \not\in I} \sum_{m^\prime} \int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^{\prime\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \,dt^{\prime\prime}\int_{t_0}^t \bra{\alpha_{n^\prime}^{(0)}}\otimes\bra{\beta_{m^\prime}} \op{H}_I (t^{\prime})\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^\prime \Bigg) + \Od{\lambda^2}\\
+&\hspace{-4em}\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \Bigg(
+\sum_{n^\prime \not\in I} \sum_{m^\prime} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.
+\end{align*}
+\emph{[The above derivation should be double checked. It can almost certainly be simplified/shortened.]}
 We have derived the rather interesting result that
-\begin{align}\label{eq.Sredresult}
-\hspace{-4.5em}
-\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \Bigg( &\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime})\right] \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\,dt^{\prime\prime}\,dt^\prime \\
-&+\sum_{n^\prime \not\in I} \sum_{m^\prime} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.\nonumber
-\end{align}
-The second term is fascinating; it looks like a transition amplitude.
+\begin{equation}\label{eq.Sredresult}
+\boxed{
+\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \Bigg( \sum_{n^\prime \not\in I} \sum_{m^\prime} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.}
+\end{equation}
+This looks like a transition amplitude.
 
-Assuming that these terms do not both vanish, we see that the entropy grows proportionally to \(\left(t-t_0\right)^2\).
+Assuming that these terms do not vanish, we see that the entropy grows proportionally to \(\left(t-t_0\right)^2\).
 
 \subsection{Total entropy of a closed system}
 
