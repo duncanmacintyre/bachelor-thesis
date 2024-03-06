@@ -405,26 +405,46 @@ Putting in (\ref{eq.rho0full}),
 We have derived the rather interesting result that
 \begin{equation}\label{eq.Sredresult}
 \boxed{
-\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \Bigg( \sum_{n^\prime \not\in I} \sum_{m^\prime} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.}
+\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n}\sum_m \sigma_{n,m}^{(0)} \Bigg( \sum_{n^\prime \not\in I} \sum_{m^\prime} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_m} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.}
 \end{equation}
 This looks like a transition amplitude.
 
 Assuming that these terms do not vanish, we see that the entropy grows proportionally to \(\left(t-t_0\right)^2\).
 
-\subsection{Total entropy of a closed system}
+\subsection{Contradiction: Hamiltonian acting only on one part}
 
-What if we want to consider the entropy of the entire universe, rather than the subsystem entropy? This is equivalent to taking \(\hilb_B\) to consist of a single possible state. When we consider the entire universe, the change in entropy should be zero. Thus (\ref{eq.Sredresult}) becomes
+Suppose the Hamiltonian acts like the identity operator on \(\hilb_B\); that is, it acts only on \(\hilb_A\). In this case we expect the change in entropy to be zero.
+Then (\ref{eq.Sredresult}) becomes
 \begin{align*}
-\hspace{-3em}
-0 =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sigma_{n}^{(0)} \Bigg( &\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime})\right] \ket{\alpha_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime 
-+\sum_{n^\prime \not\in I} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}}\,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.
+0 = \Delta S &=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n}\sum_m \sigma_{n,m}^{(0)} \Bigg( \sum_{n^\prime \not\in I} \sum_{m^\prime} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}} \braket{\beta_m}{\beta_{m^\prime}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2} \\
+&=\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n}\sum_m \sigma_{n,m}^{(0)} \Bigg( \sum_{n^\prime \not\in I} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.
 \end{align*}
-This equation should remain true regardless of our initial state. In particular, we should have
-\begin{equation}
--\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n}\left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime})\right] \ket{\Psi_n}\,dt^{\prime\prime}\,dt^\prime 
-=\sum_{n^\prime \neq n} \left|\int_{t_0}^t \bra{\Psi_n} \op{H}_I (t^{\prime})\ket{\Psi_{n^\prime}}\,dt^{\prime}\right|^2
-\end{equation}
-for all possible bases \(\{\Psi_n\}\) of \(\hilb\) and for all times \(t\).
+If we start with a pure state and take \(\sigma_{n,m}^{(0)} = \delta_{n\,1}\delta_{m\,1}\), this gives
+\[
+0 =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n^\prime \neq 1} \left|\int_{t_0}^t \bra{\alpha_{1}^{(0)}} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}} \,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.
+\]
+This implies that \[\int_{t_0}^t \bra{\alpha_{1}^{(0)}} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}} \,dt^{\prime} = 0\] for all \(n^\prime \neq 1\). We could have done this for any time \(t\) close to \(t_0\) and for any initial pure state. Thus
+\[
+\bra{\alpha_{n}^{(0)}} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}} = 0
+\]
+for all \(n\neq n^\prime\).
+This is not necessarily true, though, and forms a contradiction. \Lightning
+
+
+%\subsection{Total entropy of a closed system}
+%
+%What if we want to consider the entropy of the entire universe, rather than the subsystem entropy? This is equivalent to taking \(\hilb_B\) to consist of a single possible state. When we consider the entire universe, the change in entropy should be zero. Thus (\ref{eq.Sredresult}) becomes
+%\begin{align*}
+%\hspace{-3em}
+%0 =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n \in I}\sigma_{n}^{(0)} \Bigg( &\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\alpha_n^{(0)}}\left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime})\right] \ket{\alpha_n^{(0)}}\,dt^{\prime\prime}\,dt^\prime 
+%+\sum_{n^\prime \not\in I} \left|\int_{t_0}^t \bra{\alpha_{n}^{(0)}} \op{H}_I (t^{\prime})\ket{\alpha_{n^\prime}^{(0)}}\,dt^{\prime}\right|^2 \Bigg) + \Od{\lambda^2}.
+%\end{align*}
+%This equation should remain true regardless of our initial state. In particular, we should have
+%\begin{equation}
+%-\int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_n}\left[\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime})\right] \ket{\Psi_n}\,dt^{\prime\prime}\,dt^\prime 
+%=\sum_{n^\prime \neq n} \left|\int_{t_0}^t \bra{\Psi_n} \op{H}_I (t^{\prime})\ket{\Psi_{n^\prime}}\,dt^{\prime}\right|^2
+%\end{equation}
+%for all possible bases \(\{\Psi_n\}\) of \(\hilb\) and for all times \(t\).
 
 \section{Example: Interaction between Qubits}
 
