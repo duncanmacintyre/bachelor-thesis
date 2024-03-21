@@ -7,7 +7,7 @@
 \renewcommand\labelenumi{(\theenumi)}
 
 % subsections have letters instead of numbers
-\renewcommand{\thesubsection}{\thesection (\alph{subsection})}
+%\renewcommand{\thesubsection}{\thesection (\alph{subsection})}
 
 % use hyperref for links but don't draw the ugly boxes around links
 \usepackage[hidelinks]{hyperref}
@@ -22,6 +22,9 @@
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\CC}{\mathbb{C}}
+
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Re}}
 
 % use boldface instead of arrows for vectors
 %\renewcommand{\vec}{\mathbf}
@@ -268,7 +271,7 @@ Define the \(\hilb_A\)-subsystem entropy to be \(S = -\operatorname{Tr} \overlin
 \begin{equation}\label{eq.redrhodef}
 \overline{\op{\rho}} = \sum_n \overline{\sigma_n} \ket{\alpha_n}\bra{\alpha_n},
 \end{equation}
-where \(\{\ket{\alpha_n}\}\) if an orthonormal basis of \(\hilb_A\), then
+where \(\{\ket{\alpha_n}\}\) is an orthonormal basis of \(\hilb_A\), then
 \[S = -\sum_n \overline{\sigma_n} \log \overline{\sigma_n}.\]
 
 Now, looking at equation (\ref{eq.rhoevol}), we see that at some fixed time \(t\) we can form asymptotic expansions
@@ -282,7 +285,7 @@ by taking
 \nonumber\op{\rho}_0 &= \op{\rho}\left(t_0\right) \\
 \nonumber\overline{\op{\rho}}_0 &= \overline{\op{\rho}}\left(t_0\right) =  \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \op{\rho}_0 \left(\cdot\otimes\ket{\beta_m}\right) \\
 \label{eq.rho1red}\overline{\op{\rho}}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right]\left(\cdot\otimes\ket{\beta_m}\right) \,dt^\prime\\
-\label{eq.rho2red}\overline{\op{\rho}}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}(t_0) + \op{\rho}(t_0)\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right)\left(\cdot\otimes\ket{\beta_m}\right)\,dt^{\prime\prime}\,dt^\prime \\
+\label{eq.rho2red}\overline{\op{\rho}}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}_0 + \op{\rho}_0\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right)\left(\cdot\otimes\ket{\beta_m}\right)\,dt^{\prime\prime}\,dt^\prime \\
 \nonumber&\hspace{2em}+ \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\left(\cdot\otimes\ket{\beta_m}\right)\,dt^{\prime\prime}\,dt^\prime.
 \end{align}
 From (\ref{eq.redrhodef}) we see that
@@ -291,22 +294,33 @@ From (\ref{eq.redrhodef}) we see that
 \end{equation}
 Therefore we can take \(\left\{\ket{\alpha_n^{(0)}}\right\}\) to be an orthonormal basis for \(\hilb_A\) and we must have \(\sum_n \overline{\sigma_n^{(0)}} = 1\).
 
-We can now compute the change in entropy. We will consider two cases.
+We can now compute the change in entropy. We will consider several cases.
 
-{\bf Case 1: All \(\overline{\sigma_n^{(0)}} \neq 0\).}
-Then
+\subsection{Case where all \(\overline{\sigma_n^{(0)}} \neq 0\)}
+
+Let \(k\) be the first non-zero order for which some \(\overline{\sigma_n^{(k)}}\) does not vanish. Then
 \begin{align*}
 S &= -\sum_{n} \overline{\sigma_n} \log \overline{\sigma_n}\\
 &= - \sum_{n} \left(\overline{\sigma_n^{(0)}} + \lambda^k \overline{\sigma_n^{(k)}} + \Od{\lambda^{k+1}}\right) \log \left(\overline{\sigma_n^{(0)}} \left(1 + \frac{\lambda^k \overline{\sigma_n^{(k)}}}{\overline{\sigma_n^{(0)}}} + \Od{\lambda^{k+1}}\right)\right) \\
 &= - \sum_{n} \left(\overline{\sigma_n^{(0)}} + \lambda^k \overline{\sigma_n^{(k)}}\right) \left(\log \overline{\sigma_n^{(0)}} + \frac{\lambda^k \overline{\sigma_n^{(k)}}}{\overline{\sigma_n^{(0)}}}\right) + \Od{\lambda^{k+1}}\\
-&= - \sum_{n} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} - \lambda^k \sum_n \overline{\sigma_n^{(k)}} \left(1+ \log\overline{\sigma_n^{(0)}}\right) + \Od{\lambda^{k+1}}
+&= - \sum_{n} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} - \lambda^k \sum_n \overline{\sigma_n^{(k)}} \left(1+ \log\overline{\sigma_n^{(0)}}\right) + \Od{\lambda^{k+1}}.
 \end{align*}
+Now, by \(\sum_n \overline{\sigma_n} = 1\) we should always have \(\sum_n \overline{\sigma_n^{(k)}} = 0\). Thus
+\[
+S = - \sum_{n} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} - \lambda^k \sum_n \overline{\sigma_n^{(k)}} \log\overline{\sigma_n^{(0)}} + \Od{\lambda^{k+1}}.
+\]
+The first term, \(- \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}}\), would be the entropy if \(\lambda=0\), that is, with no perturbation. Thus the change in entropy due to the perturbation is
+\begin{equation}
+\boxed{\Delta S = 
+\lambda^k \sum_n \overline{\sigma_n^{(k)}} \log\frac{1}{\;\overline{\sigma_n^{(0)}}\;} + \Od{\lambda^{k+1}}.}
+\end{equation}
 
-{\bf Case 2: Some \(\overline{\sigma_n^{(0)}} = 0\).} This case is more interesting. We will consider it for the rest of our analysis.
+
+\subsection{Case where some \(\overline{\sigma_n^{(0)}} = 0\).}
 
 Let \(k_n\) be the first non-zero order for which \(\overline{\sigma_n^{(k_n)}}\) does not vanish. For example, if \(\overline{\sigma_n^{(1)}} \neq 0\), then \(k_n = 1\). If \(\overline{\sigma_n^{(1)}} = 0\) but \(\overline{\sigma_n^{(2)}} \neq 0\), then \(k_n = 2\). Let \(k\) be the minimal \(k_n\). Now let
 \[
-I = \{n : \overline{\sigma_n^{(0)}} \neq 0\}
+I = \left\{n : \overline{\sigma_n^{(0)}} \neq 0\right\}.
 \]
 Then
 \begin{align*}
@@ -314,45 +328,65 @@ S &= -\sum_{n \in I} \overline{\sigma_n} \log \overline{\sigma_n}-\sum_{n \not\i
 &= - \sum_{n \in I} \overline{\sigma_n} \log \left(\overline{\sigma_n^{(0)}} \left(1 + \Od{\lambda^{k}}\right)\right)  - \sum_{n \not\in I} \overline{\sigma_n} \log\left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}}\left(1 + \Od{\lambda}\right)\right) \\
 &= - \sum_{n \in I} \left(\overline{\sigma_n^{(0)}} + \Od{\lambda^{k_n}}\right) \left(\log \overline{\sigma_n^{(0)}}+\Od{\lambda^{k_n}}\right) - \sum_{n \not\in I} \overline{\sigma_n} \left(\log\lambda^{k_n}+\log\overline{\sigma_n^{(k_n)}}+ \Od{\lambda}\right) \\
 &= - \sum_{n \in I} \left(\overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} + \Od{\lambda^{k_n}}\right) - \sum_{n \not\in I} \left(\overline{\sigma_n}\log\lambda^{k_n} + \Od{\lambda^{k_n}}\right)\\
-&= - \sum_{n \in I} \left(\overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} + \Od{\lambda^{k_n}}\right) - \sum_{n \not\in I} \left(\overline{\sigma_n}\log\lambda^{k} + \Od{\lambda^{k}}\right)\\
+&= - \sum_{n \in I} \left(\overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} + \Od{\lambda^{k}}\right) - \sum_{n \not\in I} \left(\overline{\sigma_n}\log\lambda^{k} + \Od{\lambda^{k}}\right)\\
 &= - \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} - \log\lambda^{k} \sum_{n \not\in I} \overline{\sigma_n} + \Od{\lambda^{k}}\\
 &= - \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} -\log\lambda^{k} \left(1 - \sum_{n \in I} \overline{\sigma_n}\right) + \Od{\lambda^k} \\
 &= - \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} -\log\lambda^{k} \left(1 - \sum_{n \in I} \overline{\sigma_n^{(0)}} - \sum_{n \in I} \lambda^k \overline{\sigma_n^{(k)}}\right) + \Od{\lambda^k} \\
-&= - \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} +\lambda^k\log\frac{1}{\lambda^{k}} \sum_{n \in I} \overline{\sigma_n^{(k)}} + \Od{\lambda^k}
+&= - \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} -\lambda^k\log\frac{1}{\lambda^{k}} \sum_{n \in I} \overline{\sigma_n^{(k)}} + \Od{\lambda^k}
 \end{align*}
 Here we used that \(\sum_n \overline{\sigma_n^{(0)}} = 1\).
-\emph{[The above should be checked.]}
+\emph{[The above should be checked. In particular, I need to figure out whether to use big-O or little-o notation.]}
 Now, the first term, \(- \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}}\), would be the entropy if \(\lambda=0\), that is, with no perturbation. Thus the change in entropy due to the perturbation is
 \begin{equation}\label{eq.deltaS}
-\boxed{\Delta S = \left(\lambda^k\log\frac{1}{\lambda^{k}} \right)\sum_{n \in I} \overline{\sigma_n^{(k)}} + \Od{\lambda^k}.}
+\boxed{\Delta S = -\left(\lambda^k\log\frac{1}{\lambda^{k}} \right)\sum_{n \in I} \overline{\sigma_n^{(k)}} + \Od{\lambda^k}.}
 \end{equation}
 
-\subsection{Case where \(k=1\) (first order correction leads)}
+\subsubsection{Case where \(k=1\) (first order correction leads)}
 
 We can compute \(\overline{\sigma_n^{(1)}}\) by combining equations (\ref{eq.tipt.foval}) and (\ref{eq.rho1red}). We get
 \begin{equation}\label{eq.focor}
 \overline{\sigma_n^{(1)}} = -\frac{i}{\hbar} \sum_m\int_{t_0}^t \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right)\,dt^\prime.
 \end{equation}
 If this is nonzero for some \(n\), (\ref{eq.deltaS}) gives
-\begin{equation}
+\[
 \Delta S = \left(-\frac{i}{\hbar}\lambda\log\frac{1}{\lambda}\right) \sum_{n \in I} \sum_m \int_{t_0}^t \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right) \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right)\,dt^\prime + \Od{\lambda}.
+\]
+In general, we can write
+\[\op{\rho}_0 = \sum_{n^\prime, m^\prime, \tilde{n}, \tilde{m}} \tau_{n^\prime, m^\prime, \tilde{n}, \tilde{m}} \ket{\alpha_{n^\prime}^{(0)}} \otimes \ket{\beta_{n^\prime}} \bra{\alpha_{\tilde{n}}^{(0)}} \otimes \bra{\beta_{\tilde{m}}}\]
+for some \(\tau_{n^\prime, m^\prime, \tilde{n}, \tilde{m}}\). Then
+\begin{align*}
+\Delta S &= \left(-\frac{i}{\hbar}\lambda\log\frac{1}{\lambda}\right) \int_{t_0}^t \sum_{n \in I} \;\sum_{m,n^\prime, m^\prime, \tilde{n}, \tilde{m}}\;\Bigg(\braket{\alpha_n^{(0)}}{\alpha_{n^\prime}^{(0)}}\braket{\beta_m}{\beta_{m^\prime}} \bra{\alpha_{\tilde{n}}^{(0)}}\otimes\bra{\beta_{\tilde{m}}} \op{H}_I\left(t^\prime\right) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m} \tau_{n^\prime, m^\prime, \tilde{n}, \tilde{m}}\\
+&\hspace{5em} - \bra{\alpha_{n}^{(0)}}\otimes\bra{\beta_{{m}}} \op{H}_I\left(t^\prime\right) \ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \braket{\alpha_{\tilde{n}}^{(0)}}{\alpha_n^{(0)}}\braket{\beta_{\tilde{m}}}{\beta_{m}} \tau_{n^\prime, m^\prime, \tilde{n}, \tilde{m}}\Bigg) \,dt^\prime + \Od{\lambda} \\
+&= \left(\frac{i}{\hbar}\lambda\log\frac{1}{\lambda}\right) \int_{t_0}^t\Bigg( -\sum_{n \in I} \;\sum_{m,\tilde{n}, \tilde{m}}\; \bra{\alpha_{\tilde{n}}^{(0)}}\otimes\bra{\beta_{\tilde{m}}} \op{H}_I\left(t^\prime\right) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m} \tau_{n, m, \tilde{n}, \tilde{m}}\\
+&\hspace{5em} + \sum_{n \in I} \;\sum_{m,\,n^\prime, m^\prime}\;\bra{\alpha_n^{(0)}}\otimes\bra{\beta_{{m}}} \op{H}_I\left(t^\prime\right) \ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \tau_{n^\prime, m^\prime, {n}, {m}} \Bigg)\,dt^\prime + \Od{\lambda}.
+\end{align*}
+Since \(\op{\rho}_0\) is Hermitian, we have the property that \(\tau_{n,m,\tilde{n},\tilde{m}} = {\tau_{\tilde{n},\tilde{m},n,m}}^*\). Thus
+\[
+\Delta S = \left(\frac{i}{\hbar}\lambda\log\frac{1}{\lambda}\right) \sum_{n \in I} \;\sum_{m,\,n^\prime, m^\prime}\; \int_{t_0}^t\,2i\;\Im\left( \bra{\alpha_n^{(0)}}\otimes\bra{\beta_{{m}}} \op{H}_I\left(t^\prime\right) \ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \tau_{n^\prime, m^\prime, {n}, {m}} \right)\,dt^\prime.
+\]
+Now, if \(n^\prime \in I\), for each term like \(\Im\left( \bra{\alpha_n^{(0)}}\otimes\bra{\beta_{{m}}} \op{H}_I\left(t^\prime\right) \ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \tau_{n^\prime, m^\prime, {n}, {m}} \right)\) in the sum, there is an equal but oppositely signed term \(\Im\left( \bra{\alpha_{{n^\prime}}}\otimes\bra{\beta_{{m}}} \op{H}_I\left(t^\prime\right) \ket{\alpha_n^{(0)}}\otimes\ket{\beta_{m^\prime}} \tau_{n, m^\prime, {n^\prime}, {m}} \right)\) in the sum. These terms add to zero. Hence we are left with
+\begin{equation}\label{eq.deltaS.fo}
+\boxed{\Delta S = \left(-\frac{2}{\hbar}\lambda\log\frac{1}{\lambda}\right) \sum_{n \in I}\sum_{n^\prime \not\in I} \sum_{m,m^\prime}\; \int_{t_0}^t\,\Im\left( \bra{\alpha_n^{(0)}}\otimes\bra{\beta_{{m}}} \op{H}_I\left(t^\prime\right) \ket{\alpha_{n^\prime}^{(0)}}\otimes\ket{\beta_{m^\prime}} \tau_{n^\prime, m^\prime, {n}, {m}} \right)\,dt^\prime.}
 \end{equation}
+Fascinatingly, we end up with matrix elements that represent transition amplitudes from states with non-zero initial probability (\(n \in I\)) to states with zero initial probability (\(n^\prime \not\in I\)). The entropy growth is dominated by transitions to these zero-initial-probability states.
 
-\subsection{Case where \(k=2\) (second order correction leads)}
 
-On the other hand, (\ref{eq.focor}) could be zero for all \(n\). Then we turn to the second order correction. Let us assume that \(\overline{\sigma_n^{(2)}} \neq 0\) for some \(n\).
+
+\subsubsection{Case where \(k=2\) (second order correction leads)}
+
+On the other hand, (\ref{eq.focor}) could be zero for all \(n\). Then we turn to the second order correction. Let us assume that \(\overline{\sigma_n^{(2)}} \neq 0\) for some \(n\), that is, \(k=2\).
 
 Substituting (\ref{eq.tipt.soval}) into (\ref{eq.deltaS}),
 \[
-\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{m \not\in D_n} \frac{\left|\bra{\alpha_m^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_m^{(0)}}} \right)+ \Od{\lambda^2}.
+\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{{n^\prime} \not\in D_n} \frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}} \right)+ \Od{\lambda^2}.
 \]
-Now, in the second term with the double sum, for every term \(\frac{\left|\bra{\alpha_m^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_m^{(0)}}}\) there is an equal but opposite term \(\frac{\left|\bra{\alpha_m^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_m^{(0)}}-\overline{\sigma_n^{(0)}}}\). Thus this double sum evaluates to zero. We end up with
+Now, in the second term with the double sum, for every term \(\frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}}\) with \(n^\prime \in I\) there is an equal but opposite term \(\frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_{n^\prime}^{(0)}}-\overline{\sigma_n^{(0)}}}\) in the sum. The portion of the sum over \(n^\prime \in I\) evaluates to zero. We end up with
 \begin{equation}\label{eq.entropyresultwithrho2}
-\boxed{\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} + \Od{\lambda^2}}
+\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{n^\prime \not\in I} \frac{\left|\bra{\alpha_{n}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_{n^\prime}^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}} \right)+ \Od{\lambda^2}.
 \end{equation}
-where \(\overline{\op{\rho_2}}\) is given by (\ref{eq.rho2red}).
+where \(\overline{\op{\rho}_1}\) and \(\overline{\op{\rho}_2}\) are given by (\ref{eq.rho1red}) and (\ref{eq.rho2red}).
 
-\subsection{Case of nicely diagonalized initial state}
+\subsubsection{Case of nicely diagonalized initial state}
 
 We will now consider the special case where, at the time \(t_0\), the density operator takes the form
 \begin{equation}
