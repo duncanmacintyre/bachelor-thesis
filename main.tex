@@ -12,6 +12,36 @@
 % use hyperref for links but don't draw the ugly boxes around links
 \usepackage[hidelinks]{hyperref}
 
+% add \subsubsubsection command
+% taken from https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection
+\usepackage{titlesec}
+\titleclass{\subsubsubsection}{straight}[\subsection]
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
 % command to create underlined link to outside websites
 \newcommand{\hrefunderline}[2]{\underline{\href{#1}{#2}}}
 
@@ -487,29 +517,58 @@ Meanwhile, the third term in (\ref{eq.entropyresultwithrho2}) is
 -\sum_{n \in I}\sum_{n^\prime \not \in I} &\frac{1}{\;\overline{\sigma_n^{(0)}}\;} \left|\sum_m\int_{t_0}^t \bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n^\prime}{m}\;dt^\prime \right|^2 \\
 &= -\sum_{n \in I}\sum_{n^\prime \not \in I} \frac{1}{\;\overline{\sigma_n^{(0)}}\;} \left|\sum_m\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
  \bket{n^\prime}{m}\;\left({\sigma_{n,m}^{(0)}} - \cancel{{\sigma_{n^\prime,m}^{(0)}}}\right)\;dt^\prime \right|^2\Bigg) + \Od{\lambda^2} \\
- &= -\sum_{n \in I}\sum_{n^\prime \not \in I} \frac{1}{\sum_m \sigma_{n,m}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
+ &= -\sum_{n \in I}\sum_{n^\prime \not \in I} \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
  \bket{n^\prime}{m}\;dt^\prime \right|^2.
 \end{align*}
 
 Putting this all back into (\ref{eq.entropyresultwithrho2}), we obtain the rather interesting result that
 \begin{align}\label{eq.Sredresult.separable}
 \Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \Bigg(& \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
-&- \frac{1}{\sum_m \sigma_{n,m}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
+&- \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
  \bket{n^\prime}{m}\;dt^\prime \right|^2\Bigg) + \Od{\lambda^2}. \nonumber
 \end{align}
 Assuming that these terms do not vanish, we see that the entropy grows proportionally to \(\left(t-t_0\right)^2\).
 
 We also observe that this expression vanishes if \(\hilb_B\) has only a single possible state. This situation is equivalent to taking the entropy of the whole system rather than the subsystem entropy. We have thus shown that the entropy of the whole system is conserved (at the order of \(\lambda^2 \log\frac{1}{\lambda^2}\), for separable states).
 
-\subsubsection{Case of pure, separable initial state}
+\subsubsubsection{Case of pure, separable initial state}
 
-If the initial state is pure and separable, proceed as above and assume without loss of generality that the initial state is \(\bket{1}{1}\), that is, \(\sigma_{n,m}^{(0)} = \delta_{n,1}\delta_{m,1}\). Then (\ref{eq.Sredresult.separable}) simplifies to
+If the initial state is pure and separable, let \(\bket{n}{m}\) be the initial state so that \(\op{\rho}_0 = \bket{n}{m}\bbra{n}{m}\). Then (\ref{eq.Sredresult.separable}) simplifies to
 \begin{equation}\label{eq.Sredresult.separablepure}
-\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n^\prime\neq 1} \;\sum_{m^\prime\neq 1} \left|\int_{t_0}^t \bbra{1}{1} \op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 + \Od{\lambda^2}.
+\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n^\prime\neq n} \;\sum_{m^\prime\neq m} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 + \Od{\lambda^2}.
 \end{equation}
-\emph{[Does this make sense? Should the change in entropy just be zero?]}
-\emph{[Note: this formula is not true for all pure states, just some ``separable'' pure states!]}
 We observe a crucial exclusion principle: in our expression for entropy, we only have transition amplitudes where the state changes in both subsystems, never transition amplitudes for a change in only one subsystem. Furthermore, since this expression is symmetric with respect to \(n\) and \(m\), the change in subsystem entropy for \(\hilb_A\) is the same as the change in subsystem entropy for \(\hilb_B\).
+
+\subsubsubsection{Upper and lower bounds for entropy growth}
+
+We can apply the triangle inequality to (\ref{eq.Sredresult.separable}) to obtain an illuminating lower bound on \(\Delta S\) for separable initial states. We have
+\begin{align*}
+\frac{1}{\sum_m \sigma_{n,m}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
+ \bket{n^\prime}{m}\;dt^\prime \right|^2
+& \leq \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \sum_{m} \left|{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
+ \bket{n^\prime}{m}\;dt^\prime \right|^2 \\
+ &= \sum_m \frac{\sigma_{n,m}^{(0)}}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \;\sigma_{n,m}^{(0)} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
+ \bket{n^\prime}{m}\;dt^\prime \right|^2 \\
+ &\leq \sum_m \sigma_{n,m}^{(0)} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
+ \bket{n^\prime}{m}\;dt^\prime \right|^2.
+\end{align*}
+Applying this to (\ref{eq.Sredresult.separable}), we see at order \(\lambda^2 \log \frac{1}{\lambda^2}\) that
+\begin{equation}\label{eq.dSlowerbound}
+\Delta S \geq \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2.
+\end{equation}
+This result is profound for two reasons. First, it shows that the change in entropy for a separable state is non-negative. This matches our intuition. A separable state is an unentangled state---in this sense, it already has minimal entropy, so it seems natural that its entropy can only grow. Second, comparing (\ref{eq.dSlowerbound}) to (\ref{eq.Sredresult.separablepure}), we see that the lower bound (\ref{eq.dSlowerbound}) is exactly what we would expect if entropy was linear with respect to \(\op{\rho}\) (i.e., if we could compute entropy by the superposition principle). That is, we can rewrite (\ref{eq.dSlowerbound}) as
+\begin{equation}\label{eq.dSlowerbound.linearcomparison}
+\Delta S\, \bigg|_{\op{\rho}_0 = \sum_{n,m} \sigma_{n,m}^{(0)} \bket{n}{m}\bbra{n}{m}} \geq \sum_{n,m} \sigma_{n,m}^{(0)} \; \Delta S\, \bigg|_{\op{\rho}_0 = \bket{n}{m}\bbra{n}{m}}
+\end{equation}
+Evidently the non-linearity of entropy due to \(\log\) causes entropy to be higher than if it was linear. (\ref{eq.dSlowerbound}) is a kind of \emph{linear approximation} to the entropy. More precisely, it is an approximation assuming that linear superposition of the density operator applies for entropy.
+
+\emph{The second ``profound result'' above is actually erroneous, because the sum is over \(n^\prime \not\in I\), not \(n^\prime \neq n\). This discussion should be removed.}
+
+We can also obtain an upper bound for (\ref{eq.Sredresult.separable}) by keeping only the first term. Then, at order \(\lambda^2 \log \frac{1}{\lambda^2}\),
+\begin{align}\label{eq.dSbounds}
+\frac{1}{\hbar^2}\lambda^2 &\log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
+&\leq \;\;\Delta S \;\;\leq\;\; \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2. \nonumber
+\end{align}
 
 
 \section{Example: Interaction between Qubits}
