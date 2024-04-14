@@ -353,7 +353,7 @@ This should be diagonal with respect to \(n^\prime\) and \(\tilde{n}\); the off-
 
 We can now compute the change in entropy. We will consider several cases.
 
-\subsection{Case where all \(\overline{\sigma_n^{(0)}} \neq 0\)}
+\subsection{Case where all \(\overline{\sigma_n^{(0)}} \neq 0\)}\label{sec.all.sigma.nonzero}
 
 Let \(k\) be the first non-zero order for which some \(\overline{\sigma_n^{(k)}}\) does not vanish. Then
 \begin{align*}
@@ -407,6 +407,20 @@ If \(\op{H}_0 = \op{H}_0^A + \op{H}_0^B\), where \(\op{H}_0^A\) acts only on \(\
 
 On the other hand, if \(\op{H}_0\) is not of this form, \(\op{H}_0\) might cause mixing between subsystems. Then there could be some zeroth-order change in entropy due to \(\op{H}_0\). In this case \(\Delta S\) is not the \emph{total} change in entropy from time \(t_0\) to time \(t\) but rather the change in entropy from time \(t_0\) to time \(t\) due to the perturbation \(\lambda \op{V}\).
 
+\subsubsection{Entropy does not decrease}
+
+Because the eigenvalues of \(\overline{\op{\rho}}\) add to one, the eigenvalue corrections of \(\overline{\op{\rho}}\) must add to zero at every non-zero order of \(\lambda\). In particular, \(\sum_{n \in I} \overline{\sigma_n^{(k)}} + \sum_{n \not \in I} \overline{\sigma_n^{(k)}} = 0\), so we can rewrite (\ref{eq.deltaS}) as
+\begin{equation}\label{eq.deltaS.notinI}
+\Delta S = \left(\lambda^k \log \frac{1}{\lambda^k}\right) \sum_{n \not \in I} \overline{\sigma_n^{(k)}} + \Od{\lambda^k}.
+\end{equation}
+If \(n \not\in I\), then \(\overline{\sigma_n^{(0)}} = 0\) but \(\overline{\sigma_n}\geq 0\), so the leading perturbative correction to \(\overline{\sigma_n}\) must be non-negative. In particular, \(\overline{\sigma_n^{(k)}} \geq 0\) for all \(n \not\in I\). Therefore the entire sum (\ref{eq.deltaS.notinI}) is non-negative.
+
+This shows that the {\bf subsystem entropy cannot decrease if \(\overline{\op{\rho}}\) has null eigenvalues for states that we can transition to}. If any eigenvalues of \(\overline{\op{\rho}}_0\) are zero for states with non-zero \(\overline{\sigma_n}\), then entropy will increase or remain constant over time (until the system evolves so that all eigenvalues are non-zero). As we will see in a later example, the converse is not true; if \(\overline{\op{\rho}}\) has only non-zero eigenvalues, entropy may decrease, increase, or remain constant.
+
+This may seem somewhat strange--after all, if \(\overline{\op{\rho}}\) has only non-zero eigenvalues, surely we can just add zero eigenvalues by expanding the Hilbert space! The newly added states will, however, be ``inaccessible'' and thus have \(\overline{\sigma_n}=0\). Thus these new states will not lead to entropy growth on the order of \(\lambda^k \log \frac{1}{\lambda^k}\); we will be in the case of section \ref{sec.all.sigma.nonzero}.
+
+At the beginning, we should have assumed that we choose the smallest possible Hilbert space so that all states \(\op{\rho}\) can evolve to are in the Hilbert space. Then all \(\overline{sigma_n} > 0\) and so 
+
 \subsubsection{Case where \(k=1\) (first order correction leads)}
 
 We can compute \(\overline{\sigma_n^{(1)}}\) by combining equations (\ref{eq.tipt.foval}) and (\ref{eq.rho1red}). We get
@@ -442,11 +456,11 @@ On the other hand, (\ref{eq.focor}) could be zero for all \(n\). Then we turn to
 
 Substituting (\ref{eq.tipt.soval}) into (\ref{eq.deltaS}),
 \[
-\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{{n^\prime} \not\in D_n} \frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}} \right)+ \Od{\lambda^2}.
+\Delta S = -\left(\lambda^2 \log\frac{1}{\lambda^2}\right)\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{{n^\prime} \not\in D_n} \frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}} \right)+ \Od{\lambda^2}.
 \]
 Now, in the second term with the double sum, for every term \(\frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}}\) with \(n^\prime \in I\) there is an equal but oppositely signed term \(\frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_{n^\prime}^{(0)}}-\overline{\sigma_n^{(0)}}}\) in the sum. The portion of the sum over \(n^\prime \in I\) evaluates to zero. We end up with
 \begin{equation}\label{eq.deltaSso.intermediate}
-\Delta S = -\lambda^2 \log\frac{1}{\lambda^2}\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{n^\prime \not\in I} \frac{\left|\bra{\alpha_{n}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_{n^\prime}^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}} \right)+ \Od{\lambda^2}.
+\Delta S = -\left(\lambda^2 \log\frac{1}{\lambda^2}\right)\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{n^\prime \not\in I} \frac{\left|\bra{\alpha_{n}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_{n^\prime}^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}} \right)+ \Od{\lambda^2}.
 \end{equation}
 
 %Let us begin by computing the first term. By (\ref{eq.rho2red}) we get
@@ -458,7 +472,7 @@ Now, in the second term with the double sum, for every term \(\frac{\left|\bra{\
 
 Putting in (\ref{eq.rho1red}) and (\ref{eq.rho2red}),
 \begin{align}\label{eq.entropyresultwithrho2}
-\Delta S = \frac{1}{\hbar^2}&\lambda^2 \log\frac{1}{\lambda^2}\sum_{n \in I} \Bigg( \\
+\Delta S = \frac{1}{\hbar^2}&\left(\lambda^2 \log\frac{1}{\lambda^2}\right)\sum_{n \in I} \Bigg( \\
 & \sum_m\int_{t_0}^t \int_{t_0}^{t^\prime} \bbra{n}{m} \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}_0 + \op{\rho}_0\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right) \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
 -& \sum_m\int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
 -& \sum_{n^\prime \not \in I} \frac{1}{\;\overline{\sigma_n^{(0)}}\;} \left|\sum_m\int_{t_0}^t \bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n^\prime}{m}\;dt^\prime \right|^2
@@ -532,7 +546,7 @@ Meanwhile, the third term in (\ref{eq.entropyresultwithrho2}) is
 
 Putting this all back into (\ref{eq.entropyresultwithrho2}), we obtain the rather interesting result that
 \begin{align}\label{eq.Sredresult.separable}
-\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \Bigg(& \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
+\Delta S =\frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \Bigg(& \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
 &- \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
  \bket{n^\prime}{m}\;dt^\prime \right|^2\Bigg) + \Od{\lambda^2}. \nonumber
 \end{align}
@@ -556,14 +570,14 @@ We can apply the triangle inequality to (\ref{eq.Sredresult.separable}) to obtai
 \end{align*}
 Applying this to (\ref{eq.Sredresult.separable}), we see at order \(\lambda^2 \log \frac{1}{\lambda^2}\) that
 \[
-\Delta S \geq \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2.
+\Delta S \geq \frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2.
 \]
 This result confirms that the change in entropy for a separable state is non-negative.
 
 We can also obtain an upper bound for (\ref{eq.Sredresult.separable}) by keeping only the first term. Then, at order \(\lambda^2 \log \frac{1}{\lambda^2}\),
 \begin{align}\label{eq.dSbounds}
-\frac{1}{\hbar^2}\lambda^2 &\log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
-&\leq \;\;\Delta S \;\;\leq\;\; \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2. \nonumber
+\frac{1}{\hbar^2}&\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
+&\leq \;\;\Delta S \;\;\leq\;\; \frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2. \nonumber
 \end{align}
 Interestingly, the only difference between the upper bound and the lower bound is whether we include the terms where \(m^\prime = m\) in the sum.
 
@@ -571,7 +585,7 @@ Interestingly, the only difference between the upper bound and the lower bound i
 
 If the initial state is pure and separable, let \(\bket{n}{m}\) be the initial state so that \(\op{\rho}_0 = \bket{n}{m}\bbra{n}{m}\). Then (\ref{eq.Sredresult.separable}) simplifies to
 \begin{equation}\label{eq.Sredresult.separablepure}
-\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n^\prime\neq n} \;\sum_{m^\prime\neq m} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 + \Od{\lambda^2}.
+\Delta S =\frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n^\prime\neq n} \;\sum_{m^\prime\neq m} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 + \Od{\lambda^2}.
 \end{equation}
 We observe a crucial exclusion principle: in our expression for entropy, we only have transition amplitudes where the state changes in both subsystems, never transition amplitudes for a change in only one subsystem. Furthermore, since this expression is symmetric with respect to \(n\) and \(m\), the change in subsystem entropy for \(\hilb_A\) is the same as the change in subsystem entropy for \(\hilb_B\).
 
