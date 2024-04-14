@@ -540,13 +540,6 @@ Assuming that these terms do not vanish, we see that the entropy grows proportio
 
 We also observe that this expression vanishes if \(\hilb_B\) has only a single possible state. This situation is equivalent to taking the entropy of the whole system rather than the subsystem entropy. We have thus shown that the entropy of the whole system is conserved (at the order of \(\lambda^2 \log\frac{1}{\lambda^2}\), for separable states).
 
-\subsubsubsection{Case of pure, separable initial state}
-
-If the initial state is pure and separable, let \(\bket{n}{m}\) be the initial state so that \(\op{\rho}_0 = \bket{n}{m}\bbra{n}{m}\). Then (\ref{eq.Sredresult.separable}) simplifies to
-\begin{equation}\label{eq.Sredresult.separablepure}
-\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n^\prime\neq n} \;\sum_{m^\prime\neq m} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 + \Od{\lambda^2}.
-\end{equation}
-We observe a crucial exclusion principle: in our expression for entropy, we only have transition amplitudes where the state changes in both subsystems, never transition amplitudes for a change in only one subsystem. Furthermore, since this expression is symmetric with respect to \(n\) and \(m\), the change in subsystem entropy for \(\hilb_A\) is the same as the change in subsystem entropy for \(\hilb_B\).
 
 \subsubsubsection{Upper and lower bounds for entropy growth}
 
@@ -562,22 +555,25 @@ We can apply the triangle inequality to (\ref{eq.Sredresult.separable}) to obtai
  \bket{n^\prime}{m}\;dt^\prime \right|^2.
 \end{align*}
 Applying this to (\ref{eq.Sredresult.separable}), we see at order \(\lambda^2 \log \frac{1}{\lambda^2}\) that
-\begin{equation}\label{eq.dSlowerbound}
+\[
 \Delta S \geq \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2.
-\end{equation}
-This result is profound for two reasons. First, it shows that the change in entropy for a separable state is non-negative. This matches our intuition. A separable state is an unentangled state---in this sense, it already has minimal entropy, so it seems natural that its entropy can only grow. Second, comparing (\ref{eq.dSlowerbound}) to (\ref{eq.Sredresult.separablepure}), we see that the lower bound (\ref{eq.dSlowerbound}) is exactly what we would expect if entropy was linear with respect to \(\op{\rho}\) (i.e., if we could compute entropy by the superposition principle). That is, we can rewrite (\ref{eq.dSlowerbound}) as
-\begin{equation}\label{eq.dSlowerbound.linearcomparison}
-\Delta S\, \bigg|_{\op{\rho}_0 = \sum_{n,m} \sigma_{n,m}^{(0)} \bket{n}{m}\bbra{n}{m}} \geq \sum_{n,m} \sigma_{n,m}^{(0)} \; \Delta S\, \bigg|_{\op{\rho}_0 = \bket{n}{m}\bbra{n}{m}}
-\end{equation}
-Evidently the non-linearity of entropy due to \(\log\) causes entropy to be higher than if it was linear. (\ref{eq.dSlowerbound}) is a kind of \emph{linear approximation} to the entropy. More precisely, it is an approximation assuming that linear superposition of the density operator applies for entropy.
-
-\emph{The second ``profound result'' above is actually erroneous, because the sum is over \(n^\prime \not\in I\), not \(n^\prime \neq n\). This discussion should be removed.}
+\]
+This result confirms that the change in entropy for a separable state is non-negative.
 
 We can also obtain an upper bound for (\ref{eq.Sredresult.separable}) by keeping only the first term. Then, at order \(\lambda^2 \log \frac{1}{\lambda^2}\),
 \begin{align}\label{eq.dSbounds}
 \frac{1}{\hbar^2}\lambda^2 &\log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
 &\leq \;\;\Delta S \;\;\leq\;\; \frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2. \nonumber
 \end{align}
+Interestingly, the only difference between the upper bound and the lower bound is whether we include the terms where \(m^\prime = m\) in the sum.
+
+\subsubsubsection{Case of pure, separable initial state}
+
+If the initial state is pure and separable, let \(\bket{n}{m}\) be the initial state so that \(\op{\rho}_0 = \bket{n}{m}\bbra{n}{m}\). Then (\ref{eq.Sredresult.separable}) simplifies to
+\begin{equation}\label{eq.Sredresult.separablepure}
+\Delta S =\frac{1}{\hbar^2}\lambda^2 \log\frac{1}{\lambda^2} \sum_{n^\prime\neq n} \;\sum_{m^\prime\neq m} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 + \Od{\lambda^2}.
+\end{equation}
+We observe a crucial exclusion principle: in our expression for entropy, we only have transition amplitudes where the state changes in both subsystems, never transition amplitudes for a change in only one subsystem. Furthermore, since this expression is symmetric with respect to \(n\) and \(m\), the change in subsystem entropy for \(\hilb_A\) is the same as the change in subsystem entropy for \(\hilb_B\).
 
 
 \section{Example: Interaction between Qubits}
