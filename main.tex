@@ -53,14 +53,18 @@
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\CC}{\mathbb{C}}
 
+% real and imaginary parts
 \renewcommand{\Im}{\operatorname{Im}}
 \renewcommand{\Re}{\operatorname{Re}}
 
 % use boldface instead of arrows for vectors
 %\renewcommand{\vec}{\mathbf}
 
-% order
+% big-O order
 \newcommand{\Od}[1]{\mathcal{O}{\left(#1\right)}}
+%\newcommand{\Od}[1]{O{\left(#1\right)}}
+% little-o order
+%\newcommand{\od}[1]{o{\left(#1\right)}}
 
 % bras and kets
 \newcommand{\bra}[1]{\left\langle#1\right|}
@@ -306,7 +310,9 @@ Define the \(\hilb_A\)-subsystem entropy to be \(S = -\operatorname{Tr} \overlin
 \overline{\op{\rho}} = \sum_n \overline{\sigma_n} \ket{\alpha_n}\bra{\alpha_n},
 \end{equation}
 where \(\{\ket{\alpha_n}\}\) is an orthonormal basis of \(\hilb_A\), then
-\[S = -\sum_n \overline{\sigma_n} \log \overline{\sigma_n}.\]
+\begin{equation}\label{eq.entropydefinition}
+S = -\sum_n \overline{\sigma_n} \log \overline{\sigma_n}.
+\end{equation}
 
 Now, looking at equation (\ref{eq.rhoevol}), we see that at some fixed time \(t\) we can form asymptotic expansions
 \begin{align*}
@@ -332,129 +338,69 @@ It will be useful to work in the basis \(\left\{\ket{\alpha_n^{(0)}}\otimes\ket{
 \[
 \bket{n}{m} = \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}.
 \]
-Let's write \(\op{\rho}_0\) in this basis. Take
-\[\tau_{n^\prime, m^\prime, \tilde{n}, \tilde{m}} = \bbra{n^\prime}{m^\prime} \op{\rho}_0 \bket{\tilde{n}}{\tilde{m}}\]
-so that
-\begin{equation}\label{eq.rho0.withtau}
-\op{\rho}_0 = \sum_{n^\prime, m^\prime, \tilde{n}, \tilde{m}} \tau_{n^\prime, m^\prime, \tilde{n}, \tilde{m}} \bket{n^\prime}{m^\prime} \bbra{\tilde{n}}{\tilde{m}}.
-\end{equation}
-Then
+Also let
 \[
-\overline{\op{\rho}}_0 = \sum_m \bra{\beta_m} \op{\rho}_0 \ket{\beta_m} = \sum_{n^\prime, \tilde{n}, m} \tau_{n^\prime, m, \tilde{n}, m} \ket{\alpha_{n^\prime}^{(0)}} \bra{\alpha_{\tilde{n}}^{(0)}}.
+I = \left\{n : \overline{\sigma_n^{(0)}} \neq 0\right\}.
 \]
-This should be diagonal with respect to \(n^\prime\) and \(\tilde{n}\); the off-diagonal terms must be zero. Thus
+
+We now compute the subsystem entropy at time \(t\). Let us examine the terms in (\ref{eq.entropydefinition}).
+If \(\sigma_{n}^{(0)} \neq 0\) (i.e. \(n \in I\)) then
 \begin{align*}
-\overline{\op{\rho}}_0 &= \sum_{n, m} \tau_{n, m, n, m} \ket{\alpha_{n}^{(0)}} \bra{\alpha_{n}^{(0)}} &
-&\text{and} &
-\overline{\sigma_n^{(0)}} &= \sum_{m} \tau_{n, m, n, m}.
+\overline{\sigma_n} \log \overline{\sigma_n}
+&= \left(\overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \lambda^2 \overline{\sigma_n^{(2)}} + \Od{\lambda^{3}}\right) \log \left(\overline{\sigma_n^{(0)}} \left(1 + \frac{\lambda \overline{\sigma_n^{(1)}}}{\overline{\sigma_n^{(0)}}}+ \frac{\lambda^2 \overline{\sigma_n^{(2)}}}{\overline{\sigma_n^{(0)}}} + \Od{\lambda^{3}}\right)\right) \\
+&= \left(\overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \lambda^2 \overline{\sigma_n^{(2)}}\right) \left(\log \overline{\sigma_n^{(0)}} + \frac{\lambda \overline{\sigma_n^{(1)}}}{\overline{\sigma_n^{(0)}}} + \frac{\lambda^2 \overline{\sigma_n^{(2)}}}{\overline{\sigma_n^{(0)}}}\right) + \Od{\lambda^{3}}\\
+&=  \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} + \lambda\, \overline{\sigma_n^{(1)}}+\lambda\, \overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}+ \lambda^2 \overline{\sigma_n^{(2)}}+ \lambda^2 \overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}} + \lambda^2\, \frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}+ \Od{\lambda^{3}}.
 \end{align*}
-
-
-
-We can now compute the change in entropy. We will consider several cases.
-
-\subsection{Case where all \(\overline{\sigma_n^{(0)}} \neq 0\)}\label{sec.all.sigma.nonzero}
-
-Let \(k\) be the first non-zero order for which some \(\overline{\sigma_n^{(k)}}\) does not vanish. Then
+On the other hand, if \(\sigma_{n}^{(0)} \neq 0\) (i.e. \(n \in I\)) but \(\overline{\sigma_n}\neq 0\), then \(\overline{\sigma_n^{(1)}} = 0\) since we have \(\bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n}{m}\) for all \(m\). Now, for each of these \(n\), we can let \(k_n\) be the lowest positive integer such that \(\overline{\sigma_n^{(k_n)}} \neq 0\). Then \(k_n \geq 2\) and
 \begin{align*}
-S &= -\sum_{n} \overline{\sigma_n} \log \overline{\sigma_n}\\
-&= - \sum_{n} \left(\overline{\sigma_n^{(0)}} + \lambda^k \overline{\sigma_n^{(k)}} + \Od{\lambda^{k+1}}\right) \log \left(\overline{\sigma_n^{(0)}} \left(1 + \frac{\lambda^k \overline{\sigma_n^{(k)}}}{\overline{\sigma_n^{(0)}}} + \Od{\lambda^{k+1}}\right)\right) \\
-&= - \sum_{n} \left(\overline{\sigma_n^{(0)}} + \lambda^k \overline{\sigma_n^{(k)}}\right) \left(\log \overline{\sigma_n^{(0)}} + \frac{\lambda^k \overline{\sigma_n^{(k)}}}{\overline{\sigma_n^{(0)}}}\right) + \Od{\lambda^{k+1}}\\
-&= - \sum_{n} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} - \lambda^k \sum_n \overline{\sigma_n^{(k)}} \left(1+ \log\overline{\sigma_n^{(0)}}\right) + \Od{\lambda^{k+1}}.
+\overline{\sigma_n} \log \overline{\sigma_n}
+&= \left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}} + \Od{\lambda^{k_n+1}}\right) \log\left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}}\left(1 + \Od{\lambda}\right)\right) \\
+&= \lambda^{k_n}\overline{\sigma_n^{(k_n)}} \log\left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}}\right)+ \Od{\lambda^{k_n+1}}\\
+&= \lambda^{2}\overline{\sigma_n^{(2)}} \log\left(\lambda^{2}\overline{\sigma_n^{(2)}}\right)+ \Od{\lambda^{3}\log\lambda^{3}} \\
+&= \left(\lambda^{2}\log\lambda^2\right)\overline{\sigma_n^{(2)}} + \lambda^{2}\overline{\sigma_n^{(2)}} \log\overline{\sigma_n^{(2)}}+ \Od{\lambda^{3}\log\lambda^{3}} \\
 \end{align*}
-Now, by \(\sum_n \overline{\sigma_n} = 1\) we should always have \(\sum_n \overline{\sigma_n^{(k)}} = 0\). Thus
-\[
-S = - \sum_{n} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} - \lambda^k \sum_n \overline{\sigma_n^{(k)}} \log\overline{\sigma_n^{(0)}} + \Od{\lambda^{k+1}}.
-\]
-The first term, \(- \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}}\), would be the entropy if \(\lambda=0\), that is, with no perturbation. Thus the change in entropy due to the perturbation is
-\begin{equation}
-\boxed{\Delta S = 
-\lambda^k \sum_n \overline{\sigma_n^{(k)}} \log\frac{1}{\;\overline{\sigma_n^{(0)}}\;} + \Od{\lambda^{k+1}}.}
-\end{equation}
+Putting this all into (\ref{eq.entropydefinition}),
+\begin{align*}
+S = -\sum_{n \in I} \overline{\sigma_n^{(0)}} &\log \overline{\sigma_n^{(0)}} - \lambda\, \sum_{n \in I}\overline{\sigma_n^{(1)}}-\lambda\, \sum_{n \in I}\overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}+ \left(\lambda^{2}\log\frac{1}{\lambda^2}\right)\sum_{n \not\in I}\overline{\sigma_n^{(2)}} \\&- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}} - \lambda^2 \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}- \sum_{n \not\in I}\lambda^{2}\overline{\sigma_n^{(2)}} \log\overline{\sigma_n^{(2)}}+ \Od{\lambda^{3}\log\lambda^{3}}.
+\end{align*}
+The first term, \(- \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}}\), would be the entropy if \(\lambda=0\), that is, with no perturbation. Also, since \(\sum_n \overline{\sigma_n} = 1\) we must have \(\sum_{n\in I} \overline{\sigma_n^{(1)}} = 0\). \emph{[Explanation needed.]} Thus the change in entropy due to the perturbation is
+\begin{align}\label{eq.deltaS.noassumptions}
+\Delta S = 
+-\lambda &\sum_{n \in I}\overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}+ \left(\lambda^{2}\log\frac{1}{\lambda^2}\right)\sum_{n \not\in I}\overline{\sigma_n^{(2)}} \\&+\lambda^2\left(- \sum_{n \in I}\overline{\sigma_n^{(2)}}- \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}}- \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}- \sum_{n \not\in I}\overline{\sigma_n^{(2)}} \log\overline{\sigma_n^{(2)}}\right)+ \Od{\lambda^{3}\log\lambda^{3}}.\nonumber
+\end{align}
 
 Recall our Hamiltonian \(\op{H} = \op{H}_0 + \lambda \op{V}\).
 If \(\op{H}_0 = \op{H}_0^A + \op{H}_0^B\), where \(\op{H}_0^A\) acts only on \(\hilb_A\) and \(\op{H}_0^B\) acts only on \(\hilb_B\), then \(\op{H}_0\) does not cause mixing between the two subsystems. In this case \(\Delta S\) is the change in entropy from time \(t_0\) to time \(t\).
 
 On the other hand, if \(\op{H}_0\) is not of this form, \(\op{H}_0\) might cause mixing between subsystems. Then there could be some zeroth-order change in entropy due to \(\op{H}_0\). In this case \(\Delta S\) is not the \emph{total} change in entropy from time \(t_0\) to time \(t\) but rather the change in entropy from time \(t_0\) to time \(t\) due to the perturbation \(\lambda \op{V}\).
 
-\subsection{Case where some \(\overline{\sigma_n^{(0)}} = 0\).}
+(\ref{eq.deltaS.noassumptions}) is a rather complicated expression. Let us consider some cases where it becomes simpler.
 
-Let \(k_n\) be the first non-zero order for which \(\overline{\sigma_n^{(k_n)}}\) does not vanish. For example, if \(\overline{\sigma_n^{(1)}} \neq 0\), then \(k_n = 1\). If \(\overline{\sigma_n^{(1)}} = 0\) but \(\overline{\sigma_n^{(2)}} \neq 0\), then \(k_n = 2\). Let \(k\) be the minimal \(k_n\). Now let
-\[
-I = \left\{n : \overline{\sigma_n^{(0)}} \neq 0\right\}.
-\]
-Then
-\begin{align*}
-S &= -\sum_{n \in I} \overline{\sigma_n} \log \overline{\sigma_n}-\sum_{n \not\in I} \overline{\sigma_n} \log \overline{\sigma_n} \\
-&= - \sum_{n \in I} \overline{\sigma_n} \log \left(\overline{\sigma_n^{(0)}} \left(1 + \Od{\lambda^{k}}\right)\right)  - \sum_{n \not\in I} \overline{\sigma_n} \log\left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}}\left(1 + \Od{\lambda}\right)\right) \\
-&= - \sum_{n \in I} \left(\overline{\sigma_n^{(0)}} + \Od{\lambda^{k_n}}\right) \left(\log \overline{\sigma_n^{(0)}}+\Od{\lambda^{k_n}}\right) - \sum_{n \not\in I} \overline{\sigma_n} \left(\log\lambda^{k_n}+\log\overline{\sigma_n^{(k_n)}}+ \Od{\lambda}\right) \\
-&= - \sum_{n \in I} \left(\overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} + \Od{\lambda^{k_n}}\right) - \sum_{n \not\in I} \left(\overline{\sigma_n}\log\lambda^{k_n} + \Od{\lambda^{k_n}}\right)\\
-&= - \sum_{n \in I} \left(\overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} + \Od{\lambda^{k}}\right) - \sum_{n \not\in I} \left(\overline{\sigma_n}\log\lambda^{k} + \Od{\lambda^{k}}\right)\\
-&= - \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} - \log\lambda^{k} \sum_{n \not\in I} \overline{\sigma_n} + \Od{\lambda^{k}}\\
-&= - \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} -\log\lambda^{k} \left(1 - \sum_{n \in I} \overline{\sigma_n}\right) + \Od{\lambda^k} \\
-&= - \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} -\log\lambda^{k} \left(1 - \sum_{n \in I} \overline{\sigma_n^{(0)}} - \sum_{n \in I} \lambda^k \overline{\sigma_n^{(k)}}\right) + \Od{\lambda^k} \\
-&= - \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} -\lambda^k\log\frac{1}{\lambda^{k}} \sum_{n \in I} \overline{\sigma_n^{(k)}} + \Od{\lambda^k}
-\end{align*}
-Here we used that \(\sum_n \overline{\sigma_n^{(0)}} = 1\).
-\emph{[The above should be checked. In particular, I need to figure out whether to use big-O or little-o notation.]}
-Now, the first term, \(- \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}}\), would be the entropy if \(\lambda=0\), that is, with no perturbation. Thus the change in entropy due to the perturbation is
-\begin{equation}\label{eq.deltaS}
-\boxed{\Delta S = -\left(\lambda^k\log\frac{1}{\lambda^{k}} \right)\sum_{n \in I} \overline{\sigma_n^{(k)}} + \Od{\lambda^k}.}
+\subsection{Case where the Hilbert space is already fully occupied}\label{sec.all.sigma.nonzero}
+
+Suppose that all \(n\) with \(\overline{\sigma_n} \neq 0\) have \(\overline{\sigma_n^{(0)}} \neq 0\).
+Then, at time \(t_0\), the system already occupies the accessible part of the Hilbert space \(\hilb_A\). It does not evolve into new states in our perturbative timeframe. (States with \(\overline{\sigma_n} = 0\) are occupied at neither \(t_0\) nor \(t\) and might as well have just been excluded from the Hilbert space. They will not matter for our entropy calculations.) The sum over \(n \not\in I\) does not contribute to entropy, so (\ref{eq.deltaS.noassumptions}) is replaced with
+\begin{equation}
+\Delta S = 
+-\lambda \sum_{n \in I}\overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}} - \lambda^2 \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}+ \Od{\lambda^{3}}.
 \end{equation}
+Here we used that \(\sum_{n}\overline{\sigma_n^{(2)}} = 0\) and we replaced the error term with the stronger statement we had for only \(n \in I\).
 
-As before, we recall our Hamiltonian \(\op{H} = \op{H}_0 + \lambda \op{V}\).
-If \(\op{H}_0 = \op{H}_0^A + \op{H}_0^B\), where \(\op{H}_0^A\) acts only on \(\hilb_A\) and \(\op{H}_0^B\) acts only on \(\hilb_B\), then \(\op{H}_0\) does not cause mixing between the two subsystems. In this case \(\Delta S\) is the change in entropy from time \(t_0\) to time \(t\).
+\subsection{Case where first-order corrections vanish}
 
-On the other hand, if \(\op{H}_0\) is not of this form, \(\op{H}_0\) might cause mixing between subsystems. Then there could be some zeroth-order change in entropy due to \(\op{H}_0\). In this case \(\Delta S\) is not the \emph{total} change in entropy from time \(t_0\) to time \(t\) but rather the change in entropy from time \(t_0\) to time \(t\) due to the perturbation \(\lambda \op{V}\).
-
-\subsubsection{Entropy does not decrease}
-
-Because the eigenvalues of \(\overline{\op{\rho}}\) add to one, the eigenvalue corrections of \(\overline{\op{\rho}}\) must add to zero at every non-zero order of \(\lambda\). In particular, \(\sum_{n \in I} \overline{\sigma_n^{(k)}} + \sum_{n \not \in I} \overline{\sigma_n^{(k)}} = 0\), so we can rewrite (\ref{eq.deltaS}) as
+Suppose that some \(n\) have \(\overline{\sigma_n^{(0)}} = 0\) and \(\overline{\sigma_n} \neq 0\). Suppose also that all \(\sigma_n^{(1)} = 0\). Then  (\ref{eq.deltaS.noassumptions}) becomes
 \begin{equation}\label{eq.deltaS.notinI}
-\Delta S = \left(\lambda^k \log \frac{1}{\lambda^k}\right) \sum_{n \not \in I} \overline{\sigma_n^{(k)}} + \Od{\lambda^k}.
+\Delta S = \left(\lambda^2\log\frac{1}{\lambda^{2}} \right)\sum_{n \not\in I} \overline{\sigma_n^{(2)}} + \Od{\lambda^2}.
 \end{equation}
-If \(n \not\in I\), then \(\overline{\sigma_n^{(0)}} = 0\) but \(\overline{\sigma_n}\geq 0\), so the leading perturbative correction to \(\overline{\sigma_n}\) must be non-negative. In particular, \(\overline{\sigma_n^{(k)}} \geq 0\) for all \(n \not\in I\). Therefore the entire sum (\ref{eq.deltaS.notinI}) is non-negative.
+If \(n \not\in I\), then \(\overline{\sigma_n^{(0)}} = 0\) but \(\overline{\sigma_n}\geq 0\), so the leading perturbative correction to \(\overline{\sigma_n}\) must be non-negative. In particular, \(\overline{\sigma_n^{(2)}} \geq 0\) for all \(n \not\in I\). Therefore the entire sum (\ref{eq.deltaS.notinI}) is non-negative.
 
-This shows that the {\bf subsystem entropy cannot decrease if \(\overline{\op{\rho}}\) has null eigenvalues for states that we can transition to}. If any eigenvalues of \(\overline{\op{\rho}}_0\) are zero for states with non-zero \(\overline{\sigma_n}\), then entropy will increase or remain constant over time (until the system evolves so that all eigenvalues are non-zero). As we will see in a later example, the converse is not true; if \(\overline{\op{\rho}}\) has only non-zero eigenvalues, entropy may decrease, increase, or remain constant.
+This shows that the {\bf subsystem entropy cannot decrease if the first-order corrections vanish, the second-order corrections don't vanish, and also \(\overline{\op{\rho}}\) has null eigenvalues for states that we can transition to}. In this case, the entropy will increase or remain constant over time (until the system evolves so that all eigenvalues are non-zero). As we will see in a later example, the converse is not true. If \(\overline{\op{\rho}}\) has only non-zero eigenvalues, entropy may decrease, increase, or remain constant.
 
-This may seem somewhat strange--after all, if \(\overline{\op{\rho}}\) has only non-zero eigenvalues, surely we can just add zero eigenvalues by expanding the Hilbert space! The newly added states will, however, be ``inaccessible'' and thus have \(\overline{\sigma_n}=0\). Thus these new states will not lead to entropy growth on the order of \(\lambda^k \log \frac{1}{\lambda^k}\); we will be in the case of section \ref{sec.all.sigma.nonzero}.
-
-At the beginning, we should have assumed that we choose the smallest possible Hilbert space so that all states \(\op{\rho}\) can evolve to are in the Hilbert space. Then all \(\overline{\sigma_n} > 0\) and so (\ref{eq.deltaS.notinI}) doesn't vanish.
-
-\subsubsection{Case where \(k=1\) (first order correction leads)}
-
-We can compute \(\overline{\sigma_n^{(1)}}\) by combining equations (\ref{eq.tipt.foval}) and (\ref{eq.rho1red}). We get
-\begin{equation}\label{eq.focor}
-\overline{\sigma_n^{(1)}} = -\frac{i}{\hbar} \sum_m\int_{t_0}^t \bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n}{m}\,dt^\prime.
+Now, since \(\sum_{n} \overline{\sigma_n^{(2)}}= 0\) we can rewrite (\ref{eq.deltaS.notinI}) as
+\begin{equation}\label{eq.deltaS}
+\Delta S = -\left(\lambda^2\log\frac{1}{\lambda^{2}} \right)\sum_{n \in I} \overline{\sigma_n^{(2)}} + \Od{\lambda^2}.
 \end{equation}
-If this is nonzero for some \(n\), (\ref{eq.deltaS}) gives
-\[
-\Delta S = \left(-\frac{i}{\hbar}\lambda\log\frac{1}{\lambda}\right) \sum_{n \in I} \sum_m \int_{t_0}^t \bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n}{m}\,dt^\prime + \Od{\lambda}.
-\]
-Putting in (\ref{eq.rho0.withtau}),
-\begin{align*}
-\Delta S &= \left(-\frac{i}{\hbar}\lambda\log\frac{1}{\lambda}\right) \int_{t_0}^t \sum_{n \in I} \;\sum_{m,n^\prime, m^\prime, \tilde{n}, \tilde{m}}\;\Bigg(\braket{\alpha_n^{(0)}}{\alpha_{n^\prime}^{(0)}}\braket{\beta_m}{\beta_{m^\prime}} \bbra{\tilde{n}}{\tilde{m}} \op{H}_I\left(t^\prime\right) \bket{n}{m} \tau_{n^\prime, m^\prime, \tilde{n}, \tilde{m}}\\
-&\hspace{5em} - \bbra{n}{m} \op{H}_I\left(t^\prime\right) \bket{n^\prime}{m^\prime} \braket{\alpha_{\tilde{n}}^{(0)}}{\alpha_n^{(0)}}\braket{\beta_{\tilde{m}}}{\beta_{m}} \tau_{n^\prime, m^\prime, \tilde{n}, \tilde{m}}\Bigg) \,dt^\prime + \Od{\lambda} \\
-&= \left(\frac{i}{\hbar}\lambda\log\frac{1}{\lambda}\right) \int_{t_0}^t\Bigg( -\sum_{n \in I} \;\sum_{m,\tilde{n}, \tilde{m}}\; \bbra{\tilde{n}}{\tilde{m}} \op{H}_I\left(t^\prime\right) \bket{n}{m} \tau_{n, m, \tilde{n}, \tilde{m}}\\
-&\hspace{5em} + \sum_{n \in I} \;\sum_{m,\,n^\prime, m^\prime}\;\bbra{n}{m} \op{H}_I\left(t^\prime\right) \bket{n^\prime}{m^\prime} \tau_{n^\prime, m^\prime, {n}, {m}} \Bigg)\,dt^\prime + \Od{\lambda}.
-\end{align*}
-Since \(\op{\rho}_0\) is Hermitian, we have the property that \(\tau_{n,m,\tilde{n},\tilde{m}} = {\tau_{\tilde{n},\tilde{m},n,m}}^*\). Thus
-\[
-\Delta S = \left(\frac{i}{\hbar}\lambda\log\frac{1}{\lambda}\right) \sum_{n \in I} \;\sum_{m,\,n^\prime, m^\prime}\; \int_{t_0}^t\,2i\;\Im\left( \bbra{n}{m}\op{H}_I\left(t^\prime\right) \bket{n^\prime}{m^\prime} \tau_{n^\prime, m^\prime, {n}, {m}} \right)\,dt^\prime.
-\]
-Now, if \(n^\prime \in I\), for each term like \(\Im\left( \bbra{n}{m} \op{H}_I\left(t^\prime\right) \bket{n^\prime}{m^\prime} \tau_{n^\prime, m^\prime, {n}, {m}} \right)\) in the sum, there is an equal but oppositely signed term \(\Im\left( \bbra{n^\prime}{m^\prime} \op{H}_I\left(t^\prime\right) \bket{n}{m} \tau_{n, m, n^\prime, m^\prime} \right)\) in the sum. These terms add to zero. Hence we are left with
-\begin{equation}\label{eq.deltaS.fo}
-\boxed{\Delta S = \left(-\frac{2}{\hbar}\lambda\log\frac{1}{\lambda}\right) \sum_{n \in I}\sum_{n^\prime \not\in I} \sum_{m,m^\prime}\; \int_{t_0}^t\,\Im\left( \bbra{n}{m} \op{H}_I\left(t^\prime\right) \bket{n^\prime}{m^\prime} \tau_{n^\prime, m^\prime, {n}, {m}} \right)\,dt^\prime.}
-\end{equation}
-Fascinatingly, we end up with matrix elements that represent transition amplitudes from states with non-zero initial probability (\(n \in I\)) to states with zero initial probability (\(n^\prime \not\in I\)). The entropy growth seems dominated by transitions to these zero-initial-probability states.
-
-
-
-\subsubsection{Case where \(k=2\) (second order correction leads)}
-
-On the other hand, (\ref{eq.focor}) could be zero for all \(n\). Then we turn to the second order correction. Let us assume that \(\overline{\sigma_n^{(2)}} \neq 0\) for some \(n\), that is, \(k=2\).
-
-Substituting (\ref{eq.tipt.soval}) into (\ref{eq.deltaS}),
+Substituting in (\ref{eq.tipt.soval}),
 \[
 \Delta S = -\left(\lambda^2 \log\frac{1}{\lambda^2}\right)\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{{n^\prime} \not\in D_n} \frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}} \right)+ \Od{\lambda^2}.
 \]
@@ -462,13 +408,6 @@ Now, in the second term with the double sum, for every term \(\frac{\left|\bra{\
 \begin{equation}\label{eq.deltaSso.intermediate}
 \Delta S = -\left(\lambda^2 \log\frac{1}{\lambda^2}\right)\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{n^\prime \not\in I} \frac{\left|\bra{\alpha_{n}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_{n^\prime}^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}} \right)+ \Od{\lambda^2}.
 \end{equation}
-
-%Let us begin by computing the first term. By (\ref{eq.rho2red}) we get
-%\begin{align}\label{eq.sointermediate2}
-%\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} = &\sum_{n \in I}  \sum_m\int_{t_0}^t \int_{t_0}^{t^\prime} \bbra{n}{m} \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}_0 + \op{\rho}_0\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right) \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
-%&- \sum_{n \in I}\sum_m\int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\bket{n}{m}\,dt^{\prime\prime}\,dt^\prime.
-%\end{align}
-
 
 Putting in (\ref{eq.rho1red}) and (\ref{eq.rho2red}),
 \begin{align}\label{eq.entropyresultwithrho2}
@@ -500,8 +439,6 @@ Now, if we fix a time \(t\), there should be some basis \(\{\ket{\alpha_n}\}\) o
 \overline{\op{\rho}}(t) = \sum_n \overline{\sigma_n} \ket{\alpha_n}\bra{\alpha_n}.
 \]
 The eigenstate/eigenvalue decomposition of an operator is unique up to relabeling. Therefore, comparing our equations to (\ref{eq.redrhodef}) and (\ref{eq.rho0red}), we see that our above analysis must hold with the notation unchanged. Indeed, now
-\[\tau_{n^\prime, m^\prime, \tilde{n}, \tilde{m}} = \delta_{n^\prime, \tilde{n}}\;\delta_{m^\prime,\tilde{m}}\;\;\sigma_{n^\prime,m^\prime}^{(0)}\]
-and
 \begin{equation}
 \label{eq.rho0full}
 \op{\rho}_0 = \sum_{n,m} \sigma_{n,m}^{(0)} \bket{n}{m}\bbra{n}{m}.
@@ -515,7 +452,7 @@ We have
 \\&=
  \bbra{n}{m} \op{\rho}_0 \;\op{H}_I(t^\prime) \bket{n}{m} 
 \end{align*}
-so the first-order eigenvalue correction (\ref{eq.focor}) vanishes. We will assume that the second-order eigenvalue correction \(\overline{\sigma_n^{(2)}}\) does not vanish. Then we are in the \(k=2\) case so we consider (\ref{eq.entropyresultwithrho2}).
+so the first-order eigenvalue correction vanishes. \emph{[Explanation needed.]} We will assume that the second-order eigenvalue correction \(\overline{\sigma_n^{(2)}}\) does not vanish and turn to (\ref{eq.entropyresultwithrho2}).
 
 The first two terms in (\ref{eq.entropyresultwithrho2}) are
 \begin{align*}
