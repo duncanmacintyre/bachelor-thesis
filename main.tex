@@ -1,78 +1,279 @@
-\documentclass[11pt]{article}
-\usepackage{amsmath,amssymb,amsthm,epsf, graphics,enumerate,fancyhdr,marvosym,cancel}
-\usepackage[letterpaper, margin=0.9in]{geometry}
+%%
+%% This is file `ubcsample.tex',
+%% generated with the docstrip utility.
+%
+% The original source files were:
+%
+% ubcthesis.dtx  (with options: `ubcsampletex')
+%% 
+%% This file was generated from the ubcthesis package.
+%% --------------------------------------------------------------
+%% 
+%% Copyright (C) 2001
+%% Michael McNeil Forbes
+%% mforbes@alum.mit.edu
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.2
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% This program is distributed in the hope that it will be useful,
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%% LaTeX Project Public License for more details.
+%% 
+%% This program consists of the files ubcthesis.dtx, ubcthesis.ins, and
+%% the sample figures fig.eps and fig.fig.
+%% 
+%% This file may be modified and used as a base for your thesis without
+%% including the licence agreement as long as the content (i.e. textual
+%% body) of the file is completely rewritten. You must, however, change
+%% the name of the file.
+%% 
+%% This file may only be distributed together with a copy of this
+%% program. You may, however, distribute this program without generated
+%% files such as this one.
+%% 
 
-% ordered lists have letters instead of numbers
-\renewcommand\theenumi{\alph{enumi}}
-\renewcommand\labelenumi{(\theenumi)}
 
-% subsections have letters instead of numbers
-%\renewcommand{\thesubsection}{\thesection (\alph{subsection})}
+% This Sample thesis requires \LaTeX2e
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+%\ProvidesFile{ubcsample.tex}[2015/05/31 v1.72 ^^J
+% University of British Columbia Sample Thesis]
+% This is the \documentclass[]{} command.  The manditory argument
+% specifies the "flavour" of thesis (ubcthesis for UBC).  The
+% optional arguments (in []) specify options that affect how the
+% thesis is displayed.  Please see the ubcthesis documentation for
+% details about the options.
+\documentclass[msc,oneside]{ubcthesis}
+%\usepackage[pass,paperwidth=8.5in,paperheight=11in]{geometry}
+\usepackage[
+        paperwidth=8.5in,
+        paperheight=11in,
+        % other options: a3paper, a5paper, etc
+        left=3.2cm,
+        right=2.5cm,
+        top=2.5cm,
+        bottom=2.5cm,
+        % use vmargin=2cm to make vertical margins equal to 2cm.
+        % us  hmargin=3cm to make horizontal margins equal to 3cm.
+        % use margin=3cm to make all margins  equal to 3cm.
+        ]
+{geometry}
+%\pdfpageheight=11in
+%\pdfpagewidth=8.5in
+%
+% To compile this sample thesis, issue the following commands:
+% latex ubcsample
+% bibtex ubcsample
+% latex ubcsample
+% latex ubcsample
+% latex ubcsample
+%
+% To view use xdvi (on unix systems):
+% xdvi ubcsample.dvi
+%
+% To make a postscript file, use dvips:
+% dvips -o ubcsample.ps ubcsample.dvi
+%
+% To view the postscript file, use ghostview or gv (on unix systems):
+% gv ubcsample.ps
+%
+%************************************************
+% Optional packages.
+%
+% The use of these packages is optional, but they provide various
+% tools for more flexible formating.  The sample thesis uses these,
+% but if you remove the example code, you should be able to exclude
+% these packages.  Only standard packages have been described here;
+% they should be installed with any complete LaTeX instalation, but
+% if not, you can find them at the Comprehensive TeX Archive Network
+% (CTAN): http://www.ctan.org/
+%
 
-% use hyperref for links but don't draw the ugly boxes around links
-\usepackage[hidelinks]{hyperref}
+\usepackage{cancel}
 
 % package for boxing multi-line equations
 \usepackage{empheq}
 
-% add \subsubsubsection command
-% taken from https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection
-\usepackage{titlesec}
-\titleclass{\subsubsubsection}{straight}[\subsection]
-\newcounter{subsubsubsection}[subsubsection]
-\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
-\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
-\titleformat{\subsubsubsection}
-  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
-\titlespacing*{\subsubsubsection}
-{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-\makeatletter
-\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
-  {3.25ex \@plus1ex \@minus.2ex}%
-  {-1em}%
-  {\normalfont\normalsize\bfseries}}
-\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
-  {3.25ex \@plus1ex \@minus .2ex}%
-  {-1em}%
-  {\normalfont\normalsize\bfseries}}
-\def\toclevel@subsubsubsection{4}
-\def\toclevel@paragraph{5}
-\def\toclevel@paragraph{6}
-\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
-\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
-\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
-\makeatother
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
+%******** afterpage ***************************
+% This package allows you to issue commands at the end of the current
+% page.  A good use for this is to use the command
+% \afterpage{\clearpage} right after a figure.  This will cause the
+% figure to be inserted on the page following the current one (or on
+% the current page if it will fit) but will not break the page in the
+% middle.
+\usepackage{afterpage}
+\usepackage{xcolor}
+%******** float *********************************
+% This package allows you to customize the style of
+% "floats"---floating objects such as figures and tables.  In
+% addition, it allows you to define additional floating objects which
+% may be included in a list similar to that produces by \listoftables
+% and \listoffigures.  Common uses include introducing floats for
+% programs and other code bits in Compute Science and Chemical Schema.
+\usepackage{float}
+\usepackage{amsmath,bm}
+%******** tocloft *******************************
+% This package allows you to customize and define custom lists such
+% as a list of programs or Chemical Scheme.  Note: if you use the
+% subfigure package, you must specify that you do as an option here.
+% The title option uses the default formatting.  We do not use this
+% here as the default formatting is acceptable.  Use the float
+% package instead unless you need the extra formatting control
+% provided by tocloft.
+%\usepackage[subfigure, titles]{tocloft}
 
-% command to create underlined link to outside websites
-\newcommand{\hrefunderline}[2]{\underline{\href{#1}{#2}}}
+%******** alltt *********************************
+% The alltt package allows you to include files and have them
+% formatted in a verbatim fashion.  This is useful for including
+% source code from an additional file.
+%\usepackage{alltt}
 
-% symbols for common sets
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\NN}{\mathbb{N}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\QQ}{\mathbb{Q}}
-\newcommand{\CC}{\mathbb{C}}
+%******** listings ******************************
+% The listings package may be used to include chunks of source code
+% and has facilities for pretty-printing many languages.
+%\usepackage{listings}
 
-% real and imaginary parts
-\renewcommand{\Im}{\operatorname{Im}}
-\renewcommand{\Re}{\operatorname{Re}}
+%******** longtable *****************************
+% The longtable package allows you to define tables that span
+% multiple pages.
 
-% use boldface instead of arrows for vectors
-%\renewcommand{\vec}{\mathbf}
 
-% big-O order
+
+\usepackage{longtable}
+
+%******** graphics and graphicx *****************
+% This allows you to include encapsulated postscript files.  If you
+% don't have this, comment the \includegraphics{} line following the
+% comment "%includegraphics" later in this file.
+\usepackage{graphicx}
+
+%******** subfigure *****************************
+% The subfigure package allows you to include multiple figures and
+% captions within a single figure environment.
+%\usepackage{subfigure}
+
+%******** here **********************************
+% The here package gives you more control over the placement of
+% figures and tables.  In particular, you can specify the placement
+% "H" which means "Put the figure here" rather than [h] which means
+% "I would suggest that you put the figure here if you think it looks
+% good."
+%\usepackage{here}
+
+%******** pdflscape ********************************
+% This allows you to include landscape layout pages by using the
+% |landscape| environment.  The use of |pdflscape| is preferred over
+% the standard |lscape| package because it automatically rotates the
+% page in the pdf file for easier reading.  (Thanks to Joseph Shea
+% for pointing this out.)
+\usepackage{pdflscape}
+
+%******** natbib ********************************
+% This is a very nice package for bibliographies.  It includes options
+% for sorting and compressing bibliographic entries.
+\usepackage[numbers,sort&compress]{natbib}
+%\usepackage{natbib}   % omit 'round' option if you prefer square brackets
+
+%\usepackage{hyperref}
+\usepackage[unicode=true,
+  colorlinks=true,
+  linktocpage,
+  linkbordercolor={0.5 0.5 1},
+  citebordercolor={0.5 1 0.5},
+  linkcolor=blue]{hyperref}
+
+
+\usepackage[nameinlink]{cleveref}
+
+
+% for clever referencing, i.e. references equations as e.g.: eq. (1.1), particularly useful together with hyperref (which is automatically loaded by jcappub)
+
+%******** psfrag ******************************
+% This allows you to replace text in postscript pictures with formated
+% latex text.  This allows you to use math in graph labels
+% etc. Uncomment the psfrag lines following the "%psfrag" comment
+% later in this file if you don't have this package.  The replacements
+% will only be visible in the final postscript file: they will be
+% listed in the .dvi file but not performed.
+%\usepackage{psfrag}
+%\usepackage[margin=0.5in]{geometry}
+%******** hyperref *****************************
+% Please read the manual:
+% http://www.tug.org/applications/hyperref/manual.html
+%
+% This adds hyperlinks to your document: with the right viewers (later
+% versions of xdvi, acrobat with pdftex, latex2html etc.) this will
+% make your equation, figure, citation references etc. hyperlinks so
+% that you can click on them.  Also, your table of contents will be
+% able to take you to the appropriate sections.  In the viewers that
+% support this, the links often appear with an underscore.  This
+% underscore will not appear in printed versions.
+%
+% Note: if you do not use the hypertex option, then the dvips driver
+% may be loaded by default.  This will cause the entries in the list
+% of figures and list of tables to be on a single line because dvips
+% does not deal with hyperlinks on broken lines properly.
+%
+% NOTE: HYPERREF is sensitive to the ORDER in which it is LOADED.
+% For example, it must be loaded AFTER natbib but BEFORE newly
+% defined float environments.  See the README file with the hyperref
+% for some help with this.  If you have some very obscure errors, try
+% first disabling hyperref.  If that fixes the problem, try various
+% orderings.
+%
+% Note also that there is a bug with versions before 2003/11/30
+% v6.74m that cause the float package to not function correctly.
+% Please ensure you have a current version of this package.  A
+% warning will be issued if you leave the date below but do not have
+% a current version installed.
+%
+% Some notes on options: depending on how you build your files, you
+% may need to choose the appropriate option (such as [pdftex]) for the
+% backend driver (see the hyperref manual for a complete list).  Also,
+% the default here is to make links from the page numbers in the table
+% of contents and lists of figures etc.  There are other options:
+% excluding the [linktocpage] option will make the entire text a
+% hyperref, but for some backends will prevent the text from wrapping
+% which can look terrible.  There is a [breaklinks=true] option that
+% will be set if the backend supports (dvipdfm for example supports
+% it but does not work with psfrag.)
+%
+% Finally, there are many options for choosing the colours of the
+% links.  These will be included by default in future versions but
+% you should probably consider changing some now for the electronic
+% version of your thesis.
+%\usepackage[unicode=true,
+%  linktocpage,
+%  linkbordercolor={0.5 0.5 1},
+%  citebordercolor={0.5 1 0.5},
+%  linkcolor=blue]{hyperref}
+
+% If you would like to compile this sample thesis without the
+% hyperref package, then you will need to comment out the previous
+% \usepackage command and uncomment the following command which will
+% put the URL's in a typewriter font but not link them.
+%\newcommand\url[1]{\texttt{#1}}
+
+%%%%%%%%%% CUSTOM COMMANDS
+
+
+% order
 \newcommand{\Od}[1]{\mathcal{O}{\left(#1\right)}}
-%\newcommand{\Od}[1]{O{\left(#1\right)}}
-% little-o order
-%\newcommand{\od}[1]{o{\left(#1\right)}}
 
 % bras and kets
 \newcommand{\bra}[1]{\left\langle#1\right|}
 \newcommand{\ket}[1]{\left|#1\right\rangle}
 \newcommand{\braket}[2]{\left\langle#1|#2\right\rangle}
+
+% main basis used for bipartite system
+\newcommand{\bket}[2]{\ket{#1\;#2}}
+\newcommand{\bbra}[2]{\bra{#1\;#2}}
 
 % the Hilbert space
 \newcommand{\hilb}{\mathcal{H}}
@@ -80,657 +281,300 @@
 % quantum operators
 \newcommand{\op}[1]{\hat{#1}}
 
-% main basis used for bipartite system
-\newcommand{\bket}[2]{\ket{#1\;#2}}
-\newcommand{\bbra}[2]{\bra{#1\;#2}}
+% imaginary and real parts
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Re}}
 
-% for congruences
-\newcommand{\mmod}[1]{\;(\operatorname{mod} {#1})}
 
-% new theorem style with boldface title and italic content
-\newtheoremstyle{step}%            % Name
-  {}%                                     % Space above
-  {}%                                     % Space below
-  {\itshape}%                           % Body font
-  {}%                                     % Indent amount
-  {\itshape}%                          % Theorem head font
-  {:}%                                    % Punctuation after theorem head
-  { }%                                    % Space after theorem head, ' ', or \newline
-  {}%                                     % Theorem head spec (can be left empty, meaning `normal')
+%******** setspace *******************************
+% The setspace package allows you to manually set the spacing of the
+% file.  UBC may require 1.5 spacing for microfilming of theses.  In
+% this case you may obtain this by including this package and issuing
+% one of the following commands:
+%\usepackage{setspace}
+%\singlespacing
+%\onehalfspacing
+%\doublespacing
 
-% new theorem style for a gap in the notes
-\newtheoremstyle{gap}%            % Name
-  {}%                                     % Space above
-  {}%                                     % Space below
-  {\itshape}%                           % Body font
-  {}%                                     % Indent amount
-  {\itshape}%                          % Theorem head font
-  {!!!}%                                    % Punctuation after theorem head
-  {    }%                                    % Space after theorem head, ' ', or \newline
-  {}%                                     % Theorem head spec (can be left empty, meaning `normal')
+% These commands are optional.  The defaults are shown.  You only
+% need to include them if you need a different value
+\institution{The University Of British Columbia}
 
-\theoremstyle{theorem}
-\newtheorem{claim}{Claim}[section]
-\newtheorem*{claim*}{Claim}
-\newtheorem{lemma}[claim]{Lemma}
-\newtheorem*{lemma*}{Lemma}
-\newtheorem{fact}{Fact of Nature}
+% If you are at the Okanagan campus, then you should specify these
+% instead.
+%\faculty{The College of Graduate Studies}
+%\institutionaddress{Okanagan}
+\faculty{The Faculty of Science}
+\institutionaddress{Vancouver}
+\degreetitle{Bachelor of Science}
 
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
-\newtheorem*{notation}{Notation}
+% You can issue as many of these as you have...
+%\previousdegree{B.Sc., University of British Columbia, year}
+%\previousdegree{M.Sc., The University of British Columbia, 2022}
+%\previousdegree{Ph.D., Massachusetts Institute of Technology, 2005}
 
-\theoremstyle{step}
-\newtheorem{step}{Step}[subsection]
-\renewcommand{\thestep}{\arabic{step}}
+% You can override the option setting here.
+% \degreetitle{Jack of All Trades}
 
-\theoremstyle{gap}
-\newtheorem*{gap}{Gap}
+% These commands are required.
+\title{Entropy Growth in Quantum Mechanics}
+%\subtitle{With a Subtitle}
+\author{Duncan MacIntyre}
+%\copyrightyear{2000}
+\submitdate{\monthname\ \number\year} % The "\ " is required after
+                                      % \monthname to prevent the
+                                      % command from eating the space.
+\program{Combined Honours in Physics and Mathematics}
 
+% These commands are presently not required for UBC theses as the
+% advisor's name and title are not presently required anywhere.
+%\advisor{Ariel R.~Zhitnitsky}
+%\advisortitle{Professor of Physics}
+
+% One might want to override the format of the section and chapter
+% numbers.  This shows you how to do it.  Note that the current
+% format is acceptable for submission to the FoGS: If you wish to modify
+% these, you should check with the FoGS explicity. prior to making
+% the modifications.
+\renewcommand\thepart         {\Roman{part}}
+\renewcommand\thechapter      {\arabic{chapter}}
+\renewcommand\thesection      {\thechapter.\arabic{section}}
+\renewcommand\thesubsection   {\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\renewcommand\theparagraph    {\thesubsubsection.\arabic{paragraph}}
+\renewcommand\thesubparagraph {\theparagraph.\arabic{subparagraph}}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+%\newcommand{\arefe}[1]{{\textcolor{cyan}{#1}}}
+% Here is an example of a "Program" environment defined with the
+% "float" package.  The list of programs will be stored in the file
+% ubcsample.lop and the numbering will start with the chapter
+% number.  The style will be "ruled".
+\floatstyle{ruled}
+\newfloat{Program}{htbp}{lop}[chapter]
+
+% Here is the start of the document.
 \begin{document}
 
+%% This starts numbering in Roman numerals as required for the thesis
+%% style and is mandatory.
+\frontmatter
 
-\title{Notes on Entropy Change Over Time}
-\author{Duncan MacIntyre}
-\date{\today}
-\maketitle
-\tableofcontents
-\bigskip
-\newpage
+%%% The order of the following components should be preserved.  The order
+%%% listed here is the order currently required by FoGS:        \\
+%%% Title (Mandatory)                                           \\
+%%% Preface (Manditory if any collaborator contributions)       \\
+%%% Abstract (Mandatory)                                        \\
+%%% List of Contents, Tables, Figures, etc. (As appropriate)    \\
+%%% Acknowledgements (Optional)                                 \\
+%%% Dedication (Optional)                                       \\
 
-\section{Time-dependent perturbation theory}
+\maketitle                      %% Mandatory
 
-Suppose we have a Hamiltonian of the form \[\op{H} = \op{H}_0 + \lambda \op{V}(t)\]
-where \(\op{H}_0\) is a well-understood Hamiltonian that does not depend on time and \(\lambda \op{V}(t)\) is ``small''. For example, \(\op{H}_0\) might be the free particle Hamiltonian \(\op{H}_0 = \frac{m}{2} \nabla^2\). Our equation of motion is the Schr\"odinger equation
-\[i \hbar \frac{\partial}{\partial t} \ket{\Psi, t} = \left(\op{H}_0 + \lambda\op{V}(t)\right) \ket{\Psi, t}\]
-where \(\ket{\Psi, t}\) is the usual Schr\"odinger-picture state at time \(t\).
+\clearpage
 
-Let \(\op{U}(t_0, t) = e^{-i\op{H}_0(t-t_0)/\hbar}\). Then \(\op{U}(t_0, t)\) is the operator that evolves a state from time \(t_0\) to time \(t\) according to \(\op{H}_0\). We define the interaction-picture state to be
-\[\ket{\Psi_I, t} = \op{U}(t_0, t)^\dagger \ket{\Psi, t}\]
-so \(\ket{\Psi, t} = \op{U}(t_0, t) \ket{\Psi_I, t}\).
-Plugging this in to the Schr\"odinger equation,
-\begin{align*}
-i \hbar \frac{\partial}{\partial t} \op{U}(t_0, t)\ket{\Psi_I, t} &= \left(\op{H}_0 + \lambda \op{V}(t)\right) \op{U}(t_0, t)\ket{\Psi, t} \\
-i \hbar \left[\frac{\partial}{\partial t} e^{-i\op{H}_0(t-t_0)/\hbar}\right] \ket{\Psi_I, t} + i \hbar e^{-i\op{H}_0(t-t_0)/\hbar} \frac{\partial}{\partial t} \ket{\Psi_I, t} &= \op{H}_0 e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} + \lambda\op{V}(t) e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} \\
-\cancel{-i^2 \op{H}_0 e^{i\op{H}_0(t-t_0)/\hbar} \ket{\Psi_I, t}} + i \hbar e^{-i\op{H}_0(t-t_0)/\hbar} \frac{\partial}{\partial t} \ket{\Psi_I, t} &= \cancel{\op{H}_0 e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t}} + \lambda\op{V}(t) e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} \\
- i \hbar \frac{\partial}{\partial t} \ket{\Psi_I, t} &= e^{i\op{H}_0(t-t_0)/\hbar}\lambda\op{V}(t) e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} \\
- i \hbar \frac{\partial}{\partial t} \ket{\Psi_I, t} &= \lambda\op{H}_I(t)\ket{\Psi_I, t}
-\end{align*}
-where we define the interaction Hamiltonian to be
-\[\op{H}_I(t) = \op{U}(t_0, t)^\dagger \op{V}(t)\op{U}(t_0, t) = e^{i\op{H}_0(t-t_0)/\hbar}\op{V}(t) e^{-i\op{H}_0(t-t_0)/\hbar}.\]
+%%%THESIS APPROVAL PAGE - REQUIRED AS PART OF YOUR COMPLETED THESIS
 
-This sets up the interaction picture. We have rephrased our problem so that we can continue with quantum mechanics normally without having to worry about the time evolution due to \(\op{H}_0\).
+%%%%%%% UBC FoGPS Requires the following statements at the beginning of the thesis. There is a (separate) thesis approval form that has to be signed and dated by the same individuals listed here as approving the thesis. You will have to get ensure that your department submits that approval form before you will be able to create an account and upload your thesis onto ciRCle. 
+\noindent
+\emph{[This page should maybe be removed.]}
+The following individuals certify that they have read, and recommend to the Faculty of Science for acceptance, the thesis entitled:
 
-We now integrate both sides of our expression.
-\begin{align}
-\int_{t_0}^t \frac{\partial}{\partial t^\prime} \ket{\Psi_I, t^\prime} &= -\frac{i}{\hbar} \lambda \int_{t_0}^t \op{H}_I(t^\prime)\ket{\Psi_I, t^\prime} \,dt^\prime \nonumber\\
-\ket{\Psi_I, t} - \ket{\Psi_I, t_0} &= -\frac{i}{\hbar} \lambda \int_{t_0}^t \op{H}_I(t^\prime)\ket{\Psi_I, t^\prime} \,dt^\prime \nonumber\\
-\ket{\Psi_I, t} &= \ket{\Psi_I, t_0} - \frac{i}{\hbar} \lambda \int_{t_0}^t \op{H}_I(t^\prime)\ket{\Psi_I, t^\prime} \,dt^\prime \label{eq.intse}
-\end{align}
-This is called the integral form of the Schr\"odinger equation.
-
-We can now iteratively calculate perturbative approximations where we assume \(\op{H}_I(t)\) is small. The zero order approximation is simply
-\[\ket{\Psi_I, t} = \ket{\Psi_I, t_0} + \Od{\lambda}.\]
-Plugging this in for the state inside the integral in (\ref{eq.intse}), we get the first order approximation
-\begin{equation}\label{eq.firsttdpe}
-\ket{\Psi_I, t} = \ket{\Psi_I, t_0} - \frac{i}{\hbar} \lambda \int_{t_0}^t \op{H}_I(t^\prime)\ket{\Psi_I, t_0} \,dt^\prime + \Od{\lambda^2}.
-\end{equation}
-Plugging this in to (\ref{eq.intse}) again we get the second order approximation
-\begin{align}\nonumber
-\ket{\Psi_I, t} &= \ket{\Psi_I, t_0} - \frac{i}{\hbar} \lambda \int_{t_0}^t \op{H}_I(t^\prime)\left[\ket{\Psi_I, t_0} - \frac{i}{\hbar} \lambda \int_{t_0}^{t^\prime} \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\right] \,dt^\prime + \Od{\lambda^3} \\
-&= \ket{\Psi_I, t_0} - \frac{i}{\hbar}\lambda \int_{t_0}^t \op{H}_I (t^\prime) \ket{\Psi_I, t_0}\,dt^\prime - \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \op{H}_I(t^\prime) \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\,dt^\prime + \Od{\lambda^3}.
-\label{eq.secondtdpe}\end{align}
-In general, we can keep going to achieve higher order approximations. For us, however, the second order approximation (\ref{eq.secondtdpe}) is enough.
+\bigskip\noindent
+\textbf{Entropy Growth in Quantum Mechanics}
 
 
-\section{Time evolution of the density operator}
 
-We now consider mixed states. We will need to describe the system by the density operator \(\op{\rho}(t)\). Let's derive the time evolution of \(\op{\rho}(t)\) in second order perturbation theory based on (\ref{eq.secondtdpe}).
+\bigskip\noindent
+submitted by 
+\textbf{Duncan MacIntyre}
+in partial fulfillment of the requirements for
+the degree of 
+\textbf{Combined Honours}
+\bigskip\noindent
+in	\textbf{Physics and Mathematics}
 
-Suppose at time \(t_0\) we have a statistical ensemble of interaction-picture states \(\ket{{\psi_I}_n, t_0}\) each with probability \(P_n\). Then
-\[\op{\rho}(t_0) = \sum_n P_n \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0}.\]
-At time \(t\) states will have evolved according to (\ref{eq.secondtdpe}), so
-\[\op{\rho}(t) = \sum_n P_n \ket{{\Psi_I}_n, t}\bra{{\Psi_I}_n, t}.\]
-From (\ref{eq.secondtdpe}) we have
-\begin{align*}
-\ket{{\Psi_I}_n, t} &= \ket{\Psi_I, t_0} -\frac{i}{\hbar}\lambda\int_{t_0}^t \op{H}_I (t^\prime) \ket{\Psi_I, t_0}\,dt^\prime - \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \op{H}_I(t^\prime) \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\,dt^\prime + \Od{\lambda^3} \\
-\bra{{\Psi_I}_n, t} &= \bra{\Psi_I, t_0} -\frac{i}{\hbar}\lambda\int_{t_0}^t \bra{\Psi_I, t_0}{\op{H}_I} (t^\prime)\,dt^\prime - \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \bra{\Psi_I, t_0} {\op{H}_I}(t^{\prime\prime}){\op{H}_I}(t^\prime)\,dt^{\prime\prime}\,dt^\prime + \Od{\lambda^3}
-\end{align*}
-so
-\begin{align*}
-\ket{{\Psi_I}_n, t} \bra{{\Psi_I}_n, t} \;\;=\;\;& \ket{{\Psi_I}_n, t_0} \bra{{\Psi_I}_n, t_0} 
-\;\;-\;\;\frac{i}{\hbar}\lambda \int_{t_0}^t \left(\op{H}(t^\prime)\ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} - \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I (t^\prime)\right) \,dt^\prime \\
-& -\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} +\;\; \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I(t^{\prime\prime}) \op{H}_I(t^\prime)\right)\,dt^{\prime\prime}\,dt^\prime \\
-&+\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime  \;\;+\;\; \Od{\lambda^3}.
-\end{align*}
-Then
-\begin{align}
-\label{eq.rhoevol}
-\op{\rho}(t) \;\;=\;\;& \op{\rho}\left(t_0\right)
-\;\;-\;\;\frac{i}{\hbar}\lambda \int_{t_0}^t \left[\op{H}(t^\prime),\; \op{\rho}(t_0) \right] \,dt^\prime \\
-& -\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}(t_0) + \op{\rho}(t_0)\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right)\,dt^{\prime\prime}\,dt^\prime \nonumber\\
-&+\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \op{\rho}(t_0) \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime \;\;+\;\; \Od{\lambda^3}\nonumber.
-\end{align}
 
+\bigskip\noindent
+%\textbf{[Include titles, departments, and universities, or titles and organizations. Remember to remove ALL material in square brackets [  ] before adding the page to your thesis.] Modify the examining committee to adapt to your case.}
+
+\bigskip\noindent
+\textbf{Examining Committee:}
+
+\bigskip\noindent
+Supervisor: Gordon Semenoff
+
+%\bigskip\noindent
+%Co-supervisor: \hrulefill
+
+%\bigskip\noindent
+%Supervisory Committee Member: \hrulefill
+
+\bigskip\noindent
+Additional Examiner: Panos Betzios
+
+%\bigskip\noindent
+%Additional Supervisory Committee Members: 
+
+%\bigskip\noindent
+%Supervisory Committee Member:\hrulefill
+
+
+
+
+
+
+
+\clearpage
+\begin{abstract}                %% Mandatory -  maximum 350 words
+  Write the abstract last! Maximum 350 words.
+
+\end{abstract}
+
+\chapter{Lay Summary}
+
+%[Required, Maximum 150 words]
+
+%This is a simple summary of your thesis, written so that members of the public will get some idea about what you have done.
+
+%Full-sky simulations of the foreground radiation of the cosmic microwave background are computationally expensive and it is challenging to measure if they can replicate the same statistical properties as the real data. 
+%In this thesis, I advocate for the use of a method called the ``hierarchical wavelet coefficients" for characterizing non-Gaussianities in a spherical field. This method is also known as the ``wavelet scattering transform" method and so far it has been mostly used for analysing flat (cutsky) maps. I demonstrate that the full-sky implementation introduced in this thesis is also capable of characterizing non-Gaussianities using a small set of coefficients.  
+
+%The algorithm for this method is based on the  \textsc{Healpy} package. 
+
+%I demonstrate that we can check the non-Gaussianity in simulated maps. I propose that this method can potentially serve as a tool for measuring and controlling the amount of non-Gaussianity in future simulations. 
+[Required, Maximum 150 words]
+
+This is a simple summary of your thesis, written so that members of the public will get some idea about what you have done. 
+
+%\chapter{Preface}
+%% Manditory if any of the conditions are met
+%
+%You must include a preface if any part of your research was partly or
+%wholly published in articles, was part of a collaboration, or required
+%the approval of UBC Research Ethics Boards.
+%
+%The Preface must include the following:
+%
+%\begin{itemize}
+%\item A statement indicating the relative contributions of all
+%  collaborators and co-authors of publications (if any), emphasizing
+%  details of your contribution, and stating the proportion of research
+%  and writing conducted by you.
+%\item A list of any publications arising from work presented in the
+%  dissertation, and the chapter(s) in which the work is located.
+%\item The name of the particular UBC Research Ethics Board, and the
+%  Certificate Number(s) of the Ethics Certificate(s) obtained, if
+%  ethics approval was required for the research.
+%\end{itemize}
+%
+%Thats's what I wrote:
+%
+%The content of this thesis is original unpublished work by the author. The idea for this study came about through discussions with author's supervisor, Dr. supervisor. All necessary python scripts, as well as the resulting plots and data were created by the author. Individual techniques and methods used but not developed by the author have been cited where appropriate.
+%
+
+\tableofcontents %% Mandatory
+%\listoftables                   %% Mandatory if thesis has tables
+\listoffigures                  %% Mandatory if thesis has figures
+%\listof{Program}{List of Programs} %% Optional
+%% Any other lists should come here, i.e.
+%% Abbreviation schemes, definitions, lists of formulae, list of
+%% schemes, glossary, list of symbols etc.
+
+\chapter{Acknowledgements}      %% Optional
+I would like to thank Gordon Semenoff for being a superb supervisor. I have learned much from him.
+
+The general approach taken in this thesis was his suggestion and subsequent work benefitted much from his guidance and advice.
+
+%\chapter{Dedication} %% Optional
+%The dedication is usually quite short, and is a personal rather than
+%an academic recognition.  The \emph{Dedication} does not have to be
+%titled, but it must appear in the table of contents.  If you want to
+%skip the chapter title but still enter it into the Table of Contents,
+%use this command \verb|\chapter[Dedication]{}|.
+
+%Note that this section is the last of the preliminary pages (with
+%lowercase Roman numeral page numbers).  It must be placed
+%\emph{before} the \verb|\mainmatter| command.  After that, Arabic
+%numbered pages will begin.
+
+% Any other unusual prefactory material should come here before the
+% main body.
+
+% Now regular page numbering begins.
+\mainmatter
+
+% Parts are the largest structural units, but are optional.
+%\part{Thesis}
+
+% Chapters are the next main unit.
+%\chapter{Contents}
+%\input{fehrest}
+
+\chapter{Introduction}\label{ch.intro}
+\input{Introduction/INTRO}
+\chapter{What is Entropy?}\label{ch.whatisentropy}
+\input{"What is Entropy/WIE_whatisentropy"}
+\chapter{Theoretical Tools}\label{ch.theory}
+\section{Time-dependent perturbation theory in the interaction picture}
+\input{"Theoretical Background/BKG_tdpt_density_operator"}
 \section{Eigenvalue corrections from perturbation theory}
-
-The goal of this section is to compute the second-order perturbative corrections to the eigenvalues of an operator. We use the approach known as time-independent perturbation theory.
-
-Suppose \(\op{\rho}\) is an operator with eigenstates \(\ket{\Psi_n}\) and eigenvalues \(\sigma_n\). Suppose we have the asymptotic expansions
-\begin{align*}
-\op{\rho} &= \op{\rho}_0 + \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \\
-\ket{\Psi_n} &= \ket{\Psi_n^{(0)}} + \lambda \ket{\Psi_n^{(1)}} + \lambda^2 \ket{\Psi_n^{(2)}} + \Od{\lambda^3} \\
-\sigma_n &= \sigma_n^{(0)} + \lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3}
-\end{align*}
-where \(\left\{\ket{\Psi_n^{(0)}}\right\}\) is an orthonormal basis for the Hilbert space.
-
-We have \(\op{\rho} \ket{\Psi_n} = \sigma_n \ket{\Psi_n}\). In the zeroth order of \(\lambda\) this gives \(\op{\rho}_0 \ket{\Psi_n^{(0)}} = \sigma_n^{(0)} \ket{\Psi_n^{(0)}}\), that is, \(\ket{\Psi_n^{(0)}}\) is an eigenstate of \(\op{\rho}_0\) with eigenvalue \(\sigma_n^{(0)}\).
-
-Now, we have
-\begin{align*}
-\sigma_n \ket{\Psi_n} &= \op{\rho}\ket{\Psi_n}\\
-\left(\sigma_n^{(0)} - \sigma_m^{(0)} + \lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3} \right)\braket{\Psi_m^{(0)}}{\Psi_n} &=\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n} \\
-\braket{\Psi_m^{(0)}}{\Psi_n} &=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)} + \lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3}}.
-\end{align*}
-We will next proceed to get rid of the denominator by using the Taylor expansion \(\frac{1}{1+x} = 1-x +\Od{x^2}\).
-
-Let \(D_n\) be the indices degenerate with \(n\). That is, let \(D_n = \{m : \sigma_m^{(0)} = \sigma_n^{(0)}\}\).
-Consider the case where \(m \in D_n\). Let \(\delta\) be a small real number. In the limit as \(\delta \to 0\),
-\begin{align*}
-\braket{\Psi_m^{(0)}}{\Psi_n} &=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n}}{\lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3} + \lambda\delta} \\
-&=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n}}{\lambda \left(\sigma_n^{(1)}+ \delta\right)\left(1 + \lambda \frac{\sigma_n^{(2)}}{\sigma_n^{(1)}+\delta} + \Od{\lambda^2}\right) } \\
-&=\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 + \lambda \op{\rho}_2 + \Od{\lambda^2} \ket{\Psi_n}}{\sigma_n^{(1)}+ \delta}\left(1 - \lambda \frac{\sigma_n^{(2)}}{\sigma_n^{(1)}+\delta} + \Od{\lambda^2}\right) \\
-&= \frac{\bra{\Psi_m^{(0)}} \left(\op{\rho}_1 + \lambda \op{\rho}_2 + \Od{\lambda^2} \right)\left(\ket{\Psi_n^{(0)}} + \lambda \ket{\Psi_n^{(1)}} + \Od{\lambda^2}\right)}{\sigma_n^{(1)}+\delta}
-\left(1 - \lambda \frac{\sigma_n^{(2)}}{\sigma_n^{(1)}+\delta} + \Od{\lambda^2}\right) \\
-&=\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \lambda \left[\frac{\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \frac{\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(1)}}}{\sigma_n^{(1)} + \delta} - \frac{\sigma_n^{(2)}\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\left(\sigma_n^{(1)} + \delta\right)^2}\right] + \Od{\lambda^2}
-\end{align*}
-(The \(\delta\) ensured that we did not divide by zero if \(\sigma_n^{(1)}=0\).) Now consider the case where \(m \not\in D_n\). Then
-\begin{align*}
-\braket{\Psi_m^{(0)}}{\Psi_n} &=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \Od{\lambda^2} \ket{\Psi_n}}{\left(\sigma_n^{(0)} - \sigma_m^{(0)}\right)\left(1+\Od{\lambda}\right)} \\
-&=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \Od{\lambda^2} \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)}}\left(1 + \Od{\lambda}\right) \\
-&= \lambda\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)}} + \Od{\lambda^2}.
-\end{align*}
-Putting this all together,
-\begin{align}\label{eq.tiptmaineq}
-\ket{\Psi_n} &= \sum_{m \in D_n} \ket{\Psi_m^{(0)}} \braket{\Psi_m^{(0)}}{\Psi_n} + \sum_{m \not\in D_n} \ket{\Psi_m^{(0)}} \braket{\Psi_m^{(0)}}{\Psi_n} \\
-&= \sum_{m \in D_n} \ket{\Psi_m^{(0)}} \lim_{\delta\to 0} \frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta}
-\nonumber\\&\hspace{1.5em}+ \lambda\;\;
-\Biggl(\;\sum_{m \in D_n} \ket{\Psi_m^{(0)}} \lim_{\delta \to 0}\left[\frac{\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \frac{\bra{\Psi_m^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}}}{\sigma_n^{(1)} + \delta} - \frac{\sigma_n^{(2)}\bra{\Psi_m^{(0)}}\op{\rho}_0\ket{\Psi_n^{(0)}}}{\left(\sigma_n^{(1)} + \delta\right)^2}\right] 
-\nonumber\\&\hspace{6em}+ \sum_{m \not\in D_n} \ket{\Psi_m^{(0)}}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)}}
-\;\Biggr)
-\nonumber\\&\hspace{1.5em}+ \Od{\lambda^2}\nonumber
-\end{align}
-
-In the zeroth order of \(\lambda\), equation (\ref{eq.tiptmaineq}) gives
-\[
-\ket{\Psi_n^{(0)}} = \sum_{m \in D_n} \ket{\Psi_m^{(0)}} \lim_{\delta\to0}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta}.
-\]
-Multiplying by \(\bra{\Psi_n^{(0)}}\) we get
-\begin{equation}\label{eq.tipt.foval}
-\boxed{\sigma_n^{(1)} = \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_n^{(0)}}.}
-\end{equation}
-If we instead multiply by \(\bra{\Psi_k^{(0)}}\) where \(k \in D_n\) but \(k \neq n\) we get
-\begin{equation}\label{eq.tipt.fodiag}
-\boxed{0 = \bra{\Psi_k^{(0)}}\op{\rho}_1\ket{\Psi_n^{(0)}}, \hspace{3em} k \in D_n,\hspace{3em} m \neq n.}
-\end{equation}
-In other words, the matrix given by \(\bra{\Psi_k^{(0)}}\op{\rho}_1\ket{\Psi_j^{(0)}}\) is diagonal on \(k,j\in D_n\), for any \(n\).
-
-In the first order of \(\lambda\), equation (\ref{eq.tiptmaineq}) says
-\[
-\hspace{-2.5em}
-\ket{\Psi_n^{(1)}} = \sum_{m \in D_n} \ket{\Psi_m^{(0)}} \lim_{\delta \to 0}\left[\frac{\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \frac{\bra{\Psi_m^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}}}{\sigma_n^{(1)} + \delta} - \frac{\sigma_n^{(2)}\bra{\Psi_m^{(0)}}\op{\rho}_0\ket{\Psi_n^{(0)}}}{\left(\sigma_n^{(1)} + \delta\right)^2}\right] 
-+ \sum_{m \not\in D_n} \ket{\Psi_m^{(0)}}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)}}.
-\]
-Multiplying by \(\bra{\Psi_k^{(0)}}\) where \(k \not\in D_n\) gives
-\[
-\braket{\Psi_k^{(0)}}{\Psi_n^{(1)}} = \frac{\bra{\Psi_k^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(0)}-\sigma_k^{(0)}}.
-\]
-If we instead multiply by \(\bra{\Psi_n^{(0)}}\) we get
-\[
-0 = \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} = \lim_{\delta \to 0} \left[\frac{\bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \frac{\bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}}}{\sigma_n^{(1)} + \delta} - \frac{\sigma_n^{(2)}\left(\sigma_n^{(1)}+\delta\right)}{\left(\sigma_n^{(1)} + \delta\right)^2}\right]
-\]
-so
-\begin{align*}
-\hspace{-2em}\sigma_n^{(2)} &= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}} - \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}\\
-&= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \sum_{m \in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\braket{\Psi_m^{(0)}}{\Psi_n^{(1)}} + \sum_{m \not\in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\braket{\Psi_m^{(0)}}{\Psi_n^{(1)}} - \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}\\
-&= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \sigma_n^{(1)}\braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} +  \sum_{m \not\in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(0)}-\sigma_m^{(0)}}- \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}
-\end{align*}
-hence
-\begin{equation}\label{eq.tipt.soval}
-\boxed{\sigma_n^{(2)} = \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} +  \sum_{m \not\in D_n} \frac{\left|\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}\right|^2}{\sigma_n^{(0)}-\sigma_m^{(0)}}.}
-\end{equation}
+\input{"Theoretical Background/BKG_tipt_eigvals"}
+\chapter{Growth of Von Neumann Entropy due to a Perturbation}\label{ch.derivation}
+\input{"Derivation/DERIVATION"}
+\chapter{Examples}\label{ch.ex}
+\section{A Toy Example: Two Qubits}
+\input{"Examples/EX_toy"}
+\section{Scattering}
+\input{"Examples/EX_scattering"}
+\chapter{Conclusion}\label{ch.conclusion}
+\input{Conclusion/CONCL}
 
 
-\section{The change in Von Neumann entropy}
+%% This file is setup to use a bibtex file sample.bib and uses the
+%% plain style.  Other styles may be used depending on the conventions
+%% of your field of study.
+%%
+%%% Note: the bibliography must come before the appendices.
+% \bibliographystyle{JHEP}
+% \bibliographystyle{plainnat}
+\bibliographystyle{unsrt}
+\bibliography{references,refs}
+%\printbibliography  %[heading=none, keyword=OWN]
+%% Use this to reset the appendix counter.  Note that the FoGS
+%% requires that the word ``Appendices'' appear in the table of
+%% contents either before each appendix lable or as a division
+%% denoting the start of the appendices.  We take the latter option
+%% here.  This is ensured by making the \texttt{appendicestoc} option
+%% a default option to the UBC thesis class.
 
-Suppose we have a Hilbert space of the form \(\hilb = \hilb_A \otimes \hilb_B\). The \(\hilb_A\)-reduced density operator of a density operator \(\op{\rho}\) is defined to be
-\[\overline{\op{\rho}} = \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \op{\rho} \left(\cdot\otimes\ket{\beta_m}\right)\]
-where \(\{\ket{\beta_m}\}\) is any orthonormal basis for \(\hilb_B\). (One can verify that all choices of basis give the same \(\overline{\op{\rho}}\).)
-We can consider \(\overline{\op{\rho}}\) to act on the Hilbert space \(\hilb_A\).
+%%% If you only have one appendix, please uncomment the following line.
+% \renewcommand{\appendicesname}{Appendix}
+%\appendix
+%\chapter{First Appendix}
+%\input{Appendix1}
 
-Define the \(\hilb_A\)-subsystem entropy to be \(S = -\operatorname{Tr} \overline{\op{\rho}} \log \overline{\op{\rho}}\). If \(\overline{\op{\rho}}\) is diagonalized like
-\begin{equation}\label{eq.redrhodef}
-\overline{\op{\rho}} = \sum_n \overline{\sigma_n} \ket{\alpha_n}\bra{\alpha_n},
-\end{equation}
-where \(\{\ket{\alpha_n}\}\) is an orthonormal basis of \(\hilb_A\), then
-\begin{equation}\label{eq.entropydefinition}
-S = -\sum_n \overline{\sigma_n} \log \overline{\sigma_n}.
-\end{equation}
+%\chapter{Second Appendix}
+%Here is the second appendix.
 
-Now, looking at equation (\ref{eq.rhoevol}), we see that at some fixed time \(t\) we can form asymptotic expansions
-\begin{align*}
-\overline{\op{\rho}}(t) &= \overline{\op{\rho}}_0 + \lambda \overline{\op{\rho}}_1 + \lambda^2 \overline{\op{\rho}}_2 + \Od{\lambda^3} \\
-\ket{\alpha_n} &= \ket{\alpha_n^{(0)}} + \lambda \ket{\alpha_n^{(1)}} + \lambda^2 \ket{\alpha_n^{(2)}} + \Od{\lambda^3} \\
-\overline{\sigma_n} &= \overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \lambda^2 \overline{\sigma_n^{(2)}} + \Od{\lambda^3}
-\end{align*}
-by taking
-\begin{align}
-\nonumber\op{\rho}_0 &= \op{\rho}\left(t_0\right) \\
-\nonumber\overline{\op{\rho}}_0 &= \overline{\op{\rho}}\left(t_0\right) =  \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \op{\rho}_0 \left(\cdot\otimes\ket{\beta_m}\right) \\
-\label{eq.rho1red}\overline{\op{\rho}}_1 &= -\frac{i}{\hbar} \int_{t_0}^t \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right]\left(\cdot\otimes\ket{\beta_m}\right) \,dt^\prime\\
-\label{eq.rho2red}\overline{\op{\rho}}_2 &= - \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}_0 + \op{\rho}_0\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right)\left(\cdot\otimes\ket{\beta_m}\right)\,dt^{\prime\prime}\,dt^\prime \\
-\nonumber&\hspace{2em}+ \frac{1}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\left(\cdot\otimes\ket{\beta_m}\right)\,dt^{\prime\prime}\,dt^\prime.
-\end{align}
-From (\ref{eq.redrhodef}) we see that
-\begin{equation}\label{eq.rho0red}
-\overline{\op{\rho}}_0 = \sum_n \overline{\sigma_{n}^{(0)}} \ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}}.
-\end{equation}
-Therefore we can take \(\left\{\ket{\alpha_n^{(0)}}\right\}\) to be an orthonormal basis for \(\hilb_A\) and we must have \(\sum_n \overline{\sigma_n^{(0)}} = 1\).
+%% This changes the headings and chapter titles (no numbers for
+%% example).
+\backmatter
 
-It will be useful to work in the basis \(\left\{\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right\}\) of \(\hilb\). To simplify notation, let
-\[
-\bket{n}{m} = \ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}.
-\]
-Also let
-\[
-I = \left\{n : \overline{\sigma_n^{(0)}} \neq 0\right\}.
-\]
-
-We now compute the subsystem entropy at time \(t\). Let us examine the terms in (\ref{eq.entropydefinition}).
-If \(\sigma_{n}^{(0)} \neq 0\) (i.e. \(n \in I\)) then
-\begin{align*}
-\overline{\sigma_n} \log \overline{\sigma_n}
-&= \left(\overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \lambda^2 \overline{\sigma_n^{(2)}} + \Od{\lambda^{3}}\right) \log \left(\overline{\sigma_n^{(0)}} \left(1 + \frac{\lambda \overline{\sigma_n^{(1)}}}{\overline{\sigma_n^{(0)}}}+ \frac{\lambda^2 \overline{\sigma_n^{(2)}}}{\overline{\sigma_n^{(0)}}} + \Od{\lambda^{3}}\right)\right) \\
-&= \left(\overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \lambda^2 \overline{\sigma_n^{(2)}}\right) \left(\log \overline{\sigma_n^{(0)}} + \frac{\lambda \overline{\sigma_n^{(1)}}}{\overline{\sigma_n^{(0)}}} + \frac{\lambda^2 \overline{\sigma_n^{(2)}}}{\overline{\sigma_n^{(0)}}}\right) + \Od{\lambda^{3}}\\
-&=  \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} + \lambda\, \overline{\sigma_n^{(1)}}+\lambda\, \overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}+ \lambda^2 \overline{\sigma_n^{(2)}}+ \lambda^2 \overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}} + \lambda^2\, \frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}+ \Od{\lambda^{3}}.
-\end{align*}
-On the other hand, if \(\sigma_{n}^{(0)} \neq 0\) (i.e. \(n \in I\)) but \(\overline{\sigma_n}\neq 0\), then \(\overline{\sigma_n^{(1)}} = 0\) since we have \(\bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n}{m}\) for all \(m\). Now, for each of these \(n\), we can let \(k_n\) be the lowest positive integer such that \(\overline{\sigma_n^{(k_n)}} \neq 0\). Then \(k_n \geq 2\) and
-\begin{align*}
-\overline{\sigma_n} \log \overline{\sigma_n}
-&= \left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}} + \Od{\lambda^{k_n+1}}\right) \log\left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}}\left(1 + \Od{\lambda}\right)\right) \\
-&= \lambda^{k_n}\overline{\sigma_n^{(k_n)}} \log\left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}}\right)+ \Od{\lambda^{k_n+1}}\\
-&= \lambda^{2}\overline{\sigma_n^{(2)}} \log\left(\lambda^{2}\overline{\sigma_n^{(2)}}\right)+ \Od{\lambda^{3}\log\lambda^{3}} \\
-&= \left(\lambda^{2}\log\lambda^2\right)\overline{\sigma_n^{(2)}} + \lambda^{2}\overline{\sigma_n^{(2)}} \log\overline{\sigma_n^{(2)}}+ \Od{\lambda^{3}\log\lambda^{3}} \\
-\end{align*}
-Putting this all into (\ref{eq.entropydefinition}),
-\begin{align*}
-S = -\sum_{n \in I} \overline{\sigma_n^{(0)}} &\log \overline{\sigma_n^{(0)}} - \lambda\, \sum_{n \in I}\overline{\sigma_n^{(1)}}-\lambda\, \sum_{n \in I}\overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}+ \left(\lambda^{2}\log\frac{1}{\lambda^2}\right)\sum_{n \not\in I}\overline{\sigma_n^{(2)}} \\&- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}} - \lambda^2 \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}- \sum_{n \not\in I}\lambda^{2}\overline{\sigma_n^{(2)}} \log\overline{\sigma_n^{(2)}}+ \Od{\lambda^{3}\log\lambda^{3}}.
-\end{align*}
-The first term, \(- \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}}\), would be the entropy if \(\lambda=0\), that is, with no perturbation. Also, since \(\sum_n \overline{\sigma_n} = 1\) we must have \(\sum_{n\in I} \overline{\sigma_n^{(1)}} = 0\). \emph{[Explanation needed.]} Thus the change in entropy due to the perturbation is
-\begin{empheq}[box=\fbox]{align}\label{eq.deltaS.noassumptions}
-\Delta S = 
--\lambda &\sum_{n \in I}\overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}+ \left(\lambda^{2}\log\frac{1}{\lambda^2}\right)\sum_{n \not\in I}\overline{\sigma_n^{(2)}} \\&+\lambda^2\left(- \sum_{n \in I}\overline{\sigma_n^{(2)}}- \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}}- \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}- \sum_{n \not\in I}\overline{\sigma_n^{(2)}} \log\overline{\sigma_n^{(2)}}\right)+ \Od{\lambda^{3}\log\lambda^{3}}.\nonumber
-\end{empheq}
-
-Recall our Hamiltonian \(\op{H} = \op{H}_0 + \lambda \op{V}\).
-If \(\op{H}_0 = \op{H}_0^A + \op{H}_0^B\), where \(\op{H}_0^A\) acts only on \(\hilb_A\) and \(\op{H}_0^B\) acts only on \(\hilb_B\), then \(\op{H}_0\) does not cause mixing between the two subsystems. In this case \(\Delta S\) is the change in entropy from time \(t_0\) to time \(t\).
-
-On the other hand, if \(\op{H}_0\) is not of this form, \(\op{H}_0\) might cause mixing between subsystems. Then there could be some zeroth-order change in entropy due to \(\op{H}_0\). In this case \(\Delta S\) is not the \emph{total} change in entropy from time \(t_0\) to time \(t\) but rather the change in entropy from time \(t_0\) to time \(t\) due to the perturbation \(\lambda \op{V}\).
-
-(\ref{eq.deltaS.noassumptions}) is a rather complicated expression. Let us consider some cases where it becomes simpler.
-
-\subsection{Case where the Hilbert space is already fully occupied}\label{sec.all.sigma.nonzero}
-
-Suppose that all \(n\) with \(\overline{\sigma_n} \neq 0\) have \(\overline{\sigma_n^{(0)}} \neq 0\).
-Then, at time \(t_0\), the system already occupies the accessible part of the Hilbert space \(\hilb_A\). It does not evolve into new states in our perturbative timeframe. (States with \(\overline{\sigma_n} = 0\) are occupied at neither \(t_0\) nor \(t\) and might as well have just been excluded from the Hilbert space. They will not matter for our entropy calculations.) The sum over \(n \not\in I\) does not contribute to entropy, so (\ref{eq.deltaS.noassumptions}) is replaced with
-\begin{equation}
-\Delta S = 
--\lambda \sum_{n \in I}\overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}} - \lambda^2 \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}+ \Od{\lambda^{3}}.
-\end{equation}
-Here we used that \(\sum_{n}\overline{\sigma_n^{(2)}} = 0\) and we replaced the error term with the stronger statement we had for only \(n \in I\).
-
-\subsection{Case where first-order corrections vanish}
-
-Suppose that some \(n\) have \(\overline{\sigma_n^{(0)}} = 0\) and \(\overline{\sigma_n} \neq 0\). Suppose also that all \(\sigma_n^{(1)} = 0\). Then  (\ref{eq.deltaS.noassumptions}) becomes
-\begin{equation}\label{eq.deltaS.notinI}
-\Delta S = \left(\lambda^2\log\frac{1}{\lambda^{2}} \right)\sum_{n \not\in I} \overline{\sigma_n^{(2)}} + \Od{\lambda^2}.
-\end{equation}
-If \(n \not\in I\), then \(\overline{\sigma_n^{(0)}} = 0\) but \(\overline{\sigma_n}\geq 0\), so the leading perturbative correction to \(\overline{\sigma_n}\) must be non-negative. In particular, \(\overline{\sigma_n^{(2)}} \geq 0\) for all \(n \not\in I\). Therefore the entire sum (\ref{eq.deltaS.notinI}) is non-negative.
-
-This shows that the {\bf subsystem entropy cannot decrease if the first-order corrections vanish, the second-order corrections don't vanish, and also \(\overline{\op{\rho}}\) has null eigenvalues for states that we can transition to}. In this case, the entropy will increase or remain constant over time (until the system evolves so that all eigenvalues are non-zero). As we will see in a later example, the converse is not true. If \(\overline{\op{\rho}}\) has only non-zero eigenvalues, entropy may decrease, increase, or remain constant.
-
-Now, since \(\sum_{n} \overline{\sigma_n^{(2)}}= 0\) we can rewrite (\ref{eq.deltaS.notinI}) as
-\begin{equation}\label{eq.deltaS}
-\Delta S = -\left(\lambda^2\log\frac{1}{\lambda^{2}} \right)\sum_{n \in I} \overline{\sigma_n^{(2)}} + \Od{\lambda^2}.
-\end{equation}
-Substituting in (\ref{eq.tipt.soval}),
-\[
-\Delta S = -\left(\lambda^2 \log\frac{1}{\lambda^2}\right)\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{{n^\prime} \not\in D_n} \frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}} \right)+ \Od{\lambda^2}.
-\]
-Now, in the second term with the double sum, for every term \(\frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}}\) with \(n^\prime \in I\) there is an equal but oppositely signed term \(\frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_{n^\prime}^{(0)}}-\overline{\sigma_n^{(0)}}}\) in the sum. The portion of the sum over \(n^\prime \in I\) evaluates to zero. We end up with
-\begin{equation}\label{eq.deltaSso.intermediate}
-\Delta S = -\left(\lambda^2 \log\frac{1}{\lambda^2}\right)\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{n^\prime \not\in I} \frac{\left|\bra{\alpha_{n}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_{n^\prime}^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}} \right)+ \Od{\lambda^2}.
-\end{equation}
-
-Putting in (\ref{eq.rho1red}) and (\ref{eq.rho2red}),
-\begin{align}\label{eq.entropyresultwithrho2}
-\Delta S = \frac{1}{\hbar^2}&\left(\lambda^2 \log\frac{1}{\lambda^2}\right)\sum_{n \in I} \Bigg( \\
-& \sum_m\int_{t_0}^t \int_{t_0}^{t^\prime} \bbra{n}{m} \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}_0 + \op{\rho}_0\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right) \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
--& \sum_m\int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
--& \sum_{n^\prime \not \in I} \frac{1}{\;\overline{\sigma_n^{(0)}}\;} \left|\sum_m\int_{t_0}^t \bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n^\prime}{m}\;dt^\prime \right|^2
-\Bigg) + \Od{\lambda^2}. \nonumber
-\end{align}
-
-\subsubsection{Case of separable initial state}
-
-We will now consider the special case where, at the time \(t_0\), the density operator takes the form
-\begin{equation}\label{eq.rho0fullinitial}
-\op{\rho}_0 = \op{\rho}\left(t_0\right) = \sum_{n,m} \sigma_{n,m}^{(0)} \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right) \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right)
-\end{equation}
-where \(\left\{\ket{\alpha_n^{(0)}}\right\}\) is \emph{any} orthonormal basis for \(\hilb_A\) and \(\left\{\ket{\beta_m}\right\}\) is \emph{any} orthonormal basis for \(\hilb_B\). We call such states ``separable states''.
-
-(\ref{eq.rho0fullinitial}) implies that the reduced density operator at time \(t_0\) is
-\[
-\overline{\op{\rho}}_0 = \overline{\op{\rho}}\left(t_0\right) = \sum_n \overline{\sigma_{n}^{(0)}} \ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}}
-\]
-where
-\[
-\overline{\sigma_n^{(0)}} = \sum_m \sigma_{n,m}^{(0)}.
-\]
-Now, if we fix a time \(t\), there should be some basis \(\{\ket{\alpha_n}\}\) of \(\hilb_A\) and some quantities \(\overline{\sigma_n}\) such that
-\[
-\overline{\op{\rho}}(t) = \sum_n \overline{\sigma_n} \ket{\alpha_n}\bra{\alpha_n}.
-\]
-The eigenstate/eigenvalue decomposition of an operator is unique up to relabeling. Therefore, comparing our equations to (\ref{eq.redrhodef}) and (\ref{eq.rho0red}), we see that our above analysis must hold with the notation unchanged. Indeed, now
-\begin{equation}
-\label{eq.rho0full}
-\op{\rho}_0 = \sum_{n,m} \sigma_{n,m}^{(0)} \bket{n}{m}\bbra{n}{m}.
-\end{equation}
-
-We have
-\begin{align*}
-\bbra{n}{m} \op{H}_I(t^\prime) \;\op{\rho}_0 \bket{n}{m} 
-&= 
-\sigma_{n,m}^{(0)} \bbra{n}{m} \op{H}_I(t^\prime) \bket{n}{m} 
-\\&=
- \bbra{n}{m} \op{\rho}_0 \;\op{H}_I(t^\prime) \bket{n}{m} 
-\end{align*}
-so the first-order eigenvalue correction vanishes. \emph{[Explanation needed.]} We will assume that the second-order eigenvalue correction \(\overline{\sigma_n^{(2)}}\) does not vanish and turn to (\ref{eq.entropyresultwithrho2}).
-
-The first two terms in (\ref{eq.entropyresultwithrho2}) are
-\begin{align*}
-&\hspace{-4em} \sum_{n \in I} \sum_m\int_{t_0}^t \int_{t_0}^{t^\prime} \bbra{n}{m} \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \;\op{\rho}_0 + \op{\rho}_0\; \op{H}_I (t^{\prime\prime}) \op{H}_I(t^{\prime}) \right) \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{-4em}- \sum_{n \in I}\sum_m\int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \\
-&= \sum_{n \in I}\sum_m\sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t^\prime} \bbra{n}{m} \left\{\op{H}_I (t^\prime),\; \op{H}_I(t^{\prime\prime}) \right\} \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{2em} -\sum_m\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \bket{n^\star}{m^\star}\bbra{n^\star}{m^\star} \op{H}_I (t^{\prime\prime})\bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \\
-&=\sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{2em}-\sum_{n \in I}\sum_m\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bbra{n^\star}{m^\star} \op{H}_I (t^{\prime\prime})\bket{n}{m} \bbra{n}{m}\op{H}_I (t^\prime) \bket{n^\star}{m^\star}\,dt^{\prime\prime}\,dt^\prime \\
-&= \sum_{n \in I}\sum_m\sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{2em}-\sum_{n^\star} \sum_{m^\star} \sigma_{n^\star,m^\star}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bbra{n^\star}{m^\star} \op{H}_I (t^{\prime\prime})\left[\left(\sum_{n\in I} \ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}}\right)\otimes\cdot\right]\op{H}_I (t^\prime) \bket{n^\star}{m^\star}\,dt^{\prime\prime}\,dt^\prime \\
-&=\sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \\
-&\hspace{2em}-\sum_{n} \sum_{m} \sigma_{n,m}^{(0)}\int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m} \op{H}_I (t^{\prime\prime})\left[\left(1-\sum_{n^\prime\not\in I} \ket{\alpha_{n^\prime}^{(0)}}\bra{\alpha_{n^\prime}^{(0)}}\right)\otimes\cdot\right]\op{H}_I (t^\prime) \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime \\
-&= \sum_{n \in I}\sum_m \sigma_{n,m}^{(0)} \left[\int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime - \int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \bket{n}{m}\,dt^{\prime\prime}\,dt^\prime\right]\\
-&\hspace{2em}+ \sum_{n} \sum_m \sigma_{n,m}^{(0)} \sum_{n^\prime \not\in I} \sum_{m^\prime} \int_{t_0}^t \bbra{n}{m} \op{H}_I (t^{\prime\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime\prime}\int_{t_0}^t \bbra{n^\prime}{m^\prime} \op{H}_I (t^{\prime})\bket{n}{m}\,dt^\prime \\
-&=\sum_{n \in I} \sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} 
- \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2.
-\end{align*}
-
-Meanwhile, the third term in (\ref{eq.entropyresultwithrho2}) is
-\begin{align*}
--\sum_{n \in I}\sum_{n^\prime \not \in I} &\frac{1}{\;\overline{\sigma_n^{(0)}}\;} \left|\sum_m\int_{t_0}^t \bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n^\prime}{m}\;dt^\prime \right|^2 \\
-&= -\sum_{n \in I}\sum_{n^\prime \not \in I} \frac{1}{\;\overline{\sigma_n^{(0)}}\;} \left|\sum_m\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;\left({\sigma_{n,m}^{(0)}} - \cancel{{\sigma_{n^\prime,m}^{(0)}}}\right)\;dt^\prime \right|^2\Bigg) + \Od{\lambda^2} \\
- &= -\sum_{n \in I}\sum_{n^\prime \not \in I} \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;dt^\prime \right|^2.
-\end{align*}
-
-Putting this all back into (\ref{eq.entropyresultwithrho2}), we obtain the rather interesting result that
-\begin{empheq}[box=\fbox]{align}\label{eq.Sredresult.separable}
-\Delta S =\frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}&\sum_{n^\prime \not\in I} \Bigg( \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
-&- \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;dt^\prime \right|^2\Bigg) + \Od{\lambda^2}. \nonumber
-\end{empheq}
-Assuming that these terms do not vanish, we see that the entropy grows proportionally to \(\left(t-t_0\right)^2\).
-
-We also observe that this expression vanishes if \(\hilb_B\) has only a single possible state. This situation is equivalent to taking the entropy of the whole system rather than the subsystem entropy. We have thus shown that the entropy of the whole system is conserved (at the order of \(\lambda^2 \log\frac{1}{\lambda^2}\), for separable states).
-
-
-\subsubsubsection{Upper and lower bounds for entropy growth}
-
-We can apply the triangle inequality to (\ref{eq.Sredresult.separable}) to obtain an illuminating lower bound on \(\Delta S\) for separable initial states. We have
-\begin{align*}
-\frac{1}{\sum_m \sigma_{n,m}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;dt^\prime \right|^2
-& \leq \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \sum_{m} \left|{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;dt^\prime \right|^2 \\
- &= \sum_m \frac{\sigma_{n,m}^{(0)}}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \;\sigma_{n,m}^{(0)} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;dt^\prime \right|^2 \\
- &\leq \sum_m \sigma_{n,m}^{(0)} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;dt^\prime \right|^2.
-\end{align*}
-Applying this to (\ref{eq.Sredresult.separable}), we see at order \(\lambda^2 \log \frac{1}{\lambda^2}\) that
-\[
-\Delta S \geq \frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2.
-\]
-This result confirms that the change in entropy for a separable state is non-negative.
-
-We can also obtain an upper bound for (\ref{eq.Sredresult.separable}) by keeping only the first term. Then, at order \(\lambda^2 \log \frac{1}{\lambda^2}\),
-\begin{align}\label{eq.dSbounds}
-\frac{1}{\hbar^2}&\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
-&\leq \;\;\Delta S \;\;\leq\;\; \frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2. \nonumber
-\end{align}
-Interestingly, the only difference between the upper bound and the lower bound is whether we include the terms where \(m^\prime = m\) in the sum.
-
-\subsubsubsection{Case of pure, separable initial state}
-
-If the initial state is pure and separable, let \(\bket{n}{m}\) be the initial state so that \(\op{\rho}_0 = \bket{n}{m}\bbra{n}{m}\). Then (\ref{eq.Sredresult.separable}) simplifies to
-\begin{equation}\label{eq.Sredresult.separablepure}
-\Delta S =\frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n^\prime\neq n} \;\sum_{m^\prime\neq m} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 + \Od{\lambda^2}.
-\end{equation}
-We observe a crucial exclusion principle: in our expression for entropy, we only have transition amplitudes where the state changes in both subsystems, never transition amplitudes for a change in only one subsystem. Furthermore, since this expression is symmetric with respect to \(n\) and \(m\), the change in subsystem entropy for \(\hilb_A\) is the same as the change in subsystem entropy for \(\hilb_B\).
-
-
-\section{Example: Interaction between Qubits}
-
-In this section we will study a simple bipartite system and calculate the growth in subsystem entropy due to a weak interaction. Consider the Hilbert space \(\{\ket{0}, \ket{1}\}\otimes\{\ket{0}, \ket{1}\}\) describing two qubits. To simplify notation, write \(\ket{ab}\) to mean \(\ket{a}\otimes\ket{b}\).
-
-Suppose the qubits interact according to the Hamiltonian
-\[
-\op{H} = \op{S}_z^{A}\otimes\op{S}_z^B + \lambda \op{S}_x^A \otimes \op{S}_x^B.
-\]
-One can calculate that this Hamiltonian has eigenstates and eigenvalues
-\begin{align*}
-\ket{E_0} &= \frac{1}{\sqrt{2}} \left(\ket{10}-\ket{01}\right) &
-E_0 &= \frac{\hbar}{2} \left(-1-\lambda\right) \\
-\ket{E_1} &= \frac{1}{\sqrt{2}} \left(\ket{10}+\ket{01}\right) &
-E_1 &= \frac{\hbar}{2} \left(-1+\lambda\right) \\
-\ket{E_2} &= \frac{1}{\sqrt{2}} \left(\ket{11}-\ket{00}\right) &
-E_2 &= \frac{\hbar}{2} \left(1-\lambda\right) \\
-\ket{E_3} &= \frac{1}{\sqrt{2}} \left(\ket{11}+\ket{00}\right) &
-E_3 &= \frac{\hbar}{2} \left(1+\lambda\right).
-\end{align*}
-Let's start by calculating the exact change in entropy; then we can calculate the perturbative result and compare.
-
-Suppose at \(t=0\) we start in the initial state \(\ket{11} = \frac{1}{\sqrt{2}}\left(\ket{E_2}+\ket{E_3}\right)\). At time \(t\), the state is then
-\[
-\ket{\Psi(t)} = \frac{1}{\sqrt{2}}\left(e^{-itE_2/\hbar}\ket{E_2} + e^{-itE_3/\hbar} \ket{E_3}\right)
-\]
-and the density operator is
-\[
-\op{\rho} = \frac{1}{2}\ket{E_2}\bra{E_2} + \frac{1}{2}\ket{E_3}\bra{E_3} + \frac{1}{2} e^{it\left(E_3-E_2\right)/\hbar} \ket{E_2}\bra{E_3} + \frac{1}{2} e^{-it\left(E_3 - E_2\right)/\hbar} \ket{E_3}\bra{E_2}.
-\]
-Then the reduced density operator for the first qubit is
-\begin{align*}
-\overline{\op{\rho}} &= \cdot\otimes\bra{0} \op{\rho} \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \op{\rho} \cdot\otimes\ket{1} \\
-&= \frac{1}{2}\left(1 + \cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{0}\bra{0}.
-\end{align*}
-Recognizing that \(\frac{E_3-E_2}{\hbar} = \lambda\), we see that the Von Neumann subsystem entropy is
-\begin{align*}
-S &= \frac{1}{2}\left(1 + \cos \lambda t \right)\log \left(1+\cos \frac{\lambda t}{2}\right)
-+ \frac{1}{2}\left(1 - \cos \lambda t \right)\log \left(1-\cos \frac{\lambda t}{2}\right).
-\end{align*}
-Approximating \(\cos x \approx 1-x^2\), this becomes
-\begin{align*}
-S &\approx \frac{1}{2}\left(2-\lambda^2 t^2\right) \log \left(2-\lambda^2 t^2/4\right) + \frac{1}{2}\lambda^2 t^2 \log \left(\lambda^2 t^2\right) \\
-&\approx \log 2 - \frac{1}{2}\lambda^2 t^2 \log \left(\frac{1}{\lambda^2 t^2}\right).
-\end{align*}
-We observe that the leading order term for the change in entropy is of order \(\lambda^2t^2 \log \frac{1}{\lambda^2 t^2}\). Interestingly, the entropy decreases with time. This makes sense given that we started in a maximally entangled state (i.e. a Bell state). \emph{[Actually, I'm not sure that this is a good explanation of the decreasing entropy...]}
-
-We did the derivation above by solving the Schr\"odinger equation exactly. Let's now apply our perturbative calculation and see that we get the same result. The Schr\"odinger picture Hamiltonian is \(\op{H} = \op{H}_0 + \lambda \op{V}\) where
-\begin{align*}
-\op{H}_0 &= \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} - \ket{E_1}\bra{E_1} + \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right) \\
-\op{V} &= \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} + \ket{E_1}\bra{E_1} - \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right).
-\end{align*}
-Because \([\op{H}_0, \op{V}] = 0\) we have \([\op{U}(0, t), \op{V}] = 0\). Thus the interaction picture Hamiltonian is just
-\[\op{H}_I = \op{V} = \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} + \ket{E_1}\bra{E_1} - \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right).\]
-We must now diagonalize the initial density operator in a basis that easily separates into bases for the two subspaces. Indeed, we get
-\begin{align*}
-\op{\rho} &= \frac{1}{2}\ket{E_2}\bra{E_2} + \frac{1}{2}\ket{E_3}\bra{E_3} + \frac{1}{2} e^{it\lambda} \ket{E_2}\bra{E_3} + \frac{1}{2} e^{-it\lambda} \ket{E_3}\bra{E_2} \\
-&= \left(\frac{1}{\sqrt{2}} e^{it\lambda}{\ket{E_2}} + \frac{1}{\sqrt{2}}\ket{E_3}\right) \left(\frac{1}{\sqrt{2}} e^{-it\lambda}{\bra{E_2}} + \frac{1}{\sqrt{2}}\bra{E_3}\right) \\
-&= \left(\frac{1}{2} \left(1-e^{it\lambda}\right){\ket{00}} + \frac{1}{2}\left(1+e^{it\lambda}\right)\ket{11}\right) \left(\frac{1}{2} \left(1+e^{-it\lambda}\right){\bra{00}} + \frac{1}{2}\left(1+e^{-it\lambda}\right)\bra{11}\right) \\
-\end{align*}
-\emph{[This is not a separable state, so we cannot use the perturbation formula. Should maybe change the example to a separable state.]}
+%% Indices come here if you have them.
 
 
 
-\appendix
-\newpage
-\hrule
-\vspace{3em}
-{\Huge Appendices}
-\vspace{3em}
-\hrule
-\vspace{2em}
-
-These are extra calculations that are not relevant to the above discussion. They should be removed from documents to be shared. (I don't delete them now because they could be useful in future work.)
 
 
-\section{The first-order approximation for pure states in scattering}
-
-We will continue for scattering between two particles. We will assume that the particles are distinguishable so that we don't need to restrict ourselves to symmetric or antisymmetric states. We will also assume that the particles interact in a way that only depends on the distance between them. That is, in the position basis, we can write
-\begin{equation}\label{eq.Vposbasis}
-\bra{x_1, x_2}\op{V}(t)\ket{\psi} = \int_{x_1,x_2} {d^3 x_1 \,d^3x_2}\; V(x_1 - x_2) \braket{x_1, x_2}{\psi}.
-\end{equation}
-(Note that this is not time dependent.) Take \(\op{H}_0\) to be the free particle Hamiltonian.
-
-It will be easiest to work in the momentum basis. We will do our calculations for momentum eigenstates---that is, plane waves. Write momentum eigenstates as \(\ket{k_1, k_2}\). In the position basis these have wavefunctions
-\begin{equation}\label{eq.momentuminpos}
-\braket{x_1, x_2}{k_1, k_2} = \frac{1}{(2\pi)^3}\;e^{ik_1\cdot x_1 + ik_2\cdot x_2}.
-\end{equation}
-Here \(x_1\) and \(x_2\) are the (3-vector) positions of the first and second particles and \(k_1\) and \(k_2\) are the (3-vector) momenta of the first and second particle. Also, we note that \(\ket{k_1, k_2}\) has energy \(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\) and so
-\begin{equation}
-\label{eq.timeevonk}
-\op{U}(t_0, t) \ket{k_1, k_2} = e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\right)} \ket{k_1, k_2}.
-\end{equation}
-
-Let \(\widetilde{V}(p)\) be the Fourier transform of \(V(x_1 - x_2)\) so that
-\begin{equation}
-\label{eq.ftV}
-V(x_1 - x_2) = \int_{-\infty}^{\infty} \frac{d^3 p}{(2 \pi)^3} \widetilde{V}(p) e^{ip\cdot(x_1 - x_2)}.
-\end{equation}
-
-We now consider (\ref{eq.firsttdpe}) and take the limits \(t_0 \to -\infty\) and \(t \to \infty\) because, in scattering, we measure states long before and long after the scattering occurs. Then, dropping the higher-order terms,
-\[
-\ket{\Psi_I, \infty} = \ket{\Psi_I, -\infty} - \frac{i}{\hbar} \int_{-\infty}^\infty \op{H}_I(t)\ket{\Psi_I, -\infty} \,dt.
-\]
-Take the initial state to be \(\ket{\Psi_I, -\infty} = \ket{k_1, k_2}\). Multiplying by the bra \(\bra{k_1^\prime, k_2^\prime}\),
-\begin{align}
-\braket{k_1^\prime, k_2^\prime}{\Psi_I, \infty} &= \braket{k_1^\prime, k_2^\prime}{k_1, k_2} - \frac{i}{\hbar} \int_{-\infty}^\infty \bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2} \,dt \nonumber\\
-&= \delta^3(k_1^\prime - k_1)\delta^3(k_2^\prime - k_2) - \frac{i}{\hbar} \int_{-\infty}^\infty \bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2} \,dt. \label{eq.intermed}
-\end{align}
-This motivates us to compute the matrix element \(\bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2}\). We can start by using (\ref{eq.timeevonk}):
-\begin{align*}
-\bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2}
-&= \bra{k_1^\prime, k_2^\prime} \op{U}(t_0, t)^\dagger \op{V}(t) \op{U}(t_0, t) \ket{k_1, k_2} \nonumber\\
-&= \bra{k_1^\prime, k_2^\prime} e^{\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1^\prime}^2 + \frac{1}{2m_2}{k_2^\prime}^2\right)} \op{V}(t) e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\right)} \ket{k_1, k_2} \nonumber\\
-&= e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1^\prime}^2 + \frac{1}{2m_2}{k_2^\prime}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2\right)} \bra{k_1^\prime, k_2^\prime} \op{V}(t) \ket{k_1, k_2}.
-\end{align*}
-We see that
-\begin{align*}
-\hspace{-1em}\bra{k_1^\prime, k_2^\prime} \op{V}(t) \ket{k_1, k_2} &= \bra{k_1^\prime, k_2^\prime} \left\{\int_{x_1, x_2} {d^3 x_1 d^3 x_2\;} \ket{x_1, x_2}\bra{x_1, x_2}\right\}\op{V}(t) \ket{k_1, k_2} \nonumber\\
-&= \int_{x_1, x_2} {d^3 x_1 d^3 x_2\;} \braket{k_1^\prime, k_2^\prime}{x_1, x_2}\bra{x_1, x_2}\op{V}(t) \ket{k_1, k_2} \nonumber\\
-&= \int_{x_1, x_2} \frac{d^3 x_1 d^3 x_2}{(2\pi)^6}\; e^{-ik_1^\prime\cdot x_1 - ik_2^\prime\cdot x_2}V(x_1 - x_2) e^{ik_1\cdot x_1 + ik_2\cdot x_2} &&\text{(by (\ref{eq.Vposbasis}) and (\ref{eq.momentuminpos}))}\nonumber\\
-&= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\int_{x_1, x_2} {d^3 x_1 d^3 x_2\;\;}e^{-ik_1^\prime\cdot x_1 - ik_2^\prime\cdot x_2}\,\widetilde{V}(p)\,e^{ip\cdot(x_1-x_2)} e^{ik_1\cdot x_1 + ik_2\cdot x_2}
-&&\text{(by (\ref{eq.ftV}))}\nonumber\\
-&= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\widetilde{V}(p) \int_{x_1, x_2} {d^3 x_1 d^3 x_2\;\;}e^{i(k_1-k_1^\prime+p)\cdot x_1}e^{i(k_2-k_2^\prime-p)\cdot x_2}\nonumber\\
-&= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\widetilde{V}(p) \,(2\pi)^6\,\delta^3(k_1-k_1^\prime+p)\,\delta^3(k_2-k_2^\prime-p)\nonumber\\
-&= \frac{1}{(2\pi)^3}\;\widetilde{V}(k_1^\prime-k_1) \;\delta^3(k_1^\prime-k_1-k_2^\prime+k_2).
-\end{align*}
-so 
-\[
-\bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2}
-=
-e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1^\prime}^2 + \frac{1}{2m_2}{k_2^\prime}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2\right)}\frac{1}{(2\pi)^3}\;\widetilde{V}(k_1^\prime-k_1) \;\delta^3(k_1^\prime-k_1-k_2^\prime+k_2)
-\]
-If we integrate over all time, we get a delta function:
-\begin{equation}\label{eq.HIintegrated}
-\hspace{-2em}
-\int_{-\infty}^\infty dt \,\bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2}
-=
-\frac{\hbar}{(2\pi)^2}\,\widetilde{V}(k_1^\prime-k_1)\,\delta\left({\textstyle\frac{1}{2m_1}{k_1^\prime}^2 + \frac{1}{2m_2}{k_2^\prime}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2}\right) \,\delta^3(k_1^\prime-k_1-k_2^\prime+k_2).
-\end{equation}
-Putting this into (\ref{eq.intermed}),
-\begin{align}
-\hspace{-1.5em}\braket{k_1^\prime, k_2^\prime}{\Psi_I, \infty}
-=& \;\;\delta^3(k_1^\prime - k_1)\;\delta^3(k_2^\prime - k_2) \nonumber\\&\;\;\;\;- \frac{i}{(2\pi)^2}\, \widetilde{V}(k_1^\prime-k_1) \;\delta^3(k_1^\prime-k_1-k_2^\prime+k_2) \;\delta\left(\frac{{k_1^\prime}^2}{2m_1} + \frac{{k_2^\prime}^2}{2m_2} - \frac{{k_1}^2}{2m_1} - \frac{{k_2}^2}{2m_2}\right).
-\end{align}
-Interestingly, we see that the delta functions cause energy and momentum to be conserved.
-
-\section{Reduced density operator}
-
-We are interested in the situation where the second particle exits the system and becomes lost. We therefore consider the reduced density operator
-\begin{align*}
-\op{\rho}_\text{reduced}(t) &= \int d^3k_2 \bra{k_2} \op{\rho}(t) \ket{k_2} \nonumber\\
-&= \op{\rho}_\text{reduced}\left(t_0\right) -  \frac{i}{\hbar} \int_{t_0}^tdt^\prime\int_{-\infty}^\infty d^3k_2\bra{k_2}\left[\op{H}_I(t^\prime),\; \op{\rho}\left(t_0\right)\right]\ket{k_2} + \Od{\op{H}_I(t)^2}.
-\end{align*}
-In the momentum basis the matrix elements are
-\[
-\bra{k_1^\prime}\op{\rho}_\text{reduced}(t)\ket{k_1} = \bra{k_1^\prime}\op{\rho}_\text{reduced}\left(t_0\right)\ket{k_1} -  \frac{i}{\hbar} \int_{t_0}^tdt^\prime\int_{-\infty}^\infty d^3k_2 \bra{k_1^\prime, k_2}\left[\op{H}_I(t^\prime),\; \op{\rho}\left(t_0\right)\right]\ket{k_1, k_2} + \Od{\op{H}_I(t)^2}.
-\]
-As before, we drop the higher order terms and take \(t \to \infty\) and \(t_0 \to -\infty\). Then
-\begin{align*}
-\hspace{-5em}\bra{{k_1}^\prime}\op{\rho}_\text{reduced}(\infty)\ket{k_1} =\hspace{1.7em}&\hspace{-1.5em} \bra{k_1^\prime}\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1} -  \frac{i}{\hbar} \int_{-\infty}^\infty dt \int_{-\infty}^\infty d^3k_2 \bra{k_1^\prime, k_2}\left[\op{H}_I(t),\; \op{\rho}\left(-\infty\right)\right]\ket{k_1, k_2} 
-\\=\hspace{1.7em}&\hspace{-1.5em}
-\bra{k_1^\prime}\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1}
-\\&-  \frac{i}{\hbar} \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \left\{\int_{-\infty}^\infty dt \bra{k_1^\prime, k_2}\op{H}_I(t) \ket{\widetilde{k}_1, \widetilde{k}_2}
-\right\}\bra{\widetilde{k}_1, \widetilde{k}_2}\op{\rho}\left(-\infty\right)\ket{k_1, k_2}
-\\&+  \frac{i}{\hbar} \int_{-\infty}^\infty d^3k_2\,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \bra{k_1^\prime, k_2} \op{\rho}\left(-\infty\right)
-\ket{\widetilde{k}_1, \widetilde{k}_2}\left\{\int_{-\infty}^\infty dt\bra{\widetilde{k}_1, \widetilde{k}_2}\op{H}_I(t)\ket{k_1, k_2}\right\}.\end{align*}
-Plugging in our result (\ref{eq.HIintegrated}),
-\begin{align*}
-\bra{{k_1}^\prime}\op{\rho}_\text{reduced}(\infty)\ket{k_1}
-=\hspace{1.7em}&\hspace{-1.5em}
-\bra{k_1^\prime}\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1}
-\\&-  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \;\;{\Bigg(}\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(k_1^\prime - \widetilde{k}_1\right)\;\delta\left({\textstyle\frac{{k_1^\prime}^2}{2m_1} + \frac{{k_2}^2}{2m_2} - \frac{{\widetilde{k}_1}^2}{2m_1} - \frac{{\widetilde{k}_2}^2}{2m_2}}\right) \\&\hspace{9em}\delta^3(k_1^\prime - \widetilde{k}_1 - k_2 + \widetilde{k}_2)    \;\;\bra{\widetilde{k}_1, \widetilde{k}_2}\op{\rho}\left(-\infty\right)\ket{k_1, k_2}{\Bigg)}
-\\&+  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \;\;{\Bigg(}\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(\widetilde{k}_1 - {k}_1\right)\;\delta\left({\textstyle\frac{{\widetilde{k}_1}^2}{2m_1} + \frac{{\widetilde{k}_2}^2}{2m_2} - \frac{{{k}_1}^2}{2m_1} - \frac{{{k}_2}^2}{2m_2}}\right) \\&\hspace{9em}\delta^3(\widetilde{k}_1 - {k}_1 - \widetilde{k}_2 + {k}_2)    \;\;\bra{{k}_1^\prime, {k}_2}\op{\rho}\left(-\infty\right)\ket{\widetilde{k}_1, \widetilde{k}_2}{\Bigg)}.
-\end{align*}
-Finally, we use the delta functions to get rid of the \(\widetilde{k}_1\) integrals. This gives us
-\begin{align*}
-\hspace{-4em}\bra{{k_1}^\prime}\op{\rho}_\text{reduced}(\infty)\ket{k_1}
-= 
-\bra{k_1^\prime}&\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1} \\
-&-  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_2 \;\;\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(k_2 - 
-\widetilde{k}_2\right)\; \bra{k_1^\prime + \widetilde{k}_2 - k_2,\; \widetilde{k}_2}\op{\rho}\left(-\infty\right)\ket{k_1, k_2} \;D(k_1^\prime, k_2, \widetilde{k}_2)
-\nonumber\\&+  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_2 \;\;\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(\widetilde{k}_2 - 
-{k}_2\right)\; \bra{{k}_1^\prime, {k}_2}\op{\rho}\left(-\infty\right)\ket{k_1 + \widetilde{k}_2 - k_2,\; \widetilde{k}_2} \;D(k_1, k_2, \widetilde{k}_2). \nonumber
-\end{align*}
-where
-\begin{align*}
-D(k_1, k_2, \widetilde{k}_2) &= \delta\left({\textstyle \frac{1}{2}\;{{k}_2}^2\left(\frac{1}{m_1}-\frac{1}{m_2}\right)+ \frac{1}{2}\;{\widetilde{k}_2}^2\left(\frac{1}{m_1}+\frac{1}{m_2}\right) - \frac{1}{2m_1}\left(-k_1\cdot \widetilde{k}_2 + k_1 \cdot k_2 + \widetilde{k}_2 \cdot k_2\right)}\right).
-\end{align*}
-Then, assuming \(\widetilde{V}\) is an even function,
-\begin{align}\label{eq.reddensevolution}
-\hspace{-4em}\bra{{k_1}^\prime}&\op{\rho}_\text{reduced}(\infty)\ket{k_1}
-= {\Bigg (}
-\bra{k_1^\prime}\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1}\;\;+
- \\&\nonumber \int_{-\infty}^\infty \frac{d^3k_2 \,d^3\,\widetilde{k}_2}{(2\pi)^2}\;\widetilde{V}\left(k_2 - 
-\widetilde{k}_2\right)\;\left(P\left(k_1,k_1^\prime k_2, \widetilde{k}_2\right)D\left(k_1, k_2, \widetilde{k}_2\right) + P^*\left(k_1^\prime,k_1, k_2, \widetilde{k}_2\right)D\left(k_1^\prime, k_2, \widetilde{k}_2\right)\right){\Bigg )}
-\end{align}
-where
-\[
-P(k_1, k_1^\prime, k_2, \widetilde{k}_2) = i\bra{k_1^\prime, k_2} \op{\rho}\left(-\infty\right) \ket{k_1 + \widetilde{k}_2 - k_2,\; \widetilde{k}_2}.
-\]
 
 
+
+    %\url{http://www.grad.ubc.ca/current-students/dissertation-thesis-preparation}\\
+   
 
 \end{document}
+\endinput
+%%
+%% End of file `ubcsample.tex'.

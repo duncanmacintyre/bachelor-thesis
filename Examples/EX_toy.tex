@@ -1,0 +1,58 @@
+In this section we will study a simple bipartite system and calculate the growth in subsystem entropy due to a weak interaction. Consider the Hilbert space \(\{\ket{0}, \ket{1}\}\otimes\{\ket{0}, \ket{1}\}\) describing two qubits. To simplify notation, write \(\ket{ab}\) to mean \(\ket{a}\otimes\ket{b}\).
+
+Suppose the qubits interact according to the Hamiltonian
+\[
+\op{H} = \op{S}_z^{A}\otimes\op{S}_z^B + \lambda \op{S}_x^A \otimes \op{S}_x^B.
+\]
+One can calculate that this Hamiltonian has eigenstates and eigenvalues
+\begin{align*}
+\ket{E_0} &= \frac{1}{\sqrt{2}} \left(\ket{10}-\ket{01}\right) &
+E_0 &= \frac{\hbar}{2} \left(-1-\lambda\right) \\
+\ket{E_1} &= \frac{1}{\sqrt{2}} \left(\ket{10}+\ket{01}\right) &
+E_1 &= \frac{\hbar}{2} \left(-1+\lambda\right) \\
+\ket{E_2} &= \frac{1}{\sqrt{2}} \left(\ket{11}-\ket{00}\right) &
+E_2 &= \frac{\hbar}{2} \left(1-\lambda\right) \\
+\ket{E_3} &= \frac{1}{\sqrt{2}} \left(\ket{11}+\ket{00}\right) &
+E_3 &= \frac{\hbar}{2} \left(1+\lambda\right).
+\end{align*}
+Let's start by calculating the exact change in entropy; then we can calculate the perturbative result and compare.
+
+Suppose at \(t=0\) we start in the initial state \(\ket{11} = \frac{1}{\sqrt{2}}\left(\ket{E_2}+\ket{E_3}\right)\). At time \(t\), the state is then
+\[
+\ket{\Psi(t)} = \frac{1}{\sqrt{2}}\left(e^{-itE_2/\hbar}\ket{E_2} + e^{-itE_3/\hbar} \ket{E_3}\right)
+\]
+and the density operator is
+\[
+\op{\rho} = \frac{1}{2}\ket{E_2}\bra{E_2} + \frac{1}{2}\ket{E_3}\bra{E_3} + \frac{1}{2} e^{it\left(E_3-E_2\right)/\hbar} \ket{E_2}\bra{E_3} + \frac{1}{2} e^{-it\left(E_3 - E_2\right)/\hbar} \ket{E_3}\bra{E_2}.
+\]
+Then the reduced density operator for the first qubit is
+\begin{align*}
+\overline{\op{\rho}} &= \cdot\otimes\bra{0} \op{\rho} \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \op{\rho} \cdot\otimes\ket{1} \\
+&= \frac{1}{2}\left(1 + \cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{0}\bra{0}.
+\end{align*}
+Recognizing that \(\frac{E_3-E_2}{\hbar} = \lambda\), we see that the Von Neumann subsystem entropy is
+\begin{align*}
+S &= \frac{1}{2}\left(1 + \cos \lambda t \right)\log \left(1+\cos \frac{\lambda t}{2}\right)
++ \frac{1}{2}\left(1 - \cos \lambda t \right)\log \left(1-\cos \frac{\lambda t}{2}\right).
+\end{align*}
+Approximating \(\cos x \approx 1-x^2\), this becomes
+\begin{align*}
+S &\approx \frac{1}{2}\left(2-\lambda^2 t^2\right) \log \left(2-\lambda^2 t^2/4\right) + \frac{1}{2}\lambda^2 t^2 \log \left(\lambda^2 t^2\right) \\
+&\approx \log 2 - \frac{1}{2}\lambda^2 t^2 \log \left(\frac{1}{\lambda^2 t^2}\right).
+\end{align*}
+We observe that the leading order term for the change in entropy is of order \(\lambda^2t^2 \log \frac{1}{\lambda^2 t^2}\). Interestingly, the entropy decreases with time. This makes sense given that we started in a maximally entangled state (i.e. a Bell state). \emph{[Actually, I'm not sure that this is a good explanation of the decreasing entropy...]}
+
+We did the derivation above by solving the Schr\"odinger equation exactly. Let's now apply our perturbative calculation and see that we get the same result. The Schr\"odinger picture Hamiltonian is \(\op{H} = \op{H}_0 + \lambda \op{V}\) where
+\begin{align*}
+\op{H}_0 &= \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} - \ket{E_1}\bra{E_1} + \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right) \\
+\op{V} &= \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} + \ket{E_1}\bra{E_1} - \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right).
+\end{align*}
+Because \([\op{H}_0, \op{V}] = 0\) we have \([\op{U}(0, t), \op{V}] = 0\). Thus the interaction picture Hamiltonian is just
+\[\op{H}_I = \op{V} = \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} + \ket{E_1}\bra{E_1} - \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right).\]
+We must now diagonalize the initial density operator in a basis that easily separates into bases for the two subspaces. Indeed, we get
+\begin{align*}
+\op{\rho} &= \frac{1}{2}\ket{E_2}\bra{E_2} + \frac{1}{2}\ket{E_3}\bra{E_3} + \frac{1}{2} e^{it\lambda} \ket{E_2}\bra{E_3} + \frac{1}{2} e^{-it\lambda} \ket{E_3}\bra{E_2} \\
+&= \left(\frac{1}{\sqrt{2}} e^{it\lambda}{\ket{E_2}} + \frac{1}{\sqrt{2}}\ket{E_3}\right) \left(\frac{1}{\sqrt{2}} e^{-it\lambda}{\bra{E_2}} + \frac{1}{\sqrt{2}}\bra{E_3}\right) \\
+&= \left(\frac{1}{2} \left(1-e^{it\lambda}\right){\ket{00}} + \frac{1}{2}\left(1+e^{it\lambda}\right)\ket{11}\right) \left(\frac{1}{2} \left(1+e^{-it\lambda}\right){\bra{00}} + \frac{1}{2}\left(1+e^{-it\lambda}\right)\bra{11}\right) \\
+\end{align*}
+\emph{[This is not a separable state, so we cannot use the perturbation formula. Should maybe change the example to a separable state.]}

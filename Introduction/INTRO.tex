@@ -1,0 +1,29 @@
+
+These sections were taken from the thesis proposal and need to be updated.
+
+\section{Premise}
+
+Non-relativistic scattering has long been studied in quantum mechanics. More recently, people began to study the quantum entropy of mixed states (for example, Reference \cite{Cheung2023}). I continue this work by analyzing a concrete example: the scattering of one particle off another. My findings could give us insight into entropy change during weak interactions in general.
+
+I will consider the situation where two distinguishable particles scatter and then we make measurements on the first particle while the second particle exits the system and is lost. This loss of information should increase entropy for the first particle. I will assume that the scattering is very weak (i.e., most particles continue in their initial states without interacting) so that I can use perturbation theory.
+
+I will first investigate hard-shell scattering (i.e., with the potential \(V(r) \propto \delta(r)\) where \(r\) is the distance between the particles) because it has the simplest computations. Hard-shell scattering is also a good approximation for some physical systems, e.g., if one nucleon is scattered off another at a low speed. I might then consider how my results for hard-shell scattering generalize to other potentials.
+
+I investigate scattering rather than other interactions because scattering experiments are common. It is nevertheless conceivable that results obtained from my particular example might give insight into the entropy of weak interactions in general.
+
+\section{Theory}
+
+In quantum mechanics, one first learns about ``pure states'' of the form \(\ket{\Psi}\). I will consider ``mixed states,'' that is, statistical combinations of pure states. We might have a situation where there is a probability of \(P_i\) that we are in the pure state \(\ket{\Psi_i}\). (In this case, all of the \(P_i\) should add to \(1\).) Instead of describing this mixed state with a ket, we describe it with the ``density operator'' \[\op{\rho} = \sum_{i=1}^N P_i \ket{\Psi_i}.\] This is indeed a valid Hermitian operator in quantum mechanics. By looking at how this operator changes over time, we can see how the possible pure states \(\ket{\psi_i}\) change and also how the probabilities \(P_i\) that we’re in each state change.
+
+We can now define the von Neumann entropy to be
+\[S = -\sum_{i=1}^N P_i \log P_i.\]
+This entropy is zero for pure states (\(N=1\)) and non-zero for mixed states \(N>1\)). In this way, entropy measures the amount of mixedness.
+
+Von Neumann entropy is the quantum mechanical version of the usual Gibbs energy from statistical mechanics. One would naively expect that results like the Second Law of Thermodynamics would hold for von Neumann entropy.
+
+I will use first-order perturbation theory to calculate the change in von Neumann entropy for scattered particles. In this approach, we take \(\lambda\) to be a number proportional to the interaction strength and write
+\[\op{\rho} = \op{\rho}_0 + \lambda \op{\rho}_1 + \Od{\lambda^2}.\] We can then compute \(\op{\rho}_1\) and take \(\op{\rho} \approx \op{\rho}_0 + \lambda \op{\rho}_1\) for small enough \(\lambda\).
+
+I will do my analysis in non-relativistic quantum mechanics. I would guess that some of my results could be extended to relativistic field theories by following similar derivations.
+
+

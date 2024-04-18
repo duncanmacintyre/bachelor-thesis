@@ -1,0 +1,130 @@
+\emph{[The following should be vastly edited to fit better with the above framework. It should be much shorter. A comparison should be made with the perturbative method.]}
+
+
+\subsection{The first-order approximation for pure states in scattering}
+
+We will continue for scattering between two particles. We will assume that the particles are distinguishable so that we don't need to restrict ourselves to symmetric or antisymmetric states. We will also assume that the particles interact in a way that only depends on the distance between them. That is, in the position basis, we can write
+\begin{equation}\label{eq.Vposbasis}
+\bra{x_1, x_2}\op{V}(t)\ket{\psi} = \int_{x_1,x_2} {d^3 x_1 \,d^3x_2}\; V(x_1 - x_2) \braket{x_1, x_2}{\psi}.
+\end{equation}
+(Note that this is not time dependent.) Take \(\op{H}_0\) to be the free particle Hamiltonian.
+
+It will be easiest to work in the momentum basis. We will do our calculations for momentum eigenstates---that is, plane waves. Write momentum eigenstates as \(\ket{k_1, k_2}\). In the position basis these have wavefunctions
+\begin{equation}\label{eq.momentuminpos}
+\braket{x_1, x_2}{k_1, k_2} = \frac{1}{(2\pi)^3}\;e^{ik_1\cdot x_1 + ik_2\cdot x_2}.
+\end{equation}
+Here \(x_1\) and \(x_2\) are the (3-vector) positions of the first and second particles and \(k_1\) and \(k_2\) are the (3-vector) momenta of the first and second particle. Also, we note that \(\ket{k_1, k_2}\) has energy \(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\) and so
+\begin{equation}
+\label{eq.timeevonk}
+\op{U}(t_0, t) \ket{k_1, k_2} = e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\right)} \ket{k_1, k_2}.
+\end{equation}
+
+Let \(\widetilde{V}(p)\) be the Fourier transform of \(V(x_1 - x_2)\) so that
+\begin{equation}
+\label{eq.ftV}
+V(x_1 - x_2) = \int_{-\infty}^{\infty} \frac{d^3 p}{(2 \pi)^3} \widetilde{V}(p) e^{ip\cdot(x_1 - x_2)}.
+\end{equation}
+
+We now consider (\ref{eq.firsttdpe}) and take the limits \(t_0 \to -\infty\) and \(t \to \infty\) because, in scattering, we measure states long before and long after the scattering occurs. Then, dropping the higher-order terms,
+\[
+\ket{\Psi_I, \infty} = \ket{\Psi_I, -\infty} - \frac{i}{\hbar} \int_{-\infty}^\infty \op{H}_I(t)\ket{\Psi_I, -\infty} \,dt.
+\]
+Take the initial state to be \(\ket{\Psi_I, -\infty} = \ket{k_1, k_2}\). Multiplying by the bra \(\bra{k_1^\prime, k_2^\prime}\),
+\begin{align}
+\braket{k_1^\prime, k_2^\prime}{\Psi_I, \infty} &= \braket{k_1^\prime, k_2^\prime}{k_1, k_2} - \frac{i}{\hbar} \int_{-\infty}^\infty \bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2} \,dt \nonumber\\
+&= \delta^3(k_1^\prime - k_1)\delta^3(k_2^\prime - k_2) - \frac{i}{\hbar} \int_{-\infty}^\infty \bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2} \,dt. \label{eq.intermed}
+\end{align}
+This motivates us to compute the matrix element \(\bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2}\). We can start by using (\ref{eq.timeevonk}):
+\begin{align*}
+\bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2}
+&= \bra{k_1^\prime, k_2^\prime} \op{U}(t_0, t)^\dagger \op{V}(t) \op{U}(t_0, t) \ket{k_1, k_2} \nonumber\\
+&= \bra{k_1^\prime, k_2^\prime} e^{\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1^\prime}^2 + \frac{1}{2m_2}{k_2^\prime}^2\right)} \op{V}(t) e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\right)} \ket{k_1, k_2} \nonumber\\
+&= e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1^\prime}^2 + \frac{1}{2m_2}{k_2^\prime}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2\right)} \bra{k_1^\prime, k_2^\prime} \op{V}(t) \ket{k_1, k_2}.
+\end{align*}
+We see that
+\begin{align*}
+\hspace{-1em}\bra{k_1^\prime, k_2^\prime} \op{V}(t) \ket{k_1, k_2} &= \bra{k_1^\prime, k_2^\prime} \left\{\int_{x_1, x_2} {d^3 x_1 d^3 x_2\;} \ket{x_1, x_2}\bra{x_1, x_2}\right\}\op{V}(t) \ket{k_1, k_2} \nonumber\\
+&= \int_{x_1, x_2} {d^3 x_1 d^3 x_2\;} \braket{k_1^\prime, k_2^\prime}{x_1, x_2}\bra{x_1, x_2}\op{V}(t) \ket{k_1, k_2} \nonumber\\
+&= \int_{x_1, x_2} \frac{d^3 x_1 d^3 x_2}{(2\pi)^6}\; e^{-ik_1^\prime\cdot x_1 - ik_2^\prime\cdot x_2}V(x_1 - x_2) e^{ik_1\cdot x_1 + ik_2\cdot x_2} &&\text{(by (\ref{eq.Vposbasis}) and (\ref{eq.momentuminpos}))}\nonumber\\
+&= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\int_{x_1, x_2} {d^3 x_1 d^3 x_2\;\;}e^{-ik_1^\prime\cdot x_1 - ik_2^\prime\cdot x_2}\,\widetilde{V}(p)\,e^{ip\cdot(x_1-x_2)} e^{ik_1\cdot x_1 + ik_2\cdot x_2}
+&&\text{(by (\ref{eq.ftV}))}\nonumber\\
+&= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\widetilde{V}(p) \int_{x_1, x_2} {d^3 x_1 d^3 x_2\;\;}e^{i(k_1-k_1^\prime+p)\cdot x_1}e^{i(k_2-k_2^\prime-p)\cdot x_2}\nonumber\\
+&= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\widetilde{V}(p) \,(2\pi)^6\,\delta^3(k_1-k_1^\prime+p)\,\delta^3(k_2-k_2^\prime-p)\nonumber\\
+&= \frac{1}{(2\pi)^3}\;\widetilde{V}(k_1^\prime-k_1) \;\delta^3(k_1^\prime-k_1-k_2^\prime+k_2).
+\end{align*}
+so 
+\[
+\bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2}
+=
+e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1^\prime}^2 + \frac{1}{2m_2}{k_2^\prime}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2\right)}\frac{1}{(2\pi)^3}\;\widetilde{V}(k_1^\prime-k_1) \;\delta^3(k_1^\prime-k_1-k_2^\prime+k_2)
+\]
+If we integrate over all time, we get a delta function:
+\begin{equation}\label{eq.HIintegrated}
+\hspace{-2em}
+\int_{-\infty}^\infty dt \,\bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2}
+=
+\frac{\hbar}{(2\pi)^2}\,\widetilde{V}(k_1^\prime-k_1)\,\delta\left({\textstyle\frac{1}{2m_1}{k_1^\prime}^2 + \frac{1}{2m_2}{k_2^\prime}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2}\right) \,\delta^3(k_1^\prime-k_1-k_2^\prime+k_2).
+\end{equation}
+Putting this into (\ref{eq.intermed}),
+\begin{align}
+\hspace{-1.5em}\braket{k_1^\prime, k_2^\prime}{\Psi_I, \infty}
+=& \;\;\delta^3(k_1^\prime - k_1)\;\delta^3(k_2^\prime - k_2) \nonumber\\&\;\;\;\;- \frac{i}{(2\pi)^2}\, \widetilde{V}(k_1^\prime-k_1) \;\delta^3(k_1^\prime-k_1-k_2^\prime+k_2) \;\delta\left(\frac{{k_1^\prime}^2}{2m_1} + \frac{{k_2^\prime}^2}{2m_2} - \frac{{k_1}^2}{2m_1} - \frac{{k_2}^2}{2m_2}\right).
+\end{align}
+Interestingly, we see that the delta functions cause energy and momentum to be conserved.
+
+\subsection{Reduced density operator}
+
+We are interested in the situation where the second particle exits the system and becomes lost. We therefore consider the reduced density operator
+\begin{align*}
+\op{\rho}_\text{reduced}(t) &= \int d^3k_2 \bra{k_2} \op{\rho}(t) \ket{k_2} \nonumber\\
+&= \op{\rho}_\text{reduced}\left(t_0\right) -  \frac{i}{\hbar} \int_{t_0}^tdt^\prime\int_{-\infty}^\infty d^3k_2\bra{k_2}\left[\op{H}_I(t^\prime),\; \op{\rho}\left(t_0\right)\right]\ket{k_2} + \Od{\op{H}_I(t)^2}.
+\end{align*}
+In the momentum basis the matrix elements are
+\[
+\bra{k_1^\prime}\op{\rho}_\text{reduced}(t)\ket{k_1} = \bra{k_1^\prime}\op{\rho}_\text{reduced}\left(t_0\right)\ket{k_1} -  \frac{i}{\hbar} \int_{t_0}^tdt^\prime\int_{-\infty}^\infty d^3k_2 \bra{k_1^\prime, k_2}\left[\op{H}_I(t^\prime),\; \op{\rho}\left(t_0\right)\right]\ket{k_1, k_2} + \Od{\op{H}_I(t)^2}.
+\]
+As before, we drop the higher order terms and take \(t \to \infty\) and \(t_0 \to -\infty\). Then
+\begin{align*}
+\hspace{-5em}\bra{{k_1}^\prime}\op{\rho}_\text{reduced}(\infty)\ket{k_1} =\hspace{1.7em}&\hspace{-1.5em} \bra{k_1^\prime}\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1} -  \frac{i}{\hbar} \int_{-\infty}^\infty dt \int_{-\infty}^\infty d^3k_2 \bra{k_1^\prime, k_2}\left[\op{H}_I(t),\; \op{\rho}\left(-\infty\right)\right]\ket{k_1, k_2} 
+\\=\hspace{1.7em}&\hspace{-1.5em}
+\bra{k_1^\prime}\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1}
+\\&-  \frac{i}{\hbar} \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \left\{\int_{-\infty}^\infty dt \bra{k_1^\prime, k_2}\op{H}_I(t) \ket{\widetilde{k}_1, \widetilde{k}_2}
+\right\}\bra{\widetilde{k}_1, \widetilde{k}_2}\op{\rho}\left(-\infty\right)\ket{k_1, k_2}
+\\&+  \frac{i}{\hbar} \int_{-\infty}^\infty d^3k_2\,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \bra{k_1^\prime, k_2} \op{\rho}\left(-\infty\right)
+\ket{\widetilde{k}_1, \widetilde{k}_2}\left\{\int_{-\infty}^\infty dt\bra{\widetilde{k}_1, \widetilde{k}_2}\op{H}_I(t)\ket{k_1, k_2}\right\}.\end{align*}
+Plugging in our result (\ref{eq.HIintegrated}),
+\begin{align*}
+\bra{{k_1}^\prime}\op{\rho}_\text{reduced}(\infty)\ket{k_1}
+=\hspace{1.7em}&\hspace{-1.5em}
+\bra{k_1^\prime}\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1}
+\\&-  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \;\;{\Bigg(}\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(k_1^\prime - \widetilde{k}_1\right)\;\delta\left({\textstyle\frac{{k_1^\prime}^2}{2m_1} + \frac{{k_2}^2}{2m_2} - \frac{{\widetilde{k}_1}^2}{2m_1} - \frac{{\widetilde{k}_2}^2}{2m_2}}\right) \\&\hspace{9em}\delta^3(k_1^\prime - \widetilde{k}_1 - k_2 + \widetilde{k}_2)    \;\;\bra{\widetilde{k}_1, \widetilde{k}_2}\op{\rho}\left(-\infty\right)\ket{k_1, k_2}{\Bigg)}
+\\&+  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_1\,d^3\,\widetilde{k}_2 \;\;{\Bigg(}\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(\widetilde{k}_1 - {k}_1\right)\;\delta\left({\textstyle\frac{{\widetilde{k}_1}^2}{2m_1} + \frac{{\widetilde{k}_2}^2}{2m_2} - \frac{{{k}_1}^2}{2m_1} - \frac{{{k}_2}^2}{2m_2}}\right) \\&\hspace{9em}\delta^3(\widetilde{k}_1 - {k}_1 - \widetilde{k}_2 + {k}_2)    \;\;\bra{{k}_1^\prime, {k}_2}\op{\rho}\left(-\infty\right)\ket{\widetilde{k}_1, \widetilde{k}_2}{\Bigg)}.
+\end{align*}
+Finally, we use the delta functions to get rid of the \(\widetilde{k}_1\) integrals. This gives us
+\begin{align*}
+\hspace{-4em}\bra{{k_1}^\prime}\op{\rho}_\text{reduced}(\infty)\ket{k_1}
+= 
+\bra{k_1^\prime}&\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1} \\
+&-  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_2 \;\;\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(k_2 - 
+\widetilde{k}_2\right)\; \bra{k_1^\prime + \widetilde{k}_2 - k_2,\; \widetilde{k}_2}\op{\rho}\left(-\infty\right)\ket{k_1, k_2} \;D(k_1^\prime, k_2, \widetilde{k}_2)
+\nonumber\\&+  i \int_{-\infty}^\infty d^3k_2 \,d^3\,\widetilde{k}_2 \;\;\frac{1}{(2\pi)^2}\; \;\widetilde{V}\left(\widetilde{k}_2 - 
+{k}_2\right)\; \bra{{k}_1^\prime, {k}_2}\op{\rho}\left(-\infty\right)\ket{k_1 + \widetilde{k}_2 - k_2,\; \widetilde{k}_2} \;D(k_1, k_2, \widetilde{k}_2). \nonumber
+\end{align*}
+where
+\begin{align*}
+D(k_1, k_2, \widetilde{k}_2) &= \delta\left({\textstyle \frac{1}{2}\;{{k}_2}^2\left(\frac{1}{m_1}-\frac{1}{m_2}\right)+ \frac{1}{2}\;{\widetilde{k}_2}^2\left(\frac{1}{m_1}+\frac{1}{m_2}\right) - \frac{1}{2m_1}\left(-k_1\cdot \widetilde{k}_2 + k_1 \cdot k_2 + \widetilde{k}_2 \cdot k_2\right)}\right).
+\end{align*}
+Then, assuming \(\widetilde{V}\) is an even function,
+\begin{align}\label{eq.reddensevolution}
+\hspace{-4em}\bra{{k_1}^\prime}&\op{\rho}_\text{reduced}(\infty)\ket{k_1}
+= {\Bigg (}
+\bra{k_1^\prime}\op{\rho}_\text{reduced}\left(-\infty\right)\ket{k_1}\;\;+
+ \\&\nonumber \int_{-\infty}^\infty \frac{d^3k_2 \,d^3\,\widetilde{k}_2}{(2\pi)^2}\;\widetilde{V}\left(k_2 - 
+\widetilde{k}_2\right)\;\left(P\left(k_1,k_1^\prime k_2, \widetilde{k}_2\right)D\left(k_1, k_2, \widetilde{k}_2\right) + P^*\left(k_1^\prime,k_1, k_2, \widetilde{k}_2\right)D\left(k_1^\prime, k_2, \widetilde{k}_2\right)\right){\Bigg )}
+\end{align}
+where
+\[
+P(k_1, k_1^\prime, k_2, \widetilde{k}_2) = i\bra{k_1^\prime, k_2} \op{\rho}\left(-\infty\right) \ket{k_1 + \widetilde{k}_2 - k_2,\; \widetilde{k}_2}.
+\]
+
+
