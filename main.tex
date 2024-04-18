@@ -12,6 +12,9 @@
 % use hyperref for links but don't draw the ugly boxes around links
 \usepackage[hidelinks]{hyperref}
 
+% package for boxing multi-line equations
+\usepackage{empheq}
+
 % add \subsubsubsection command
 % taken from https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection
 \usepackage{titlesec}
@@ -364,10 +367,10 @@ Putting this all into (\ref{eq.entropydefinition}),
 S = -\sum_{n \in I} \overline{\sigma_n^{(0)}} &\log \overline{\sigma_n^{(0)}} - \lambda\, \sum_{n \in I}\overline{\sigma_n^{(1)}}-\lambda\, \sum_{n \in I}\overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}+ \left(\lambda^{2}\log\frac{1}{\lambda^2}\right)\sum_{n \not\in I}\overline{\sigma_n^{(2)}} \\&- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}} - \lambda^2 \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}- \sum_{n \not\in I}\lambda^{2}\overline{\sigma_n^{(2)}} \log\overline{\sigma_n^{(2)}}+ \Od{\lambda^{3}\log\lambda^{3}}.
 \end{align*}
 The first term, \(- \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}}\), would be the entropy if \(\lambda=0\), that is, with no perturbation. Also, since \(\sum_n \overline{\sigma_n} = 1\) we must have \(\sum_{n\in I} \overline{\sigma_n^{(1)}} = 0\). \emph{[Explanation needed.]} Thus the change in entropy due to the perturbation is
-\begin{align}\label{eq.deltaS.noassumptions}
+\begin{empheq}[box=\fbox]{align}\label{eq.deltaS.noassumptions}
 \Delta S = 
 -\lambda &\sum_{n \in I}\overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}+ \left(\lambda^{2}\log\frac{1}{\lambda^2}\right)\sum_{n \not\in I}\overline{\sigma_n^{(2)}} \\&+\lambda^2\left(- \sum_{n \in I}\overline{\sigma_n^{(2)}}- \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}}- \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}- \sum_{n \not\in I}\overline{\sigma_n^{(2)}} \log\overline{\sigma_n^{(2)}}\right)+ \Od{\lambda^{3}\log\lambda^{3}}.\nonumber
-\end{align}
+\end{empheq}
 
 Recall our Hamiltonian \(\op{H} = \op{H}_0 + \lambda \op{V}\).
 If \(\op{H}_0 = \op{H}_0^A + \op{H}_0^B\), where \(\op{H}_0^A\) acts only on \(\hilb_A\) and \(\op{H}_0^B\) acts only on \(\hilb_B\), then \(\op{H}_0\) does not cause mixing between the two subsystems. In this case \(\Delta S\) is the change in entropy from time \(t_0\) to time \(t\).
@@ -482,11 +485,11 @@ Meanwhile, the third term in (\ref{eq.entropyresultwithrho2}) is
 \end{align*}
 
 Putting this all back into (\ref{eq.entropyresultwithrho2}), we obtain the rather interesting result that
-\begin{align}\label{eq.Sredresult.separable}
-\Delta S =\frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \Bigg(& \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
+\begin{empheq}[box=\fbox]{align}\label{eq.Sredresult.separable}
+\Delta S =\frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}&\sum_{n^\prime \not\in I} \Bigg( \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
 &- \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
  \bket{n^\prime}{m}\;dt^\prime \right|^2\Bigg) + \Od{\lambda^2}. \nonumber
-\end{align}
+\end{empheq}
 Assuming that these terms do not vanish, we see that the entropy grows proportionally to \(\left(t-t_0\right)^2\).
 
 We also observe that this expression vanishes if \(\hilb_B\) has only a single possible state. This situation is equivalent to taking the entropy of the whole system rather than the subsystem entropy. We have thus shown that the entropy of the whole system is conserved (at the order of \(\lambda^2 \log\frac{1}{\lambda^2}\), for separable states).
