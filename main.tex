@@ -49,7 +49,8 @@
 % optional arguments (in []) specify options that affect how the
 % thesis is displayed.  Please see the ubcthesis documentation for
 % details about the options.
-\documentclass[msc,oneside]{ubcthesis}
+%\documentclass[msc,oneside]{ubcthesis}
+\documentclass[msc]{ubcthesis}
 %\usepackage[pass,paperwidth=8.5in,paperheight=11in]{geometry}
 \usepackage[
         paperwidth=8.5in,
@@ -95,6 +96,12 @@
 % (CTAN): http://www.ctan.org/
 %
 
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{framed}
+
 \usepackage{cancel}
 
 % package for boxing multi-line equations
@@ -117,7 +124,7 @@
 % and \listoffigures.  Common uses include introducing floats for
 % programs and other code bits in Compute Science and Chemical Schema.
 \usepackage{float}
-\usepackage{amsmath,bm}
+\usepackage{amsmath,amssymb,bm}
 %******** tocloft *******************************
 % This package allows you to customize and define custom lists such
 % as a list of programs or Chemical Scheme.  Note: if you use the
@@ -285,6 +292,11 @@
 \renewcommand{\Im}{\operatorname{Im}}
 \renewcommand{\Re}{\operatorname{Re}}
 
+% trace
+\newcommand{\Tr}[1]{\operatorname{Tr}\left(#1\right)}
+
+% expectation value
+\newcommand{\ex}{\mathbb{E}\,}
 
 %******** setspace *******************************
 % The setspace package allows you to manually set the spacing of the
@@ -427,10 +439,19 @@ Additional Examiner: Panos Betzios
 
 
 \clearpage
+
 \begin{abstract}                %% Mandatory -  maximum 350 words
   Write the abstract last! Maximum 350 words.
 
 \end{abstract}
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/painting.jpg}
+    \caption{“The Disintegration of the Persistence of Memory” by Salvador Dali (1952-54)}
+    \emph{Image from WikiArt}
+    \label{fig.painting}
+\end{figure}
 
 \chapter{Lay Summary}
 
@@ -510,7 +531,6 @@ The general approach taken in this thesis was his suggestion and subsequent work
 
 % Chapters are the next main unit.
 %\chapter{Contents}
-%\input{fehrest}
 
 \chapter{Introduction}\label{ch.intro}
 \input{Introduction/INTRO}
