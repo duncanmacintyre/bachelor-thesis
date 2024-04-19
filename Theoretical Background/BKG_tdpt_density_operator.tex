@@ -1,4 +1,4 @@
-\subsection{Time evolution of a pure state}
+\subsection{Time evolution of pure states}
 
 Suppose we have a Hamiltonian of the form \[\op{H} = \op{H}_0 + \lambda \op{V}(t)\]
 where \(\op{H}_0\) is a well-understood Hamiltonian that does not depend on time and \(\lambda \op{V}(t)\) is ``small''. For example, \(\op{H}_0\) might be the free particle Hamiltonian \(\op{H}_0 = \frac{m}{2} \nabla^2\). Our equation of motion is the Schr\"odinger equation
@@ -11,8 +11,8 @@ so \(\ket{\Psi, t} = \op{U}(t_0, t) \ket{\Psi_I, t}\).
 Plugging this in to the Schr\"odinger equation,
 \begin{align*}
 i \hbar \frac{\partial}{\partial t} \op{U}(t_0, t)\ket{\Psi_I, t} &= \left(\op{H}_0 + \lambda \op{V}(t)\right) \op{U}(t_0, t)\ket{\Psi, t} \\
-i \hbar \left[\frac{\partial}{\partial t} e^{-i\op{H}_0(t-t_0)/\hbar}\right] \ket{\Psi_I, t} + i \hbar e^{-i\op{H}_0(t-t_0)/\hbar} \frac{\partial}{\partial t} \ket{\Psi_I, t} &= \op{H}_0 e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} + \lambda\op{V}(t) e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} \\
-\cancel{-i^2 \op{H}_0 e^{i\op{H}_0(t-t_0)/\hbar} \ket{\Psi_I, t}} + i \hbar e^{-i\op{H}_0(t-t_0)/\hbar} \frac{\partial}{\partial t} \ket{\Psi_I, t} &= \cancel{\op{H}_0 e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t}} + \lambda\op{V}(t) e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} \\
+\hspace{-2em}i \hbar \left[\frac{\partial}{\partial t} e^{-i\op{H}_0(t-t_0)/\hbar}\right] \ket{\Psi_I, t} + i \hbar e^{-i\op{H}_0(t-t_0)/\hbar} \frac{\partial}{\partial t} \ket{\Psi_I, t} &= \op{H}_0 e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} + \lambda\op{V}(t) e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} \\
+\hspace{-2em}\cancel{-i^2 \op{H}_0 e^{i\op{H}_0(t-t_0)/\hbar} \ket{\Psi_I, t}} + i \hbar e^{-i\op{H}_0(t-t_0)/\hbar} \frac{\partial}{\partial t} \ket{\Psi_I, t} &= \cancel{\op{H}_0 e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t}} + \lambda\op{V}(t) e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} \\
  i \hbar \frac{\partial}{\partial t} \ket{\Psi_I, t} &= e^{i\op{H}_0(t-t_0)/\hbar}\lambda\op{V}(t) e^{-i\op{H}_0(t-t_0)/\hbar}\ket{\Psi_I, t} \\
  i \hbar \frac{\partial}{\partial t} \ket{\Psi_I, t} &= \lambda\op{H}_I(t)\ket{\Psi_I, t}
 \end{align*}
@@ -43,7 +43,7 @@ Plugging this in to (\ref{eq.intse}) again we get the second order approximation
 In general, we can keep going to achieve higher order approximations. For us, however, the second order approximation (\ref{eq.secondtdpe}) is enough.
 
 
-\subsection{Time evolution of the density operator}
+\subsection{Time evolution of mixed states}
 
 We now consider mixed states. We will need to describe the system by the density operator \(\op{\rho}(t)\). Let's derive the time evolution of \(\op{\rho}(t)\) in second order perturbation theory based on (\ref{eq.secondtdpe}).
 
@@ -58,9 +58,9 @@ From (\ref{eq.secondtdpe}) we have
 \end{align*}
 so
 \begin{align*}
-\ket{{\Psi_I}_n, t} \bra{{\Psi_I}_n, t} \;\;=\;\;& \ket{{\Psi_I}_n, t_0} \bra{{\Psi_I}_n, t_0} 
+\hspace{-2.5em}\ket{{\Psi_I}_n, t} \bra{{\Psi_I}_n, t} \;\;=\;\;& \ket{{\Psi_I}_n, t_0} \bra{{\Psi_I}_n, t_0} 
 \;\;-\;\;\frac{i}{\hbar}\lambda \int_{t_0}^t \left(\op{H}(t^\prime)\ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} - \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I (t^\prime)\right) \,dt^\prime \\
-& -\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} +\;\; \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I(t^{\prime\prime}) \op{H}_I(t^\prime)\right)\,dt^{\prime\prime}\,dt^\prime \\
+& -\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \left( \op{H}_I (t^\prime) \op{H}_I(t^{\prime\prime}) \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} + \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I(t^{\prime\prime}) \op{H}_I(t^\prime)\right)\,dt^{\prime\prime}\,dt^\prime \\
 &+\;\; \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t} \op{H}_I (t^\prime) \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0} \op{H}_I (t^{\prime\prime})\,dt^{\prime\prime}\,dt^\prime  \;\;+\;\; \Od{\lambda^3}.
 \end{align*}
 Then

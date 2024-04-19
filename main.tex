@@ -51,13 +51,29 @@
 % details about the options.
 %\documentclass[msc,oneside]{ubcthesis}
 \documentclass[msc]{ubcthesis}
+% this disables the cleardoublepage command
+% this way, chapters can start on either the left or right page, not just the right page
+\renewcommand{\cleardoublepage}{\clearpage}
 %\usepackage[pass,paperwidth=8.5in,paperheight=11in]{geometry}
+%\usepackage[
+%        paperwidth=8.5in,
+%        paperheight=11in,
+%        % other options: a3paper, a5paper, etc
+%        left=3.2cm,
+%        right=2.5cm,
+%        top=2.5cm,
+%        bottom=2.5cm,
+%        % use vmargin=2cm to make vertical margins equal to 2cm.
+%        % us  hmargin=3cm to make horizontal margins equal to 3cm.
+%        % use margin=3cm to make all margins  equal to 3cm.
+%        ]
+%{geometry}
 \usepackage[
         paperwidth=8.5in,
         paperheight=11in,
         % other options: a3paper, a5paper, etc
-        left=3.2cm,
-        right=2.5cm,
+        inner=3.2cm,
+        outer=2.5cm,
         top=2.5cm,
         bottom=2.5cm,
         % use vmargin=2cm to make vertical margins equal to 2cm.
@@ -95,7 +111,6 @@
 % if not, you can find them at the Comprehensive TeX Archive Network
 % (CTAN): http://www.ctan.org/
 %
-
 
 \usepackage{caption}
 \usepackage{subcaption}
@@ -188,16 +203,20 @@
 %\usepackage{natbib}   % omit 'round' option if you prefer square brackets
 
 %\usepackage{hyperref}
-\usepackage[unicode=true,
-  colorlinks=true,
-  linktocpage,
-  linkbordercolor={0.5 0.5 1},
-  citebordercolor={0.5 1 0.5},
-  linkcolor=blue]{hyperref}
+\usepackage[hidelinks]{hyperref}
+%\usepackage[unicode=true,
+%  colorlinks=true,
+%  linktocpage,
+%  linkbordercolor={0.5 0.5 1},
+%  citebordercolor={0.5 1 0.5},
+%  linkcolor=blue]{hyperref}
 
 
 \usepackage[nameinlink]{cleveref}
 
+
+% number figures globally instead of by chapter
+\counterwithout{figure}{chapter}
 
 % for clever referencing, i.e. references equations as e.g.: eq. (1.1), particularly useful together with hyperref (which is automatically loaded by jcappub)
 
@@ -436,23 +455,26 @@ Additional Examiner: Panos Betzios
 
 
 
-
-
 \clearpage
-
-\begin{abstract}                %% Mandatory -  maximum 350 words
-  Write the abstract last! Maximum 350 words.
-
-\end{abstract}
-
 \begin{figure}[p]
     \centering
     \includegraphics[width=\linewidth]{Figures/painting.jpg}
-    \caption{“The Disintegration of the Persistence of Memory” by Salvador Dali (1952-54)}
-    \emph{Image from WikiArt}
+    \caption{“The Disintegration of the Persistence of Memory” by Salvador Dali (1952-54).}
+    \emph{Image from WikiArt.}
     \label{fig.painting}
 \end{figure}
+\clearpage
 
+\begin{abstract}                %% Mandatory -  maximum 350 words
+
+When a small perturbation \(\lambda \op{V}\) is added to a Hamiltonian \(\op{H}_0\), the Von Neumann entropy of a subsystem may change as a result. I study this change in entropy. In particular, I derive a general formula for the change in entropy based on perturbative corrections to the eigenvalues of the reduced density operator. I also derive a new expression for the change in entropy if a system starts in an unentangled mixed state such that there exist states with zero initial probability that can be transitioned into. In this case, the change in entropy depends only on the transition amplitudes to these accessible kernel states and the change in entropy is non-negative. I consider two simple examples applying my results and speculate on future directions.
+
+\end{abstract}
+
+
+
+% This causes the Lay Summary to be on the same page as the abstract and not appear in the table of contents
+%\subsubsection{Lay Summary}
 \chapter{Lay Summary}
 
 %[Required, Maximum 150 words]
@@ -465,9 +487,12 @@ Additional Examiner: Panos Betzios
 %The algorithm for this method is based on the  \textsc{Healpy} package. 
 
 %I demonstrate that we can check the non-Gaussianity in simulated maps. I propose that this method can potentially serve as a tool for measuring and controlling the amount of non-Gaussianity in future simulations. 
-[Required, Maximum 150 words]
+In quantum mechanics, two systems may be fundamentally entwined through a process called entanglement. We may wish to describe the amount of entanglement---we can do so through something called ``entanglement entropy.’’ I study how this entanglement entropy changes over time. I derive several formulae for entanglement entropy in different cases of initial conditions.
 
-This is a simple summary of your thesis, written so that members of the public will get some idea about what you have done. 
+\chapter{Acknowledgements}      %% Optional
+I would like to thank Gordon Semenoff for being a superb supervisor. I have learned much from him.
+
+The general approach taken in this thesis was his suggestion and subsequent work benefitted much from his guidance and advice.
 
 %\chapter{Preface}
 %% Manditory if any of the conditions are met
@@ -503,10 +528,7 @@ This is a simple summary of your thesis, written so that members of the public w
 %% Abbreviation schemes, definitions, lists of formulae, list of
 %% schemes, glossary, list of symbols etc.
 
-\chapter{Acknowledgements}      %% Optional
-I would like to thank Gordon Semenoff for being a superb supervisor. I have learned much from him.
 
-The general approach taken in this thesis was his suggestion and subsequent work benefitted much from his guidance and advice.
 
 %\chapter{Dedication} %% Optional
 %The dedication is usually quite short, and is a personal rather than
@@ -534,17 +556,17 @@ The general approach taken in this thesis was his suggestion and subsequent work
 
 \chapter{Introduction}\label{ch.intro}
 \input{Introduction/INTRO}
-\chapter{What is Entropy?}\label{ch.whatisentropy}
+\section{What is entropy?}\label{sec.whatisentropy}
 \input{"What is Entropy/WIE_whatisentropy"}
 \chapter{Theoretical Tools}\label{ch.theory}
 \section{Time-dependent perturbation theory in the interaction picture}
 \input{"Theoretical Background/BKG_tdpt_density_operator"}
-\section{Eigenvalue corrections from perturbation theory}
+\section{Corrections to eigenvalues of an operator}
 \input{"Theoretical Background/BKG_tipt_eigvals"}
 \chapter{Growth of Von Neumann Entropy due to a Perturbation}\label{ch.derivation}
 \input{"Derivation/DERIVATION"}
 \chapter{Examples}\label{ch.ex}
-\section{A Toy Example: Two Qubits}
+\section{A toy example: two qubits}
 \input{"Examples/EX_toy"}
 \section{Scattering}
 \input{"Examples/EX_scattering"}
@@ -557,10 +579,11 @@ The general approach taken in this thesis was his suggestion and subsequent work
 %% of your field of study.
 %%
 %%% Note: the bibliography must come before the appendices.
-% \bibliographystyle{JHEP}
-% \bibliographystyle{plainnat}
-\bibliographystyle{unsrt}
-\bibliography{references,refs}
+%\bibliographystyle{JHEP}
+\bibliographystyle{plainnat}
+% \bibliographystyle{unsrt}
+%\bibliographystyle{acm}
+\bibliography{references}
 %\printbibliography  %[heading=none, keyword=OWN]
 %% Use this to reset the appendix counter.  Note that the FoGS
 %% requires that the word ``Appendices'' appear in the table of

@@ -1,4 +1,4 @@
-The goal of this section is to compute the second-order perturbative corrections to the eigenvalues of an operator. We use the approach known as time-independent perturbation theory.
+The goal of this section is to compute the first- and second-order perturbative corrections to the eigenvalues of an operator. We use the approach known as time-independent perturbation theory. (This approach is commonly used in quantum mechanics but surprisingly few textbooks derive higher-order corrections in sufficient generality. One of those is Ref. \cite{weinberg}.)
 
 Suppose \(\op{\rho}\) is an operator with eigenstates \(\ket{\Psi_n}\) and eigenvalues \(\sigma_n\). Suppose we have the asymptotic expansions
 \begin{align*}
@@ -16,12 +16,12 @@ Now, we have
 \left(\sigma_n^{(0)} - \sigma_m^{(0)} + \lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3} \right)\braket{\Psi_m^{(0)}}{\Psi_n} &=\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n} \\
 \braket{\Psi_m^{(0)}}{\Psi_n} &=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)} + \lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3}}.
 \end{align*}
-We will next proceed to get rid of the denominator by using the Taylor expansion \(\frac{1}{1+x} = 1-x +\Od{x^2}\).
+We will next proceed to get rid of the denominator by using the Taylor expansion \[\frac{1}{1+x} = 1-x +\Od{x^2}.\]
 
 Let \(D_n\) be the indices degenerate with \(n\). That is, let \(D_n = \{m : \sigma_m^{(0)} = \sigma_n^{(0)}\}\).
 Consider the case where \(m \in D_n\). Let \(\delta\) be a small real number. In the limit as \(\delta \to 0\),
 \begin{align*}
-\braket{\Psi_m^{(0)}}{\Psi_n} &=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n}}{\lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3} + \lambda\delta} \\
+\hspace{-1.5em}\braket{\Psi_m^{(0)}}{\Psi_n} &=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n}}{\lambda \sigma_n^{(1)} + \lambda^2 \sigma_n^{(2)} + \Od{\lambda^3} + \lambda\delta} \\
 &=\frac{\bra{\Psi_m^{(0)}} \lambda \op{\rho}_1 + \lambda^2 \op{\rho}_2 + \Od{\lambda^3} \ket{\Psi_n}}{\lambda \left(\sigma_n^{(1)}+ \delta\right)\left(1 + \lambda \frac{\sigma_n^{(2)}}{\sigma_n^{(1)}+\delta} + \Od{\lambda^2}\right) } \\
 &=\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 + \lambda \op{\rho}_2 + \Od{\lambda^2} \ket{\Psi_n}}{\sigma_n^{(1)}+ \delta}\left(1 - \lambda \frac{\sigma_n^{(2)}}{\sigma_n^{(1)}+\delta} + \Od{\lambda^2}\right) \\
 &= \frac{\bra{\Psi_m^{(0)}} \left(\op{\rho}_1 + \lambda \op{\rho}_2 + \Od{\lambda^2} \right)\left(\ket{\Psi_n^{(0)}} + \lambda \ket{\Psi_n^{(1)}} + \Od{\lambda^2}\right)}{\sigma_n^{(1)}+\delta}
@@ -60,11 +60,10 @@ If we instead multiply by \(\bra{\Psi_k^{(0)}}\) where \(k \in D_n\) but \(k \ne
 In other words, the matrix given by \(\bra{\Psi_k^{(0)}}\op{\rho}_1\ket{\Psi_j^{(0)}}\) is diagonal on \(k,j\in D_n\), for any \(n\).
 
 In the first order of \(\lambda\), equation (\ref{eq.tiptmaineq}) says
-\[
-\hspace{-2.5em}
-\ket{\Psi_n^{(1)}} = \sum_{m \in D_n} \ket{\Psi_m^{(0)}} \lim_{\delta \to 0}\left[\frac{\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \frac{\bra{\Psi_m^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}}}{\sigma_n^{(1)} + \delta} - \frac{\sigma_n^{(2)}\bra{\Psi_m^{(0)}}\op{\rho}_0\ket{\Psi_n^{(0)}}}{\left(\sigma_n^{(1)} + \delta\right)^2}\right] 
-+ \sum_{m \not\in D_n} \ket{\Psi_m^{(0)}}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)}}.
-\]
+\begin{align*}
+\ket{\Psi_n^{(1)}} = \sum_{m \in D_n} \ket{\Psi_m^{(0)}} &\lim_{\delta \to 0}\left[\frac{\bra{\Psi_m^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}}}{\sigma_n^{(1)} + \delta} + \frac{\bra{\Psi_m^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}}}{\sigma_n^{(1)} + \delta} - \frac{\sigma_n^{(2)}\bra{\Psi_m^{(0)}}\op{\rho}_0\ket{\Psi_n^{(0)}}}{\left(\sigma_n^{(1)} + \delta\right)^2}\right] \\
+&+ \sum_{m \not\in D_n} \ket{\Psi_m^{(0)}}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n}}{\sigma_n^{(0)} - \sigma_m^{(0)}}.
+\end{align*}
 Multiplying by \(\bra{\Psi_k^{(0)}}\) where \(k \not\in D_n\) gives
 \[
 \braket{\Psi_k^{(0)}}{\Psi_n^{(1)}} = \frac{\bra{\Psi_k^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(0)}-\sigma_k^{(0)}}.
@@ -75,9 +74,11 @@ If we instead multiply by \(\bra{\Psi_n^{(0)}}\) we get
 \]
 so
 \begin{align*}
-\hspace{-2em}\sigma_n^{(2)} &= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}} - \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}\\
-&= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \sum_{m \in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\braket{\Psi_m^{(0)}}{\Psi_n^{(1)}} + \sum_{m \not\in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\braket{\Psi_m^{(0)}}{\Psi_n^{(1)}} - \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}\\
-&= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \sigma_n^{(1)}\braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} +  \sum_{m \not\in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(0)}-\sigma_m^{(0)}}- \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}
+\sigma_n^{(2)} &= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_n^{(1)}} - \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}\\
+&= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \sum_{m \in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\braket{\Psi_m^{(0)}}{\Psi_n^{(1)}} \\
+&\hspace{6em}+ \sum_{m \not\in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\braket{\Psi_m^{(0)}}{\Psi_n^{(1)}} - \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}\\
+&= \bra{\Psi_n^{(0)}}\op{\rho}_2\ket{\Psi_n^{(0)}} + \sigma_n^{(1)}\braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \\
+&\hspace{6em}+  \sum_{m \not\in D_n} \bra{\Psi_n^{(0)}}\op{\rho}_1\ket{\Psi_m^{(0)}}\frac{\bra{\Psi_m^{(0)}} \op{\rho}_1 \ket{\Psi_n^{(0)}}}{\sigma_n^{(0)}-\sigma_m^{(0)}}- \braket{\Psi_n^{(0)}}{\Psi_n^{(1)}} \sigma_n^{(1)}
 \end{align*}
 hence
 \begin{equation}\label{eq.tipt.soval}
