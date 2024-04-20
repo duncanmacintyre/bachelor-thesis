@@ -5,7 +5,7 @@ Suppose we have a Hilbert space of the form \(\hilb = \hilb_A \otimes \hilb_B\).
 where \(\{\ket{\beta_m}\}\) is any orthonormal basis for \(\hilb_B\). (One can verify that all choices of basis give the same \(\overline{\op{\rho}}\).)
 We can consider \(\overline{\op{\rho}}\) to act on the Hilbert space \(\hilb_A\).
 
-Define the \(\hilb_A\)-subsystem entropy to be \(S = -\operatorname{Tr} \overline{\op{\rho}} \log \overline{\op{\rho}}\). If \(\overline{\op{\rho}}\) is diagonalized like
+Define the \(\hilb_A\)-subsystem entropy to be \(S = -\Tr{\overline{\op{\rho}} \log \overline{\op{\rho}}}\). If \(\overline{\op{\rho}}\) is diagonalized like
 \begin{equation}\label{eq.redrhodef}
 \overline{\op{\rho}} = \sum_n \overline{\sigma_n} \ket{\alpha_n}\bra{\alpha_n},
 \end{equation}
@@ -71,7 +71,7 @@ On the other hand, if \(n\) has \(\sigma_{n}^{(0)} = 0\) (i.e. \(n \not\in I\)) 
 \overline{\sigma_n} \log \overline{\sigma_n}
 &= \left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}} + \Od{\lambda^{k_n+1}}\right) \log\left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}}\left(1 + \Od{\lambda}\right)\right) \\
 &= \lambda^{k_n}\overline{\sigma_n^{(k_n)}} \log\left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}}\right)+ \Od{\lambda^{k_n+1}}\\
-&= \lambda^{k}\overline{\sigma_n^{(k)}} \log\left(\lambda^{k}\overline{\sigma_n^{(k)}}\right)+ \Od{\lambda^{k+1}\log\lambda^{k+1}} \\
+&= \lambda^{k}\overline{\sigma_n^{(k)}} \log\left(\lambda^{k}\overline{\sigma_n^{(k)}}\right)+ \Od{\lambda^{k+1}} \\
 &= -\left(\lambda^{k}\log\frac{1}{\lambda^k}\right)\overline{\sigma_n^{(k)}} + \Od{\lambda^{k}}.
 \end{align*}
 Putting this all into (\ref{eq.entropydefinition}),
@@ -92,7 +92,7 @@ Conversely, if \(\op{H}_0\) is not of this form, \(\op{H}_0\) might cause mixing
 
 Because all \(\overline{\sigma_n} > 0\), the leading correction to \(\overline{\sigma_n}\) must be nonnegative for \(n \in I\). Therefore, if \(k \leq l\), the second term dominates and the change in entropy is non-negative. {\bf Entropy may only decrease if \(l < k\), that is, if there are lower-order corrections in the occupied space (\(n \in I\)) than in the kernel of \(\overline{\op{\rho}}_0\) (\(n \not\in I\)).} In particular, if all states have the same order of correction that leads (often true), and if there exist states with zero initial probability that the system can transition to (also often true), then the entropy can only increase.
 
-We will find in Section \ref{sec.separablestate} that \(k=l=2\) for separable states. Therefore, if a separable state can transition into new states that initially had probability zero, the entropy will never decrease due to the perturbation. This conclusion is consistent with Ref. \cite{bracken} which proves that the Von Neumann entropy of separable states does not decrease.
+We will find in Section \ref{sec.separablestate} that \(l=k=2\) for separable states. Therefore, if a separable state can transition into new states that initially had probability zero, the entropy will never decrease due to the perturbation. This conclusion is consistent with Ref. \cite{bracken} which proves that the Von Neumann entropy of separable states does not decrease.
 
 \section{Case where first-order corrections vanish and new states can be entered}
 
@@ -131,10 +131,7 @@ M_{n,\tilde{n}} = &\sum_m\int_{t_0}^t \int_{t_0}^{t^\prime} \bbra{n}{m} \left( \
 &- \sum_m\int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\bket{\tilde{n}}{m}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
 &- \sum_{n^\prime \not \in I} \frac{1}{\;\overline{\sigma_n^{(0)}}\;} \sum_m\int_{t_0}^t \bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n^\prime}{m}\;dt^\prime \sum_{m^\prime}\int_{t_0}^t \bbra{n^\prime}{m^\prime} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{\tilde{n}}{m^\prime}\;dt^\prime.
 \end{align*}
-Because the trace of a matrix is invariant under a change of basis, we do not need to use the perturbation-diagonalized basis of \(\bket{n}{m}\). Indeed, we can use any choice of \(\bket{n}{m}\) such that
-\[
-\op{\rho}_0 = \sum_{n,m} \sigma_{n,m}^{(0)} \bket{n}{m}\bbra{n}{m}.
-\]
+Because the trace of a matrix is invariant under a change of basis, we do not need to use the perturbation-diagonalized basis of \(\bket{n}{m}\).
 
 \section{Case of separable initial state}\label{sec.separablestate}
 
