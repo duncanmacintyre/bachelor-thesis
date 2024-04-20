@@ -1,4 +1,4 @@
-In this section we will study a simple bipartite system and calculate the growth in subsystem entropy due to a weak interaction. Consider the Hilbert space \(\{\ket{0}, \ket{1}\}\otimes\{\ket{0}, \ket{1}\}\) describing two qubits. To simplify notation, write \(\ket{ab}\) to mean \(\ket{a}\otimes\ket{b}\).
+In this section, we will study a simple bipartite system and calculate the growth in subsystem entropy due to a weak interaction. Consider the Hilbert space \(\{\ket{0}, \ket{1}\}\otimes\{\ket{0}, \ket{1}\}\) describing two qubits. To simplify notation, write \(\ket{ab}\) to mean \(\ket{a}\otimes\ket{b}\).
 
 Suppose the qubits interact according to the Hamiltonian
 \[
@@ -40,7 +40,7 @@ Approximating \(\cos x \approx 1-x^2\), this becomes
 S &\approx \frac{1}{2}\left(2-\lambda^2 t^2\right) \log \left(2-\lambda^2 t^2/4\right) + \frac{1}{2}\lambda^2 t^2 \log \left(\lambda^2 t^2\right) \\
 &\approx \log 2 - \frac{1}{2}\lambda^2 t^2 \log \left(\frac{1}{\lambda^2 t^2}\right).
 \end{align*}
-We observe that the leading order term for the change in entropy is of order \(\lambda^2t^2 \log \frac{1}{\lambda^2 t^2}\). Interestingly, the entropy decreases with time. This makes sense given that we started in a maximally entangled state (i.e. a Bell state). \emph{[Actually, I'm not sure that this is a good explanation of the decreasing entropy...]}
+We observe that the leading order term for the change in entropy is of order \(\lambda^2t^2 \log \frac{1}{\lambda^2 t^2}\).
 
 We did the derivation above by solving the Schr\"odinger equation exactly. Let's now apply our perturbative calculation and see that we get the same result. The Schr\"odinger picture Hamiltonian is \(\op{H} = \op{H}_0 + \lambda \op{V}\) where
 \begin{align*}
@@ -55,3 +55,5 @@ We must now diagonalize the initial density operator in a basis that easily sepa
 &= \left(\frac{1}{\sqrt{2}} e^{it\lambda}{\ket{E_2}} + \frac{1}{\sqrt{2}}\ket{E_3}\right) \left(\frac{1}{\sqrt{2}} e^{-it\lambda}{\bra{E_2}} + \frac{1}{\sqrt{2}}\bra{E_3}\right) \\
 &= \left(\frac{1}{2} \left(1-e^{it\lambda}\right){\ket{00}} + \frac{1}{2}\left(1+e^{it\lambda}\right)\ket{11}\right) \left(\frac{1}{2} \left(1+e^{-it\lambda}\right){\bra{00}} + \frac{1}{2}\left(1+e^{-it\lambda}\right)\bra{11}\right) \\
 \end{align*}
+
+\emph{[To be continued...]}

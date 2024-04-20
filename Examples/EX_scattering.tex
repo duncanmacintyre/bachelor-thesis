@@ -43,7 +43,7 @@ This motivates us to compute the matrix element \(\bra{k_1^\prime, k_2^\prime} \
 \end{align*}
 We see that
 \begin{align*}
-\hspace{-1em}\bra{k_1^\prime, k_2^\prime} \op{V}(t) \ket{k_1, k_2} &= \bra{k_1^\prime, k_2^\prime} \left\{\int_{x_1, x_2} {d^3 x_1 d^3 x_2\;} \ket{x_1, x_2}\bra{x_1, x_2}\right\}\op{V}(t) \ket{k_1, k_2} \nonumber\\
+\hspace{-4em}\bra{k_1^\prime, k_2^\prime} \op{V}(t) \ket{k_1, k_2} &= \bra{k_1^\prime, k_2^\prime} \left\{\int_{x_1, x_2} {d^3 x_1 d^3 x_2\;} \ket{x_1, x_2}\bra{x_1, x_2}\right\}\op{V}(t) \ket{k_1, k_2} \nonumber\\
 &= \int_{x_1, x_2} {d^3 x_1 d^3 x_2\;} \braket{k_1^\prime, k_2^\prime}{x_1, x_2}\bra{x_1, x_2}\op{V}(t) \ket{k_1, k_2} \nonumber\\
 &= \int_{x_1, x_2} \frac{d^3 x_1 d^3 x_2}{(2\pi)^6}\; e^{-ik_1^\prime\cdot x_1 - ik_2^\prime\cdot x_2}V(x_1 - x_2) e^{ik_1\cdot x_1 + ik_2\cdot x_2} &&\text{(by (\ref{eq.Vposbasis}) and (\ref{eq.momentuminpos}))}\nonumber\\
 &= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\int_{x_1, x_2} {d^3 x_1 d^3 x_2\;\;}e^{-ik_1^\prime\cdot x_1 - ik_2^\prime\cdot x_2}\,\widetilde{V}(p)\,e^{ip\cdot(x_1-x_2)} e^{ik_1\cdot x_1 + ik_2\cdot x_2}
@@ -60,7 +60,7 @@ e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1^\prime}^2 + \frac{
 \]
 If we integrate over all time, we get a delta function:
 \begin{equation}\label{eq.HIintegrated}
-\hspace{-2em}
+\hspace{-3em}
 \int_{-\infty}^\infty dt \,\bra{k_1^\prime, k_2^\prime} \op{H}_I(t)\ket{k_1, k_2}
 =
 \frac{\hbar}{(2\pi)^2}\,\widetilde{V}(k_1^\prime-k_1)\,\delta\left({\textstyle\frac{1}{2m_1}{k_1^\prime}^2 + \frac{1}{2m_2}{k_2^\prime}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2}\right) \,\delta^3(k_1^\prime-k_1-k_2^\prime+k_2).

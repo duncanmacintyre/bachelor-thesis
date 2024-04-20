@@ -29,23 +29,23 @@ We now integrate both sides of our expression.
 \end{align}
 This is called the integral form of the Schr\"odinger equation.
 
-We can now iteratively calculate perturbative approximations where we assume \(\op{H}_I(t)\) is small. The zero order approximation is simply
+We can now iteratively calculate perturbative approximations where we assume \(\op{H}_I(t)\) is small. The zeroth-order approximation is simply
 \[\ket{\Psi_I, t} = \ket{\Psi_I, t_0} + \Od{\lambda}.\]
-Plugging this in for the state inside the integral in (\ref{eq.intse}), we get the first order approximation
+Plugging this in for the state inside the integral in (\ref{eq.intse}), we get the first-order approximation
 \begin{equation}\label{eq.firsttdpe}
 \ket{\Psi_I, t} = \ket{\Psi_I, t_0} - \frac{i}{\hbar} \lambda \int_{t_0}^t \op{H}_I(t^\prime)\ket{\Psi_I, t_0} \,dt^\prime + \Od{\lambda^2}.
 \end{equation}
-Plugging this in to (\ref{eq.intse}) again we get the second order approximation
+Plugging this in to (\ref{eq.intse}) again we get the second-order approximation
 \begin{align}\nonumber
 \ket{\Psi_I, t} &= \ket{\Psi_I, t_0} - \frac{i}{\hbar} \lambda \int_{t_0}^t \op{H}_I(t^\prime)\left[\ket{\Psi_I, t_0} - \frac{i}{\hbar} \lambda \int_{t_0}^{t^\prime} \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\right] \,dt^\prime + \Od{\lambda^3} \\
 &= \ket{\Psi_I, t_0} - \frac{i}{\hbar}\lambda \int_{t_0}^t \op{H}_I (t^\prime) \ket{\Psi_I, t_0}\,dt^\prime - \frac{\lambda^2}{\hbar^2} \int_{t_0}^t \int_{t_0}^{t^\prime} \op{H}_I(t^\prime) \op{H}_I(t^{\prime\prime})\ket{\Psi_I, t_0} \,dt^{\prime\prime}\,dt^\prime + \Od{\lambda^3}.
 \label{eq.secondtdpe}\end{align}
-In general, we can keep going to achieve higher order approximations. For us, however, the second order approximation (\ref{eq.secondtdpe}) is enough.
+In general, we can keep going to achieve higher-order approximations. For us, however, the second-order approximation (\ref{eq.secondtdpe}) is enough.
 
 
 \subsection{Time evolution of mixed states}
 
-We now consider mixed states. We will need to describe the system by the density operator \(\op{\rho}(t)\). Let's derive the time evolution of \(\op{\rho}(t)\) in second order perturbation theory based on (\ref{eq.secondtdpe}).
+We now consider mixed states. We will need to describe the system by the density operator \(\op{\rho}(t)\). Let's derive the time evolution of \(\op{\rho}(t)\) in second-order perturbation theory based on (\ref{eq.secondtdpe}).
 
 Suppose at time \(t_0\) we have a statistical ensemble of interaction-picture states \(\ket{{\psi_I}_n, t_0}\) each with probability \(P_n\). Then
 \[\op{\rho}(t_0) = \sum_n P_n \ket{{\Psi_I}_n, t_0}\bra{{\Psi_I}_n, t_0}.\]

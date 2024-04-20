@@ -92,7 +92,7 @@ Conversely, if \(\op{H}_0\) is not of this form, \(\op{H}_0\) might cause mixing
 
 Because all \(\overline{\sigma_n} > 0\), the leading correction to \(\overline{\sigma_n}\) must be nonnegative for \(n \in I\). Therefore, if \(k \leq l\), the second term dominates and the change in entropy is non-negative. {\bf Entropy may only decrease if \(l < k\), that is, if there are lower-order corrections in the occupied space (\(n \in I\)) than in the kernel of \(\overline{\op{\rho}}_0\) (\(n \not\in I\)).} In particular, if all states have the same order of correction that leads (often true), and if there exist states with zero initial probability that the system can transition to (also often true), then the entropy can only increase.
 
-We will find in Section \ref{sec.separablestate} that \(k=l=2\) for separable states. Therefore, if a separable state can transition into new states that initially had probability zero, the entropy will never decrease due to the perturbation. This conclusion is consistent with Ref. \cite{bracken} which proves that the Von Neumann entropy of separable states does not decrease. Ref. \cite{cheung}, on the other hand, show that \(N\)-Tsallis entropy can decrease even when one starts with separable states. Here lies an important difference between Von Neumann and \(N\)-Tsallis entropy. \emph{[This should be checked. In particular, is there a non-zero accessible kernel in the Cheung et al. paper?]}
+We will find in Section \ref{sec.separablestate} that \(k=l=2\) for separable states. Therefore, if a separable state can transition into new states that initially had probability zero, the entropy will never decrease due to the perturbation. This conclusion is consistent with Ref. \cite{bracken} which proves that the Von Neumann entropy of separable states does not decrease.
 
 \section{Case where first-order corrections vanish and new states can be entered}
 
@@ -131,7 +131,7 @@ M_{n,\tilde{n}} = &\sum_m\int_{t_0}^t \int_{t_0}^{t^\prime} \bbra{n}{m} \left( \
 &- \sum_m\int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\bket{\tilde{n}}{m}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
 &- \sum_{n^\prime \not \in I} \frac{1}{\;\overline{\sigma_n^{(0)}}\;} \sum_m\int_{t_0}^t \bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n^\prime}{m}\;dt^\prime \sum_{m^\prime}\int_{t_0}^t \bbra{n^\prime}{m^\prime} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{\tilde{n}}{m^\prime}\;dt^\prime.
 \end{align*}
-Because the trace of a matrix is invariant under a change of basis, we do not need to use the pertubation-diagonalized basis of \(\bket{n}{m}\). Indeed, we can use any choice of \(\bket{n}{m}\) such that
+Because the trace of a matrix is invariant under a change of basis, we do not need to use the perturbation-diagonalized basis of \(\bket{n}{m}\). Indeed, we can use any choice of \(\bket{n}{m}\) such that
 \[
 \op{\rho}_0 = \sum_{n,m} \sigma_{n,m}^{(0)} \bket{n}{m}\bbra{n}{m}.
 \]
@@ -172,7 +172,7 @@ We have
 \\&=
  \bbra{n}{m} \op{\rho}_0 \;\op{H}_I(t^\prime) \bket{n}{m} 
 \end{align*}
-so the first-order eigenvalue correction vanishes. \emph{[Explanation needed.]} We will assume that the second-order eigenvalue correction \(\overline{\sigma_n^{(2)}}\) does not vanish and turn to (\ref{eq.entropyresultwithrho2}).
+so the first-order eigenvalue correction (\ref{eq.foprobcor}) vanishes. We will assume that the second-order eigenvalue correction \(\overline{\sigma_n^{(2)}}\) does not vanish and turn to (\ref{eq.entropyresultwithrho2}).
 
 The first two terms in (\ref{eq.entropyresultwithrho2}) are
 \begin{align*}
@@ -207,11 +207,11 @@ Putting this all back into (\ref{eq.entropyresultwithrho2}), we obtain the rathe
 &- \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
  \bket{n^\prime}{m}\;dt^\prime \right|^2\Bigg) + \Od{\lambda^2}. \nonumber
 \end{empheq}
-Entropy just depends on the transition amplitudes to states that started with zero intial probability.
+Entropy just depends on the transition amplitudes to states that started with zero initial probability.
 
-In \({eq.Sredresult.separable}\), the first term \(\sum_{n\in I}\sum_{n^\prime \not\in I}\sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2\) can be interpreted as the total probablity that a transition occurs to a state that had zero probability to start. The second term is harder to interpret; perhaps it is some kind of correction to account for double-counting.
+In \(\ref{eq.Sredresult.separable}\), the first term \(\sum_{n\in I}\sum_{n^\prime \not\in I}\sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2\) can be interpreted as the total probability that a transition occurs to a state that had zero probability to start. The second term is harder to interpret; perhaps it is some kind of correction to account for double-counting.
 
-We observe that \({eq.Sredresult.separable}\) vanishes if \(\hilb_B\) has only a single possible state. This situation is equivalent to taking the entropy of the whole system rather than the subsystem entropy. We have thus shown that the entropy of the whole system is conserved (at the order of \(\lambda^2 \log\frac{1}{\lambda^2}\), for separable states).
+We observe that \(\ref{eq.Sredresult.separable}\) vanishes if \(\hilb_B\) has only a single possible state. This situation is equivalent to taking the entropy of the whole system rather than the subsystem entropy. We have thus shown that the entropy of the whole system is conserved (at the order of \(\lambda^2 \log\frac{1}{\lambda^2}\), for separable states).
 
 I am not aware of any others having derived (\ref{eq.Sredresult.separable}). I think it is a new result.
 
@@ -220,7 +220,7 @@ I am not aware of any others having derived (\ref{eq.Sredresult.separable}). I t
 
 We can apply the triangle inequality to (\ref{eq.Sredresult.separable}) to obtain an illuminating lower bound on \(\Delta S\) for separable initial states. We have
 \begin{align*}
-\frac{1}{\sum_m \sigma_{n,m}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
+\hspace{-0.4em}\frac{1}{\sum_m \sigma_{n,m}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
  \bket{n^\prime}{m}\;dt^\prime \right|^2
 & \leq \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \sum_{m} \left|{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
  \bket{n^\prime}{m}\;dt^\prime \right|^2 \\
