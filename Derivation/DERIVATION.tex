@@ -1,3 +1,5 @@
+\section{The general case}
+
 Suppose we have a Hilbert space of the form \(\hilb = \hilb_A \otimes \hilb_B\). The \(\hilb_A\)-reduced density operator of a density operator \(\op{\rho}\) is defined to be
 \[\overline{\op{\rho}} = \sum_m \left(\cdot\otimes\bra{\beta_m}\right) \op{\rho} \left(\cdot\otimes\ket{\beta_m}\right)\]
 where \(\{\ket{\beta_m}\}\) is any orthonormal basis for \(\hilb_B\). (One can verify that all choices of basis give the same \(\overline{\op{\rho}}\).)
@@ -56,12 +58,13 @@ and
 where \(C_n = \left\{n^\prime : \overline{\sigma_{n^\prime}^{(0)}} = \overline{\sigma_{n}^{(0)}}\right\}\).
 
 We now compute the subsystem entropy at time \(t\). Let us examine the terms in (\ref{eq.entropydefinition}).
-If \(\sigma_{n}^{(0)} \neq 0\) (i.e. \(n \in I\)) then
+If \(\sigma_{n}^{(0)} \neq 0\) (i.e. \(n \in I\)), let \(l_n\) be the lowest positive integer such that \(\overline{\sigma_n^{(l_n)}} \neq 0\). Let \(l\) be the minimal \(l_n\). (If all corrections are zero, we could say \(l\) doesn't exist, but this situation is uninteresting because the system just stays in the initial state. We may as well assume \(l\) exists.) We see that
 \begin{align*}
 \overline{\sigma_n} \log \overline{\sigma_n}
-&= \left(\overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \lambda^2 \overline{\sigma_n^{(2)}} + \Od{\lambda^{3}}\right) \log \left(\overline{\sigma_n^{(0)}} \left(1 + \frac{\lambda \overline{\sigma_n^{(1)}}}{\overline{\sigma_n^{(0)}}}+ \frac{\lambda^2 \overline{\sigma_n^{(2)}}}{\overline{\sigma_n^{(0)}}} + \Od{\lambda^{3}}\right)\right) \\
-&= \left(\overline{\sigma_n^{(0)}} + \lambda \overline{\sigma_n^{(1)}} + \lambda^2 \overline{\sigma_n^{(2)}}\right) \left(\log \overline{\sigma_n^{(0)}} + \frac{\lambda \overline{\sigma_n^{(1)}}}{\overline{\sigma_n^{(0)}}} + \frac{\lambda^2 \overline{\sigma_n^{(2)}}}{\overline{\sigma_n^{(0)}}}\right) + \Od{\lambda^{3}}\\
-&=  \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} + \lambda\, \overline{\sigma_n^{(1)}}+\lambda\, \overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}+ \lambda^2 \overline{\sigma_n^{(2)}}+ \lambda^2 \overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}} + \lambda^2\, \frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}+ \Od{\lambda^{3}}.
+&= \left(\overline{\sigma_n^{(0)}} + \lambda^{l_n} \overline{\sigma_n^{(l_n)}} + \Od{\lambda^{l_n+1}}\right) \log \left(\overline{\sigma_n^{(0)}} \left(1 + \frac{\lambda^{l_n} \overline{\sigma_n^{(l_n)}}}{\overline{\sigma_n^{(0)}}}+ \Od{\lambda^{l_n+1}}\right)\right) \\
+&= \left(\overline{\sigma_n^{(0)}} + \lambda^{l_n} \overline{\sigma_n^{(l_n)}}\right) \left(\log \overline{\sigma_n^{(0)}} + \frac{\lambda^{l_n} \overline{\sigma_n^{(l_n)}}}{\overline{\sigma_n^{(0)}}}\right) + \Od{\lambda^{l_n+1}}\\
+&= \left(\overline{\sigma_n^{(0)}} + \lambda^{l} \overline{\sigma_n^{(l)}}\right) \left(\log \overline{\sigma_n^{(0)}} + \frac{\lambda^{l} \overline{\sigma_n^{(l)}}}{\overline{\sigma_n^{(0)}}}\right) + \Od{\lambda^{l+1}}\\
+&=  \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}} + \lambda^l\, \overline{\sigma_n^{(l)}} + \lambda^l\, \overline{\sigma_n^{(l)}}\log \frac{1}{\overline{\sigma_n^{(0)}}} + \Od{\lambda^{l+1}}.
 \end{align*}
 On the other hand, if \(n\) has \(\sigma_{n}^{(0)} = 0\) (i.e. \(n \not\in I\)) and \(\overline{\sigma_n}\neq 0\), let \(k_n\) be the lowest positive integer such that \(\overline{\sigma_n^{(k_n)}} \neq 0\). Let \(k\) be the minimal \(k_n\). Then
 \begin{align*}
@@ -69,47 +72,34 @@ On the other hand, if \(n\) has \(\sigma_{n}^{(0)} = 0\) (i.e. \(n \not\in I\)) 
 &= \left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}} + \Od{\lambda^{k_n+1}}\right) \log\left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}}\left(1 + \Od{\lambda}\right)\right) \\
 &= \lambda^{k_n}\overline{\sigma_n^{(k_n)}} \log\left(\lambda^{k_n}\overline{\sigma_n^{(k_n)}}\right)+ \Od{\lambda^{k_n+1}}\\
 &= \lambda^{k}\overline{\sigma_n^{(k)}} \log\left(\lambda^{k}\overline{\sigma_n^{(k)}}\right)+ \Od{\lambda^{k+1}\log\lambda^{k+1}} \\
-&= \left(\lambda^{k}\log\lambda^k\right)\overline{\sigma_n^{(k)}} + \lambda^{k}\overline{\sigma_n^{(k)}} \log\overline{\sigma_n^{(k)}}+ \Od{\lambda^{k+1}\log\lambda^{k+1}}.
+&= -\left(\lambda^{k}\log\frac{1}{\lambda^k}\right)\overline{\sigma_n^{(k)}} + \Od{\lambda^{k}}.
 \end{align*}
 Putting this all into (\ref{eq.entropydefinition}),
 \begin{align*}
-\hspace{-1em} S = -\sum_{n \in I} \overline{\sigma_n^{(0)}} &\log \overline{\sigma_n^{(0)}} - \lambda\, \sum_{n \in I}\overline{\sigma_n^{(1)}}-\lambda\, \sum_{n \in I}\overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}} - \lambda^2 \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}} \\&+\left(\lambda^{k}\log\frac{1}{\lambda^k}\right)\sum_{n\not\in I} \overline{\sigma_n^{(k)}} -\lambda^{k}\sum_{n\not\in I} \overline{\sigma_n^{(k)}} \log\overline{\sigma_n^{(k)}}+ \Od{\lambda^3} + \Od{\lambda^{k+1}\log\frac{1}{\lambda^{k+1}}}.
+\hspace{-1em} S = -\sum_{n \in I} \overline{\sigma_n^{(0)}} &\log \overline{\sigma_n^{(0)}} - \lambda^l\, \sum_{n \in I}\overline{\sigma_n^{(l)}}+\lambda^l\, \sum_{n \in I}\overline{\sigma_n^{(l)}}\log\frac{1}{\overline{\sigma_n^{(0)}}} \\&+\left(\lambda^{k}\log\frac{1}{\lambda^k}\right)\sum_{n\not\in I} \overline{\sigma_n^{(k)}} + \Od{\lambda^{l+1}} + \Od{\lambda^{k}}.
 \end{align*}
-The first term, \(- \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}}\), would be the entropy if \(\lambda=0\), that is, with no perturbation. Thus the change in entropy due to the perturbation is
-\begin{empheq}[box=\fbox]{align}\label{eq.deltaS.noassumptions}
-\Delta S = 
--\lambda &\sum_{n \in I}\overline{\sigma_n^{(1)}}\left(1+\log\overline{\sigma_n^{(0)}}\right)+ \left(\lambda^{k}\log\frac{1}{\lambda^k}\right)\sum_{n \not\in I}\overline{\sigma_n^{(2)}} - \lambda^k\sum_{n \not\in I}\overline{\sigma_n^{(2)}} \log\overline{\sigma_n^{(2)}}\\&+\lambda^2\left(- \sum_{n \in I}\overline{\sigma_n^{(2)}}- \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}}- \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}\right)\nonumber\\&+ \Od{\lambda^3} + \Od{\lambda^{k+1}\log\frac{1}{\lambda^{k+1}}}.\nonumber
-\end{empheq}
-
-Recall our Hamiltonian \(\op{H} = \op{H}_0 + \lambda \op{V}\).
-If \(\op{H}_0 = \op{H}_0^A + \op{H}_0^B\), where \(\op{H}_0^A\) acts only on \(\hilb_A\) and \(\op{H}_0^B\) acts only on \(\hilb_B\), then \(\op{H}_0\) does not cause mixing between the two subsystems. In this case \(\Delta S\) is the change in entropy from time \(t_0\) to time \(t\).
-
-On the other hand, if \(\op{H}_0\) is not of this form, \(\op{H}_0\) might cause mixing between subsystems. Then there could be some zeroth-order change in entropy due to \(\op{H}_0\). In this case \(\Delta S\) is not the \emph{total} change in entropy from time \(t_0\) to time \(t\) but rather the change in entropy from time \(t_0\) to time \(t\) due to the perturbation \(\lambda \op{V}\).
-
-(\ref{eq.deltaS.noassumptions}) is a rather complicated expression. Let us consider some cases where it becomes simpler.
-
-\section{Case where the Hilbert space is already fully occupied}\label{sec.all.sigma.nonzero}
-
-Suppose that all \(n\) with \(\overline{\sigma_n} \neq 0\) have \(\overline{\sigma_n^{(0)}} \neq 0\).
-Then, at time \(t_0\), the system already occupies the accessible part of the Hilbert space \(\hilb_A\). It does not evolve into new states in our perturbative timeframe. (States with \(\overline{\sigma_n} = 0\) are occupied at neither \(t_0\) nor \(t\) and might as well have just been excluded from the Hilbert space. They will not matter for our entropy calculations.) The sum over \(n \not\in I\) does not contribute to entropy, so (\ref{eq.deltaS.noassumptions}) is replaced with
-\begin{equation}
-\Delta S = 
--\lambda \sum_{n \in I}\overline{\sigma_n^{(1)}}\log\overline{\sigma_n^{(0)}}- \lambda^2 \sum_{n \in I}\overline{\sigma_n^{(2)}}\log\overline{\sigma_n^{(0)}} - \lambda^2 \sum_{n \in I}\frac{\overline{\sigma_n^{(1)}}^2}{\sigma_n^{(0)}}+ \Od{\lambda^{3}}.
+The first term, \(- \sum_{n \in I} \overline{\sigma_n^{(0)}} \log \overline{\sigma_n^{(0)}}\), would be the entropy if \(\lambda=0\), that is, with no perturbation. Also, because \(\sum_n\overline{\sigma_n} = 1\) we must have \(\sum_{n\in I}\overline{\sigma_n^{(l)}} = -\sum_{n\not\in I} \overline{\sigma_n^{(l)}}\). If \(l < k\) this vanishes; if \(l \geq k\) it can be absorbed into the \(\Od{\lambda^k}\). Thus the change in entropy due to the perturbation is
+\begin{equation}\label{eq.deltaS.noassumptions}
+\boxed{\Delta S = \lambda^l\, \sum_{n \in I}\overline{\sigma_n^{(l)}}\log\frac{1}{\overline{\sigma_n^{(0)}}} +\left(\lambda^{k}\log\frac{1}{\lambda^k}\right)\sum_{n\not\in I} \overline{\sigma_n^{(k)}} + \Od{\lambda^{l+1}} + \Od{\lambda^{k}}.}
 \end{equation}
-Here we used that \(\sum_{n}\overline{\sigma_n^{(2)}} = 0\) and we replaced the error term with the stronger statement we had for only \(n \in I\).
+Here \(l\) is the order of the lowest non-vanishing correction \(\overline{\sigma_n^{(l)}}\) for \(n \in I\) and \(k\) is the order of the lowest non-vanishing correction \(\overline{\sigma_n^{(k)}}\) for \(n \not\in I\). In general, \(l\) and \(k\) will be \(1\) or \(2\). We can find them and compute the eigenvalue corrections with (\ref{eq.foprobcor}) and (\ref{eq.soprobcor}).
 
-\section{Case where first-order corrections vanish}
+Now, what does \(\Delta S\) mean? Recall our Hamiltonian \(\op{H} = \op{H}_0 + \lambda \op{V}\).
+If \(\op{H}_0 = \op{H}_0^A + \op{H}_0^B\), where \(\op{H}_0^A\) acts only on \(\hilb_A\) and \(\op{H}_0^B\) acts only on \(\hilb_B\), then \(\op{H}_0\) does not cause mixing between the two subsystems. In this case \(\Delta S\) is the change in entropy from time \(t_0\) to time \(t\).
+Conversely, if \(\op{H}_0\) is not of this form, \(\op{H}_0\) might cause mixing between subsystems. Then there could be some zeroth-order change in entropy due to \(\op{H}_0\). In this case \(\Delta S\) is not the \emph{total} change in entropy from time \(t_0\) to time \(t\) but rather the change in entropy from time \(t_0\) to time \(t\) due to the perturbation \(\lambda \op{V}\).
 
-Suppose that some \(n\) have \(\overline{\sigma_n^{(0)}} = 0\) and \(\overline{\sigma_n} \neq 0\). Suppose also that all \(\sigma_n^{(1)} = 0\). Then  (\ref{eq.deltaS.noassumptions}) becomes
+(\ref{eq.deltaS.noassumptions}) is a rather beautiful result. The \(\lambda^l\) term is the leading correction for entropy change within the subspace of \(\hilb_A\) that the system already occupied. The \(\lambda^k \log \frac{1}{\lambda^k}\) term is the leading correction for entropy generated due to transitioning to new states.
+
+Because all \(\overline{\sigma_n} > 0\), the leading correction to \(\overline{\sigma_n}\) must be nonnegative for \(n \in I\). Therefore, if \(k \leq l\), the second term dominates and the change in entropy is non-negative. {\bf Entropy may only decrease if \(l < k\), that is, if there are lower-order corrections in the occupied space (\(n \in I\)) than in the kernel of \(\overline{\op{\rho}}_0\) (\(n \not\in I\)).} In particular, if all states have the same order of correction that leads (often true), and if there exist states with zero initial probability that the system can transition to (also often true), then the entropy can only increase.
+
+We will find in Section \ref{sec.separablestate} that \(k=l=2\) for separable states. Therefore, if a separable state can transition into new states that initially had probability zero, the entropy will never decrease due to the perturbation. This conclusion is consistent with Ref. \cite{bracken} which proves that the Von Neumann entropy of separable states does not decrease. Ref. \cite{cheung}, on the other hand, show that \(N\)-Tsallis entropy can decrease even when one starts with separable states. Here lies an important difference between Von Neumann and \(N\)-Tsallis entropy. \emph{[This should be checked. In particular, is there a non-zero accessible kernel in the Cheung et al. paper?]}
+
+\section{Case where first-order corrections vanish and new states can be entered}
+
+Suppose that some \(n\) have \(\overline{\sigma_n^{(0)}} = 0\) and \(\overline{\sigma_n} \neq 0\). Suppose also that all \(\sigma_n^{(1)} = 0\). (In other words, we suppose that \(l=k=2\) and that there are accessible states in the kernel of \(\overline{\op{\rho}}_0\).) Then  (\ref{eq.deltaS.noassumptions}) becomes
 \begin{equation}\label{eq.deltaS.notinI}
 \Delta S = \left(\lambda^2\log\frac{1}{\lambda^{2}} \right)\sum_{n \not\in I} \overline{\sigma_n^{(2)}} + \Od{\lambda^2}.
 \end{equation}
-If \(n \not\in I\), then \(\overline{\sigma_n^{(0)}} = 0\) but \(\overline{\sigma_n}\geq 0\), so the leading perturbative correction to \(\overline{\sigma_n}\) must be non-negative. In particular, \(\overline{\sigma_n^{(2)}} \geq 0\) for all \(n \not\in I\). Therefore the entire sum (\ref{eq.deltaS.notinI}) is non-negative.
-
-This equation shows that the {\bf subsystem entropy cannot decrease if the first-order corrections vanish, the second-order corrections don't vanish, and also \(\overline{\op{\rho}}\) has null eigenvalues for states that we can transition to}. In this case, the entropy will increase or remain constant over time (until the system evolves so that all eigenvalues are non-zero). As we will see in a later example, the converse is not true. If \(\overline{\op{\rho}}\) has only non-zero eigenvalues, entropy may decrease, increase, or remain constant.
-
-In the next section we will see that the first-order corrections vanish for separable initial states. This conclusion is thus consistent with Ref. \cite{bracken} who prove that the Von Neumann entropy of separable states does not decrease. \emph{[Did I interpret \cite{bracken} correctly?]} Ref. \cite{cheung}, on the other hand, show that \(N\)-Tsallis entropy can decrease even when one starts with separable states. Here lies an important difference between Von Neumann and \(N\)-Tsallis entropy. \emph{[This should be checked. In particular, is there a non-zero accessible kernel in the Cheung et al. paper?]}
-
 Now, since \(\sum_{n} \overline{\sigma_n^{(2)}}= 0\) we can rewrite (\ref{eq.deltaS.notinI}) as
 \begin{equation}\label{eq.deltaS}
 \Delta S = -\left(\lambda^2\log\frac{1}{\lambda^{2}} \right)\sum_{n \in I} \overline{\sigma_n^{(2)}} + \Od{\lambda^2}.
@@ -118,7 +108,7 @@ Substituting in (\ref{eq.tipt.soval}),
 \[
 \Delta S = -\left(\lambda^2 \log\frac{1}{\lambda^2}\right)\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{{n^\prime} \not\in D_n} \frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}} \right)+ \Od{\lambda^2}.
 \]
-Now, in the second term with the double sum, for every term \(\frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}}\) with \(n^\prime \in I\) there is an equal but oppositely signed term \(\frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_{n^\prime}^{(0)}}-\overline{\sigma_n^{(0)}}}\) in the sum. The portion of the sum over \(n^\prime \in I\) evaluates to zero. We end up with
+In the second term with the double sum, for every term \(\frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}-\overline{\sigma_{n^\prime}^{(0)}}}\) with \(n^\prime \in I\) there is an equal but oppositely signed term \(\frac{\left|\bra{\alpha_{n^\prime}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_n^{(0)}}\right|^2}{\overline{\sigma_{n^\prime}^{(0)}}-\overline{\sigma_n^{(0)}}}\) in the sum. The portion of the sum over \(n^\prime \in I\) evaluates to zero. We end up with
 \begin{equation}\label{eq.deltaSso.intermediate}
 \Delta S = -\left(\lambda^2 \log\frac{1}{\lambda^2}\right)\left(\sum_{n \in I} \bra{\alpha_n^{(0)}}\overline{\op{\rho}_2}\ket{\alpha_n^{(0)}} +  \sum_{n \in I} \sum_{n^\prime \not\in I} \frac{\left|\bra{\alpha_{n}^{(0)}} \overline{\op{\rho}_1} \ket{\alpha_{n^\prime}^{(0)}}\right|^2}{\overline{\sigma_n^{(0)}}} \right)+ \Od{\lambda^2}.
 \end{equation}
@@ -146,7 +136,7 @@ Because the trace of a matrix is invariant under a change of basis, we do not ne
 \op{\rho}_0 = \sum_{n,m} \sigma_{n,m}^{(0)} \bket{n}{m}\bbra{n}{m}.
 \]
 
-\subsection{Case of separable initial state}\label{sec.separablestate}
+\section{Case of separable initial state}\label{sec.separablestate}
 
 We will now consider the special case where, at the time \(t_0\), the density operator takes the form
 \begin{equation}\label{eq.rho0fullinitial}
@@ -219,12 +209,14 @@ Putting this all back into (\ref{eq.entropyresultwithrho2}), we obtain the rathe
 \end{empheq}
 Entropy just depends on the transition amplitudes to states that started with zero intial probability.
 
-We also observe that this expression vanishes if \(\hilb_B\) has only a single possible state. This situation is equivalent to taking the entropy of the whole system rather than the subsystem entropy. We have thus shown that the entropy of the whole system is conserved (at the order of \(\lambda^2 \log\frac{1}{\lambda^2}\), for separable states).
+In \({eq.Sredresult.separable}\), the first term \(\sum_{n\in I}\sum_{n^\prime \not\in I}\sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2\) can be interpreted as the total probablity that a transition occurs to a state that had zero probability to start. The second term is harder to interpret; perhaps it is some kind of correction to account for double-counting.
+
+We observe that \({eq.Sredresult.separable}\) vanishes if \(\hilb_B\) has only a single possible state. This situation is equivalent to taking the entropy of the whole system rather than the subsystem entropy. We have thus shown that the entropy of the whole system is conserved (at the order of \(\lambda^2 \log\frac{1}{\lambda^2}\), for separable states).
 
 I am not aware of any others having derived (\ref{eq.Sredresult.separable}). I think it is a new result.
 
 
-\subsubsection{Upper and lower bounds for entropy growth}
+\subsection{Upper and lower bounds for entropy growth}
 
 We can apply the triangle inequality to (\ref{eq.Sredresult.separable}) to obtain an illuminating lower bound on \(\Delta S\) for separable initial states. We have
 \begin{align*}
@@ -250,7 +242,9 @@ We can also obtain an upper bound for (\ref{eq.Sredresult.separable}) by keeping
 \end{align}
 Interestingly, the only difference between the upper bound and the lower bound is whether we include the terms where \(m^\prime = m\) in the sum.
 
-\subsection{Case of pure, separable initial state}\label{sec.purestate}
+From these expressions, it seems like entropy is proportional to the density of states that start with zero probability but can be transitioned to. If so, one might be able to estimate the rates of decoherence in different systems (e.g., different molecules) based on the density of accessible states.
+
+\section{Case of pure, separable initial state}\label{sec.purestate}
 
 If the initial state is pure and separable, let \(\bket{n}{m}\) be the initial state so that \(\op{\rho}_0 = \bket{n}{m}\bbra{n}{m}\). Then (\ref{eq.Sredresult.separable}) simplifies to
 \begin{equation}\label{eq.Sredresult.separablepure}
