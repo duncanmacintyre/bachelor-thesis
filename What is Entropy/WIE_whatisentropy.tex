@@ -7,12 +7,12 @@ The physicist can approach entropy with a myriad of tools. The first is painting
 This is precisely what entropy is in physics. To say there is lots of entropy is to say much more information would be needed to understand every detail of reality. An increase in entropy is indeed a disintegration of the persistence of memory.
 
 Having exhausted her patience for painting, the hasty physicist will now want equations. The first one defines the Gibbs entropy
-\[
+\begin{equation}\label{eq.Gibbs_entropy_definition}
 S = -\sum_{i=1}^N P_i \log P_i
-\]
+\end{equation}
 for a situation with \(N\) possibilities, each with probability \(P_i\). If \(N=1\), the entropy is zero and we say that the system is in a ``pure state.''  If \(N > 1\), the entropy is nonzero and we say that the system is in a ``mixed state.’’
 
-In quantum mechanics, we can keep the exact same definition and merely clarify that by a \emph{possibility} we mean a \emph{possible wavefunction}. Then we have Von Neumann entropy. It turns out that Von Neumann entropy is the only reasonable definition of entropy in quantum mechanics that properly corresponds to Gibbs entropy. \cite{heusler,bracken,donald}
+In quantum mechanics, we can keep the exact same definition and merely clarify that by a \emph{possibility} we mean a \emph{possible wavefunction}. Then we call (\ref{eq.Gibbs_entropy_definition}) the Von Neumann entropy. It turns out that Von Neumann entropy is the only reasonable definition of entropy in quantum mechanics that properly corresponds to Gibbs entropy. \cite{heusler,bracken,donald}
 
 Because we consider systems with multiple possible wavefunctions, we describe states with density operators, defined as
 \[
@@ -30,7 +30,7 @@ If we have a bipartite system \(\hilb_A \otimes \hilb_B\) and a basis \(\{\ket{\
 \]
 that acts on the space \(\hilb_A\). Then the \(\hilb_A\)-subsystem entropy is \(-\Tr{\overline{\op{\rho}}\log \overline{\op{\rho}}}\).
 
-We can think of \(\overline{\op{\rho}}\) to be a version of \(\op{\rho}\) that is ``averaged out’’ at the resolution of \(\hilb_A\). If we consider \(\op{\rho}\) to be a random variable, measurable on the sigma-algebra \(\hilb_A \otimes \hilb_B\), and we understand \(\hilb_A\) to be sub-sigma-algebra inside the larger space, then we can identify \(\overline{\op{\rho}}\) with the conditional expectation \(\ex \op{\rho} \,| \hilb_A\). In this sense, the subsystem entropy describes how much information is lost when we average out (take the conditional expectation).
+We can think of \(\overline{\op{\rho}}\) to be a version of \(\op{\rho}\) that is ``averaged out’’ at the resolution of \(\hilb_A\). If we consider \(\op{\rho}\) to be a random variable, measurable on the sigma-algebra \(\hilb_A \otimes \hilb_B\), and we understand \(\hilb_A\) to be sub-sigma-algebra of \(\hilb_A \otimes \hilb_B\), then we can identify \(\overline{\op{\rho}}\) with the conditional expectation \(\ex \op{\rho} \,| \hilb_A\). In this sense, the subsystem entropy describes how much information is lost when we average out (take the conditional expectation).
 
 But how does subsystem entropy arise, and why is it useful? Let us consider the example of the double slit experiment.
 
@@ -92,7 +92,7 @@ Because \(\braket{\text{observed }\uparrow}{\text{observed }\downarrow}=0\), the
 
 This process is exactly the same process as the decoherence that we saw in Section \ref{sec.doubleslit} It is exactly appropriate, therefore, to describe decoherence as ``the universe measuring the wavefunction.’’
 
-(The description here is inspired by the confusingly named ``many worlds interpretation'' of quantum mechanics, advanced by, for example, Sean Carroll \cite{Carroll}.)
+(The description here is inspired by the confusingly-named ``many worlds interpretation'' of quantum mechanics, advanced by, for example, Sean Carroll \cite{Carroll}.)
 
 \subsection{Entropy is entanglement with the universe}
 

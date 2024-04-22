@@ -15,7 +15,9 @@ E_2 &= \frac{\hbar}{2} \left(1-\lambda\right) \\
 \ket{E_3} &= \frac{1}{\sqrt{2}} \left(\ket{11}+\ket{00}\right) &
 E_3 &= \frac{\hbar}{2} \left(1+\lambda\right).
 \end{align*}
-Let's start by calculating the exact change in entropy; then we can calculate the perturbative result and compare.
+Let's consider two different initial states. In both cases, let's start by calculating the exact change in entropy; then we can calculate the perturbative result and compare.
+
+\subsection{Initial state \(\ket{11}\)}
 
 Suppose at \(t=0\) we start in the initial state \(\ket{11} = \frac{1}{\sqrt{2}}\left(\ket{E_2}+\ket{E_3}\right)\). At time \(t\), the state is then
 \[
@@ -28,19 +30,20 @@ and the density operator is
 Then the reduced density operator for the first qubit is
 \begin{align*}
 \overline{\op{\rho}} &= \cdot\otimes\bra{0} \op{\rho} \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \op{\rho} \cdot\otimes\ket{1} \\
-&= \frac{1}{2}\left(1 + \cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{0}\bra{0}.
+&= \frac{1}{2}\left(1 + \cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{0}\bra{0} \\
+&= \frac{1}{2}\left(1 + \cos \lambda t \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \lambda t \right)\ket{0}\bra{0}.
 \end{align*}
-Recognizing that \(\frac{E_3-E_2}{\hbar} = \lambda\), we see that the Von Neumann subsystem entropy is
+where we used that \(\frac{E_3-E_2}{\hbar} = \lambda\). Thus the Von Neumann subsystem entropy is
 \begin{align*}
-S &= \frac{1}{2}\left(1 + \cos \lambda t \right)\log \left(1+\cos \frac{\lambda t}{2}\right)
-+ \frac{1}{2}\left(1 - \cos \lambda t \right)\log \left(1-\cos \frac{\lambda t}{2}\right).
+S &= -\frac{1}{2}\left(1 + \cos \lambda t \right)\log \left(\frac{1}{2}\left[1+\cos \lambda\right]\right)
+- \frac{1}{2}\left(1 - \cos \lambda t \right)\log \left(\frac{1}{2}\left[1-\cos\lambda t\right]\right).
 \end{align*}
-Approximating \(\cos x \approx 1-x^2\), this becomes
+Using \(\cos x = 1-\frac{1}{2} x^2 + \Od{x^4}\) we get
 \begin{align*}
-S &\approx \frac{1}{2}\left(2-\lambda^2 t^2\right) \log \left(2-\lambda^2 t^2/4\right) + \frac{1}{2}\lambda^2 t^2 \log \left(\lambda^2 t^2\right) \\
-&\approx \log 2 - \frac{1}{2}\lambda^2 t^2 \log \left(\frac{1}{\lambda^2 t^2}\right).
+S &=- \left(1-\frac{1}{4}\lambda^2 t^2\right) \log \left(1-\frac{1}{4}\lambda^2 t^2\right) - \frac{1}{4}\lambda^2 t^2 \log \left(\frac{1}{4}\lambda^2 t^2\right) + \Od{\lambda^4 t^4}\\
+&=\frac{1}{4}\lambda^2 t^2 - \frac{1}{4}\lambda^2 t^2 \log \left(\frac{1}{4}\lambda^2 t^2\right) + \Od{\lambda^4 t^4}\\
+&= \left(\lambda^2 \log \frac{1}{\lambda^2}\right) \frac{1}{4} t^2 + \Od{\lambda^2}.
 \end{align*}
-We observe that the leading order term for the change in entropy is of order \(\lambda^2t^2 \log \frac{1}{\lambda^2 t^2}\).
 
 We did the derivation above by solving the Schr\"odinger equation exactly. Let's now apply our perturbative calculation and see that we get the same result. The Schr\"odinger picture Hamiltonian is \(\op{H} = \op{H}_0 + \lambda \op{V}\) where
 \begin{align*}
@@ -48,12 +51,22 @@ We did the derivation above by solving the Schr\"odinger equation exactly. Let's
 \op{V} &= \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} + \ket{E_1}\bra{E_1} - \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right).
 \end{align*}
 Because \([\op{H}_0, \op{V}] = 0\) we have \([\op{U}(0, t), \op{V}] = 0\). Thus the interaction picture Hamiltonian is just
-\[\op{H}_I = \op{V} = \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} + \ket{E_1}\bra{E_1} - \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right).\]
-We must now diagonalize the initial density operator in a basis that easily separates into bases for the two subspaces. Indeed, we get
-\begin{align*}
-\op{\rho} &= \frac{1}{2}\ket{E_2}\bra{E_2} + \frac{1}{2}\ket{E_3}\bra{E_3} + \frac{1}{2} e^{it\lambda} \ket{E_2}\bra{E_3} + \frac{1}{2} e^{-it\lambda} \ket{E_3}\bra{E_2} \\
-&= \left(\frac{1}{\sqrt{2}} e^{it\lambda}{\ket{E_2}} + \frac{1}{\sqrt{2}}\ket{E_3}\right) \left(\frac{1}{\sqrt{2}} e^{-it\lambda}{\bra{E_2}} + \frac{1}{\sqrt{2}}\bra{E_3}\right) \\
-&= \left(\frac{1}{2} \left(1-e^{it\lambda}\right){\ket{00}} + \frac{1}{2}\left(1+e^{it\lambda}\right)\ket{11}\right) \left(\frac{1}{2} \left(1+e^{-it\lambda}\right){\bra{00}} + \frac{1}{2}\left(1+e^{-it\lambda}\right)\bra{11}\right) \\
-\end{align*}
+\[\op{H}_I = \op{V} = \frac{\hbar}{2} \left(-\ket{E_0}\bra{E_0} + \ket{E_1}\bra{E_1} - \ket{E_2}\bra{E_2} + \ket{E_3}\bra{E_3}\right)\]
+or, in our product basis,
+\[
+\op{H}_I = \frac{\hbar}{2} \left(\ket{11}\bra{00} + \ket{00}\bra{11} + \ket{10}\bra{01} + \ket{01}\bra{10}\right).
+\]
+The first-order corrections vanish because \(\op{\rho}_0\) commutes with \(\op{H}_I\), so we have \(l=k=2\). We therefore will use (\ref{eq.Sredresult.separablepure}).
 
-\emph{[To be continued...]}
+The only transition amplitude in the sum (\ref{eq.Sredresult.separablepure}) will be \(\bra{11} \op{H}_I \ket{00}\). Indeed (\ref{eq.Sredresult.separablepure}) becomes
+\begin{align*}
+S &= \frac{1}{\hbar^2} \left(\lambda^2 \log \frac{1}{\lambda^2}\right) \left|\int_0^t \bra{11} \op{H}_I \ket{00}\,dt^\prime\right|^2 + \Od{\lambda^2} \\
+&= \frac{1}{\hbar^2} \left(\lambda^2 \log \frac{1}{\lambda^2}\right) \left|\int_0^t \frac{\hbar}{2}\,dt^\prime\right|^2 + \Od{\lambda^2} \\
+&= \left(\lambda^2 \log \frac{1}{\lambda^2}\right) \frac{1}{4} t^2
+\end{align*}
+which is the same as what we found in our exact calculation.
+
+\subsection{Initial state \(\frac{1}{2}\left(\ket{10} + \ket{01} + \ket{11} - \ket{00}\right)\)}
+
+Now suppose the system begins in the state \(\frac{1}{2}\left(\ket{10} + \ket{01} + \ket{11} - \ket{00}\right)\) at time \(t=0\).
+
