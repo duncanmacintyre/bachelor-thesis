@@ -27,9 +27,9 @@ or, in our product basis,
 \op{H}_I = \frac{\hbar}{2} \left(\ket{11}\bra{00} + \ket{00}\bra{11} + \ket{10}\bra{01} + \ket{01}\bra{10}\right).
 \]
 
-% Let's now consider two different initial states. In both cases, let's start by calculating the exact change in entropy; then we can calculate the perturbative result and compare.
+Let's now consider two different initial states. In both cases, let's start by calculating the exact change in entropy; then we can calculate the perturbative result and compare.
 
-% \subsection{Initial state \(\ket{11}\)}
+\subsection{Initial state \(\ket{11}\)}
 
 Suppose at \(t=0\) we start in the initial state \(\ket{11} = \frac{1}{\sqrt{2}}\left(\ket{E_2}+\ket{E_3}\right)\). At time \(t\), the state is then
 \[
@@ -42,7 +42,8 @@ and the density operator is
 Then the reduced density operator for the first qubit is
 \begin{align*}
 \overline{\op{\rho}} &= \cdot\otimes\bra{0} \op{\rho} \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \op{\rho} \cdot\otimes\ket{1} \\
-&= \frac{1}{2}\left(1 + \cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{0}\bra{0} \\
+&= \left(\frac{1}{2} + \frac{1}{4}e^{\left(E_3-E_2\right)\frac{t}{\hbar}} + \frac{1}{4}e^{-\left(E_3-E_2\right)\frac{t}{\hbar}} \right)\ket{1}\bra{1} + \left(\frac{1}{2} -\frac{1}{4}e^{\left(E_3-E_2\right)\frac{t}{\hbar}} -\frac{1}{4}e^{-\left(E_3-E_2\right)\frac{t}{\hbar}} \right)\ket{0}\bra{0} \\
+% &= \frac{1}{2}\left(1 + \cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{0}\bra{0} \\
 &= \frac{1}{2}\left(1 + \cos \lambda t \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \lambda t \right)\ket{0}\bra{0}.
 \end{align*}
 where we used that \(\frac{E_3-E_2}{\hbar} = \lambda\). Thus the Von Neumann subsystem entropy is
@@ -68,21 +69,73 @@ S &= \frac{1}{\hbar^2} \left(\lambda^2 \log \frac{1}{\lambda^2}\right) \left|\in
 \end{align*}
 which is the same as what we found in our exact calculation.
 
-% \subsection{Initial state \(\frac{1}{2}\left(\ket{10} + \ket{01} + \ket{11} - \ket{00}\right)\)}
+\subsection{Initial state \(\frac{1}{2}\left(\ket{10} + \ket{01} + \ket{11} - \ket{00}\right)\)}
 
-% Now suppose the system begins in the state \(\frac{1}{2}\left(\ket{10} + \ket{01} + \ket{11} - \ket{00}\right)\) at time \(t=0\). At time \(t\), the state is
-% \[
-% \ket{\Psi(t)} = \frac{1}{\sqrt{2}}\left(e^{-itE_1/\hbar}\ket{E_1} + e^{-itE_2/\hbar} \ket{E_2}\right)
-% \]
-% and the density operator is
-% \[
-% \op{\rho} = \frac{1}{2}\ket{E_1}\bra{E_1} + \frac{1}{2}\ket{E_2}\bra{E_2} + \frac{1}{2} e^{it\left(E_2-E_1\right)/\hbar} \ket{E_1}\bra{E_2} + \frac{1}{2} e^{-it\left(E_2 - E_1\right)/\hbar} \ket{E_2}\bra{E_1}.
-% \]
-% Then the reduced density operator for the first qubit is
-% \begin{align*}
-% \overline{\op{\rho}} &= \cdot\otimes\bra{0} \op{\rho} \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \op{\rho} \cdot\otimes\ket{1} \\
-% &= \frac{1}{2}\left(1 + \cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{0}\bra{0} \\
-% &= \frac{1}{2}\left(1 + \cos \lambda t \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \lambda t \right)\ket{0}\bra{0}.
-% \end{align*}
-% where we used that \(\frac{E_3-E_2}{\hbar} = \lambda\). Thus the Von Neumann subsystem entropy is
+Now suppose the system begins in the state
+\[\frac{1}{2}\left(\ket{10} + \ket{01} + \ket{11} - \ket{00}\right) = \frac{1}{\sqrt{2}} \left(\ket{E_1} + \ket{E_2}\right)\]
+at time \(t=0\). Note that this is \emph{not} a separable state of the form (\ref{eq.rho0fullinitial}), though it is a pure state.
+
+At time \(t\), the state is
+\[
+\ket{\Psi(t)} = \frac{1}{\sqrt{2}}\left(e^{-itE_1/\hbar}\ket{E_1} + e^{-itE_2/\hbar} \ket{E_2}\right)
+\]
+and the density operator is
+\[
+\op{\rho} = \frac{1}{2}\ket{E_1}\bra{E_1} + \frac{1}{2}\ket{E_2}\bra{E_2} + \frac{1}{2} e^{it\left(E_2-E_1\right)/\hbar} \ket{E_1}\bra{E_2} + \frac{1}{2} e^{-it\left(E_2 - E_1\right)/\hbar} \ket{E_2}\bra{E_1}.
+\]
+We can compute that reduced density operator for the first qubit is
+\begin{align*}
+\overline{\op{\rho}} &= \cdot\otimes\bra{0} \op{\rho} \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \op{\rho} \cdot\otimes\ket{1} \\
+&= \frac{1}{2} \ket{1}\bra{1} + \frac{1}{2}\ket{0}\bra{0} + \frac{1}{4} e^{it\left(E_2-E_1\right)/\hbar}\left(-\ket{1}\bra{0} + \ket{0}\bra{1}\right) + \frac{1}{4} e^{-it\left(E_2-E_1\right)/\hbar}\left(\ket{1}\bra{0} - \ket{0}\bra{1}\right) \\
+&= \frac{1}{2}\ket{1}\bra{1} + \frac{1}{2}\ket{0}\bra{0} + \frac{i}{2} \left(\sin \phi\right) \ket{0}\bra{1} - \frac{i}{2} \left(\sin \phi\right) \ket{1}\bra{0}
+\end{align*}
+where \(\phi = \frac{E_3-E_2}{\hbar}\,t = (1-\lambda)\,t\).
+This \(\overline{\op{\rho}}\) has eigenvalues and eigenvectors
+\begin{align*}
+\sigma_{\pm} &= \frac{1 \pm \sin \phi}{2}, &
+\ket{\psi_\pm} &= \frac{\pm i \ket{0} + \ket{1}}{\sqrt{2}}.
+\end{align*}
+Hence the Von Neumann subsystem entropy is
+\[
+S = - \frac{1}{2}\left(1-\sin\phi\right) \log \left(\frac{1}{2}\left(1-\sin\phi\right)\right) - \frac{1}{2}\left(1+\sin\phi\right) \log \left(\frac{1}{2}\left(1+\sin\phi\right)\right).
+\]
+Using \(\sin x = x + \Od{x^3}\) and \(\log\left(1+x\right) = x + \Od{x^2}\) we get
+\begin{align*}
+S &= \log 2 - \phi^2 + \Od{\phi^3} \\
+&= \log 2 - t^2 + 2 \lambda t^2 - \lambda^2 t^2 + \Od{(1-\lambda)^3\,t^3}.
+\end{align*}
+
+Let us now consider the perturbative approach. Since the initial state is not separable, we cannot use (\ref{eq.Sredresult.separablepure}). Instead we will use (\ref{eq.foprobcor}) and (\ref{eq.deltaS.noassumptions}). We compute
+\[
+\left[\op{H}_I, \;\op{\rho}\right] = \frac{\hbar}{2} \left(\ket{00}\bra{10}- \ket{10}\bra{00} + \ket{00}\bra{01} - \ket{01}\bra{00} - \ket{11}\bra{10} + \ket{10}\bra{11} - \ket{11}\bra{01} +\ket{01}\bra{11}\right).
+\]
+Upon reduction this becomes
+\begin{align*}
+\overline{\left[\op{H}_I, \;\op{\rho}\right]} &= \cdot\otimes\bra{0} \left[\op{H}_I, \;\op{\rho}\right] \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \left[\op{H}_I, \;\op{\rho}\right] \cdot\otimes\ket{1} \\
+&= \hbar\left(\ket{0}\bra{1} - \ket{1}\bra{0}\right).
+\end{align*}
+By (\ref{eq.foprobcor}) the first-order correction to \(\sigma_-\) is
+\begin{align*}
+\sigma_-^{(1)} &= -\frac{i}{\hbar} \int_{0}^t \bra{\psi_-} \overline{\left[\op{H}_I, \;\op{\rho}\right]} \ket{\psi_-} dt^\prime \\
+&= -\frac{i}{2} \int_{0}^t \left(i\bra{0} + \bra{1}\right) \left(\ket{0}\bra{1} - \ket{1}\bra{0}\right) \left(-i\ket{0} + \ket{1}\right) dt^\prime \\
+&= t
+\end{align*}
+and similarly the first-order correction to \(\sigma_+\) is
+\begin{align*}
+\sigma_+^{(1)} &= -\frac{i}{\hbar} \int_{0}^t \bra{\psi_+} \overline{\left[\op{H}_I, \;\op{\rho}\right]} \ket{\psi_+} dt^\prime \\
+&= -\frac{i}{2} \int_{0}^t \left(-i\bra{0} + \bra{1}\right) \left(\ket{0}\bra{1} - \ket{1}\bra{0}\right) \left(i\ket{0} + \ket{1}\right) dt^\prime \\
+&= -t.
+\end{align*}
+Also, by taking \(\lambda=0\) in the definition of \(\sigma_\pm\) we get the zero-order corrections
+\[
+\sigma_\pm^{(0)} = \frac{1\pm \sin t}{2}.
+\]
+Then by (\ref{eq.deltaS.noassumptions}) the change in entropy due to the perturbation is
+\begin{align*}
+\Delta S &= \lambda \left(t \log (1 - \sin t) - t\log(1+\sin t)\right) \\
+&= -2\lambda t^2 + \Od{t^4}
+\end{align*}
+which agrees with our above result up to sign. \emph{[I probably made a sign error somewhere. This should be fixed.]}
+
+This example emphasizes that our perturbative results from Chapter \ref{ch.derivation} work even when \(\op{H}_0\) causes mixing between subsystems. We must keep in mind, however, that if \(\op{H}_0\) causes mixing between subsystems, there will be some time dependence in entropy at order \(\lambda^0\)---but this time dependence is not due to the perturbation.
 
