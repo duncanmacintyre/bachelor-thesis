@@ -1,2 +1,4 @@
 # Bachelor thesis
-This is my BSc thesis. It was completed at the University of British Columbia in 2023-24. The thesis itself is Copyright 2024, Duncan MacIntyre (me). The thesis template package is Copyright 2001, Michael McNeil Forbes, and may be obtained at [grad.ubc.ca/current-students/dissertation-thesis-preparation/style-guides-computer-tools](https://www.grad.ubc.ca/current-students/dissertation-thesis-preparation/style-guides-computer-tools).
+This is my BSc thesis. It was completed at the University of British Columbia in 2023-24.
+
+The thesis template may be obtained at [grad.ubc.ca/current-students/dissertation-thesis-preparation/style-guides-computer-tools](https://www.grad.ubc.ca/current-students/dissertation-thesis-preparation/style-guides-computer-tools).
