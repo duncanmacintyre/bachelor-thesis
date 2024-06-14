@@ -133,9 +133,54 @@ M_{n,\tilde{n}} = &\sum_m\int_{t_0}^t \int_{t_0}^{t^\prime} \bbra{n}{m} \left( \
 \end{align*}
 Because the trace of a matrix is invariant under a change of basis, we do not need to use the perturbation-diagonalized basis of \(\bket{n}{m}\).
 
-\section{Case of separable initial state}\label{sec.separablestate}
+\section{Case of diagonally separable initial state}\label{sec.separablestate}
 
-We will now consider the special case where, at the time \(t_0\), the density operator takes the form
+We will now consider a class of states that I call diagonally separable states.
+
+\begin{definition}
+A \emph{diagonally separable state} on a product Hilbert space \(\hilb_A \otimes \hilb_B\) is a state with density operator
+\begin{equation}\label{eq.defdiagsep}
+\op{\rho} = \sum_{n,m} \sigma_{n,m} \left(\ket{\Psi_n^A}\otimes\ket{\Psi_m^B}\right)\left(\bra{\Psi_n^A}\otimes\bra{\Psi_m^B}\right)
+\end{equation}
+where \(\{\ket{\Psi_n^A}\}\) is some orthonormal basis for \(\hilb_A\), \(\{\ket{\Psi_m^B}\}\) is some orthonormal basis for \(\hilb_B\), and \(\sigma_{n,m}\in[0,1]\) with \(\sum_{n,m}\sigma_{n,m} =1\).
+\end{definition}
+
+From the definition, it is immediately clear that product states are diagonally separable states. (Indeed, product states are the diagonally separable states where \(\sigma_{n,m} = \sigma_n^A\sigma_m^B\) for some \(\sigma_n^A\) and \(\sigma_m^B\).) It is also clear that diagonally separable states are separable states. (Separable states have density operators like \(\sum_{n,m} \sigma_{n,m} \op{\rho}_n^A\otimes\op{\rho}_m^B\) where the \(\op{\rho}_n^A\) and \(\op{\rho}_m^B\) are themselves density operators on \(\hilb_A\) and \(\hilb_B\).) The converses are not true; there exist separable states that are not diagonally separable and there exist diagonally separable states that are not product states.
+
+The following theorem provides some alternative definitions of diagonally separable states.
+
+\begin{theorem}
+Let \(\op{\rho}\) be the density operator for a state on a product Hilbert space \(\hilb_A \otimes \hilb_B\). Let \(\overline{\op{\rho}}_A\) be the reduced density operator in \(\hilb_A\) and \(\overline{\op{\rho}}_B\) be the reduced density operator in \(\hilb_B\). Then the following conditions are equivalent.
+\begin{enumerate}  
+    \item\label{item.thm.1}
+    The state is diagonally separable.
+    \item\label{item.thm.2}
+    \(\left[\op{\rho},\;\; \overline{\op{\rho}}_A\otimes\cdot\right] = 0\).
+    \item\label{item.thm.3}
+    \(\left[\op{\rho},\;\; \cdot\otimes\overline{\op{\rho}}_B\right] = 0\).
+    \item\label{item.thm.4}
+    We have
+    \begin{align*}
+    \op{\rho} &= \sum_{n,m}\sigma_{n,m}\; \op{\rho}_n^A \otimes \op{\rho}_m^B, &
+    \text{ all } \left[\op{\rho}_n^A, \;\op{\rho}_{n^\prime}^A\right]&=0, &
+    \text{ and all } \left[\op{\rho}_m^B, \;\op{\rho}_{m^\prime}^B\right]=0
+    \end{align*}
+    for some density operators \(\op{\rho}_n^A\) on \(\hilb_A\) and \(\op{\rho}_m^B\) on \(\hilb_B\) and for some numbers \(\sigma_{n,m}\in[0,1]\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+If condition \ref{item.thm.1} is true, it is obvious from (\ref{eq.defdiagsep}) that condition \ref{item.thm.2} is true. Now we prove the converse.
+
+Suppose \(\left[\op{\rho},\; \overline{\op{\rho}}_A\otimes\cdot\right] = 0\). Then there exists a basis \(\{\ket{\Psi_k\}\) of \(\hilb_A\otimes\hilb_B\) that diagonalizes both \(\op{\rho}\) and \(\overline{\op{\rho}}_A\otimes\cdot\). Write 
+\begin{align*}
+\op{\rho} & 
+\end{align*}
+\end{proof}
+
+
+
+the special case where, at the time \(t_0\), the density operator takes the form
 \begin{equation}\label{eq.rho0fullinitial}
 \op{\rho}_0 = \op{\rho}\left(t_0\right) = \sum_{n,m} \sigma_{n,m}^{(0)} \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right) \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right)
 \end{equation}
