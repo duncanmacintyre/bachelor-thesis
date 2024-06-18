@@ -292,34 +292,6 @@ We observe that \(\ref{eq.Sredresult.separable}\) vanishes if \(\hilb_B\) has on
 I am not aware of any others having derived (\ref{eq.Sredresult.separable}). I think it is a new result.
 
 
-\subsection{Upper and lower bounds for entropy growth}
-
-We can apply the triangle inequality to (\ref{eq.Sredresult.separable}) to obtain an illuminating lower bound on \(\Delta S\) for separable initial states. We have
-\begin{align*}
-\hspace{-0.4em}\frac{1}{\sum_m \sigma_{n,m}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;dt^\prime \right|^2
-& \leq \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \sum_{m} \left|{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;dt^\prime \right|^2 \\
- &= \sum_m \frac{\sigma_{n,m}^{(0)}}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \;\sigma_{n,m}^{(0)} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;dt^\prime \right|^2 \\
- &\leq \sum_m \sigma_{n,m}^{(0)} \left|\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
- \bket{n^\prime}{m}\;dt^\prime \right|^2.
-\end{align*}
-Applying this to (\ref{eq.Sredresult.separable}), we see at order \(\lambda^2 \log \frac{1}{\lambda^2}\) that
-\[
-\Delta S \geq \frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2.
-\]
-This result confirms that the change in entropy for a separable state is non-negative.
-
-We can also obtain an upper bound for (\ref{eq.Sredresult.separable}) by keeping only the first term. Then, at order \(\lambda^2 \log \frac{1}{\lambda^2}\),
-\begin{align}\label{eq.dSbounds}
-\frac{1}{\hbar^2}&\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime \neq m} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2 \\
-&\leq \;\;\Delta S \;\;\leq\;\; \frac{1}{\hbar^2}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \sum_{n\in I}\sum_{n^\prime \not\in I} \sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2. \nonumber
-\end{align}
-Interestingly, the only difference between the upper bound and the lower bound is whether we include the terms where \(m^\prime = m\) in the sum.
-
-From these expressions, it seems like entropy is proportional to the density of states that start with zero probability but can be transitioned to. If so, one might be able to estimate the rates of decoherence in different systems (e.g., different molecules) based on the density of accessible states.
-
 \section{Case of pure, separable initial state}\label{sec.purestate}
 
 If the initial state is pure and separable, let \(\bket{n}{m}\) be the initial state so that \(\op{\rho}_0 = \bket{n}{m}\bbra{n}{m}\). Then (\ref{eq.Sredresult.separable}) simplifies to
