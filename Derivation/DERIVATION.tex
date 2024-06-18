@@ -94,7 +94,7 @@ Because all \(\overline{\sigma_n} > 0\), the leading correction to \(\overline{\
 
 We will find in Section \ref{sec.separablestate} that \(l=k=2\) for separable states. Therefore, if a separable state can transition into new states that initially had probability zero, the entropy will never decrease due to the perturbation. This conclusion is consistent with Ref. \cite{bracken} which proves that the Von Neumann entropy of separable states does not decrease.
 
-\section{Case where first-order corrections vanish and new states can be entered}
+\section{Case where first-order corrections vanish and new states can be entered}\label{sec.secoddom}
 
 Suppose that some \(n\) have \(\overline{\sigma_n^{(0)}} = 0\) and \(\overline{\sigma_n} \neq 0\). Suppose also that all \(\sigma_n^{(1)} = 0\). (In other words, we suppose that \(l=k=2\) and that there are accessible states in the kernel of \(\overline{\op{\rho}}_0\).) Then  (\ref{eq.deltaS.noassumptions}) becomes
 \begin{equation}\label{eq.deltaS.notinI}
@@ -131,13 +131,45 @@ M_{n,\tilde{n}} = &\sum_m\int_{t_0}^t \int_{t_0}^{t^\prime} \bbra{n}{m} \left( \
 &- \sum_m\int_{t_0}^t \int_{t_0}^{t} \bbra{n}{m}\op{H}_I (t^\prime) \,\op{\rho}_0\, \op{H}_I (t^{\prime\prime})\bket{\tilde{n}}{m}\,dt^{\prime\prime}\,dt^\prime \nonumber\\
 &- \sum_{n^\prime \not \in I} \frac{1}{\;\overline{\sigma_n^{(0)}}\;} \sum_m\int_{t_0}^t \bbra{n}{m} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{n^\prime}{m}\;dt^\prime \sum_{m^\prime}\int_{t_0}^t \bbra{n^\prime}{m^\prime} \left[\op{H}_I(t^\prime),\; \op{\rho}_0 \right] \bket{\tilde{n}}{m^\prime}\;dt^\prime.
 \end{align*}
-Because the trace of a matrix is invariant under a change of basis, we do not need to use the perturbation-diagonalized basis of \(\bket{n}{m}\).
+Because the trace of a matrix is invariant under a change of basis, we do not need to use the perturbation-diagonalized basis.
 
-\section{Case of diagonally separable initial state}\label{sec.separablestate}
+\section{Case of diagonally separable initial state where new states can be entered}\label{sec.separablestate}
 
-We will now consider a class of states that I call diagonally separable states.
+\subsection{What are diagonally separable states?}
 
-\begin{definition}
+We start by finding a useful way to write density operators. Consider
+\begin{theorem}\label{thm.genform}
+Let \(\op{\rho}\) be any quantum operator on a product Hilbert space \(\hilb_A\otimes\hilb_B\). There exists a basis \(\{\ket{\Psi_n^A}\}\) of \(\hilb_A\) and a basis \(\{\ket{\Psi_m^B}\}\) of \(\hilb_B\) such that
+\begin{equation}\label{eq.genform}
+\op{\rho} = \sum_{\substack{n\in I \\ m\in J}} \sigma_{n,m} \bket{n}{m}\bbra{n}{m} \;+ \sum_{\substack{n,n^\prime \in I \,|\, n \neq n^\prime \\ m,m^\prime \in J \,|\, m \neq m^\prime}} \tau_{n,m,n^\prime,m^\prime} \bket{n}{m}\bbra{n^\prime}{m^\prime}
+\end{equation}
+where
+\begin{align*}
+\bket{n}{m} &= \ket{\Psi_n^A}\otimes\ket{\Psi_m^B}, &
+I &= \{n : \bbra{n}{m}\op{\rho}\bket{n}{m} \neq 0 \text{ for some } m\}, \\
+&&J &= \{m : \bbra{n}{m}\op{\rho}\bket{n}{m} \neq 0 \text{ for some } n\},
+\end{align*}
+for some complex numbers \(\sigma_{n,m}\) and \(\tau_{n,m,n^\prime,m^\prime}\).
+\end{theorem}
+
+\begin{proof}
+Proof to be added here.
+\end{proof}
+
+Theorem \ref{thm.genform} is stated for operators in general but we will apply it only to density operators.
+
+Why is Theorem \ref{thm.genform} useful? If the state of a system is given by (\ref{eq.genform}), then the reduced density operators are
+\begin{align*}
+\overline{\op{\rho}}_A &= \sum_n \left(\sum_m \sigma_{n,m}\right) \ket{\Psi_n^A}\bra{\Psi_n^A} &
+\text{ on } \hilb_A, \\
+\overline{\op{\rho}}_B &= \sum_m \left(\sum_n \sigma_{n,m}\right) \ket{\Psi_m^B}\bra{\Psi_m^B} &
+\text{ on } \hilb_B. 
+\end{align*}
+Thus the decomposition (\ref{thm.genform}) exposes which parts remain after reduction (the first set of terms) and which parts vanish upon reduction (the second set of terms). Indeed, states with the same \(\sigma_{n,m}\) will have the same reduced density operators.
+
+This decomposition also leads to a natural question: what happens if all the off-diagonal terms vanish (all \(\tau_{n,m,n^\prime,m^\prime}=0\))? Such a density operator is diagonalizable in way that remains diagonal upon reduction. This leads us to
+
+\begin{definition}\label{def.diagsep}
 A \emph{diagonally separable state} on a product Hilbert space \(\hilb_A \otimes \hilb_B\) is a state with density operator
 \begin{equation}\label{eq.defdiagsep}
 \op{\rho} = \sum_{n,m} \sigma_{n,m} \left(\ket{\Psi_n^A}\otimes\ket{\Psi_m^B}\right)\left(\bra{\Psi_n^A}\otimes\bra{\Psi_m^B}\right)
@@ -145,7 +177,7 @@ A \emph{diagonally separable state} on a product Hilbert space \(\hilb_A \otimes
 where \(\{\ket{\Psi_n^A}\}\) is some orthonormal basis for \(\hilb_A\), \(\{\ket{\Psi_m^B}\}\) is some orthonormal basis for \(\hilb_B\), and \(\sigma_{n,m}\in[0,1]\) with \(\sum_{n,m}\sigma_{n,m} =1\).
 \end{definition}
 
-From the definition, it is immediately clear that product states are diagonally separable states. (Indeed, product states are the diagonally separable states where \(\sigma_{n,m} = \sigma_n^A\sigma_m^B\) for some \(\sigma_n^A\) and \(\sigma_m^B\).) It is also clear that diagonally separable states are separable states. (Separable states have density operators like \(\sum_{n,m} \sigma_{n,m} \op{\rho}_n^A\otimes\op{\rho}_m^B\) where the \(\op{\rho}_n^A\) and \(\op{\rho}_m^B\) are themselves density operators on \(\hilb_A\) and \(\hilb_B\).) The converses are not true; there exist separable states that are not diagonally separable and there exist diagonally separable states that are not product states.
+From the definition, it is immediately clear that product states \(\op{\rho}_A\otimes\op{\rho}_B\) are diagonally separable states. (Indeed, product states are the diagonally separable states where \(\sigma_{n,m} = \sigma_n^A\sigma_m^B\) for some \(\sigma_n^A\) and \(\sigma_m^B\).) It is also clear that diagonally separable states are separable states. (Separable states have density operators like \(\sum_{n,m} \sigma_{n,m} \op{\rho}_n^A\otimes\op{\rho}_m^B\) where the \(\op{\rho}_n^A\) and \(\op{\rho}_m^B\) are themselves density operators on \(\hilb_A\) and \(\hilb_B\).) The converses are not true; there exist separable states that are not diagonally separable and there exist diagonally separable states that are not product states.
 
 The following theorem provides some alternative definitions of diagonally separable states.
 
@@ -159,11 +191,11 @@ Let \(\op{\rho}\) be the density operator for a state on a product Hilbert space
     \item\label{item.thm.3}
     \(\left[\op{\rho},\;\; \cdot\otimes\overline{\op{\rho}}_B\right] = 0\).
     \item\label{item.thm.4}
-    We have
+    We can write
     \begin{align*}
     \op{\rho} &= \sum_{n,m}\sigma_{n,m}\; \op{\rho}_n^A \otimes \op{\rho}_m^B, &
-    \text{ all } \left[\op{\rho}_n^A, \;\op{\rho}_{n^\prime}^A\right]&=0, &
-    \text{ and all } \left[\op{\rho}_m^B, \;\op{\rho}_{m^\prime}^B\right]=0
+    \text{ with all } \left[\op{\rho}_n^A, \;\op{\rho}_{n^\prime}^A\right]&=0, &
+    \text{ and all } \left[\op{\rho}_m^B, \;\op{\rho}_{m^\prime}^B\right]=0,
     \end{align*}
     for some density operators \(\op{\rho}_n^A\) on \(\hilb_A\) and \(\op{\rho}_m^B\) on \(\hilb_B\) and for some numbers \(\sigma_{n,m}\in[0,1]\).
 \end{enumerate}
@@ -172,35 +204,37 @@ Let \(\op{\rho}\) be the density operator for a state on a product Hilbert space
 \begin{proof}
 If condition \ref{item.thm.1} is true, it is obvious from (\ref{eq.defdiagsep}) that condition \ref{item.thm.2} is true. Now we prove the converse.
 
-Suppose \(\left[\op{\rho},\; \overline{\op{\rho}}_A\otimes\cdot\right] = 0\). Then there exists a basis \(\{\ket{\Psi_k\}\) of \(\hilb_A\otimes\hilb_B\) that diagonalizes both \(\op{\rho}\) and \(\overline{\op{\rho}}_A\otimes\cdot\). Write 
-\begin{align*}
-\op{\rho} & 
-\end{align*}
+(Proof to be added here.)
 \end{proof}
 
+\subsection{Entropy evolution}
 
-
-the special case where, at the time \(t_0\), the density operator takes the form
+We now return to our study of entropy. We consider the case where, at the time \(t_0\), the state is diagonally separable; write
 \begin{equation}\label{eq.rho0fullinitial}
-\op{\rho}_0 = \op{\rho}\left(t_0\right) = \sum_{n,m} \sigma_{n,m}^{(0)} \left(\ket{\alpha_n^{(0)}}\otimes\ket{\beta_m}\right) \left(\bra{\alpha_n^{(0)}}\otimes\bra{\beta_m}\right)
+\op{\rho}_0 = \op{\rho}\left(t_0\right) = \sum_{n,m} \sigma_{n,m}^{(0)} \left(\ket{\Psi_n^{A}}\otimes\ket{\Psi_m^B}\right) \left(\bra{\Psi_n^{A}}\otimes\bra{\Psi_m^B}\right)
 \end{equation}
-where \(\left\{\ket{\alpha_n^{(0)}}\right\}\) is \emph{any} orthonormal basis for \(\hilb_A\) and \(\left\{\ket{\beta_m}\right\}\) is \emph{any} orthonormal basis for \(\hilb_B\). We call such states ``separable states''.
+where \(\left\{\ket{\Psi_n^{A}}\right\}\) is an orthonormal basis for \(\hilb_A\) and \(\left\{\ket{\Psi_m^B}\right\}\) is an orthonormal basis for \(\hilb_B\).
 
 (\ref{eq.rho0fullinitial}) implies that the reduced density operator at time \(t_0\) is
 \[
-\overline{\op{\rho}}_0 = \overline{\op{\rho}}\left(t_0\right) = \sum_n \overline{\sigma_{n}^{(0)}} \ket{\alpha_n^{(0)}}\bra{\alpha_n^{(0)}}
+\overline{\op{\rho}}_0 = \overline{\op{\rho}}\left(t_0\right) = \sum_n \overline{\sigma_{n}^{(0)}} \ket{\Psi_n^{A}}\bra{\Psi_n^{A}}
 \]
 where
 \[
 \overline{\sigma_n^{(0)}} = \sum_m \sigma_{n,m}^{(0)}.
 \]
-Now, if we fix a time \(t\), there should be some basis \(\{\ket{\alpha_n}\}\) of \(\hilb_A\) and some quantities \(\overline{\sigma_n}\) such that
+Now, if we fix a different time \(t\), there should be some basis \(\{\ket{\alpha_n}\}\) of \(\hilb_A\) and some quantities \(\overline{\sigma_n}\) such that
 \[
 \overline{\op{\rho}}(t) = \sum_n \overline{\sigma_n} \ket{\alpha_n}\bra{\alpha_n}.
 \]
-The eigenstate/eigenvalue decomposition of an operator is unique up to relabeling once we choose a basis that is appropriately diagonalized on degenerate spaces. Here, for the separable state, we will see that the second-order term dominates, so as observed above we need not diagonalize on degenerate subspaces.
-
-Comparing our equations for the separable state to (\ref{eq.redrhodef}) and (\ref{eq.rho0red}), we see that our previous analysis must hold with the notation unchanged. Indeed,
+The eigenstate/eigenvalue decomposition of an operator is unique up to relabeling once we choose a basis that is appropriately diagonalized on degenerate spaces.
+Comparing our equations to (\ref{eq.redrhodef}) and (\ref{eq.rho0red}), we see that our previous analysis must hold with
+\begin{align*}
+\ket{\alpha_n^{(0)}} &= \ket{\Psi_n^A} &
+\ket{\beta_m} &= \ket{\Psi_m^B} & 
+\bket{n}{m} &= \ket{\alpha_n^{(0)}} \otimes \ket{\beta_m} = \ket{\Psi_n^A}\otimes \ket{\Psi_m^B}.
+\end{align*}
+Then
 \begin{equation}
 \label{eq.rho0full}
 \op{\rho}_0 = \sum_{n,m} \sigma_{n,m}^{(0)} \bket{n}{m}\bbra{n}{m}.
@@ -214,7 +248,7 @@ We have
 \\&=
  \bbra{n}{m} \op{\rho}_0 \;\op{H}_I(t^\prime) \bket{n}{m} 
 \end{align*}
-so the first-order eigenvalue correction (\ref{eq.foprobcor}) vanishes. We will assume that the second-order eigenvalue correction \(\overline{\sigma_n^{(2)}}\) does not vanish and turn to (\ref{eq.entropyresultwithrho2}).
+so the first-order eigenvalue correction (\ref{eq.foprobcor}) vanishes. We will assume that the second-order eigenvalue corrections \(\overline{\sigma_n^{(2)}}\) do not vanish and also that there exist states in \(\hilb_A\) with zero initial probability that can be transitioned into. Therefore we are in the case of Section \ref{sec.secoddom} and use (\ref{eq.entropyresultwithrho2}). (We don't need to worry about diagonalizing on degenerate subspaces for the same reasons as in Section \ref{sec.secoddom}.)
 
 The first two terms in (\ref{eq.entropyresultwithrho2}) are
 \begin{align*}
