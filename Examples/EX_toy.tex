@@ -59,9 +59,7 @@ S &=- \left(1-\frac{1}{4}\lambda^2 t^2\right) \log \left(1-\frac{1}{4}\lambda^2 
 \end{align*}
 
 We did the derivation above by solving the Schr\"odinger equation exactly. Let's now apply our perturbative calculation and see that we get the same result. 
-The first-order corrections vanish because \(\op{\rho}_0\) commutes with \(\op{H}_I\), so we have \(l=k=2\). We therefore will use (\ref{eq.Sredresult.separablepure}).
-
-The only transition amplitude in the sum (\ref{eq.Sredresult.separablepure}) will be \(\bra{11} \op{H}_I \ket{00}\). Indeed (\ref{eq.Sredresult.separablepure}) becomes
+The initial state is pure and separable, so we will use (\ref{eq.Sredresult.separablepure}), which has only one term: \(\bra{11} \op{H}_I \ket{00}\). We get
 \begin{align*}
 S &= \frac{1}{\hbar^2} \left(\lambda^2 \log \frac{1}{\lambda^2}\right) \left|\int_0^t \bra{11} \op{H}_I \ket{00}\,dt^\prime\right|^2 + \Od{\lambda^2} \\
 &= \frac{1}{\hbar^2} \left(\lambda^2 \log \frac{1}{\lambda^2}\right) \left|\int_0^t \frac{\hbar}{2}\,dt^\prime\right|^2 + \Od{\lambda^2} \\
@@ -73,7 +71,7 @@ which is the same as what we found in our exact calculation.
 
 Now suppose the system begins in the state
 \[\frac{1}{2}\left(\ket{10} + \ket{01} + \ket{11} - \ket{00}\right) = \frac{1}{\sqrt{2}} \left(\ket{E_1} + \ket{E_2}\right)\]
-at time \(t=0\). Note that this is \emph{not} a separable state of the form (\ref{eq.rho0fullinitial}), though it is a pure state.
+at time \(t=0\). Note that this is \emph{not} a diagonally separable state of the form (\ref{eq.rho0fullinitial}), though it is a pure state.
 
 At time \(t\), the state is
 \[
@@ -89,57 +87,63 @@ We can compute that reduced density operator for the first qubit is
 &= \frac{1}{2} \ket{1}\bra{1} + \frac{1}{2}\ket{0}\bra{0} + \frac{1}{4} e^{it\left(E_2-E_1\right)/\hbar}\left(-\ket{1}\bra{0} + \ket{0}\bra{1}\right) + \frac{1}{4} e^{-it\left(E_2-E_1\right)/\hbar}\left(\ket{1}\bra{0} - \ket{0}\bra{1}\right) \\
 &= \frac{1}{2}\ket{1}\bra{1} + \frac{1}{2}\ket{0}\bra{0} + \frac{i}{2} \left(\sin \phi\right) \ket{0}\bra{1} - \frac{i}{2} \left(\sin \phi\right) \ket{1}\bra{0}
 \end{align*}
-where \(\phi = \frac{E_3-E_2}{\hbar}\,t = (1-\lambda)\,t\).
+where \(\phi = \frac{E_2-E_1}{\hbar}\,t = (1-\lambda)\,t\).
 This \(\overline{\op{\rho}}\) has eigenvalues and eigenvectors
 \begin{align*}
 \sigma_{\pm} &= \frac{1 \pm \sin \phi}{2}, &
-\ket{\psi_\pm} &= \frac{\pm i \ket{0} + \ket{1}}{\sqrt{2}}.
+\ket{\psi_\pm} &= \frac{\pm i \ket{0} + \ket{1}}{\sqrt{2}}
 \end{align*}
-Hence the Von Neumann subsystem entropy is
+so the Von Neumann subsystem entropy is
 \[
 S = - \frac{1}{2}\left(1-\sin\phi\right) \log \left(\frac{1}{2}\left(1-\sin\phi\right)\right) - \frac{1}{2}\left(1+\sin\phi\right) \log \left(\frac{1}{2}\left(1+\sin\phi\right)\right).
 \]
-Using \(\sin x = x + \Od{x^3}\) and \(\log\left(1+x\right) = x + \Od{x^2}\) we get
+Using \(\sin x = x + \Od{x^3}\) and \(\log\left(1+x\right) = x - \frac{1}{2} x^2 + \Od{x^3}\) we get
 \begin{align*}
-S &= \log 2 - \phi^2 + \Od{\phi^3} \\
-&= \log 2 - t^2 + 2 \lambda t^2 - \lambda^2 t^2 + \Od{(1-\lambda)^3\,t^3}.
+S &= \log 2 - \frac{1}{2}\phi^2 + \Od{\phi^3} \\
+&= \log 2 - \frac{1}{2}t^2 + \lambda t^2 - \frac{1}{2}\lambda^2 t^2 + \Od{(1-\lambda)^3\,t^3}.
 \end{align*}
-The change in entropy \emph{due to the perturbation} is
+Notice that at \(t=0\) the \emph{total} entropy is decreasing but it will decrease more slowly because of the perturbation. The change in entropy \emph{due to the perturbation} is
 \[
-\Delta S = 2 \lambda t^2 - \lambda^2 t^2 + \Od{(1-\lambda)^3\,t^3}.
+\Delta S = \lambda t^2 - \frac{1}{2} \lambda^2 t^2 + \Od{(1-\lambda)^3\,t^3}
+\]
+which is positive for small \(t\) and \(\lambda\). 
+
+Let us now analyze the system by the perturbative approach and compare. Since the initial state is not diagonally separable, we cannot use (\ref{eq.Sredresult.separablepure}). Instead we will use (\ref{eq.foprobcor}) and (\ref{eq.deltaS.noassumptions}).
+
+By taking \(\lambda=0\) in the definition of \(\sigma_\pm\) we get the zero-order corrections
+\[
+\sigma_\pm^{(0)} = \frac{1\pm \sin t}{2}.
 \]
 
-Let us now consider the perturbative approach. Since the initial state is not separable, we cannot use (\ref{eq.Sredresult.separablepure}). Instead we will use (\ref{eq.foprobcor}) and (\ref{eq.deltaS.noassumptions}). We compute
+We now compute
 \[
 \left[\op{H}_I, \;\op{\rho}\right] = \frac{\hbar}{2} \left(\ket{00}\bra{10}- \ket{10}\bra{00} + \ket{00}\bra{01} - \ket{01}\bra{00} - \ket{11}\bra{10} + \ket{10}\bra{11} - \ket{11}\bra{01} +\ket{01}\bra{11}\right).
 \]
 Upon reduction this becomes
 \begin{align*}
 \overline{\left[\op{H}_I, \;\op{\rho}\right]} &= \cdot\otimes\bra{0} \left[\op{H}_I, \;\op{\rho}\right] \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \left[\op{H}_I, \;\op{\rho}\right] \cdot\otimes\ket{1} \\
-&= \hbar\left(\ket{0}\bra{1} - \ket{1}\bra{0}\right).
+&= \frac{\hbar}{2}\left(\ket{0}\bra{1} - \ket{1}\bra{0}\right).
 \end{align*}
-By (\ref{eq.foprobcor}) the first-order correction to \(\sigma_-\) is
+By (\ref{eq.foprobcor}) the first-order correction to \(\sigma_-^{(0)}\) is
 \begin{align*}
 \sigma_-^{(1)} &= -\frac{i}{\hbar} \int_{0}^t \bra{\psi_-} \overline{\left[\op{H}_I, \;\op{\rho}\right]} \ket{\psi_-} dt^\prime \\
-&= -\frac{i}{2} \int_{0}^t \left(i\bra{0} + \bra{1}\right) \left(\ket{0}\bra{1} - \ket{1}\bra{0}\right) \left(-i\ket{0} + \ket{1}\right) dt^\prime \\
-&= t
+&= -\frac{i}{4} \int_{0}^t \left(i\bra{0} + \bra{1}\right) \left(\ket{0}\bra{1} - \ket{1}\bra{0}\right) \left(-i\ket{0} + \ket{1}\right) dt^\prime \\
+&= \frac{t}{2}
 \end{align*}
-and similarly the first-order correction to \(\sigma_+\) is
+and similarly the first-order correction to \(\sigma_+^{(0)}\) is
 \begin{align*}
 \sigma_+^{(1)} &= -\frac{i}{\hbar} \int_{0}^t \bra{\psi_+} \overline{\left[\op{H}_I, \;\op{\rho}\right]} \ket{\psi_+} dt^\prime \\
-&= -\frac{i}{2} \int_{0}^t \left(-i\bra{0} + \bra{1}\right) \left(\ket{0}\bra{1} - \ket{1}\bra{0}\right) \left(i\ket{0} + \ket{1}\right) dt^\prime \\
-&= -t.
+&= -\frac{i}{4} \int_{0}^t \left(-i\bra{0} + \bra{1}\right) \left(\ket{0}\bra{1} - \ket{1}\bra{0}\right) \left(i\ket{0} + \ket{1}\right) dt^\prime \\
+&= -\frac{t}{2}.
 \end{align*}
-Also, by taking \(\lambda=0\) in the definition of \(\sigma_\pm\) we get the zero-order corrections
-\[
-\sigma_\pm^{(0)} = \frac{1\pm \sin t}{2}.
-\]
+
 Then by (\ref{eq.deltaS.noassumptions}) the change in entropy due to the perturbation is
 \begin{align*}
-\Delta S &= \lambda \left(t \log (1 - \sin t) - t\log(1+\sin t)\right) \\
-&= -2\lambda t^2 + \Od{t^4}
+\Delta S &= \lambda \left(\frac{t}{2} \log \frac{2}{1 - \sin t} - \frac{t}{2}log\frac{2}{1+\sin t}\right) \\
+&= \frac{\lambda t}{2} \log \frac{1+ \sin t}{1 - \sin t} \\
+&= \lambda t^2 + \Od{t^4}
 \end{align*}
-which agrees with our above result up to sign. \emph{[I probably made a sign error somewhere. This should be fixed.]}
+which agrees with our above result.
 
 This example emphasizes that our perturbative results from Chapter \ref{ch.derivation} work even when \(\op{H}_0\) causes mixing between subsystems. We must keep in mind, however, that if \(\op{H}_0\) causes mixing between subsystems, there will be some time dependence in entropy at order \(\lambda^0\)---but this time dependence is not due to the perturbation.
 
