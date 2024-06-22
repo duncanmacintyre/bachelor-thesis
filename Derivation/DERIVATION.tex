@@ -153,7 +153,35 @@ for some complex numbers \(\sigma_{n,m}\) and \(\tau_{n,m,n^\prime,m^\prime}\).
 \end{theorem}
 
 \begin{proof}
-Proof to be added here.
+Write
+\(
+\op{\rho} = \sum_i \zeta_i \ket{\Phi_i}\bra{\Phi_i}
+\)
+where all \(0 < \zeta_i \leq 1\) and the \(\ket{\Phi_i}\) are orthonormal. Let \(\overline{\op{\rho}}_A\) and \(\overline{\op{\rho}}_B\) be the reduced operators of \(\op{\rho}\) on \(\hilb_A\) and \(\hilb_B\) respectively. Let \(\{\ket{\Psi_n^A}\}\) be an orthonormal basis for \(\hilb_A\) that diagonalizes \(\overline{\op{\rho}}_A\) and let \(\{\ket{\Psi_m^B}\}\) be an orthonormal basis for \(\hilb_B\) that diagonalizes \(\overline{\op{\rho}}_B\). Take \(\bket{n}{m} = \ket{\Psi_n^A}\otimes\ket{\Psi_m^B}\).
+
+Write \(\ket{\Psi_i} = \sum_{n,m} \gamma_{i,n,m}\bket{n}{m}\bbra{n}{m}\) so that
+\[
+\op{\rho} = \sum_{\substack{i \\ n,n^\prime\in I \\ m,m^\prime\in J}} \zeta_i \gamma_{i,n,m}\gamma_{i,n^\prime,m^\prime}^*\bket{n}{m}\bbra{n^\prime}{m^\prime}.
+\]
+We see that if we take
+\begin{align*}
+I &= \{n : \bbra{n}{m}\op{\rho}\bket{n}{m} \neq 0 \text{ for some } m\}, &
+J &= \{m : \bbra{n}{m}\op{\rho}\bket{n}{m} \neq 0 \text{ for some } n\}
+\end{align*}
+we need only sum over indices in \(I\) and \(J\); we have
+\[
+\op{\rho} = \sum_{\substack{i \\ n,n^\prime\in I \\ m,m^\prime\in J}} \zeta_i \gamma_{i,n,m}\gamma_{i,n^\prime,m^\prime}^*\bket{n}{m}\bbra{n^\prime}{m^\prime}.
+\]
+Letting \(\tau_{n,m,n^\prime,m^\prime} = \sum_i \zeta_i \gamma_{i,n,m}\gamma_{i,n^\prime,m^\prime}^*\) we get
+\[
+\op{\rho} = \sum_{\substack{n,n^\prime\in I \\ m,m^\prime\in J}} \tau_{n,m,n^\prime,m^\prime}\bket{n}{m}\bbra{n^\prime}{m^\prime}
+\]
+and so
+\begin{align*}
+\overline{\op{\rho}}_A &= \sum_{n,n^\prime\in I} \left(\sum_{m\in J}\tau_{n,m,n^\prime,m}\right)\ket{\Psi_n^A}\bra{\Psi_{n^\prime}^A}, &
+\overline{\op{\rho}}_B &= \sum_{m,m^\prime\in J} \left(\sum_{n\in I}\tau_{n,m,n,m^\prime}\right)\ket{\Psi_m^B}\bra{\Psi_{m^\prime}^B}.
+\end{align*}
+Recall that
 \end{proof}
 
 Theorem \ref{thm.genform} is stated for operators in general but we will apply it only to density operators.
