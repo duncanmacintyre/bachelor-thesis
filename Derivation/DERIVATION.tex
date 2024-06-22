@@ -135,39 +135,7 @@ Because the trace of a matrix is invariant under a change of basis, we do not ne
 
 \section{Case of diagonally separable initial state where new states can be entered}\label{sec.separablestate}
 
-\subsection{What are diagonally separable states?}
-
-We start by finding a useful way to write density operators. Consider
-\begin{theorem}\label{thm.genform}
-Let \(\op{\rho}\) be any quantum operator on a product Hilbert space \(\hilb_A\otimes\hilb_B\). There exists a basis \(\{\ket{\Psi_n^A}\}\) of \(\hilb_A\) and a basis \(\{\ket{\Psi_m^B}\}\) of \(\hilb_B\) such that
-\begin{equation}\label{eq.genform}
-\op{\rho} = \sum_{\substack{n\in I \\ m\in J}} \sigma_{n,m} \bket{n}{m}\bbra{n}{m} \;+ \sum_{\substack{n,n^\prime \in I \,|\, n \neq n^\prime \\ m,m^\prime \in J \,|\, m \neq m^\prime}} \tau_{n,m,n^\prime,m^\prime} \bket{n}{m}\bbra{n^\prime}{m^\prime}
-\end{equation}
-where
-\begin{align*}
-\bket{n}{m} &= \ket{\Psi_n^A}\otimes\ket{\Psi_m^B}, &
-I &= \{n : \bbra{n}{m}\op{\rho}\bket{n}{m} \neq 0 \text{ for some } m\}, \\
-&&J &= \{m : \bbra{n}{m}\op{\rho}\bket{n}{m} \neq 0 \text{ for some } n\},
-\end{align*}
-for some complex numbers \(\sigma_{n,m}\) and \(\tau_{n,m,n^\prime,m^\prime}\).
-\end{theorem}
-
-\begin{proof}
-Proof to be added here.
-\end{proof}
-
-Theorem \ref{thm.genform} is stated for operators in general but we will apply it only to density operators.
-
-Why is Theorem \ref{thm.genform} useful? If the state of a system is given by (\ref{eq.genform}), then the reduced density operators are
-\begin{align*}
-\overline{\op{\rho}}_A &= \sum_n \left(\sum_m \sigma_{n,m}\right) \ket{\Psi_n^A}\bra{\Psi_n^A} &
-\text{ on } \hilb_A, \\
-\overline{\op{\rho}}_B &= \sum_m \left(\sum_n \sigma_{n,m}\right) \ket{\Psi_m^B}\bra{\Psi_m^B} &
-\text{ on } \hilb_B. 
-\end{align*}
-Thus the decomposition (\ref{thm.genform}) exposes which parts remain after reduction (the first set of terms) and which parts vanish upon reduction (the second set of terms). Indeed, states with the same \(\sigma_{n,m}\) will have the same reduced density operators.
-
-This decomposition also leads to a natural question: what happens if all the off-diagonal terms vanish (all \(\tau_{n,m,n^\prime,m^\prime}=0\))? Such a density operator is diagonalizable in way that remains diagonal upon reduction. This leads us to
+We begin with a definition.
 
 \begin{definition}\label{def.diagsep}
 A \emph{diagonally separable state} on a product Hilbert space \(\hilb_A \otimes \hilb_B\) is a state with density operator
@@ -176,38 +144,9 @@ A \emph{diagonally separable state} on a product Hilbert space \(\hilb_A \otimes
 \end{equation}
 where \(\{\ket{\Psi_n^A}\}\) is some orthonormal basis for \(\hilb_A\), \(\{\ket{\Psi_m^B}\}\) is some orthonormal basis for \(\hilb_B\), and \(\sigma_{n,m}\in[0,1]\) with \(\sum_{n,m}\sigma_{n,m} =1\).
 \end{definition}
+It turns out that diagonally separable states will have entropy that evolves in a characteristic way.
 
 From the definition, it is immediately clear that product states \(\op{\rho}_A\otimes\op{\rho}_B\) are diagonally separable states. (Indeed, product states are the diagonally separable states where \(\sigma_{n,m} = \sigma_n^A\sigma_m^B\) for some \(\sigma_n^A\) and \(\sigma_m^B\).) It is also clear that diagonally separable states are separable states. (Separable states have density operators like \(\sum_{n,m} \sigma_{n,m} \op{\rho}_n^A\otimes\op{\rho}_m^B\) where the \(\op{\rho}_n^A\) and \(\op{\rho}_m^B\) are themselves density operators on \(\hilb_A\) and \(\hilb_B\).) The converses are not true; there exist separable states that are not diagonally separable and there exist diagonally separable states that are not product states.
-
-The following theorem provides some alternative definitions of diagonally separable states.
-
-\begin{theorem}
-Let \(\op{\rho}\) be the density operator for a state on a product Hilbert space \(\hilb_A \otimes \hilb_B\). Let \(\overline{\op{\rho}}_A\) be the reduced density operator in \(\hilb_A\) and \(\overline{\op{\rho}}_B\) be the reduced density operator in \(\hilb_B\). Then the following conditions are equivalent.
-\begin{enumerate}  
-    \item\label{item.thm.1}
-    The state is diagonally separable.
-    \item\label{item.thm.2}
-    \(\left[\op{\rho},\;\; \overline{\op{\rho}}_A\otimes\cdot\right] = 0\).
-    \item\label{item.thm.3}
-    \(\left[\op{\rho},\;\; \cdot\otimes\overline{\op{\rho}}_B\right] = 0\).
-    \item\label{item.thm.4}
-    We can write
-    \begin{align*}
-    \op{\rho} &= \sum_{n,m}\sigma_{n,m}\; \op{\rho}_n^A \otimes \op{\rho}_m^B, &
-    \text{ with all } \left[\op{\rho}_n^A, \;\op{\rho}_{n^\prime}^A\right]&=0, &
-    \text{ and all } \left[\op{\rho}_m^B, \;\op{\rho}_{m^\prime}^B\right]=0,
-    \end{align*}
-    for some density operators \(\op{\rho}_n^A\) on \(\hilb_A\) and \(\op{\rho}_m^B\) on \(\hilb_B\) and for some numbers \(\sigma_{n,m}\in[0,1]\).
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-If condition \ref{item.thm.1} is true, it is obvious from (\ref{eq.defdiagsep}) that condition \ref{item.thm.2} is true. Now we prove the converse.
-
-(Proof to be added here.)
-\end{proof}
-
-\subsection{Entropy evolution}
 
 We now return to our study of entropy. We consider the case where, at the time \(t_0\), the state is diagonally separable; write
 \begin{equation}\label{eq.rho0fullinitial}
@@ -283,7 +222,7 @@ Putting this all back into (\ref{eq.entropyresultwithrho2}), we obtain the rathe
 &- \frac{1}{\sum_{\tilde{m}} \sigma_{n,\tilde{m}}^{(0)}} \left|\sum_m{\sigma_{n,m}^{(0)}}\int_{t_0}^t \bbra{n}{m} \op{H}_I(t^\prime) 
  \bket{n^\prime}{m}\;dt^\prime \right|^2\Bigg) + \Od{\lambda^2}. \nonumber
 \end{empheq}
-Entropy just depends on the transition amplitudes to states that started with zero initial probability.
+Entropy just depends on the Born transition amplitudes to states that started with zero initial probability.
 
 In \(\ref{eq.Sredresult.separable}\), the first term \(\sum_{n\in I}\sum_{n^\prime \not\in I}\sum_m \sigma_{n,m}^{(0)} \sum_{m^\prime} \left|\int_{t_0}^t \bbra{n}{m}\op{H}_I (t^{\prime})\bket{n^\prime}{m^\prime} \,dt^{\prime}\right|^2\) can be interpreted as the total probability that a transition occurs to a state that had zero probability to start. The second term is harder to interpret; perhaps it is some kind of correction to account for double-counting.
 
