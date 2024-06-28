@@ -1,24 +1,29 @@
 
 We will now consider scattering between two particles. Let's make a few assumptions:
 
-\begin{itemize}
+\begin{enumerate}
 \item The particles are distinguishable (so we don't need to restrict ourselves to symmetric or antisymmetric states).
-\item The particles start in momentum eigenstates---that is, plane waves.
-\item The Hamiltonian of the system can be written as \(\op{H} = \op{H}_0 + \lambda \op{V}\) where \(\op{H}_0\) is the free particle Hamiltonian and \(\op{V}\) describes the interaction.
+\item The particles are in momentum eigenstates---that is, plane waves---at some fixed time \(t_0\).
+\item The Hamiltonian of the system can be written as \(\op{H} = \op{H}_0 + \lambda \op{V}\) where \(\op{H}_0\) is the free particle Hamiltonian and \(\op{V}\) describes the particle interaction.
 \item The particles interact in a way that only depends on the distance between them. That is, in the position basis, we can write
 \begin{equation}\label{eq.Vposbasis}
 \bra{\vec{x_1}, \vec{x_2}}\op{V}\ket{\Psi} = \int_{\vec{x_1},\vec{x_2}} {d^3 \vec{x_1} \,d^3\vec{x_2}}\; V(\vec{x_1} - \vec{x_2}) \braket{\vec{x_1}, \vec{x_2}}{\Psi}
 \end{equation}
 for some function \(V\).
-\end{itemize}
+\item
+The interaction is weak. Thus we will study the system in limit \(\lambda \to 0\).
+\item
+The particles have a very long time over which to interact.
+\end{enumerate}
 
-Write momentum eigenstates as \(\ket{\vec{k_1}, \vec{k_2}}\). In the position basis these have wavefunctions
+We begin by writing momentum eigenstates as \(\ket{\vec{k_1}, \vec{k_2}}\). In the position basis these have wavefunctions
 \begin{equation}\label{eq.momentuminpos}
 \braket{\vec{x_1}, \vec{x_2}}{\vec{k_1}, \vec{k_2}} = \frac{1}{(2\pi)^3}\;e^{i\vec{k_1}\cdot \vec{x_1} + i\vec{k_2}\cdot \vec{x_2}}.
 \end{equation}
-Here \(\vec{x_1}\) and \(\vec{x_2}\) are the (3-vector) positions of the first and second particles and \(\vec{k_1}\) and \(\vec{k_2}\) are the (3-vector) momenta of the first and second particle. We will write these vectors without arrows to mean their magnitudes.
+Here \(\vec{x_1}\) and \(\vec{x_2}\) are the (3-vector) positions of the first and second particles and \(\vec{k_1}\) and \(\vec{k_2}\) are the (3-vector) momenta of the first and second particle.
 
-The state \(\ket{\vec{k_1}, \vec{k_2}}\) has energy \(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\) and so
+We will write these vectors without arrows to mean their magnitudes.
+Then the state \(\ket{\vec{k_1}, \vec{k_2}}\) has energy \(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\) and so
 \begin{equation}
 \label{eq.timeevonk}
 \op{U}(t_0, t) \ket{\vec{k_1}, \vec{k_2}} = e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\right)} \ket{\vec{k_1}, \vec{k_2}}.
@@ -39,14 +44,14 @@ Suppose we start in a plane wave \(\ket{\vec{k_1}, \vec{k_2}}\). This is a diago
 This motivates us to compute the matrix element \(\bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \op{H}_I(t)\ket{\vec{k_1}, \vec{k_2}}\). We can start by using (\ref{eq.timeevonk}):
 \begin{align*}
 \bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \op{H}_I(t)\ket{\vec{k_1}, \vec{k_2}}
-&= \bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \op{U}(t_0, t)^\dagger \op{V}(t) \op{U}(t_0, t) \ket{\vec{k_1}, \vec{k_2}} \nonumber\\
-&= \bra{\vec{k_1^\prime}, \vec{k_2^\prime}} e^{\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{{k_1^\prime}}^2 + \frac{1}{2m_2}{{k_2^\prime}}^2\right)} \op{V}(t) e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\right)} \ket{\vec{k_1}, \vec{k_2}} \nonumber\\
-&= e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{{k_1^\prime}}^2 + \frac{1}{2m_2}{{k_2^\prime}}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2\right)} \bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \op{V}(t) \ket{\vec{k_1}, \vec{k_2}}.
+&= \bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \op{U}(t_0, t)^\dagger \op{V} \op{U}(t_0, t) \ket{\vec{k_1}, \vec{k_2}} \nonumber\\
+&= \bra{\vec{k_1^\prime}, \vec{k_2^\prime}} e^{\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{{k_1^\prime}}^2 + \frac{1}{2m_2}{{k_2^\prime}}^2\right)} \op{V} e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{k_1}^2 + \frac{1}{2m_2}{k_2}^2\right)} \ket{\vec{k_1}, \vec{k_2}} \nonumber\\
+&= e^{-\frac{i}{\hbar}\left(t-t_0\right)\left(\frac{1}{2m_1}{{k_1^\prime}}^2 + \frac{1}{2m_2}{{k_2^\prime}}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2\right)} \bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \op{V} \ket{\vec{k_1}, \vec{k_2}}.
 \end{align*}
 We see that
 \begin{align*}
-\hspace{-4em}\bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \op{V}(t) \ket{\vec{k_1}, \vec{k_2}} &= \bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \left\{\int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;} \ket{\vec{x_1}, \vec{x_2}}\bra{\vec{x_1}, \vec{x_2}}\right\}\op{V}(t) \ket{\vec{k_1}, \vec{k_2}} \nonumber\\
-&= \int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;} \braket{\vec{k_1^\prime}, \vec{k_2^\prime}}{\vec{x_1}, \vec{x_2}}\bra{\vec{x_1}, \vec{x_2}}\op{V}(t) \ket{\vec{k_1}, \vec{k_2}} \nonumber\\
+\hspace{-4em}\bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \op{V} \ket{\vec{k_1}, \vec{k_2}} &= \bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \left\{\int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;} \ket{\vec{x_1}, \vec{x_2}}\bra{\vec{x_1}, \vec{x_2}}\right\}\op{V} \ket{\vec{k_1}, \vec{k_2}} \nonumber\\
+&= \int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;} \braket{\vec{k_1^\prime}, \vec{k_2^\prime}}{\vec{x_1}, \vec{x_2}}\bra{\vec{x_1}, \vec{x_2}}\op{V} \ket{\vec{k_1}, \vec{k_2}} \nonumber\\
 &= \int_{\vec{x_1}, \vec{x_2}} \frac{d^3 \vec{x_1} d^3 \vec{x_2}}{(2\pi)^6}\; e^{-i\vec{k_1^\prime}\cdot \vec{x_1} - i\vec{k_2^\prime}\cdot \vec{x_2}}V(\vec{x_1} - \vec{x_2}) e^{i\vec{k_1}\cdot \vec{x_1} + i\vec{k_2}\cdot \vec{x_2}} &&\text{(by (\ref{eq.Vposbasis}) and (\ref{eq.momentuminpos}))}\nonumber\\
 &= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;\;}e^{-i\vec{k_1^\prime}\cdot \vec{x_1} - i\vec{k_2^\prime}\cdot \vec{x_2}}\,\widetilde{V}(p)\,e^{ip\cdot(\vec{x_1}-\vec{x_2})} e^{i\vec{k_1}\cdot \vec{x_1} + i\vec{k_2}\cdot \vec{x_2}}
 &&\text{(by (\ref{eq.ftV}))}\nonumber\\
@@ -71,11 +76,21 @@ If we integrate over all time, we get
 \]
 which includes delta functions that conserve momentum and energy.
 Putting this into (\ref{eq.ex-scattering.corstart}),
-\begin{align}
+\begin{align*}
 \Delta S
-=\frac{1}{(2\pi)^4}&\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \int_{\vec{k_1^\prime}\neq \vec{k_1}} d\vec{k_1^\prime} \;\int_{\vec{k_2^\prime}\neq \vec{k_2}} d\vec{k_2^\prime} \left|\widetilde{V}(\vec{k_1^\prime}-\vec{k_1})\right|^2\\&\delta\left({\textstyle\frac{1}{2m_1}{{k_1^\prime}}^2 + \frac{1}{2m_2}{{k_2^\prime}}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2}\right) \,\delta^3(\vec{k_1^\prime}-\vec{k_1}-\vec{k_2^\prime}+\vec{k_2}) + \Od{\lambda^2}.\nonumber
+&=\frac{1}{(2\pi)^4}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \int_{\vec{k_1^\prime}\neq \vec{k_1}} d\vec{k_1^\prime} \;\int_{\vec{k_2^\prime}\neq \vec{k_2}} d\vec{k_2^\prime} \left|\widetilde{V}(\vec{k_1^\prime}-\vec{k_1})\right|^2
+\\&\hspace{3em}\left[\delta\left({\textstyle\frac{1}{2m_1}{{k_1^\prime}}^2 + \frac{1}{2m_2}{{k_2^\prime}}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2}\right)\right]^2 \,\left[\delta^3(\vec{k_1^\prime}-\vec{k_1}-\vec{k_2^\prime}+\vec{k_2})\right]^2 \;\;+\;\; \Od{\lambda^2} \\
+&=\frac{U \,\Delta t}{(2\pi)^8}\left(\lambda^2 \log\frac{1}{\lambda^2}\right) \int_{\vec{k_1^\prime}\neq \vec{k_1}} d\vec{k_1^\prime} \;\int_{\vec{k_2^\prime}\neq \vec{k_2}} d\vec{k_2^\prime} \left|\widetilde{V}(\vec{k_1^\prime}-\vec{k_1})\right|^2
+\\&\hspace{3em}\delta\left({\textstyle\frac{1}{2m_1}{{k_1^\prime}}^2 + \frac{1}{2m_2}{{k_2^\prime}}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2}\right) \,\delta^3(\vec{k_1^\prime}-\vec{k_1}-\vec{k_2^\prime}+\vec{k_2}) \;\;+\;\; \Od{\lambda^2}
+\end{align*}
+where \(U\) is the volume of the region in momentum space that is integrated over and \(\Delta t\) is the time interval that is integrated over. \(U\) and \(\Delta t\) are infinite, but, if we are interested in the average rate of entropy increase a long time after the scattering has begun, we can write
+\begin{align}
+\frac{d S}{dt} \sim \left(\lambda^2 \log\frac{1}{\lambda^2}\right) \int_{\vec{k_1^\prime}\neq \vec{k_1}}& d\vec{k_1^\prime} \;\int_{\vec{k_2^\prime}\neq \vec{k_2}} d\vec{k_2^\prime} \left|\widetilde{V}(\vec{k_1^\prime}-\vec{k_1})\right|^2
+\\&\delta\left({\textstyle\frac{1}{2m_1}{{k_1^\prime}}^2 + \frac{1}{2m_2}{{k_2^\prime}}^2 - \frac{1}{2m_1}{k_1}^2 - \frac{1}{2m_2}{k_2}^2}\right) \,\delta^3(\vec{k_1^\prime}-\vec{k_1}-\vec{k_2^\prime}+\vec{k_2}) \;\;+\;\;\Od{\lambda^2} \nonumber
 \end{align}
-It seems that the change in entropy is related to this 2D integral in momentum space.
+in the limit where scattering has been happening for a long time. Thus the rate in entropy growth is proportional to a 2D integral of \(\widetilde{V}\) in momentum space, and also proportional to \(\lambda^2 \log \frac{1}{\lambda^2}\).
+
+(Here, \(\frac{d S}{dt} = \frac{d}{dt} \Delta S\) since the free particle Hamiltonian \(\op{H}_0\) doesn't cause a change in subsystem entropy.)
 
 % \subsection{Reduced density operator}
 
