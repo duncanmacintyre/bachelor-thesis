@@ -41,7 +41,7 @@ and the density operator is
 \]
 Then the reduced density operator for the first qubit is
 \begin{align*}
-\overline{\op{\rho}} &= \cdot\otimes\bra{0} \op{\rho} \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \op{\rho} \cdot\otimes\ket{1} \\
+\overline{\op{\rho}} &= \left(\id\otimes\bra{0}\right) \op{\rho} \left(\id\otimes\ket{0}\right) + \left(\id\otimes\bra{1}\right) \op{\rho} \left(\id\otimes\ket{1}\right) \\
 &= \left(\frac{1}{2} + \frac{1}{4}e^{\left(E_3-E_2\right)\frac{t}{\hbar}} + \frac{1}{4}e^{-\left(E_3-E_2\right)\frac{t}{\hbar}} \right)\ket{1}\bra{1} + \left(\frac{1}{2} -\frac{1}{4}e^{\left(E_3-E_2\right)\frac{t}{\hbar}} -\frac{1}{4}e^{-\left(E_3-E_2\right)\frac{t}{\hbar}} \right)\ket{0}\bra{0} \\
 % &= \frac{1}{2}\left(1 + \cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \left[\left(E_3-E_2\right)\frac{t}{\hbar}\right] \right)\ket{0}\bra{0} \\
 &= \frac{1}{2}\left(1 + \cos \lambda t \right)\ket{1}\bra{1} + \frac{1}{2}\left(1 -\cos \lambda t \right)\ket{0}\bra{0}.
@@ -83,7 +83,7 @@ and the density operator is
 \]
 We can compute that reduced density operator for the first qubit is
 \begin{align*}
-\overline{\op{\rho}} &= \cdot\otimes\bra{0} \op{\rho} \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \op{\rho} \cdot\otimes\ket{1} \\
+\overline{\op{\rho}} &= \left(\id\otimes\bra{0}\right) \op{\rho} \left(\id\otimes\ket{0}\right) + \left(\id\otimes\bra{1}\right) \op{\rho} \left(\id\otimes\ket{1}\right) \\
 &= \frac{1}{2} \ket{1}\bra{1} + \frac{1}{2}\ket{0}\bra{0} + \frac{1}{4} e^{it\left(E_2-E_1\right)/\hbar}\left(-\ket{1}\bra{0} + \ket{0}\bra{1}\right) + \frac{1}{4} e^{-it\left(E_2-E_1\right)/\hbar}\left(\ket{1}\bra{0} - \ket{0}\bra{1}\right) \\
 &= \frac{1}{2}\ket{1}\bra{1} + \frac{1}{2}\ket{0}\bra{0} + \frac{i}{2} \left(\sin \phi\right) \ket{0}\bra{1} - \frac{i}{2} \left(\sin \phi\right) \ket{1}\bra{0}
 \end{align*}
@@ -121,7 +121,7 @@ We now compute
 \]
 Upon reduction this becomes
 \begin{align*}
-\overline{\left[\op{H}_I, \;\op{\rho}\right]} &= \cdot\otimes\bra{0} \left[\op{H}_I, \;\op{\rho}\right] \cdot\otimes\ket{0} + \cdot\otimes\bra{1} \left[\op{H}_I, \;\op{\rho}\right] \cdot\otimes\ket{1} \\
+\overline{\left[\op{H}_I, \;\op{\rho}\right]} &= \left(\id\otimes\bra{0} \right)\left[\op{H}_I, \;\op{\rho}\right] \left(\id\otimes\ket{0}\right) + \left(\id\otimes\bra{1}\right) \left[\op{H}_I, \;\op{\rho}\right] \left(\id\otimes\ket{1}\right) \\
 &= \frac{\hbar}{2}\left(\ket{0}\bra{1} - \ket{1}\bra{0}\right).
 \end{align*}
 By (\ref{eq.foprobcor}) the first-order correction to \(\sigma_-^{(0)}\) is

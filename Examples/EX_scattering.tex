@@ -18,7 +18,7 @@ The particles have a very long time over which to interact.
 
 We begin by writing momentum eigenstates as \(\ket{\vec{k_1}, \vec{k_2}}\). In the position basis these have wavefunctions
 \begin{equation}\label{eq.momentuminpos}
-\braket{\vec{x_1}, \vec{x_2}}{\vec{k_1}, \vec{k_2}} = \frac{1}{(2\pi)^3}\;e^{i\vec{k_1}\cdot \vec{x_1} + i\vec{k_2}\cdot \vec{x_2}}.
+\braket{\vec{x_1}, \vec{x_2}}{\vec{k_1}, \vec{k_2}} = \frac{1}{(2\pi)^3}\;e^{i\vec{k_1}\id \vec{x_1} + i\vec{k_2}\id \vec{x_2}}.
 \end{equation}
 Here \(\vec{x_1}\) and \(\vec{x_2}\) are the (3-vector) positions of the first and second particles and \(\vec{k_1}\) and \(\vec{k_2}\) are the (3-vector) momenta of the first and second particle.
 
@@ -32,7 +32,7 @@ Then the state \(\ket{\vec{k_1}, \vec{k_2}}\) has energy \(\frac{1}{2m_1}{k_1}^2
 Let \(\widetilde{V}(\vec{p})\) be the Fourier transform of \(V(\vec{x_1} - \vec{x_2})\) so that
 \begin{equation}
 \label{eq.ftV}
-V(\vec{x_1} - \vec{x_2}) = \int_{-\infty}^{\infty} \frac{d^3 \vec{p}}{(2 \pi)^3} \widetilde{V}(\vec{p}) e^{i\vec{p}\cdot(\vec{x_1} - \vec{x_2})}.
+V(\vec{x_1} - \vec{x_2}) = \int_{-\infty}^{\infty} \frac{d^3 \vec{p}}{(2 \pi)^3} \widetilde{V}(\vec{p}) e^{i\vec{p}\id(\vec{x_1} - \vec{x_2})}.
 \end{equation}
 
 Suppose we start in a plane wave \(\ket{\vec{k_1}, \vec{k_2}}\). This is a diagonally separable state and we expect to be able to transition to other momenta, so the first-order corrections to entropy will vanish. The leading correction will be of order \(\lambda^2 \log \frac{1}{\lambda^2}
@@ -52,10 +52,10 @@ We see that
 \begin{align*}
 \hspace{-4em}\bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \op{V} \ket{\vec{k_1}, \vec{k_2}} &= \bra{\vec{k_1^\prime}, \vec{k_2^\prime}} \left\{\int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;} \ket{\vec{x_1}, \vec{x_2}}\bra{\vec{x_1}, \vec{x_2}}\right\}\op{V} \ket{\vec{k_1}, \vec{k_2}} \nonumber\\
 &= \int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;} \braket{\vec{k_1^\prime}, \vec{k_2^\prime}}{\vec{x_1}, \vec{x_2}}\bra{\vec{x_1}, \vec{x_2}}\op{V} \ket{\vec{k_1}, \vec{k_2}} \nonumber\\
-&= \int_{\vec{x_1}, \vec{x_2}} \frac{d^3 \vec{x_1} d^3 \vec{x_2}}{(2\pi)^6}\; e^{-i\vec{k_1^\prime}\cdot \vec{x_1} - i\vec{k_2^\prime}\cdot \vec{x_2}}V(\vec{x_1} - \vec{x_2}) e^{i\vec{k_1}\cdot \vec{x_1} + i\vec{k_2}\cdot \vec{x_2}} &&\text{(by (\ref{eq.Vposbasis}) and (\ref{eq.momentuminpos}))}\nonumber\\
-&= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;\;}e^{-i\vec{k_1^\prime}\cdot \vec{x_1} - i\vec{k_2^\prime}\cdot \vec{x_2}}\,\widetilde{V}(p)\,e^{ip\cdot(\vec{x_1}-\vec{x_2})} e^{i\vec{k_1}\cdot \vec{x_1} + i\vec{k_2}\cdot \vec{x_2}}
+&= \int_{\vec{x_1}, \vec{x_2}} \frac{d^3 \vec{x_1} d^3 \vec{x_2}}{(2\pi)^6}\; e^{-i\vec{k_1^\prime}\id \vec{x_1} - i\vec{k_2^\prime}\id \vec{x_2}}V(\vec{x_1} - \vec{x_2}) e^{i\vec{k_1}\id \vec{x_1} + i\vec{k_2}\id \vec{x_2}} &&\text{(by (\ref{eq.Vposbasis}) and (\ref{eq.momentuminpos}))}\nonumber\\
+&= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;\;}e^{-i\vec{k_1^\prime}\id \vec{x_1} - i\vec{k_2^\prime}\id \vec{x_2}}\,\widetilde{V}(p)\,e^{ip\id(\vec{x_1}-\vec{x_2})} e^{i\vec{k_1}\id \vec{x_1} + i\vec{k_2}\id \vec{x_2}}
 &&\text{(by (\ref{eq.ftV}))}\nonumber\\
-&= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\widetilde{V}(p) \int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;\;}e^{i(\vec{k_1}-\vec{k_1^\prime}+p)\cdot \vec{x_1}}e^{i(\vec{k_2}-\vec{k_2^\prime}-p)\cdot \vec{x_2}}\nonumber\\
+&= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\widetilde{V}(p) \int_{\vec{x_1}, \vec{x_2}} {d^3 \vec{x_1} d^3 \vec{x_2}\;\;}e^{i(\vec{k_1}-\vec{k_1^\prime}+p)\id \vec{x_1}}e^{i(\vec{k_2}-\vec{k_2^\prime}-p)\id \vec{x_2}}\nonumber\\
 &= \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^9}\widetilde{V}(p) \,(2\pi)^6\,\delta^3(\vec{k_1}-\vec{k_1^\prime}+p)\,\delta^3(\vec{k_2}-\vec{k_2^\prime}-p)\nonumber\\
 &= \frac{1}{(2\pi)^3}\;\widetilde{V}(\vec{k_1^\prime}-\vec{k_1}) \;\delta^3(\vec{k_1^\prime}-\vec{k_1}-\vec{k_2^\prime}+\vec{k_2}).
 \end{align*}
@@ -132,7 +132,7 @@ in the limit where scattering has been happening for a long time. Thus the rate 
 % \end{align*}
 % where
 % \begin{align*}
-% D(\vec{k_1}, \vec{k_2}, \widetilde{k}_2) &= \delta\left({\textstyle \frac{1}{2}\;{{k}_2}^2\left(\frac{1}{m_1}-\frac{1}{m_2}\right)+ \frac{1}{2}\;{\widetilde{k}_2}^2\left(\frac{1}{m_1}+\frac{1}{m_2}\right) - \frac{1}{2m_1}\left(-\vec{k_1}\cdot \widetilde{k}_2 + \vec{k_1} \cdot \vec{k_2} + \widetilde{k}_2 \cdot \vec{k_2}\right)}\right).
+% D(\vec{k_1}, \vec{k_2}, \widetilde{k}_2) &= \delta\left({\textstyle \frac{1}{2}\;{{k}_2}^2\left(\frac{1}{m_1}-\frac{1}{m_2}\right)+ \frac{1}{2}\;{\widetilde{k}_2}^2\left(\frac{1}{m_1}+\frac{1}{m_2}\right) - \frac{1}{2m_1}\left(-\vec{k_1}\id \widetilde{k}_2 + \vec{k_1} \id \vec{k_2} + \widetilde{k}_2 \id \vec{k_2}\right)}\right).
 % \end{align*}
 % Then, assuming \(\widetilde{V}\) is an even function,
 % \begin{align}\label{eq.reddensevolution}

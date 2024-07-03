@@ -26,9 +26,9 @@ We can now write the Von Neumann entropy as a trace: \(S = -\Tr{\op{\rho} \log \
 
 If we have a bipartite system \(\hilb_A \otimes \hilb_B\) and a basis \(\{\ket{\beta_m}\}\) for \(\hilb_B\), we can define the reduced density operator
 \[
-\overline{\op{\rho}} = \sum_m \left(\cdot \otimes \bra{\beta_m}\right) \op{\rho} \left(\cdot \otimes \ket{\beta_m}\right)
+\overline{\op{\rho}} = \sum_m \left(\id \otimes \bra{\beta_m}\right) \op{\rho} \left(\id \otimes \ket{\beta_m}\right)
 \]
-that acts on the space \(\hilb_A\). Then the \(\hilb_A\)-subsystem entropy is \(-\Tr{\overline{\op{\rho}}\log \overline{\op{\rho}}}\).
+that acts on the space \(\hilb_A\). (Here \(\id\) is the identity operator.) Then the \(\hilb_A\)-subsystem entropy is \(-\Tr{\overline{\op{\rho}}\log \overline{\op{\rho}}}\).
 
 We can think of \(\overline{\op{\rho}}\) as a version of \(\op{\rho}\) that is ``averaged out’’ at the resolution of \(\hilb_A\). We can gain insight with some probability theory. If we consider \(\op{\rho}\) to be a random variable, measurable on the sigma-algebra \(\hilb_A \otimes \hilb_B\), and we understand \(\hilb_A\) to be sub-sigma-algebra of \(\hilb_A \otimes \hilb_B\), then we can identify \(\overline{\op{\rho}}\) with the conditional expectation \(\ex \op{\rho} \,| \hilb_A\). In this sense, the subsystem entropy describes how much information is lost when we average out (take the conditional expectation).
 
